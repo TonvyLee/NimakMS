@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ViewConfig>
+  <Arguments/>
+  <Context/>
+  <Model/>
+  <View>
+    <Container layout="hbox">
+      <Property name="className">container_a</Property>
+      <Property name="contentOverflow">auto</Property>
+      <Container>
+        <Property name="width">50%</Property>
+        <Property name="height">40%</Property>
+        <HtmlContainer/>
+      </Container>
+      <Container layout="hbox">
+        <Property name="width">50%</Property>
+        <Property name="height">98%</Property>
+        <Property name="contentOverflow">hidden</Property>
+        <Container>
+          <Property name="width">20%</Property>
+        </Container>
+        <Container>
+          <Property name="height">98%</Property>
+          <Label>
+            <Property name="height">20%</Property>
+          </Label>
+          <HtmlContainer layoutConstraint="top:12">
+            <Property name="content">&lt;div id=&quot;time&quot;>&#xD;
+	&lt;span id=&quot;h&quot;>&lt;/span>:&lt;span id=&quot;m&quot;>&lt;/span>:&lt;span id=&quot;s&quot;>&lt;/span> &lt;span id=&quot;ampm&quot;>&lt;/span> · &lt;span id=&quot;d&quot;>&lt;/span>/&lt;span id=&quot;mnth&quot;>&lt;/span>&#xD;
+&lt;/div></Property>
+            <Property name="style">
+              <Property name="font-size">25pt</Property>
+              <Property name="text-align">center</Property>
+            </Property>
+            <Property name="width">300</Property>
+            <Property name="height">15%</Property>
+          </HtmlContainer>
+        </Container>
+      </Container>
+      <Container layout="vbox align:center;pack:center">
+        <Property name="width">50%</Property>
+        <Property name="style">
+          <Property name="font-style">italic</Property>
+        </Property>
+        <Property name="ignored">true</Property>
+        <Label layoutConstraint="align:center">
+          <Property name="text">您好！！！</Property>
+          <Property name="style">
+            <Property name="font-size">35pt</Property>
+            <Property name="key1"></Property>
+          </Property>
+        </Label>
+        <Label layoutConstraint="align:center">
+          <Property name="text">   </Property>
+          <Property name="style">
+            <Property name="font-size">30pt</Property>
+            <Property name="key1"></Property>
+          </Property>
+        </Label>
+        <Label layoutConstraint="align:center">
+          <Property name="text">愿您使用愉快！！！</Property>
+          <Property name="style">
+            <Property name="font-size">30pt</Property>
+            <Property name="key1"></Property>
+          </Property>
+        </Label>
+      </Container>
+    </Container>
+  </View>
+</ViewConfig>

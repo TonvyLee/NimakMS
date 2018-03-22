@@ -1,0 +1,1277 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ViewConfig>
+  <Arguments/>
+  <Context/>
+  <Model>
+    <DataType name="dTClamparmlib" parent="dataTypeClamparmlib">
+      <PropertyDef name="code">
+        <Property name="label">编码</Property>
+        <Validator name="validator1" type="required">
+          <Property name="runAt">both</Property>
+          <Property name="defaultResultState">error</Property>
+          <Property name="resultMessage">内容不能为空！！三思而输！！！</Property>
+          <Property name="revalidateOldValue">false</Property>
+        </Validator>
+      </PropertyDef>
+    </DataType>
+  </Model>
+  <View layout="vbox">
+    <ClientEvent name="onCreate" signature="self,arg,autoformCondition">dorado.useObjectShim = true;</ClientEvent>
+    <ClientEvent name="onReady" signature="self,arg,autoformCondition,ajaxActionGetSessionData">//session.getAttribute(&quot;sessiondata&quot;);&#xD;
+ajaxActionGetSessionData.execute();&#xD;
+//alert(view.get(&quot;tags&quot;));&#xD;
+//autoformCondition.get(&quot;entity&quot;).set(&quot;code&quot;,view.get(&quot;tags&quot;));</ClientEvent>
+    <Property name="packages">spinfire</Property>
+    <DataSet id="dataSet1">
+      <Property name="dataType">[dTClamparmlib]</Property>
+    </DataSet>
+    <DataSet id="dsClamparmlib">
+      <ClientEvent name="onLoadData">if(!self.get(&quot;data&quot;).getLast()) {&#xD;
+	//dorado.MessageBox.alert(&quot;没有找到满足条件的设计，请重新限定条件查询...&quot;);&#xD;
+	dorado.widget.NotifyTipManager.notify(&quot;没有找到满足条件的设计，请重新限定条件查询...&quot;);&#xD;
+}&#xD;
+</ClientEvent>
+      <Property name="dataProvider">clamparmlibService#queryForCondition</Property>
+      <Property name="dataType">[dTClamparmlib]</Property>
+      <Property name="pageSize">15</Property>
+      <Property name="readOnly">false</Property>
+    </DataSet>
+    <Container layout="form">
+      <Property name="style">
+        <Property name="background-color">green</Property>
+        <Property name="key1"></Property>
+        <Property name="key2"></Property>
+      </Property>
+      <Property name="height">5%</Property>
+      <Label layoutConstraint="type:center;align:center;vAlign:center;colSpan:2">
+        <Property name="style">
+          <Property name="font-size">26px</Property>
+          <Property name="font-style"></Property>
+          <Property name="font-weight">bold</Property>
+        </Property>
+        <Property name="text">钳臂实例库</Property>
+      </Label>
+    </Container>
+    <Container>
+      <Property name="height">96%</Property>
+      <FieldSet layoutConstraint="padding:5">
+        <Property name="caption">查询信息输入</Property>
+        <Property name="className">FieldsetQuery</Property>
+        <Property name="style">
+          <Property name="font-size">16px</Property>
+          <Property name="key1"></Property>
+        </Property>
+        <Buttons>
+          <Button id="ButtonQuery" layoutConstraint="bottom padding:50">
+            <Property name="caption">查询</Property>
+            <Property name="tip">点击或回车进行查询</Property>
+            <Property name="width">100</Property>
+          </Button>
+          <Button id="buttonReset">
+            <ClientEvent name="onClick" signature="self,arg,autoformCondition">autoformCondition.set(&quot;entity&quot;,{});</ClientEvent>
+            <Property name="caption">重置</Property>
+            <Property name="width">100</Property>
+          </Button>
+        </Buttons>
+        <Children>
+          <AutoForm id="autoformCondition">
+            <Property name="createPrivateDataSet">true</Property>
+            <Property name="cols">*,*</Property>
+            <Property name="labelSeparator">:</Property>
+            <Property name="labelWidth">200</Property>
+            <Property name="labelAlign">center</Property>
+            <AutoFormElement id="code">
+              <ClientEvent name="onKeyDown">//获取按键对应的keyCode&#xD;
+var keyCode = arg.keyCode;&#xD;
+//如果是回车键则直接执行Action操作&#xD;
+&#xD;
+//alert(self.get(&quot;value&quot;));&#xD;
+if(!self.get(&quot;value&quot;)){&#xD;
+	view.get(&quot;#autoformCondition&quot;).get(&quot;entity&quot;).set(&quot;code&quot;,keyCodeToValue(keyCode));&#xD;
+	view.get(&quot;#dsClamparmlib&quot;).set(&quot;parameter&quot;, view.get(&quot;#autoformCondition&quot;).get(&quot;entity&quot;)).flushAsync();&#xD;
+}else{&#xD;
+	if(keyCode == 8){&#xD;
+		view.get(&quot;#autoformCondition&quot;).get(&quot;entity&quot;).set(&quot;code&quot;,self.get(&quot;value&quot;).substring(0,self.get(&quot;value&quot;).length-1));&#xD;
+		view.get(&quot;#dsClamparmlib&quot;).set(&quot;parameter&quot;, view.get(&quot;#autoformCondition&quot;).get(&quot;entity&quot;)).flushAsync();		&#xD;
+	}else{&#xD;
+		var temp = self.get(&quot;value&quot;);&#xD;
+		view.get(&quot;#autoformCondition&quot;).get(&quot;entity&quot;).set(&quot;code&quot;,temp + keyCodeToValue(keyCode));&#xD;
+	//self.refresh();&#xD;
+	//alert(view.get(&quot;#autoformCondition&quot;).get(&quot;entity&quot;).get(&quot;code&quot;));&#xD;
+		view.get(&quot;#dsClamparmlib&quot;).set(&quot;parameter&quot;, view.get(&quot;#autoformCondition&quot;).get(&quot;entity&quot;)).flushAsync();		&#xD;
+		&#xD;
+	}&#xD;
+}&#xD;
+&#xD;
+//实现keyCode值得转换&#xD;
+function keyCodeToValue(keyCode){&#xD;
+	switch(keyCode){&#xD;
+		case 96:&#xD;
+		case 48:return 0+&quot;&quot;;&#xD;
+		case 97:&#xD;
+		case 49:return 1+&quot;&quot;;&#xD;
+		case 98:&#xD;
+		case 50:return 2+&quot;&quot;;&#xD;
+		case 99:&#xD;
+		case 51:return 3+&quot;&quot;;&#xD;
+		case 100:&#xD;
+		case 52:return 4+&quot;&quot;;&#xD;
+		case 101:&#xD;
+		case 53:return 5+&quot;&quot;;&#xD;
+		case 102:&#xD;
+		case 54:return 6+&quot;&quot;;&#xD;
+		case 103:&#xD;
+		case 55:return 7+&quot;&quot;;&#xD;
+		case 104:&#xD;
+		case 56:return 8+&quot;&quot;;&#xD;
+		case 105:&#xD;
+		case 57:return 9+&quot;&quot;;&#xD;
+		&#xD;
+		&#xD;
+		case 65:return &quot;A&quot;;&#xD;
+		case 66:return &quot;B&quot;;&#xD;
+		case 67:return &quot;C&quot;;&#xD;
+		case 68:return &quot;D&quot;;&#xD;
+		case 69:return &quot;E&quot;;&#xD;
+		case 70:return &quot;F&quot;;&#xD;
+		case 71:return &quot;G&quot;;&#xD;
+		case 72:return &quot;H&quot;;&#xD;
+		case 73:return &quot;I&quot;;&#xD;
+		case 74:return &quot;J&quot;;&#xD;
+		case 75:return &quot;K&quot;;&#xD;
+		case 76:return &quot;L&quot;;&#xD;
+		case 77:return &quot;M&quot;;&#xD;
+		case 78:return &quot;N&quot;;&#xD;
+		case 79:return &quot;O&quot;;&#xD;
+		case 80:return &quot;P&quot;;&#xD;
+		case 81:return &quot;Q&quot;;&#xD;
+		case 82:return &quot;R&quot;;&#xD;
+		case 83:return &quot;S&quot;;&#xD;
+		case 84:return &quot;T&quot;;&#xD;
+		case 85:return &quot;U&quot;;&#xD;
+		case 86:return &quot;V&quot;;&#xD;
+		case 87:return &quot;W&quot;;&#xD;
+		case 88:return &quot;X&quot;;&#xD;
+		case 89:return &quot;Y&quot;;&#xD;
+		case 90:return &quot;Z&quot;;&#xD;
+&#xD;
+&#xD;
+		default:&#xD;
+			dorado.widget.NotifyTipManager.notify(&quot;非正常输入，请三思而输！！系统为您作出修正！！！&quot;);&#xD;
+			return &quot;&quot;;&#xD;
+	}&#xD;
+}&#xD;
+&#xD;
+&#xD;
+&#xD;
+</ClientEvent>
+              <Property name="name">code</Property>
+              <Property name="property">code</Property>
+              <Property name="label">编码</Property>
+              <Editor/>
+            </AutoFormElement>
+            <AutoFormElement>
+              <Property name="name">innercode</Property>
+              <Property name="property">innercode</Property>
+              <Property name="label">内部编码</Property>
+              <Editor/>
+            </AutoFormElement>
+            <AutoFormElement>
+              <Property name="name">type</Property>
+              <Property name="property">type</Property>
+              <Property name="label">钳臂类型</Property>
+              <Property name="trigger">listDropDownType</Property>
+              <Editor/>
+            </AutoFormElement>
+            <AutoFormElement>
+              <Property name="name">isrotation</Property>
+              <Property name="property">isrotation</Property>
+              <Property name="label">是否回转体</Property>
+              <Property name="trigger">listDropDownIsRotation</Property>
+              <Editor/>
+            </AutoFormElement>
+            <AutoFormElement>
+              <Property name="name">specialshape</Property>
+              <Property name="property">specialshape</Property>
+              <Property name="ignored">false</Property>
+              <Property name="label">空间异形及加强筋</Property>
+              <Property name="trigger">listDropDownSpecialShape</Property>
+              <Editor/>
+            </AutoFormElement>
+            <AutoFormElement>
+              <Property name="name">worm</Property>
+              <Property name="property">worm</Property>
+              <Property name="label">蜗杆连接</Property>
+              <Property name="trigger">listDropDownWorm</Property>
+              <Editor/>
+            </AutoFormElement>
+            <AutoFormElement>
+              <Property name="name">firstbend</Property>
+              <Property name="property">firstbend</Property>
+              <Property name="label">第一折弯</Property>
+              <Property name="trigger">listDropDownFirstBend</Property>
+              <Editor/>
+            </AutoFormElement>
+            <AutoFormElement>
+              <Property name="name">secondbend</Property>
+              <Property name="property">secondbend</Property>
+              <Property name="label">第二折弯</Property>
+              <Property name="trigger">listDropDownSecondBend</Property>
+              <Editor/>
+            </AutoFormElement>
+            <AutoFormElement>
+              <Property name="name">thirdbend</Property>
+              <Property name="property">thirdbend</Property>
+              <Property name="label">第三折弯</Property>
+              <Property name="trigger">listDropDownThirdBend</Property>
+              <Editor/>
+            </AutoFormElement>
+            <AutoFormElement>
+              <Property name="name">section</Property>
+              <Property name="property">section</Property>
+              <Property name="label">钳体连接截面</Property>
+              <Property name="trigger">listDropDownSection</Property>
+              <Editor/>
+            </AutoFormElement>
+            <AutoFormElement>
+              <Property name="name">armlength</Property>
+              <Property name="property">armlength</Property>
+              <Property name="label">臂长</Property>
+              <Property name="trigger">listDropDownArmLength</Property>
+              <Editor/>
+            </AutoFormElement>
+            <AutoFormElement>
+              <Property name="name">off</Property>
+              <Property name="property">off</Property>
+              <Property name="label">偏移</Property>
+              <Property name="trigger">listDropDownOffSet</Property>
+              <Editor/>
+            </AutoFormElement>
+            <AutoFormElement>
+              <Property name="name">secondoffset</Property>
+              <Property name="property">secondoffset</Property>
+              <Property name="label">第二偏移</Property>
+              <Property name="trigger">listDropDownSecondOffSet</Property>
+              <Editor/>
+            </AutoFormElement>
+            <AutoFormElement>
+              <Property name="label">审查者</Property>
+              <Property name="name">checker</Property>
+              <Property name="property">checker</Property>
+              <Editor/>
+            </AutoFormElement>
+            <AutoFormElement>
+              <Property name="name">designername</Property>
+              <Property name="property">designername</Property>
+              <Property name="label">设计人员</Property>
+              <Editor/>
+            </AutoFormElement>
+            <AutoFormElement>
+              <Property name="name">designdate</Property>
+              <Property name="property">designdate</Property>
+              <Property name="label">设计日期</Property>
+              <Property name="trigger">dateDropDown1</Property>
+              <Property name="editorType">TextEditor</Property>
+              <Editor>
+                <TextEditor>
+                  <Property name="dataType">Date</Property>
+                </TextEditor>
+              </Editor>
+            </AutoFormElement>
+          </AutoForm>
+          <DateDropDown id="dateDropDown1">
+            <Property name="showTimeSpinner">true</Property>
+            <Property name="icon"> url(>skin>common/icons.gif) -200px -0px</Property>
+          </DateDropDown>
+        </Children>
+      </FieldSet>
+      <ToolBar>
+        <ToolBarButton id="buttonQuery">
+          <ClientEvent name="onClick" signature="self,arg,autoformCondition,dsClamparmlib">//获取autoformCondition绑定的实体对象&#xD;
+var entity = autoformCondition.get(&quot;entity&quot;);&#xD;
+//将实体对象作为参数传入，并异步刷新&#xD;
+dsClamparmlib.set(&quot;parameter&quot;,entity).flushAsync();</ClientEvent>
+          <Property name="caption">查询</Property>
+          <Property name="icon"> url(>skin>common/icons.gif) -40px -100px</Property>
+        </ToolBarButton>
+        <DataPilot id="datapilotHello">
+          <Property name="dataSet">dsClamparmlib</Property>
+          <Property name="itemCodes">pages,pageSize</Property>
+        </DataPilot>
+        <ToolBarButton id="buttonModify">
+          <Property name="caption">修改</Property>
+          <Property name="icon"> url(>skin>common/icons.gif) -200px -0px</Property>
+          <Property name="tip">点击编辑可以对表格内容进行编辑！</Property>
+          <Property name="tags">EditButton</Property>
+        </ToolBarButton>
+        <ToolBarButton id="buttonDelete">
+          <Property name="caption">删除并保存</Property>
+          <Property name="icon"> url(>skin>common/icons.gif) -140px -20px</Property>
+          <Property name="tags">EditButton</Property>
+        </ToolBarButton>
+        <ToolBarButton id="buttonAdd">
+          <Property name="caption">添加</Property>
+          <Property name="icon"> url(>skin>common/icons.gif) -40px -0px</Property>
+          <Property name="tags">EditButton</Property>
+          <Property name="ignored">false</Property>
+        </ToolBarButton>
+        <ToolBarButton/>
+      </ToolBar>
+      <DataGrid id="datagridClamparmlib">
+        <Property name="dataSet">dsClamparmlib</Property>
+        <Property name="height">38%</Property>
+        <Property name="readOnly">true</Property>
+        <Property name="showFilterBar">true</Property>
+        <Property name="tip">鼠标右键可以获取快捷操作....</Property>
+        <DataColumn id="operation">
+          <Property name="align">center</Property>
+          <Property name="caption">二维图</Property>
+          <Property name="name">operation</Property>
+          <Property name="readOnly">true</Property>
+          <Editor/>
+        </DataColumn>
+        <DataColumn id="operation1">
+          <Property name="align">center</Property>
+          <Property name="caption">三维模型</Property>
+          <Property name="name">operation1</Property>
+          <Property name="readOnly">true</Property>
+          <Property name="width">80</Property>
+          <Editor/>
+        </DataColumn>
+        <DataColumn name="id">
+          <Property name="property">id</Property>
+        </DataColumn>
+        <DataColumn name="code">
+          <Property name="property">code</Property>
+        </DataColumn>
+        <DataColumn name="code">
+          <Property name="property">code</Property>
+        </DataColumn>
+        <DataColumn name="innercode">
+          <Property name="property">innercode</Property>
+        </DataColumn>
+        <DataColumn name="type">
+          <Property name="property">type</Property>
+          <Property name="ignored">true</Property>
+        </DataColumn>
+        <DataColumn name="isrotation">
+          <Property name="property">isrotation</Property>
+          <Property name="ignored">true</Property>
+        </DataColumn>
+        <DataColumn name="specialshape">
+          <Property name="property">specialshape</Property>
+          <Property name="ignored">true</Property>
+        </DataColumn>
+        <DataColumn name="worm">
+          <Property name="property">worm</Property>
+          <Property name="ignored">true</Property>
+        </DataColumn>
+        <DataColumn name="firstbend">
+          <Property name="property">firstbend</Property>
+          <Property name="ignored">true</Property>
+        </DataColumn>
+        <DataColumn name="secondbend">
+          <Property name="property">secondbend</Property>
+          <Property name="ignored">true</Property>
+        </DataColumn>
+        <DataColumn name="thirdbend">
+          <Property name="property">thirdbend</Property>
+          <Property name="ignored">true</Property>
+        </DataColumn>
+        <DataColumn name="section">
+          <Property name="property">section</Property>
+          <Property name="ignored">true</Property>
+        </DataColumn>
+        <DataColumn name="armlength">
+          <Property name="property">armlength</Property>
+          <Property name="ignored">true</Property>
+        </DataColumn>
+        <DataColumn name="offset">
+          <Property name="property">offset</Property>
+          <Property name="ignored">true</Property>
+        </DataColumn>
+        <DataColumn name="secondoffset">
+          <Property name="property">secondoffset</Property>
+          <Property name="ignored">true</Property>
+        </DataColumn>
+        <DataColumn name="designer">
+          <Property name="property">designer</Property>
+        </DataColumn>
+        <DataColumn name="checker">
+          <Property name="property">checker</Property>
+        </DataColumn>
+        <DataColumn name="designdate">
+          <Property name="property">designdate</Property>
+        </DataColumn>
+        <DataColumn name="d2drawing">
+          <Property name="property">d2drawing</Property>
+        </DataColumn>
+        <DataColumn name="d3drawing">
+          <Property name="property">d3drawing</Property>
+        </DataColumn>
+        <DataColumn name="spinfirefile">
+          <Property name="property">spinfirefile</Property>
+        </DataColumn>
+        <DataColumn name="content1">
+          <Property name="property">content1</Property>
+          <Property name="ignored">true</Property>
+        </DataColumn>
+      </DataGrid>
+      <Container layout="padding:20">
+        <Property name="height">25%</Property>
+        <Property name="style">
+          <Property name="font-size">16px</Property>
+          <Property name="font-weight">bold</Property>
+        </Property>
+        <FieldSet>
+          <Property name="caption">钳臂设计参数列表</Property>
+          <Buttons/>
+          <Children>
+            <AutoForm id="AutoformClampParameters">
+              <Property name="dataSet">dsClamparmlib</Property>
+              <Property name="cols">400,*,*,*</Property>
+              <Property name="readOnly">true</Property>
+              <AutoFormElement>
+                <Property name="name">code</Property>
+                <Property name="property">code</Property>
+                <Editor/>
+              </AutoFormElement>
+              <AutoFormElement>
+                <Property name="name">innercode</Property>
+                <Property name="property">innercode</Property>
+                <Editor/>
+              </AutoFormElement>
+              <AutoFormElement>
+                <Property name="name">type</Property>
+                <Property name="property">type</Property>
+                <Editor/>
+              </AutoFormElement>
+              <AutoFormElement>
+                <Property name="name">isrotation</Property>
+                <Property name="property">isrotation</Property>
+                <Editor/>
+              </AutoFormElement>
+              <AutoFormElement>
+                <Property name="name">specialshape</Property>
+                <Property name="property">specialshape</Property>
+                <Editor/>
+              </AutoFormElement>
+              <AutoFormElement>
+                <Property name="name">worm</Property>
+                <Property name="property">worm</Property>
+                <Editor/>
+              </AutoFormElement>
+              <AutoFormElement>
+                <Property name="name">firstbend</Property>
+                <Property name="property">firstbend</Property>
+                <Editor/>
+              </AutoFormElement>
+              <AutoFormElement>
+                <Property name="name">secondbend</Property>
+                <Property name="property">secondbend</Property>
+                <Editor/>
+              </AutoFormElement>
+              <AutoFormElement>
+                <Property name="name">thirdbend</Property>
+                <Property name="property">thirdbend</Property>
+                <Editor/>
+              </AutoFormElement>
+              <AutoFormElement>
+                <Property name="name">section</Property>
+                <Property name="property">section</Property>
+                <Editor/>
+              </AutoFormElement>
+              <AutoFormElement>
+                <Property name="name">armlength</Property>
+                <Property name="property">armlength</Property>
+                <Editor/>
+              </AutoFormElement>
+              <AutoFormElement>
+                <Property name="name">offset</Property>
+                <Property name="property">offset</Property>
+                <Editor/>
+              </AutoFormElement>
+              <AutoFormElement>
+                <Property name="name">secondoffset</Property>
+                <Property name="property">secondoffset</Property>
+                <Editor/>
+              </AutoFormElement>
+              <AutoFormElement>
+                <Property name="name">content1</Property>
+                <Property name="property">content1</Property>
+                <Editor/>
+              </AutoFormElement>
+            </AutoForm>
+          </Children>
+        </FieldSet>
+      </Container>
+    </Container>
+    <Dialog id="dialog2DDrawing">
+      <Property name="height">100%</Property>
+      <Property name="width">100%</Property>
+      <Buttons>
+        <Button id="buttonDownLoadDrawing">
+          <Property name="caption">下载到本地</Property>
+          <Property name="width">150</Property>
+          <Property name="action">ajaxActionDownloadDrawing</Property>
+          <Property name="tags">ButtonDownLoad</Property>
+        </Button>
+        <Button id="buttonCloseDrawing">
+          <Property name="caption">关闭</Property>
+          <Property name="width">150</Property>
+        </Button>
+      </Buttons>
+      <Children>
+        <FieldSet layoutConstraint="padding:20">
+          <Property name="caption">基本信息</Property>
+          <Buttons/>
+          <Children>
+            <AutoForm id="autoformClamparmlibEdit1">
+              <Property name="cols">*,*,*</Property>
+              <Property name="width">100%</Property>
+              <Property name="labelWidth">110</Property>
+              <Property name="labelAlign">center</Property>
+              <Property name="dataSet">dsClamparmlib</Property>
+              <Property name="readOnly">true</Property>
+              <AutoFormElement>
+                <Property name="name">code</Property>
+                <Property name="property">code</Property>
+                <Editor/>
+              </AutoFormElement>
+              <AutoFormElement>
+                <Property name="name">innercode</Property>
+                <Property name="property">innercode</Property>
+                <Editor/>
+              </AutoFormElement>
+              <AutoFormElement>
+                <Property name="name">type</Property>
+                <Property name="property">type</Property>
+                <Editor/>
+              </AutoFormElement>
+              <AutoFormElement>
+                <Property name="name">isrotation</Property>
+                <Property name="property">isrotation</Property>
+                <Editor/>
+              </AutoFormElement>
+              <AutoFormElement>
+                <Property name="name">specialshape</Property>
+                <Property name="property">specialshape</Property>
+                <Editor/>
+              </AutoFormElement>
+              <AutoFormElement>
+                <Property name="name">worm</Property>
+                <Property name="property">worm</Property>
+                <Editor/>
+              </AutoFormElement>
+              <AutoFormElement>
+                <Property name="name">firstbend</Property>
+                <Property name="property">firstbend</Property>
+                <Editor/>
+              </AutoFormElement>
+              <AutoFormElement>
+                <Property name="name">secondbend</Property>
+                <Property name="property">secondbend</Property>
+                <Editor/>
+              </AutoFormElement>
+              <AutoFormElement>
+                <Property name="name">thirdbend</Property>
+                <Property name="property">thirdbend</Property>
+                <Editor/>
+              </AutoFormElement>
+              <AutoFormElement>
+                <Property name="name">section</Property>
+                <Property name="property">section</Property>
+                <Editor/>
+              </AutoFormElement>
+              <AutoFormElement>
+                <Property name="name">armlength</Property>
+                <Property name="property">armlength</Property>
+                <Editor/>
+              </AutoFormElement>
+              <AutoFormElement>
+                <Property name="name">offset</Property>
+                <Property name="property">offset</Property>
+                <Editor/>
+              </AutoFormElement>
+              <AutoFormElement>
+                <Property name="name">secondoffset</Property>
+                <Property name="property">secondoffset</Property>
+                <Editor/>
+              </AutoFormElement>
+              <AutoFormElement>
+                <Property name="name">designer</Property>
+                <Property name="property">designer</Property>
+                <Editor/>
+              </AutoFormElement>
+              <AutoFormElement>
+                <Property name="name">checker</Property>
+                <Property name="property">checker</Property>
+                <Editor/>
+              </AutoFormElement>
+            </AutoForm>
+          </Children>
+        </FieldSet>
+        <GroupBox>
+          <Property name="collapseable">false</Property>
+          <Buttons/>
+          <Children>
+            <Container layout="vbox">
+              <Image id="image" layoutConstraint="align:center">
+                <Property name="width">100%</Property>
+                <Property name="height">100%</Property>
+                <Property name="stretchMode">fill</Property>
+              </Image>
+              <Container layout="anchor"/>
+            </Container>
+          </Children>
+        </GroupBox>
+      </Children>
+      <Tools/>
+    </Dialog>
+    <Dialog id="dialog3DModel">
+      <Property name="height">100%</Property>
+      <Property name="width">100%</Property>
+      <Buttons>
+        <Button id="buttonDownLoad3DModel">
+          <Property name="caption">下载对应的CATIA模型到本地</Property>
+          <Property name="width">200</Property>
+          <Property name="action">ajaxActionDownload</Property>
+          <Property name="tags">ButtonDownLoad</Property>
+        </Button>
+        <Button id="buttonCloseModel">
+          <Property name="caption">关闭</Property>
+          <Property name="width">150</Property>
+        </Button>
+      </Buttons>
+      <Children>
+        <FieldSet layoutConstraint="padding:20">
+          <Property name="caption">基本信息</Property>
+          <Buttons/>
+          <Children>
+            <AutoForm id="autoformClamparmlibEdit2">
+              <Property name="cols">*,*,*</Property>
+              <Property name="width">100%</Property>
+              <Property name="labelWidth">110</Property>
+              <Property name="labelAlign">center</Property>
+              <Property name="dataSet">dsClamparmlib</Property>
+              <Property name="readOnly">true</Property>
+              <AutoFormElement>
+                <Property name="name">code</Property>
+                <Property name="property">code</Property>
+                <Editor/>
+              </AutoFormElement>
+              <AutoFormElement>
+                <Property name="name">innercode</Property>
+                <Property name="property">innercode</Property>
+                <Editor/>
+              </AutoFormElement>
+              <AutoFormElement>
+                <Property name="name">type</Property>
+                <Property name="property">type</Property>
+                <Editor/>
+              </AutoFormElement>
+              <AutoFormElement>
+                <Property name="name">isrotation</Property>
+                <Property name="property">isrotation</Property>
+                <Editor/>
+              </AutoFormElement>
+              <AutoFormElement>
+                <Property name="name">specialshape</Property>
+                <Property name="property">specialshape</Property>
+                <Editor/>
+              </AutoFormElement>
+              <AutoFormElement>
+                <Property name="name">worm</Property>
+                <Property name="property">worm</Property>
+                <Editor/>
+              </AutoFormElement>
+              <AutoFormElement>
+                <Property name="name">firstbend</Property>
+                <Property name="property">firstbend</Property>
+                <Editor/>
+              </AutoFormElement>
+              <AutoFormElement>
+                <Property name="name">secondbend</Property>
+                <Property name="property">secondbend</Property>
+                <Editor/>
+              </AutoFormElement>
+              <AutoFormElement>
+                <Property name="name">thirdbend</Property>
+                <Property name="property">thirdbend</Property>
+                <Editor/>
+              </AutoFormElement>
+              <AutoFormElement>
+                <Property name="name">section</Property>
+                <Property name="property">section</Property>
+                <Editor/>
+              </AutoFormElement>
+              <AutoFormElement>
+                <Property name="name">armlength</Property>
+                <Property name="property">armlength</Property>
+                <Editor/>
+              </AutoFormElement>
+              <AutoFormElement>
+                <Property name="name">offset</Property>
+                <Property name="property">offset</Property>
+                <Editor/>
+              </AutoFormElement>
+              <AutoFormElement>
+                <Property name="name">secondoffset</Property>
+                <Property name="property">secondoffset</Property>
+                <Editor/>
+              </AutoFormElement>
+              <AutoFormElement>
+                <Property name="name">designer</Property>
+                <Property name="property">designer</Property>
+                <Editor/>
+              </AutoFormElement>
+              <AutoFormElement>
+                <Property name="name">checker</Property>
+                <Property name="property">checker</Property>
+                <Editor/>
+              </AutoFormElement>
+            </AutoForm>
+          </Children>
+        </FieldSet>
+        <GroupBox>
+          <Property name="collapseable">false</Property>
+          <Property name="caption">轻量化预览</Property>
+          <Buttons/>
+          <Children>
+            <Container layout="padding:15">
+              <Property name="width">100%</Property>
+              <Property name="height">100%</Property>
+              <HtmlContainer id="htmlContainerSpinfire">
+                <Property name="content">&lt;object classid=&quot;CLSID:A31CCCB0-46A8-11D3-A726-005004B35102&quot;&#xD;
+	ID=&quot;XV&quot; Name=&quot;XV&quot; width=&quot;100%&quot; height=&quot;100%&quot;>&#xD;
+	&lt;param name=&quot;AnimateTransitions&quot; value=&quot;true&quot;>&#xD;
+	&lt;param name=&quot;background&quot; value=&quot;255 255 255&quot;>&#xD;
+	&lt;param name=&quot;BackgroundSmooth&quot; value=&quot;true&quot;>&#xD;
+&lt;/object></Property>
+                <Property name="containerUi">optional1</Property>
+                <Property name="width">100%</Property>
+                <Property name="height">100%</Property>
+                <Property name="tip">无法打开时，尝试使用浏览器兼容模式</Property>
+              </HtmlContainer>
+            </Container>
+          </Children>
+        </GroupBox>
+      </Children>
+      <Tools/>
+    </Dialog>
+    <UpdateAction id="updateactionSave">
+      <Property name="dataResolver">clamparmlibService#saveAll</Property>
+      <Property name="executingMessage">正在保存</Property>
+      <Property name="successMessage">保存成功</Property>
+      <Property name="hotkey">ctrl+s</Property>
+      <UpdateItem>
+        <Property name="dataSet">dsClamparmlib</Property>
+      </UpdateItem>
+    </UpdateAction>
+    <Dialog id="dialogEdit">
+      <Property name="caption">详情</Property>
+      <Property name="width">400</Property>
+      <Property name="height">90%</Property>
+      <Buttons>
+        <Button id="buttonSave1">
+          <Property name="caption">保存</Property>
+          <Property name="action">ajaxActionCheckFileExisting</Property>
+          <Property name="width">80</Property>
+        </Button>
+        <Button id="buttonCancel1">
+          <Property name="caption">取消</Property>
+          <Property name="width">80</Property>
+        </Button>
+      </Buttons>
+      <Children>
+        <AutoForm id="autoformClamparmlibEdit">
+          <Property name="width">370</Property>
+          <Property name="labelWidth">110</Property>
+          <Property name="labelAlign">center</Property>
+          <Property name="dataSet">dsClamparmlib</Property>
+          <Property name="cols">*</Property>
+          <GroupBox>
+            <Property name="caption">必需参数</Property>
+            <Buttons/>
+            <Children/>
+          </GroupBox>
+          <AutoFormElement>
+            <Property name="name">id</Property>
+            <Property name="property">id</Property>
+            <Property name="ignored">true</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">type</Property>
+            <Property name="property">type</Property>
+            <Property name="trigger">listDropDownType</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">isrotation</Property>
+            <Property name="property">isrotation</Property>
+            <Property name="trigger">listDropDownIsRotation</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">specialshape</Property>
+            <Property name="property">specialshape</Property>
+            <Property name="trigger">listDropDownSpecialShape</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">worm</Property>
+            <Property name="property">worm</Property>
+            <Property name="trigger">listDropDownWorm</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">firstbend</Property>
+            <Property name="property">firstbend</Property>
+            <Property name="trigger">listDropDownFirstBend</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">secondbend</Property>
+            <Property name="property">secondbend</Property>
+            <Property name="trigger">listDropDownSecondBend</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">thirdbend</Property>
+            <Property name="property">thirdbend</Property>
+            <Property name="trigger">listDropDownThirdBend</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">section</Property>
+            <Property name="property">section</Property>
+            <Property name="trigger">listDropDownSection</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">armlength</Property>
+            <Property name="property">armlength</Property>
+            <Property name="trigger">listDropDownArmLength</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">offset</Property>
+            <Property name="property">offset</Property>
+            <Property name="trigger">listDropDownOffSet</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">secondoffset</Property>
+            <Property name="property">secondoffset</Property>
+            <Property name="trigger">listDropDownSecondOffSet</Property>
+            <Editor/>
+          </AutoFormElement>
+          <GroupBox>
+            <Property name="collapseable">false</Property>
+            <Buttons>
+              <Button id="buttonAutoGenerateCode">
+                <Property name="caption">自动生成编码</Property>
+                <Property name="width">200</Property>
+                <Property name="action">ajaxActionCoding</Property>
+              </Button>
+            </Buttons>
+            <Children/>
+          </GroupBox>
+          <AutoFormElement>
+            <Property name="name">code</Property>
+            <Property name="property">code</Property>
+            <Property name="readOnly">true</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">innercode</Property>
+            <Property name="property">innercode</Property>
+            <Property name="readOnly">true</Property>
+            <Editor/>
+          </AutoFormElement>
+          <GroupBox>
+            <Buttons>
+              <Button>
+                <Property name="caption">上传二维图</Property>
+                <Property name="width">100</Property>
+                <Property name="action">uploadDrawing</Property>
+              </Button>
+              <Button>
+                <Property name="caption">上传三维模型</Property>
+                <Property name="width">100</Property>
+                <Property name="action">uploadModel</Property>
+              </Button>
+              <Button>
+                <Property name="caption">上传轻量化模型</Property>
+                <Property name="width">100</Property>
+                <Property name="action">uploadSpinfireModel</Property>
+                <Property name="tip">上传轻量化模型，方便别人查询！</Property>
+              </Button>
+            </Buttons>
+            <Children/>
+          </GroupBox>
+          <AutoFormElement>
+            <Property name="name">d2drawing</Property>
+            <Property name="property">d2drawing</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">d3drawing</Property>
+            <Property name="property">d3drawing</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">spinfirefile</Property>
+            <Property name="property">spinfirefile</Property>
+            <Editor/>
+          </AutoFormElement>
+          <GroupBox>
+            <Buttons/>
+            <Children/>
+          </GroupBox>
+          <AutoFormElement>
+            <Property name="name">designdate</Property>
+            <Property name="property">designdate</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">designer</Property>
+            <Property name="property">designer</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">checker</Property>
+            <Property name="property">checker</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">content1</Property>
+            <Property name="property">content1</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">content2</Property>
+            <Property name="property">content2</Property>
+            <Editor/>
+          </AutoFormElement>
+        </AutoForm>
+      </Children>
+      <Tools/>
+    </Dialog>
+    <Menu id="menuContextDataGrid">
+      <MenuItem id="menuItemDrawing">
+        <Property name="caption">二维工程图</Property>
+        <Property name="icon"> url(>skin>common/icons.gif) -220px -60px</Property>
+        <Property name="tags">Drawing2D</Property>
+      </MenuItem>
+      <MenuItem id="menuItemModel">
+        <Property name="caption">三维模型</Property>
+        <Property name="icon"> url(>skin>common/icons.gif) -120px -80px</Property>
+      </MenuItem>
+      <MenuItem id="menuItemDetail">
+        <Property name="caption">更多信息...</Property>
+        <Property name="icon"> url(>skin>common/icons.gif) -220px -60px</Property>
+      </MenuItem>
+    </Menu>
+    <DownloadAction id="downloadCatiaModel">
+      <Property name="fileProvider">myDownload#downloadFile</Property>
+    </DownloadAction>
+    <AjaxAction id="ajaxActionDownload">
+      <ClientEvent name="onSuccess" signature="self,arg,downloadCatiaModel">//得到返回值&#xD;
+var result = self.get(&quot;returnValue&quot;);&#xD;
+//传参成功后执行downloadActionFile&#xD;
+downloadCatiaModel.set(&quot;parameter&quot;,result);&#xD;
+downloadCatiaModel.execute();</ClientEvent>
+      <ClientEvent name="beforeExecute" signature="self,arg,datagridClamparmlib">//alert(datagridClamparmlib.getCurrentItem().get(&quot;d3drawing&quot;));&#xD;
+self.set(&quot;parameter&quot;,datagridClamparmlib.getCurrentItem().get(&quot;d3drawing&quot;));</ClientEvent>
+      <Property name="service">myDownload#downloadt</Property>
+    </AjaxAction>
+    <AjaxAction id="ajaxActionGetSessionData">
+      <ClientEvent name="onSuccess" signature="self,arg,autoformCondition,ajaxActionClearSessionData,dsClamparmlib">var result = self.get(&quot;returnValue&quot;);&#xD;
+if(result != &quot;&quot;){&#xD;
+	autoformCondition.get(&quot;entity&quot;).set(&quot;code&quot;,result.replace(/-/g,''));&#xD;
+	ajaxActionClearSessionData.execute();&#xD;
+	dsClamparmlib.set(&quot;parameter&quot;,autoformCondition.get(&quot;entity&quot;)).flushAsync();	&#xD;
+}&#xD;
+</ClientEvent>
+      <Property name="service">dataTransmit#getSessionData</Property>
+    </AjaxAction>
+    <AjaxAction id="ajaxActionClearSessionData">
+      <Property name="service">dataTransmit#clearSessionData</Property>
+    </AjaxAction>
+    <Dialog id="dialogInfo">
+      <Property name="caption">详情</Property>
+      <Property name="width">400</Property>
+      <Buttons>
+        <Button id="buttonCancel2">
+          <Property name="caption">关闭</Property>
+          <Property name="width">100</Property>
+          <Property name="icon"> url(>skin>common/icons.gif) -40px -0px</Property>
+        </Button>
+      </Buttons>
+      <Children>
+        <AutoForm id="autoformClamparmlibInfo">
+          <Property name="width">370</Property>
+          <Property name="labelWidth">110</Property>
+          <Property name="labelAlign">center</Property>
+          <Property name="dataSet">dsClamparmlib</Property>
+          <Property name="cols">*</Property>
+          <AutoFormElement>
+            <Property name="name">id</Property>
+            <Property name="property">id</Property>
+            <Property name="visible">false</Property>
+            <Property name="readOnly">true</Property>
+            <Property name="ignored">true</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">code</Property>
+            <Property name="property">code</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">innercode</Property>
+            <Property name="property">innercode</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">type</Property>
+            <Property name="property">type</Property>
+            <Property name="trigger">listDropDownType</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">isrotation</Property>
+            <Property name="property">isrotation</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">armlength</Property>
+            <Property name="property">armlength</Property>
+            <Property name="trigger">listDropDownArmLength</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">worm</Property>
+            <Property name="property">worm</Property>
+            <Property name="trigger">listDropDownWorm</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">section</Property>
+            <Property name="property">section</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">offset</Property>
+            <Property name="property">offset</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">d2drawing</Property>
+            <Property name="property">d2drawing</Property>
+            <Property name="visible">false</Property>
+            <Property name="ignored">true</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">d3drawing</Property>
+            <Property name="property">d3drawing</Property>
+            <Property name="visible">false</Property>
+            <Property name="ignored">true</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">designer</Property>
+            <Property name="property">designer</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">designdate</Property>
+            <Property name="property">designdate</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">spinfirefile</Property>
+            <Property name="property">spinfirefile</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">content1</Property>
+            <Property name="property">content1</Property>
+            <Editor/>
+          </AutoFormElement>
+        </AutoForm>
+      </Children>
+      <Tools/>
+    </Dialog>
+    <UploadAction id="uploadDrawing">
+      <Property name="fileResolver">myUpload#uploadFile</Property>
+      <Property name="successMessage">成功上传！！！</Property>
+      <Property name="selectionMode">singleFile</Property>
+      <Filters>
+        <Filter>
+          <Property name="title">二维图纸</Property>
+          <Property name="extensions">png,jpg</Property>
+        </Filter>
+      </Filters>
+    </UploadAction>
+    <UploadAction id="uploadModel">
+      <Property name="fileResolver">myUpload#uploadFile</Property>
+      <Property name="successMessage">成功上传！</Property>
+      <Filters>
+        <Filter>
+          <Property name="title">三维模型</Property>
+          <Property name="extensions">3D,CATPart,CATProduct</Property>
+        </Filter>
+      </Filters>
+    </UploadAction>
+    <UploadAction id="uploadSpinfireModel">
+      <Property name="fileResolver">myUpload#uploadFile</Property>
+      <Property name="successMessage">成功上传！</Property>
+      <Filters>
+        <Filter>
+          <Property name="title">三维模型</Property>
+          <Property name="extensions">3D,Part,Product</Property>
+        </Filter>
+      </Filters>
+    </UploadAction>
+    <DownloadAction id="downloadDrawing">
+      <ClientEvent name="onFailure">&#xD;
+</ClientEvent>
+      <Property name="fileProvider">myDownload#downloadFile</Property>
+    </DownloadAction>
+    <AjaxAction id="ajaxActionDownloadDrawing">
+      <ClientEvent name="onSuccess" signature="self,arg,downloadDrawing">//得到返回值&#xD;
+var result = self.get(&quot;returnValue&quot;);&#xD;
+//传参成功后执行downloadActionFile&#xD;
+downloadDrawing.set(&quot;parameter&quot;,result);&#xD;
+downloadDrawing.execute();</ClientEvent>
+      <ClientEvent name="beforeExecute" signature="self,arg,datagridClamparmlib">//alert(datagridClamparmlib.getCurrentItem().get(&quot;d2drawing&quot;));&#xD;
+self.set(&quot;parameter&quot;,datagridClamparmlib.getCurrentItem().get(&quot;d2drawing&quot;));</ClientEvent>
+      <Property name="service">myDownload#downloadt</Property>
+    </AjaxAction>
+    <AjaxAction id="ajaxActionSendFilePath">
+      <Property name="service">myUpload#setFilePath</Property>
+    </AjaxAction>
+    <AjaxAction id="ajaxActionCheckFileExisting">
+      <Property name="service">commonService#checkFileExiting</Property>
+      <Property name="tags">检测文件是否存在</Property>
+    </AjaxAction>
+    <AjaxAction id="ajaxActionDeleteRelatedFiles">
+      <Property name="service">clamparmlibService#deleteRelatedFilesByID</Property>
+      <Property name="tags">删除相关文件</Property>
+    </AjaxAction>
+    <AjaxAction id="ajaxActionSetAutoformTrigger">
+      <Property name="service">codingRulesService#getCodingRulesByTypeAndIsRotation</Property>
+    </AjaxAction>
+    <ListDropDown id="listDropDownArmLength">
+      <Property name="items">
+        <Collection>
+          <Value>≤250</Value>
+          <Value>(250,300]</Value>
+          <Value>(300,350]</Value>
+          <Value>(350,400]</Value>
+          <Value>(400,450]</Value>
+          <Value>(450,500]</Value>
+          <Value>(500,550]</Value>
+          <Value>(550,600]</Value>
+          <Value>(600,650]</Value>
+        </Collection>
+      </Property>
+    </ListDropDown>
+    <ListDropDown id="listDropDownSpecialShape">
+      <Property name="items">无无,无有,有无,有有</Property>
+    </ListDropDown>
+    <ListDropDown id="listDropDownOffSet">
+      <Property name="items">
+        <Collection>
+          <Value>无</Value>
+          <Value>≤50</Value>
+          <Value>(50,70]</Value>
+          <Value>(70,90]</Value>
+          <Value>(90,110]</Value>
+          <Value>(110,130]</Value>
+          <Value>(130,150]</Value>
+          <Value>(150,170]</Value>
+          <Value>(170,190]</Value>
+          <Value>(190,210]</Value>
+          <Value>>210</Value>
+        </Collection>
+      </Property>
+    </ListDropDown>
+    <ListDropDown id="listDropDownFirstBend">
+      <Property name="items">
+        <Collection>
+          <Value>无</Value>
+          <Value>r=80,α&lt;90</Value>
+          <Value>r=80,α=90</Value>
+          <Value>r=80,α>90</Value>
+          <Value>r=85,α&lt;90</Value>
+          <Value>r=85,α=90</Value>
+          <Value>r=85,α>90</Value>
+          <Value>r=90,α&lt;90</Value>
+          <Value>r=90,α=90</Value>
+          <Value>r=90,α>90</Value>
+        </Collection>
+      </Property>
+    </ListDropDown>
+    <ListDropDown id="listDropDownSecondBend">
+      <Property name="items">
+        <Collection>
+          <Value>无</Value>
+          <Value>r=80,α&lt;90</Value>
+          <Value>r=80,α=90</Value>
+          <Value>r=80,α>90</Value>
+          <Value>r=85,α&lt;90</Value>
+          <Value>r=85,α=90</Value>
+          <Value>r=85,α>90</Value>
+          <Value>r=90,α&lt;90</Value>
+          <Value>r=90,α=90</Value>
+          <Value>r=90,α>90</Value>
+        </Collection>
+      </Property>
+    </ListDropDown>
+    <ListDropDown id="listDropDownThirdBend">
+      <Property name="items">
+        <Collection>
+          <Value>无</Value>
+          <Value>r=80,α&lt;90</Value>
+          <Value>r=80,α=90</Value>
+          <Value>r=80,α>90</Value>
+          <Value>r=85,α&lt;90</Value>
+          <Value>r=85,α=90</Value>
+          <Value>r=85,α>90</Value>
+          <Value>r=90,α&lt;90</Value>
+          <Value>r=90,α=90</Value>
+          <Value>r=90,α>90</Value>
+        </Collection>
+      </Property>
+    </ListDropDown>
+    <ListDropDown id="listDropDownWorm">
+      <Property name="items">螺纹(直),卡快(弯)</Property>
+    </ListDropDown>
+    <ListDropDown id="listDropDownSecondOffSet">
+      <Property name="items">
+        <Collection>
+          <Value>无</Value>
+          <Value>≤70</Value>
+          <Value>(70,90]</Value>
+          <Value>(90,110]</Value>
+          <Value>(110,130]</Value>
+          <Value>(130,150]</Value>
+        </Collection>
+      </Property>
+    </ListDropDown>
+    <ListDropDown id="listDropDownSection">
+      <Property name="items">54</Property>
+    </ListDropDown>
+    <ListDropDown id="listDropDownIsRotation">
+      <Property name="items">Cu材料(回转体),Al材料(非回转体)</Property>
+    </ListDropDown>
+    <AjaxAction id="ajaxActionCoding">
+      <Property name="service">codingRulesService#codeByParameters</Property>
+    </AjaxAction>
+  </View>
+</ViewConfig>

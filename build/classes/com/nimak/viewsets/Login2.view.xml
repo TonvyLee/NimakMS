@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ViewConfig>
+  <Arguments/>
+  <Context/>
+  <Model>
+    <DataType name="dataTypeUsers" parent="global:dataTypeUsers"/>
+  </Model>
+  <View>
+    <Property name="packages">testnimak,layer</Property>
+    <DataSet id="dsUsers">
+      <Property name="dataType">[dataTypeUsers]</Property>
+      <Property name="dataProvider">usersService#getAllUsers</Property>
+      <Property name="pageSize">15</Property>
+    </DataSet>
+    <AjaxAction id="ajaxactionLogin">
+      <Property name="service">loginService#doLogin</Property>
+    </AjaxAction>
+    <Container>
+      <Property name="className">container_a</Property>
+      <Property name="contentOverflow">hidden</Property>
+      <Container>
+        <Property name="height">10%</Property>
+        <Property name="ignored">false</Property>
+      </Container>
+      <Label layoutConstraint="padding:10">
+        <Property name="text">Nimake钳臂CAD系统</Property>
+        <Property name="style">
+          <Property name="font-size">30pt</Property>
+          <Property name="text-align">center</Property>
+        </Property>
+        <Property name="ignored">true</Property>
+      </Label>
+      <Container>
+        <Property name="height">2%</Property>
+        <Property name="ignored">true</Property>
+      </Container>
+      <Container layout="vbox">
+        <Property name="ignored">true</Property>
+        <Container layout="anchor">
+          <FieldSet layout="anchor" layoutConstraint="left:50%;top:50%">
+            <Property name="collapseable">false</Property>
+            <Property name="width">30%</Property>
+            <Property name="height">200</Property>
+            <Property name="className">contai_register</Property>
+            <Buttons/>
+            <Children>
+              <AutoForm id="autoformLogin" layoutConstraint="align:right;left:50%;top:50%">
+                <Property name="cols">*</Property>
+                <Property name="createPrivateDataSet">true</Property>
+                <Property name="labelSeparator">:</Property>
+                <Property name="width">250</Property>
+                <Property name="style">
+                  <Property name="font-size">12pt</Property>
+                </Property>
+                <Property name="labelAlign">center</Property>
+                <AutoFormElement>
+                  <ClientEvent name="onReady">//获取当前控件的dom对象&#xD;
+var dom = self.getDom();&#xD;
+var inputs = dom.getElementsByTagName(&quot;INPUT&quot;);&#xD;
+&#xD;
+//获取用户名输入框&#xD;
+var inputUsername = inputs[0];&#xD;
+window.setTimeout(function(){&#xD;
+//对其设置焦点&#xD;
+inputUsername.focus();&#xD;
+},500);</ClientEvent>
+                  <Property name="label">用户名</Property>
+                  <Property name="name">username</Property>
+                  <Editor>
+                    <TextEditor>
+                      <Property name="blankText">请输入用户名</Property>
+                    </TextEditor>
+                  </Editor>
+                </AutoFormElement>
+                <Label>
+                  <Property name="text">————————————————</Property>
+                </Label>
+                <AutoFormElement id="password">
+                  <Property name="name">password</Property>
+                  <Property name="label">密码</Property>
+                  <Property name="editorType">PasswordEditor</Property>
+                  <Editor/>
+                </AutoFormElement>
+              </AutoForm>
+            </Children>
+          </FieldSet>
+        </Container>
+        <Container layout="hbox align:center">
+          <Property name="height">60</Property>
+          <Label>
+            <Property name="width">40%</Property>
+          </Label>
+          <Container layout="hbox">
+            <Button id="buttonLogin">
+              <Property name="caption">登录</Property>
+              <Property name="icon"> url(>skin>common/icons.gif) -140px -100px</Property>
+              <Property name="action">ajaxactionLogin</Property>
+              <Property name="className">d-button-a</Property>
+              <Property name="width">100</Property>
+            </Button>
+            <Button id="buttonCancel" layoutConstraint="vAlign:center">
+              <Property name="icon">url(>skin>common/icons.gif) -40px -0px</Property>
+              <Property name="caption">重置</Property>
+              <Property name="width">100</Property>
+            </Button>
+            <Button>
+              <ClientEvent name="onClick" signature="self,arg,dialog,dsUsers,autoformUser">var aa=dsUsers.get(&quot;data&quot;);&#xD;
+var i=0;&#xD;
+aa.each(function(){&#xD;
+	i++;&#xD;
+});&#xD;
+dorado.MessageBox.confirm(&quot;确认进行注册操作？&quot;, function() {&#xD;
+&#xD;
+	dsUsers.insert();&#xD;
+	dialog.show();&#xD;
+	var entity = autoformUser.get(&quot;entity&quot;);&#xD;
+	entity.set(&quot;usersId&quot;,i+1);&#xD;
+	entity.set(&quot;usersAuthority&quot;,&quot;visitor&quot;);&#xD;
+	});</ClientEvent>
+              <Property name="icon"> url(>skin>common/icons.gif) -140px -100px</Property>
+              <Property name="caption">注册</Property>
+              <Property name="width">100</Property>
+              <Property name="ignored">false</Property>
+            </Button>
+          </Container>
+          <Container>
+            <Property name="width">30%</Property>
+          </Container>
+        </Container>
+      </Container>
+      <Container>
+        <HtmlContainer>
+          <Property name="content">&lt;!DOCTYPE html>&#xD;
+&lt;!--[if lt IE 7 ]> &lt;html lang=&quot;en&quot; class=&quot;no-js ie6 lt8&quot;> &lt;![endif]-->&#xD;
+&lt;!--[if IE 7 ]>    &lt;html lang=&quot;en&quot; class=&quot;no-js ie7 lt8&quot;> &lt;![endif]-->&#xD;
+&lt;!--[if IE 8 ]>    &lt;html lang=&quot;en&quot; class=&quot;no-js ie8 lt8&quot;> &lt;![endif]-->&#xD;
+&lt;!--[if IE 9 ]>    &lt;html lang=&quot;en&quot; class=&quot;no-js ie9&quot;> &lt;![endif]-->&#xD;
+&lt;!--[if (gt IE 9)|!(IE)]>&lt;!--> &lt;html lang=&quot;en&quot; class=&quot;no-js&quot;> &lt;!--&lt;![endif]-->&#xD;
+    &lt;head>&#xD;
+        &lt;meta charset=&quot;UTF-8&quot; />&#xD;
+        &lt;!-- &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge,chrome=1&quot;>  -->&#xD;
+        &lt;title>&lt;/title>&#xD;
+        &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;> &#xD;
+        &lt;meta name=&quot;description&quot; content=&quot;Login and Registration Form&quot; />&#xD;
+        &lt;meta name=&quot;keywords&quot; content=&quot;html5, css3, form, switch, animation, :target, pseudo-class&quot; />&#xD;
+        &lt;meta name=&quot;author&quot; content=&quot;Codrops&quot; />&#xD;
+        &lt;link rel=&quot;shortcut icon&quot; href=&quot;../favicon.ico&quot;> &#xD;
+        &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;JsLib/LoginRegistrationForm/css/demo.css&quot; />&#xD;
+        &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;JsLib/LoginRegistrationForm/css/style.css&quot; />&#xD;
+        &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;JsLib/LoginRegistrationForm/css/animate-custom.css&quot; />&#xD;
+    &lt;/head>&#xD;
+    &lt;body>&#xD;
+        &lt;div class=&quot;container&quot;>&#xD;
+            &lt;!-- Codrops top bar -->&#xD;
+            &lt;div class=&quot;codrops-top&quot;>&#xD;
+                &lt;a href=&quot;&quot;>&#xD;
+                    &#xD;
+                &lt;/a>&#xD;
+                &lt;span class=&quot;right&quot;>&#xD;
+                    &#xD;
+                &lt;/span>&#xD;
+                &lt;div class=&quot;clr&quot;>&lt;/div>&#xD;
+            &lt;/div>&lt;!--/ Codrops top bar -->&#xD;
+            &lt;header>&#xD;
+                &lt;h1>Nimake钳臂CAD系统&lt;span>&lt;/span>&lt;/h1>&#xD;
+                &lt;nav class=&quot;codrops-demos&quot;>&#xD;
+                    &lt;span>Click &lt;strong>&quot;Join us&quot;&lt;/strong> to own your acount&lt;/span>&#xD;
+                    &lt;a href=&quot;http://www.nimak.cn/&quot; class=&quot;current-demo&quot;>Nimak Homepage&lt;/a>&#xD;
+                &lt;/nav>&#xD;
+            &lt;/header>&#xD;
+&lt;div style=&quot;text-align:center;clear:both;&quot;>&#xD;
+&lt;script src=&quot;/gg_bd_ad_720x90.js&quot; type=&quot;text/javascript&quot;>&lt;/script>&#xD;
+&lt;script src=&quot;/follow.js&quot; type=&quot;text/javascript&quot;>&lt;/script>&#xD;
+&lt;/div>&#xD;
+            &lt;section>               &#xD;
+                &lt;div id=&quot;container_demo&quot; >&#xD;
+                    &lt;!-- hidden anchor to stop jump http://www.css3create.com/Astuce-Empecher-le-scroll-avec-l-utilisation-de-target#wrap4  -->&#xD;
+                    &lt;a class=&quot;hiddenanchor&quot; id=&quot;toregister&quot;>&lt;/a>&#xD;
+                    &lt;a class=&quot;hiddenanchor&quot; id=&quot;tologin&quot;>&lt;/a>&#xD;
+                    &lt;div id=&quot;wrapper&quot;>&#xD;
+                        &lt;div id=&quot;login&quot; class=&quot;animate form&quot;>&#xD;
+                            &lt;form  action=&quot;#&quot; autocomplete=&quot;on&quot;> &#xD;
+                                &lt;h1>Log in&lt;/h1> &#xD;
+                                &lt;p> &#xD;
+                                    &lt;label for=&quot;username&quot; class=&quot;uname&quot; data-icon=&quot;u&quot; onclick=&quot;showMessage1()&quot;> Your username &lt;/label>&#xD;
+                                    &lt;input id=&quot;username&quot; name=&quot;username&quot; required=&quot;required&quot; type=&quot;text&quot; placeholder=&quot;请输入用户名&quot;/>&#xD;
+                                &lt;/p>&#xD;
+                                &lt;p> &#xD;
+                                    &lt;label for=&quot;password&quot; class=&quot;youpasswd&quot; data-icon=&quot;p&quot;> Your password &lt;/label>&#xD;
+                                    &lt;input id=&quot;password&quot; name=&quot;password&quot; required=&quot;required&quot; type=&quot;password&quot; placeholder=&quot;请输入密码&quot; /> &#xD;
+                                &lt;/p>&#xD;
+                                &lt;p class=&quot;keeplogin&quot;> &#xD;
+                                    &lt;input type=&quot;checkbox&quot; name=&quot;loginkeeping&quot; id=&quot;loginkeeping&quot; value=&quot;loginkeeping&quot; /> &#xD;
+                                    &lt;label for=&quot;loginkeeping&quot;>Keep me logged in&lt;/label>&#xD;
+                                &lt;/p>&#xD;
+                                &lt;p id=&quot;loginbutton&quot; class=&quot;login button&quot;> &#xD;
+                                    &lt;input type=&quot;button&quot; value=&quot;Login&quot; /> &#xD;
+                                &lt;/p>&#xD;
+                                &lt;p class=&quot;change_link&quot;>&#xD;
+                                    Not a member yet ?&#xD;
+                                    &lt;a href=&quot;#toregister&quot; class=&quot;to_register&quot;>Join us&lt;/a>&#xD;
+                                &lt;/p>&#xD;
+                            &lt;/form>&#xD;
+                        &lt;/div>&#xD;
+&#xD;
+                        &lt;div id=&quot;register&quot; class=&quot;animate form&quot;>&#xD;
+                            &lt;form  action=&quot;#&quot; autocomplete=&quot;on&quot;> &#xD;
+                                &lt;h1> Sign up &lt;/h1> &#xD;
+                                &lt;p> &#xD;
+                                    &lt;label for=&quot;usernamesignup&quot; class=&quot;uname&quot; data-icon=&quot;u&quot;>Your username&lt;/label>&#xD;
+                                    &lt;input id=&quot;usernamesignup&quot; name=&quot;usernamesignup&quot; required=&quot;required&quot; type=&quot;text&quot; placeholder=&quot;请输入用户名&quot; />&#xD;
+                                &lt;/p>&#xD;
+                                &lt;p> &#xD;
+                                    &lt;label for=&quot;emailsignup&quot; class=&quot;youmail&quot; data-icon=&quot;e&quot; > Your phonenumber&lt;/label>&#xD;
+                                    &lt;input id=&quot;usersPhonenum&quot; name=&quot;usersPhonenum&quot; required=&quot;required&quot; type=&quot;text&quot; placeholder=&quot;请输入您的联系方式&quot;/> &#xD;
+                                &lt;/p>&#xD;
+                                &lt;p> &#xD;
+                                    &lt;label for=&quot;passwordsignup&quot; class=&quot;youpasswd&quot; data-icon=&quot;p&quot;>Your password &lt;/label>&#xD;
+                                    &lt;input id=&quot;passwordsignup&quot; name=&quot;passwordsignup&quot; required=&quot;required&quot; type=&quot;password&quot; placeholder=&quot;请输入密码&quot;/>&#xD;
+                                &lt;/p>&#xD;
+                                &lt;p> &#xD;
+                                    &lt;label for=&quot;passwordsignup_confirm&quot; class=&quot;youpasswd&quot; data-icon=&quot;p&quot;>Please confirm your password &lt;/label>&#xD;
+                                    &lt;input id=&quot;passwordsignup_confirm&quot; name=&quot;passwordsignup_confirm&quot; required=&quot;required&quot; type=&quot;password&quot; placeholder=&quot;请确认密码&quot;/>&#xD;
+                                &lt;/p>&#xD;
+                                &lt;p> &#xD;
+                                    &lt;label for=&quot;content&quot; class=&quot;youmail&quot; data-icon=&quot;p&quot;>content attached &lt;/label>&#xD;
+                                    &lt;input id=&quot;content&quot; name=&quot;content&quot; required=&quot;required&quot; type=&quot;text&quot; placeholder=&quot;添加备注&quot;/>&#xD;
+                                &lt;/p>&#xD;
+                                &lt;p id=&quot;registerbutton&quot; class=&quot;signin button&quot;> &#xD;
+                                    &lt;input type=&quot;button&quot; value=&quot;Sign up&quot;/> &#xD;
+                                &lt;/p>&#xD;
+                                &lt;p class=&quot;change_link&quot;>  &#xD;
+                                    Already a member ?&#xD;
+                                    &lt;a href=&quot;#tologin&quot; class=&quot;to_register&quot;> Go and log in &lt;/a>&#xD;
+                                &lt;/p>&#xD;
+                            &lt;/form>&#xD;
+                        &lt;/div>&#xD;
+                        &#xD;
+                    &lt;/div>&#xD;
+                &lt;/div>  &#xD;
+            &lt;/section>&#xD;
+        &lt;/div>&#xD;
+&#xD;
+  &#xD;
+    &lt;/body>&#xD;
+&lt;/html></Property>
+        </HtmlContainer>
+      </Container>
+    </Container>
+    <Dialog id="dialog">
+      <Property name="caption">新用户注册</Property>
+      <Property name="width">500</Property>
+      <Property name="height">300</Property>
+      <Property name="style">
+        <Property name="font-size"></Property>
+        <Property name="font-weight">bold</Property>
+      </Property>
+      <Buttons>
+        <Button id="buttonRegister">
+          <Property name="caption">注册</Property>
+        </Button>
+        <Button id="buttonCancel1">
+          <Property name="caption">取消</Property>
+        </Button>
+      </Buttons>
+      <Children>
+        <FieldSet>
+          <Buttons/>
+          <Children>
+            <AutoForm id="autoformUser">
+              <Property name="dataSet">dsUsers</Property>
+              <Property name="cols">*</Property>
+              <Property name="labelWidth">125</Property>
+              <AutoFormElement>
+                <Property name="name">usersId</Property>
+                <Property name="property">usersId</Property>
+                <Property name="readOnly">true</Property>
+                <Editor/>
+              </AutoFormElement>
+              <AutoFormElement>
+                <Property name="name">usersName</Property>
+                <Property name="property">usersName</Property>
+                <Property name="ignored">false</Property>
+                <Editor/>
+              </AutoFormElement>
+              <AutoFormElement>
+                <Property name="name">usersAuthority</Property>
+                <Property name="property">usersAuthority</Property>
+                <Property name="readOnly">true</Property>
+                <Property name="ignored">true</Property>
+                <Editor/>
+              </AutoFormElement>
+              <AutoFormElement>
+                <Property name="name">usersPassword</Property>
+                <Property name="property">usersPassword</Property>
+                <Property name="editorType">PasswordEditor</Property>
+                <Editor/>
+              </AutoFormElement>
+              <AutoFormElement id="usersPassword1">
+                <Property name="property">usersPassword1</Property>
+                <Property name="name">usersPassword1</Property>
+                <Property name="editorType">PasswordEditor</Property>
+                <Property name="label">确认密码</Property>
+                <Editor/>
+              </AutoFormElement>
+              <AutoFormElement>
+                <Property name="name">usersPhonenum</Property>
+                <Property name="property">usersPhonenum</Property>
+                <Editor/>
+              </AutoFormElement>
+              <AutoFormElement>
+                <Property name="name">usersAuthoritydeclare</Property>
+                <Property name="property">usersAuthoritydeclare</Property>
+                <Property name="ignored">true</Property>
+                <Editor/>
+              </AutoFormElement>
+              <AutoFormElement>
+                <Property name="name">content1</Property>
+                <Property name="property">content1</Property>
+                <Editor>
+                  <TextArea/>
+                </Editor>
+              </AutoFormElement>
+              <AutoFormElement>
+                <Property name="name">content2</Property>
+                <Property name="property">content2</Property>
+                <Property name="ignored">true</Property>
+                <Editor/>
+              </AutoFormElement>
+            </AutoForm>
+          </Children>
+        </FieldSet>
+      </Children>
+      <Tools/>
+    </Dialog>
+    <UpdateAction id="updateActionSave">
+      <Property name="dataResolver">usersService#saveAll</Property>
+      <UpdateItem>
+        <Property name="dataSet">dsUsers</Property>
+      </UpdateItem>
+    </UpdateAction>
+  </View>
+</ViewConfig>

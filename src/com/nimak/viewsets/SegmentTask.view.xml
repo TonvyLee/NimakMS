@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ViewConfig>
+  <Arguments/>
+  <Context/>
+  <Model>
+    <DataType name="dtDevice" parent="Device">
+      <Reference name="currentAssignmentDevice">
+        <Property name="dataType">dtAssignmentDevice</Property>
+        <Property name="dataProvider">assignmentDeviceService#getCurrentAssignmentDevice</Property>
+        <Property name="parameter">$${this.uuid}</Property>
+      </Reference>
+      <Reference name="dept">
+        <Property name="dataType">dtDept</Property>
+        <Property name="dataProvider">deptService#getByUid</Property>
+        <Property name="parameter">$${this.deptUid}</Property>
+      </Reference>
+    </DataType>
+    <DataType name="dtAssignmentDevice" parent="AssignmentDevice">
+      <Reference name="operationTask">
+        <Property name="dataType">dtOperationTask</Property>
+        <Property name="dataProvider">operationTaskService#getByUid</Property>
+        <Property name="parameter">$${this.taskUid}</Property>
+      </Reference>
+    </DataType>
+    <DataType name="dtDept" parent="Dept"/>
+    <DataType name="dtOperationTask" parent="OperationTask"/>
+  </Model>
+  <View id="view" layout="anchor">
+    <Property name="javaScriptFile">/javascript/largeScreenCommon.js</Property>
+    <Property name="styleSheetFile">/css/largeScreenCommon.css</Property>
+    <DataGrid>
+      <Property name="dataSet">dsDevice</Property>
+      <Property name="width">100%</Property>
+      <Property name="rowHeight">50</Property>
+      <Property name="readOnly">true</Property>
+      <DataColumn>
+        <Property name="property">dept.deptShortName</Property>
+        <Property name="align">center</Property>
+        <Property name="name">deptShortName</Property>
+        <Property name="caption">工段</Property>
+        <Property name="width">60</Property>
+      </DataColumn>
+      <DataColumn>
+        <ClientEvent name="onRenderCell">var defaultValue = &quot;4&quot;;&#xD;
+var value = arg.data.get(&quot;currentAssignmentDevice.operationTask.priority&quot;);&#xD;
+&#xD;
+if (value != null &amp;&amp; value > 0 &amp;&amp; value &lt; 500) {&#xD;
+	var i = value.toString().substring(0, 1);&#xD;
+	if (i > 4)&#xD;
+		i = 4;&#xD;
+	value = i;&#xD;
+} else {&#xD;
+	value = defaultValue;&#xD;
+	&#xD;
+}&#xD;
+&#xD;
+var location = &quot;\images/largeScreen/&quot; + value + &quot;.png&quot;;&#xD;
+arg.dom.innerHTML = '&lt;image src=&quot;' + location + '&quot;>&lt;/image>';&#xD;
+&#xD;
+</ClientEvent>
+        <Property name="property">currentAssignmentDevice.operationTask.priority</Property>
+        <Property name="name">priority</Property>
+        <Property name="align">center</Property>
+        <Property name="caption">色带</Property>
+        <Property name="width">60</Property>
+      </DataColumn>
+      <DataColumn>
+        <Property name="property">deviceName</Property>
+        <Property name="align">center</Property>
+        <Property name="name">deviceName</Property>
+        <Property name="caption">设备</Property>
+      </DataColumn>
+      <DataColumn>
+        <Property name="property">currentAssignmentDevice.operationTask.partDrawingId</Property>
+        <Property name="align">center</Property>
+        <Property name="name">drawingId</Property>
+        <Property name="caption">图号</Property>
+      </DataColumn>
+      <DataColumn>
+        <Property name="property">currentAssignmentDevice.operationTask.partName</Property>
+        <Property name="align">center</Property>
+        <Property name="name">partName</Property>
+        <Property name="caption">名称</Property>
+      </DataColumn>
+      <DataColumn>
+        <Property name="property">currentAssignmentDevice.operationTask.batchNum</Property>
+        <Property name="align">center</Property>
+        <Property name="name">batchNum</Property>
+        <Property name="caption">批次</Property>
+      </DataColumn>
+      <DataColumn>
+        <Property name="property">currentAssignmentDevice.operationTask.operationIdDesc</Property>
+        <Property name="align">center</Property>
+        <Property name="name">operationIdDesc</Property>
+        <Property name="width">60</Property>
+        <Property name="caption">工序</Property>
+      </DataColumn>
+      <DataColumn>
+        <Property name="property">currentAssignmentDevice.operationTask.planQty</Property>
+        <Property name="align">center</Property>
+        <Property name="name">planQty</Property>
+        <Property name="width">60</Property>
+        <Property name="caption">数量</Property>
+      </DataColumn>
+      <DataColumn>
+        <ClientEvent name="onRenderCell">var workerUid = arg.data.get(&quot;currentOperatorUid&quot;);&#xD;
+if(workerUid != null){&#xD;
+	var url = view.showEmployee(&quot;\images/largeScreen/&quot; + workerUid + &quot;.png&quot;);&#xD;
+	arg.dom.innerHTML = url;&#xD;
+}&#xD;
+</ClientEvent>
+        <Property name="property">currentOperatorUid</Property>
+        <Property name="align">center</Property>
+        <Property name="name">workerUid</Property>
+        <Property name="caption">人员</Property>
+        <Property name="width">60</Property>
+      </DataColumn>
+      <DataColumn>
+        <ClientEvent name="onRenderCell">var planQty = arg.data.get(&quot;currentAssignmentDevice.operationTask.planQty&quot;);&#xD;
+var completeQty = arg.data.get(&quot;currentAssignmentDevice.operationTask.completeQty&quot;);&#xD;
+&#xD;
+if(planQty != null &amp;&amp; completeQty != null) {&#xD;
+	if (planQty > 0){&#xD;
+		var percent = 100 * completeQty / planQty;&#xD;
+		var url = view.getCompletePercent(percent);&#xD;
+		arg.dom.innerHTML = url;&#xD;
+	}&#xD;
+}&#xD;
+&#xD;
+</ClientEvent>
+        <Property name="align">center</Property>
+        <Property name="name">completePercent</Property>
+        <Property name="width">60</Property>
+        <Property name="caption">进度</Property>
+      </DataColumn>
+      <DataColumn>
+        <ClientEvent name="onRenderCell">var device = arg.data;&#xD;
+var task = device.get(&quot;currentAssignmentDevice.operationTask&quot;);&#xD;
+var result = &quot;&quot;;&#xD;
+&#xD;
+if (device.get(&quot;deviceState&quot;) == null) &#xD;
+	deive.set(&quot;deviceState&quot;, 1); //运行&#xD;
+	&#xD;
+if(device.get(&quot;deviceState&quot;) == 1) {&#xD;
+	if (task == null){&#xD;
+		result = &quot;DeviceFree&quot;;&#xD;
+	} else if (task.get(&quot;taskState&quot;) == &quot;208&quot;) {&#xD;
+		result = &quot;DevicePause&quot;;&#xD;
+	} else {&#xD;
+		result = &quot;DeviceRun&quot;;&#xD;
+	}&#xD;
+} else if(device.get(&quot;deviceState&quot;) == 3) {&#xD;
+	result = &quot;DeviceMaint&quot;;&#xD;
+} else if(device.get(&quot;deviceState&quot;) == 4) {&#xD;
+	result = &quot;maintaining-64&quot;;&#xD;
+}&#xD;
+&#xD;
+arg.dom.innerHTML = &quot;&lt;img src='images/largeScreen/&quot;+ result +&quot;.png'/>&quot;;</ClientEvent>
+        <Property name="align">center</Property>
+        <Property name="name">deviceState</Property>
+        <Property name="width">60</Property>
+        <Property name="caption">状态</Property>
+      </DataColumn>
+    </DataGrid>
+    <DataSet id="dsDevice">
+      <Property name="dataType">[dtDevice]</Property>
+      <Property name="dataProvider">largeScreenService#getDeptDevicesByLevel</Property>
+      <Property name="loadMode">manual</Property>
+      <Property name="pageSize">10</Property>
+    </DataSet>
+  </View>
+</ViewConfig>

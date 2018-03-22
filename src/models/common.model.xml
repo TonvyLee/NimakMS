@@ -1,0 +1,424 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Model>
+  <DataType name="dataTypeTurret">
+    <Property name="matchType">com.nimak.entity.Turret</Property>
+    <PropertyDef name="gunType">
+      <Property></Property>
+      <Property name="label">焊钳类型</Property>
+    </PropertyDef>
+    <PropertyDef name="gunDrawingno">
+      <Property></Property>
+      <Property name="label">焊钳图号</Property>
+    </PropertyDef>
+    <PropertyDef name="gunbodyDrawingno">
+      <Property></Property>
+      <Property name="label">钳体图号</Property>
+    </PropertyDef>
+    <PropertyDef name="armAssemblynoF">
+      <Property></Property>
+      <Property name="label">静臂部件图号</Property>
+    </PropertyDef>
+    <PropertyDef name="armAssemblynoM">
+      <Property></Property>
+      <Property name="label">动臂部件图号</Property>
+    </PropertyDef>
+    <PropertyDef name="capDrawingnoF">
+      <Property></Property>
+      <Property name="label">电极帽零件图号</Property>
+    </PropertyDef>
+    <PropertyDef name="capDrawingnoM">
+      <Property></Property>
+      <Property name="label">电极帽零件图号</Property>
+    </PropertyDef>
+    <PropertyDef name="stroke">
+      <Property name="dataType">BigDecimal</Property>
+      <Property name="label">行程</Property>
+    </PropertyDef>
+    <PropertyDef name="armassemblyLength">
+      <Property name="dataType">BigDecimal</Property>
+      <Property name="label">喉深</Property>
+    </PropertyDef>
+    <PropertyDef name="armassemblyWidth">
+      <Property name="dataType">BigDecimal</Property>
+      <Property name="label">喉宽</Property>
+    </PropertyDef>
+    <PropertyDef name="armassemblyWidth2">
+      <Property name="dataType">BigDecimal</Property>
+      <Property name="label">臂间距</Property>
+    </PropertyDef>
+    <PropertyDef name="force">
+      <Property name="dataType">BigDecimal</Property>
+      <Property name="label">压力等级</Property>
+    </PropertyDef>
+    <PropertyDef name="capAngel">
+      <Property name="dataType">BigDecimal</Property>
+      <Property name="label">电极帽偏转角度</Property>
+    </PropertyDef>
+    <PropertyDef name="flange">
+      <Property></Property>
+      <Property name="label">法兰盘位置</Property>
+    </PropertyDef>
+    <PropertyDef name="gunTechchange">
+      <Property></Property>
+      <Property name="label">技术更改</Property>
+    </PropertyDef>
+    <PropertyDef name="id">
+      <Property></Property>
+      <Property name="label">ID</Property>
+    </PropertyDef>
+  </DataType>
+  <DataType name="dataTypeTurretComponent">
+    <Property name="matchType">com.nimak.entity.Turretpart</Property>
+    <PropertyDef name="gunType">
+      <Property></Property>
+      <Property name="label">焊钳类型</Property>
+    </PropertyDef>
+    <PropertyDef name="armAssemblyno">
+      <Property></Property>
+      <Property name="label">钳臂部件图号</Property>
+    </PropertyDef>
+    <PropertyDef name="armComponentno">
+      <Property></Property>
+      <Property name="label">钳臂组件图号</Property>
+    </PropertyDef>
+    <PropertyDef name="shankComponentno">
+      <Property></Property>
+      <Property name="label">电极握杆组件图号</Property>
+    </PropertyDef>
+    <PropertyDef name="armDrawingno">
+      <Property></Property>
+      <Property name="label">钳臂零件图号</Property>
+    </PropertyDef>
+    <PropertyDef name="shankDrawingno">
+      <Property></Property>
+      <Property name="label">电极握杆零件图号</Property>
+    </PropertyDef>
+    <PropertyDef name="armassemblyLength">
+      <Property name="dataType">BigDecimal</Property>
+      <Property name="label">喉深</Property>
+    </PropertyDef>
+    <PropertyDef name="armassemblyWidth">
+      <Property name="dataType">BigDecimal</Property>
+      <Property name="label">喉宽</Property>
+    </PropertyDef>
+    <PropertyDef name="armassemblyWidth2">
+      <Property name="dataType">BigDecimal</Property>
+      <Property name="label">臂间距</Property>
+    </PropertyDef>
+    <PropertyDef name="force">
+      <Property name="dataType">BigDecimal</Property>
+      <Property name="label">压力等级</Property>
+    </PropertyDef>
+    <PropertyDef name="capAngel">
+      <Property name="dataType">BigDecimal</Property>
+      <Property name="label">电极帽偏转角度</Property>
+    </PropertyDef>
+    <PropertyDef name="armassemblyTechchange">
+      <Property></Property>
+      <Property name="label">技术更改</Property>
+    </PropertyDef>
+    <PropertyDef name="armassemblyCode">
+      <Property></Property>
+      <Property name="label">分类编码</Property>
+    </PropertyDef>
+    <PropertyDef name="id">
+      <Property></Property>
+      <Property name="label">ID</Property>
+    </PropertyDef>
+  </DataType>
+  <DataType name="dataTypeTurretArm">
+    <Property name="matchType">com.nimak.entity.Turretarm</Property>
+    <PropertyDef name="armDrawingno">
+      <Property></Property>
+      <Property name="label">钳臂零件图号</Property>
+    </PropertyDef>
+    <PropertyDef name="armMaterial">
+      <Property></Property>
+      <Property name="label">钳臂截面_材料</Property>
+    </PropertyDef>
+    <PropertyDef name="armSpecialshapeandrib">
+      <Property></Property>
+      <Property name="label">异性和加强筋</Property>
+    </PropertyDef>
+    <PropertyDef name="armSerial">
+      <Property></Property>
+      <Property name="label">钳臂所属系列</Property>
+    </PropertyDef>
+    <PropertyDef name="armLength">
+      <Property name="dataType">BigDecimal</Property>
+      <Property name="label">钳臂水平长度</Property>
+    </PropertyDef>
+    <PropertyDef name="armWidth1">
+      <Property name="dataType">BigDecimal</Property>
+      <Property name="label">钳臂最高点距安装轴线高度</Property>
+    </PropertyDef>
+    <PropertyDef name="armWidth2">
+      <Property name="dataType">BigDecimal</Property>
+      <Property name="label">钳臂竖直高度</Property>
+    </PropertyDef>
+    <PropertyDef name="assembleSize">
+      <Property name="dataType">BigDecimal</Property>
+      <Property name="label">装配截面尺寸</Property>
+    </PropertyDef>
+    <PropertyDef name="assembleLength">
+      <Property name="dataType">BigDecimal</Property>
+      <Property name="label">装配长度</Property>
+    </PropertyDef>
+    <PropertyDef name="armAngel1">
+      <Property name="dataType">BigDecimal</Property>
+      <Property name="label">第一偏转角度</Property>
+    </PropertyDef>
+    <PropertyDef name="armRadius1">
+      <Property name="dataType">BigDecimal</Property>
+      <Property name="label">第一折弯半径</Property>
+    </PropertyDef>
+    <PropertyDef name="armLengthS1">
+      <Property name="dataType">BigDecimal</Property>
+      <Property name="label">第一直段长度</Property>
+    </PropertyDef>
+    <PropertyDef name="armAngel2">
+      <Property name="dataType">BigDecimal</Property>
+      <Property name="label">第二偏转角度</Property>
+    </PropertyDef>
+    <PropertyDef name="armRadius2">
+      <Property name="dataType">BigDecimal</Property>
+      <Property name="label">第二折弯半径</Property>
+    </PropertyDef>
+    <PropertyDef name="armLengthS2">
+      <Property name="dataType">BigDecimal</Property>
+      <Property name="label">第二直段长度</Property>
+    </PropertyDef>
+    <PropertyDef name="armAngel3">
+      <Property name="dataType">BigDecimal</Property>
+      <Property name="label">第三偏转角度</Property>
+    </PropertyDef>
+    <PropertyDef name="armRadius3">
+      <Property name="dataType">BigDecimal</Property>
+      <Property name="label">第三折弯半径</Property>
+    </PropertyDef>
+    <PropertyDef name="armLengthS3">
+      <Property name="dataType">BigDecimal</Property>
+      <Property name="label">第三直段长度</Property>
+    </PropertyDef>
+    <PropertyDef name="armAngel4">
+      <Property name="dataType">BigDecimal</Property>
+      <Property name="label">第四偏转角度</Property>
+    </PropertyDef>
+    <PropertyDef name="armLengthS4">
+      <Property name="dataType">BigDecimal</Property>
+      <Property name="label">第四直段长度</Property>
+    </PropertyDef>
+    <PropertyDef name="shankType">
+      <Property></Property>
+      <Property name="label">握杆装配形式</Property>
+    </PropertyDef>
+    <PropertyDef name="shankDiameter">
+      <Property name="dataType">BigDecimal</Property>
+      <Property name="label">电极握杆直径</Property>
+    </PropertyDef>
+    <PropertyDef name="shankHoledepth">
+      <Property name="dataType">BigDecimal</Property>
+      <Property name="label">握杆装配孔深</Property>
+    </PropertyDef>
+    <PropertyDef name="linearGuide">
+      <Property name="dataType">BigDecimal</Property>
+      <Property name="label">是否有直线导轨</Property>
+    </PropertyDef>
+    <PropertyDef name="armStandard">
+      <Property name="dataType">BigDecimal</Property>
+      <Property name="label">是否为标准零件</Property>
+    </PropertyDef>
+    <PropertyDef name="armUsestate">
+      <Property></Property>
+      <Property name="label">使用状态</Property>
+    </PropertyDef>
+    <PropertyDef name="armDesigner">
+      <Property></Property>
+      <Property name="label">设计者</Property>
+    </PropertyDef>
+    <PropertyDef name="armDesigndate">
+      <Property name="dataType">Date</Property>
+      <Property name="label">设计日期</Property>
+    </PropertyDef>
+    <PropertyDef name="armTechchange">
+      <Property></Property>
+      <Property name="label">技术更改</Property>
+    </PropertyDef>
+    <PropertyDef name="attachedPage">
+      <Property></Property>
+      <Property name="label">工艺附属页</Property>
+    </PropertyDef>
+    <PropertyDef name="armCustomer">
+      <Property></Property>
+      <Property name="label">客户/标准</Property>
+    </PropertyDef>
+    <PropertyDef name="armRemark">
+      <Property></Property>
+      <Property name="label">备注</Property>
+    </PropertyDef>
+    <PropertyDef name="armCode">
+      <Property></Property>
+      <Property name="label">分类编码</Property>
+    </PropertyDef>
+    <PropertyDef name="id">
+      <Property></Property>
+      <Property name="label">ID</Property>
+    </PropertyDef>
+  </DataType>
+  <DataType name="dataTypeElectrodeholder">
+    <Property name="matchType">com.nimak.entity.Electrodeholder</Property>
+    <PropertyDef name="shankDrawingno">
+      <Property></Property>
+      <Property name="label">焊钳图号</Property>
+    </PropertyDef>
+    <PropertyDef name="shankMaterial">
+      <Property></Property>
+      <Property name="label">电极握杆材料</Property>
+    </PropertyDef>
+    <PropertyDef name="shankTaper">
+      <Property></Property>
+      <Property name="label">电极帽座锥度</Property>
+    </PropertyDef>
+    <PropertyDef name="shankType">
+      <Property></Property>
+      <Property name="label">握杆装配形式</Property>
+    </PropertyDef>
+    <PropertyDef name="shankDiameter">
+      <Property name="dataType">BigDecimal</Property>
+      <Property name="label">电极握杆直径</Property>
+    </PropertyDef>
+    <PropertyDef name="shankAngel1">
+      <Property name="label">第一偏转角度</Property>
+    </PropertyDef>
+    <PropertyDef name="shankRadius1">
+      <Property name="dataType">BigDecimal</Property>
+      <Property name="label">第一折弯半径</Property>
+    </PropertyDef>
+    <PropertyDef name="shankLengthS1">
+      <Property name="dataType">BigDecimal</Property>
+      <Property name="label">第一直段长度</Property>
+    </PropertyDef>
+    <PropertyDef name="shankAngel2">
+      <Property name="label">第二偏转角度</Property>
+    </PropertyDef>
+    <PropertyDef name="shankRadius2">
+      <Property name="dataType">BigDecimal</Property>
+      <Property name="label">第二折弯半径</Property>
+    </PropertyDef>
+    <PropertyDef name="shankLengthS2">
+      <Property name="dataType">BigDecimal</Property>
+      <Property name="label">第二直段长度</Property>
+    </PropertyDef>
+    <PropertyDef name="shankAngel3">
+      <Property name="label">第三偏转角度</Property>
+    </PropertyDef>
+    <PropertyDef name="shankRadius3">
+      <Property name="dataType">BigDecimal</Property>
+      <Property name="label">第三折弯半径</Property>
+    </PropertyDef>
+    <PropertyDef name="shankLengthS3">
+      <Property name="dataType">BigDecimal</Property>
+      <Property name="label">第三直段长度</Property>
+    </PropertyDef>
+    <PropertyDef name="shankStandard">
+      <Property name="dataType">BigDecimal</Property>
+      <Property name="label">是否为标准零件</Property>
+    </PropertyDef>
+    <PropertyDef name="shankUsestate">
+      <Property></Property>
+      <Property name="label">使用状态</Property>
+    </PropertyDef>
+    <PropertyDef name="shankDesigner">
+      <Property></Property>
+      <Property name="label">设计者</Property>
+    </PropertyDef>
+    <PropertyDef name="shankDesigndate">
+      <Property name="dataType">Date</Property>
+      <Property name="label">设计日期</Property>
+    </PropertyDef>
+    <PropertyDef name="armTechchange">
+      <Property></Property>
+      <Property name="label">技术更改</Property>
+    </PropertyDef>
+    <PropertyDef name="attachedPage">
+      <Property></Property>
+      <Property name="label">工艺附属页</Property>
+    </PropertyDef>
+    <PropertyDef name="shankCustomer">
+      <Property></Property>
+      <Property name="label">客户/标准</Property>
+    </PropertyDef>
+    <PropertyDef name="shankRemark">
+      <Property></Property>
+      <Property name="label">备注</Property>
+    </PropertyDef>
+    <PropertyDef name="shankCode">
+      <Property></Property>
+      <Property name="label">分类编码</Property>
+    </PropertyDef>
+    <PropertyDef name="id">
+      <Property></Property>
+      <Property name="label">ID</Property>
+    </PropertyDef>
+  </DataType>
+  <DataType name="dataTypeBdf2User">
+    <Property name="matchType">com.nimak.entity.Bdf2User</Property>
+    <PropertyDef name="username">
+      <Property/>
+      <Property name="label">用户名</Property>
+    </PropertyDef>
+    <PropertyDef name="address">
+      <Property/>
+      <Property name="label">地址</Property>
+    </PropertyDef>
+    <PropertyDef name="administrator">
+      <Property name="dataType">BigDecimal</Property>
+      <Property name="label">是否是管理员</Property>
+    </PropertyDef>
+    <PropertyDef name="birthday">
+      <Property name="dataType">Date</Property>
+      <Property name="label">出生日期</Property>
+    </PropertyDef>
+    <PropertyDef name="cname">
+      <Property/>
+      <Property name="label">中文名</Property>
+    </PropertyDef>
+    <PropertyDef name="companyId">
+      <Property/>
+      <Property name="label">公司id</Property>
+      <Property name="defaultValue">nimak</Property>
+    </PropertyDef>
+    <PropertyDef name="createDate">
+      <Property name="dataType">Date</Property>
+      <Property name="label">创建日期</Property>
+    </PropertyDef>
+    <PropertyDef name="email">
+      <Property/>
+      <Property name="label">电子邮箱</Property>
+    </PropertyDef>
+    <PropertyDef name="enabled">
+      <Property name="dataType">BigDecimal</Property>
+      <Property name="label">是否启用</Property>
+    </PropertyDef>
+    <PropertyDef name="ename">
+      <Property/>
+      <Property name="label">英文名</Property>
+    </PropertyDef>
+    <PropertyDef name="male">
+      <Property name="dataType">BigDecimal</Property>
+      <Property name="label">性别</Property>
+    </PropertyDef>
+    <PropertyDef name="mobile">
+      <Property/>
+      <Property name="label">手机号</Property>
+    </PropertyDef>
+    <PropertyDef name="password">
+      <Property/>
+      <Property name="label">密码</Property>
+    </PropertyDef>
+    <PropertyDef name="salt">
+      <Property/>
+      <Property name="label">薪水</Property>
+    </PropertyDef>
+  </DataType>
+</Model>

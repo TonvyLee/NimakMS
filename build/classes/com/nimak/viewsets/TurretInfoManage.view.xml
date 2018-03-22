@@ -1,0 +1,1735 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ViewConfig>
+  <Arguments/>
+  <Context/>
+  <Model>
+    <DataType name="dataTypeTurret" parent="global:dataTypeTurret">
+      <PropertyDef name="gunType">
+        <Property></Property>
+        <Property name="label">焊钳类型</Property>
+        <Validator name="validator1" type="required"/>
+      </PropertyDef>
+      <PropertyDef name="gunDrawingno">
+        <Property></Property>
+        <Property name="label">焊钳图号</Property>
+        <Validator name="validator1" type="required"/>
+      </PropertyDef>
+      <PropertyDef name="gunbodyDrawingno">
+        <Property></Property>
+        <Property name="label">钳体图号</Property>
+        <Validator name="validator1" type="required"/>
+      </PropertyDef>
+      <PropertyDef name="armAssemblynoF">
+        <Property></Property>
+        <Property name="label">静臂部件图号</Property>
+        <Validator name="validator1" type="required"/>
+      </PropertyDef>
+      <PropertyDef name="armAssemblynoM">
+        <Property></Property>
+        <Property name="label">动臂部件图号</Property>
+        <Validator name="validator1" type="required"/>
+      </PropertyDef>
+      <PropertyDef name="capDrawingnoF">
+        <Property></Property>
+        <Property name="label">电极帽零件图号</Property>
+        <Validator name="validator1" type="required"/>
+      </PropertyDef>
+      <PropertyDef name="capDrawingnoM">
+        <Property></Property>
+        <Property name="label">电极帽零件图号</Property>
+        <Validator name="validator1" type="required"/>
+      </PropertyDef>
+      <PropertyDef name="stroke">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">行程</Property>
+        <Validator name="validator1" type="required"/>
+        <Validator name="validator2" type="regExp">
+          <Property name="whiteRegExp">([1-9]\d*(\.\d*[1-9])?)|(0\.\d*[1-9])</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="armassemblyLength">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">喉深</Property>
+        <Validator name="validator1" type="required"/>
+        <Validator name="validator2" type="regExp">
+          <Property name="whiteRegExp">([1-9]\d*(\.\d*[1-9])?)|(0\.\d*[1-9])</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="armassemblyWidth">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">喉宽</Property>
+        <Validator name="validator1" type="required"/>
+        <Validator name="validator2" type="regExp">
+          <Property name="whiteRegExp">([1-9]\d*(\.\d*[1-9])?)|(0\.\d*[1-9])</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="armassemblyWidth2">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">臂间距</Property>
+        <Validator name="validator1" type="required"/>
+        <Validator name="validator2" type="regExp">
+          <Property name="whiteRegExp">([1-9]\d*(\.\d*[1-9])?)|(0\.\d*[1-9])</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="force">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">压力等级</Property>
+        <Validator name="validator1" type="required"/>
+        <Validator name="validator2" type="regExp">
+          <Property name="whiteRegExp">([1-9]\d*(\.\d*[1-9])?)|(0\.\d*[1-9])</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="capAngel">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">电极帽偏转角度</Property>
+        <Validator name="validator1" type="required"/>
+        <Validator name="validator2" type="regExp">
+          <Property name="whiteRegExp">([1-9]\d*(\.\d*[1-9])?)|(0\.\d*[1-9])</Property>
+          <Property name="runAt">client</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="flange">
+        <Property></Property>
+        <Property name="label">法兰盘位置</Property>
+        <Validator name="validator1" type="required"/>
+      </PropertyDef>
+      <PropertyDef name="gunTechchange">
+        <Property></Property>
+        <Property name="label">技术更改</Property>
+      </PropertyDef>
+      <PropertyDef name="id">
+        <Property></Property>
+        <Property name="label">ID</Property>
+      </PropertyDef>
+    </DataType>
+    <DataType name="dataTypeTurretQuery">
+      <PropertyDef name="gunType">
+        <Property></Property>
+        <Property name="label">焊钳类型</Property>
+      </PropertyDef>
+      <PropertyDef name="gunDrawingno">
+        <Property></Property>
+        <Property name="label">焊钳图号</Property>
+      </PropertyDef>
+      <PropertyDef name="gunbodyDrawingno">
+        <Property></Property>
+        <Property name="label">钳体图号</Property>
+      </PropertyDef>
+      <PropertyDef name="armAssemblynoF">
+        <Property></Property>
+        <Property name="label">静臂部件图号</Property>
+      </PropertyDef>
+      <PropertyDef name="armAssemblynoM">
+        <Property></Property>
+        <Property name="label">动臂部件图号</Property>
+      </PropertyDef>
+      <PropertyDef name="capDrawingnoF">
+        <Property></Property>
+        <Property name="label">电极帽零件图号</Property>
+      </PropertyDef>
+      <PropertyDef name="capDrawingnoM">
+        <Property></Property>
+        <Property name="label">电极帽零件图号</Property>
+      </PropertyDef>
+      <PropertyDef name="stroke">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">行程</Property>
+        <Validator name="validator2" type="regExp">
+          <Property name="whiteRegExp">([1-9]\d*(\.\d*[1-9])?)|(0\.\d*[1-9])</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="armassemblyLength">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">喉深</Property>
+        <Validator name="validator2" type="regExp">
+          <Property name="whiteRegExp">([1-9]\d*(\.\d*[1-9])?)|(0\.\d*[1-9])</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="armassemblyWidth">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">喉宽</Property>
+        <Validator name="validator2" type="regExp">
+          <Property name="whiteRegExp">([1-9]\d*(\.\d*[1-9])?)|(0\.\d*[1-9])</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="armassemblyWidth2">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">臂间距</Property>
+        <Validator name="validator2" type="regExp">
+          <Property name="whiteRegExp">([1-9]\d*(\.\d*[1-9])?)|(0\.\d*[1-9])</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="force">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">压力等级</Property>
+        <Validator name="validator2" type="regExp">
+          <Property name="whiteRegExp">([1-9]\d*(\.\d*[1-9])?)|(0\.\d*[1-9])</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="capAngel">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">电极帽偏转角度</Property>
+        <Validator name="validator2" type="regExp">
+          <Property name="whiteRegExp">([1-9]\d*(\.\d*[1-9])?)|(0\.\d*[1-9])</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="flange">
+        <Property></Property>
+        <Property name="label">法兰盘位置</Property>
+      </PropertyDef>
+      <PropertyDef name="gunTechchange">
+        <Property></Property>
+        <Property name="label">技术更改</Property>
+      </PropertyDef>
+      <PropertyDef name="id">
+        <Property></Property>
+        <Property name="label">ID</Property>
+      </PropertyDef>
+    </DataType>
+    <DataType name="dataTypeTurretComponent" parent="global:dataTypeTurretComponent">
+      <Property name="defaultDisplayProperty">armAssemblyno</Property>
+      <PropertyDef name="gunType">
+        <Property></Property>
+        <Property name="label">焊钳类型</Property>
+      </PropertyDef>
+      <PropertyDef name="armAssemblyno">
+        <Property></Property>
+        <Property name="label">钳臂部件图号</Property>
+      </PropertyDef>
+      <PropertyDef name="id">
+        <Property></Property>
+        <Property name="label">ID</Property>
+      </PropertyDef>
+    </DataType>
+    <DataType name="dataTypeComponent" parent="global:dataTypeTurretComponent">
+      <PropertyDef name="gunType">
+        <Property></Property>
+        <Property name="label">焊钳类型</Property>
+        <Validator name="validator1" type="required"/>
+      </PropertyDef>
+      <PropertyDef name="armAssemblyno">
+        <Property></Property>
+        <Property name="label">钳臂部件图号</Property>
+        <Validator name="validator1" type="required"/>
+      </PropertyDef>
+      <PropertyDef name="armComponentno">
+        <Property></Property>
+        <Property name="label">钳臂组件图号</Property>
+        <Property name="dataType">dataTypeTurretCompOrPartListDropDown</Property>
+        <Validator name="validator1" type="required"/>
+      </PropertyDef>
+      <PropertyDef name="shankComponentno">
+        <Property></Property>
+        <Property name="label">电极握杆组件图号</Property>
+        <Property name="dataType">dataTypeHolderListDropDown</Property>
+        <Validator name="validator1" type="required"/>
+      </PropertyDef>
+      <PropertyDef name="armDrawingno">
+        <Property></Property>
+        <Property name="label">钳臂零件图号</Property>
+        <Validator name="validator1" type="required"/>
+      </PropertyDef>
+      <PropertyDef name="shankDrawingno">
+        <Property></Property>
+        <Property name="label">电极握杆零件图号</Property>
+        <Validator name="validator1" type="required"/>
+      </PropertyDef>
+      <PropertyDef name="armassemblyLength">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">喉深</Property>
+        <Validator name="validator1" type="required"/>
+        <Validator name="validator2" type="regExp">
+          <Property name="whiteRegExp">([1-9]\d*(\.\d*[1-9])?)|(0\.\d*[1-9])</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="armassemblyWidth">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">喉宽</Property>
+        <Validator name="validator1" type="required"/>
+        <Validator name="validator2" type="regExp">
+          <Property name="whiteRegExp">([1-9]\d*(\.\d*[1-9])?)|(0\.\d*[1-9])</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="armassemblyWidth2">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">臂间距</Property>
+        <Validator name="validator1" type="required"/>
+        <Validator name="validator2" type="regExp">
+          <Property name="whiteRegExp">([1-9]\d*(\.\d*[1-9])?)|(0\.\d*[1-9])</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="force">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">压力等级</Property>
+        <Validator name="validator1" type="required"/>
+        <Validator name="validator2" type="regExp">
+          <Property name="whiteRegExp">([1-9]\d*(\.\d*[1-9])?)|(0\.\d*[1-9])</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="capAngel">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">电极帽偏转角度</Property>
+        <Validator name="validator1" type="required"/>
+        <Validator name="validator2" type="regExp">
+          <Property name="whiteRegExp">([1-9]\d*(\.\d*[1-9])?)|(0\.\d*[1-9])</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="armassemblyTechchange">
+        <Property></Property>
+        <Property name="label">技术更改</Property>
+      </PropertyDef>
+      <PropertyDef name="armassemblyCode">
+        <Property></Property>
+        <Property name="label">分类编码</Property>
+      </PropertyDef>
+      <PropertyDef name="id">
+        <Property></Property>
+        <Property name="label">ID</Property>
+      </PropertyDef>
+    </DataType>
+    <DataType name="dataTypeTurretCompOrPartListDropDown" parent="global:dataTypeTurretArm">
+      <Property name="defaultDisplayProperty">armDrawingno</Property>
+      <PropertyDef name="armDrawingno">
+        <Property></Property>
+        <Property name="label">钳臂零件图号</Property>
+      </PropertyDef>
+      <PropertyDef name="shankType">
+        <Property></Property>
+        <Property name="label">握杆装配形式</Property>
+      </PropertyDef>
+      <PropertyDef name="armCode">
+        <Property></Property>
+        <Property name="label">分类编码</Property>
+      </PropertyDef>
+      <PropertyDef name="id">
+        <Property></Property>
+        <Property name="label">ID</Property>
+      </PropertyDef>
+    </DataType>
+    <DataType name="dataTypeHolderListDropDown" parent="dataTypeElectrodeholder">
+      <Property name="defaultDisplayProperty">shankDrawingno</Property>
+      <PropertyDef name="shankDrawingno">
+        <Property></Property>
+        <Property name="label">焊钳图号</Property>
+      </PropertyDef>
+      <PropertyDef name="shankType">
+        <Property></Property>
+        <Property name="label">握杆装配形式</Property>
+      </PropertyDef>
+      <PropertyDef name="shankCode">
+        <Property></Property>
+        <Property name="label">分类编码</Property>
+      </PropertyDef>
+      <PropertyDef name="id">
+        <Property></Property>
+        <Property name="label">ID</Property>
+      </PropertyDef>
+    </DataType>
+  </Model>
+  <View id="view" layout="vbox">
+    <ClientEvent name="onCreate">dorado.useObjectShim = true;</ClientEvent>
+    <Property name="styleSheetFile">/css/turretInfoManageCommon.css</Property>
+    <DataSet id="dsTurretComp">
+      <Property name="dataType">[dataTypeComponent]</Property>
+      <Property name="dataProvider">turretComponentServiceImp#getTurretComponentByDrawingno</Property>
+    </DataSet>
+    <DataSet id="dataSetArmAssemblyno">
+      <Property name="dataType">[String]</Property>
+      <Property name="dataProvider">turretComponentServiceImp#getTurretComponentDrawingByDrawingno</Property>
+    </DataSet>
+    <DataSet id="dataSet1">
+      <Property name="dataType">[dataTypeTurretQuery]</Property>
+    </DataSet>
+    <DataSet id="dsTurret">
+      <Property name="dataType">[dataTypeTurret]</Property>
+      <Property name="pageSize">7</Property>
+      <Property name="readOnly">false</Property>
+      <Property name="dataProvider">turretServiceImp#queryForCondition</Property>
+      <Property name="parameter"></Property>
+    </DataSet>
+    <Container layout="form">
+      <Property name="style">
+        <Property name="background-color">green</Property>
+        <Property name="key1"></Property>
+        <Property name="key2"></Property>
+      </Property>
+      <Property name="height">5%</Property>
+      <Property name="visible">false</Property>
+      <Property name="ignored">true</Property>
+      <Label layoutConstraint="type:center;align:center;vAlign:center;colSpan:2">
+        <Property name="style">
+          <Property name="font-size">26px</Property>
+          <Property name="font-style"></Property>
+          <Property name="font-weight">bold</Property>
+        </Property>
+        <Property name="text">焊钳信息录入及选型</Property>
+      </Label>
+    </Container>
+    <Container layout="vbox">
+      <Property name="height">100%</Property>
+      <FieldSet layoutConstraint="padding:5">
+        <Property name="caption">查询信息输入</Property>
+        <Property name="className">FieldsetQuery</Property>
+        <Property name="style">
+          <Property name="font-size">16px</Property>
+          <Property name="key1"></Property>
+        </Property>
+        <Buttons>
+          <Button id="ButtonQuery" layoutConstraint="bottom padding:50">
+            <Property name="caption">查询</Property>
+            <Property name="tip">点击或回车进行查询</Property>
+            <Property name="width">100</Property>
+          </Button>
+          <Button id="buttonReset">
+            <Property name="caption">重置</Property>
+            <Property name="width">100</Property>
+          </Button>
+        </Buttons>
+        <Children>
+          <AutoForm id="autoformCondition">
+            <Property name="createPrivateDataSet">true</Property>
+            <Property name="cols">*,*,*</Property>
+            <Property name="labelSeparator">:</Property>
+            <Property name="labelWidth">160</Property>
+            <Property name="labelAlign">left</Property>
+            <Property name="readOnly">false</Property>
+            <Property name="dataSet">dataSet1</Property>
+            <AutoFormElement>
+              <Property name="name">gunType</Property>
+              <Property name="property">gunType</Property>
+              <Property name="label">焊钳类型</Property>
+              <Property name="trigger">listDropDownTurretType</Property>
+              <Editor/>
+            </AutoFormElement>
+            <AutoFormElement id="gunDrawingnoForm">
+              <Property name="name">gunDrawingno</Property>
+              <Property name="property">gunDrawingno</Property>
+              <Property name="label">焊钳图号</Property>
+              <Editor/>
+            </AutoFormElement>
+            <AutoFormElement id="strokeForm">
+              <Property name="name">stroke</Property>
+              <Property name="property">stroke</Property>
+              <Property name="label">行程</Property>
+              <Editor/>
+            </AutoFormElement>
+            <AutoFormElement id="armassemblyLengthForm">
+              <Property name="name">armassemblyLength</Property>
+              <Property name="property">armassemblyLength</Property>
+              <Property name="label">喉深</Property>
+              <Editor/>
+            </AutoFormElement>
+            <AutoFormElement id="armassemblyWidthForm">
+              <Property name="name">armassemblyWidth</Property>
+              <Property name="property">armassemblyWidth</Property>
+              <Property name="label">喉宽</Property>
+              <Editor/>
+            </AutoFormElement>
+            <AutoFormElement id="armassemblyWidth2Form">
+              <Property name="name">armassemblyWidth2</Property>
+              <Property name="property">armassemblyWidth2</Property>
+              <Property name="label">臂间距</Property>
+              <Editor/>
+            </AutoFormElement>
+            <AutoFormElement id="forceForm">
+              <Property name="name">force</Property>
+              <Property name="property">force</Property>
+              <Property name="label">压力等级</Property>
+              <Editor/>
+            </AutoFormElement>
+            <AutoFormElement id="capAngelForm">
+              <Property name="name">capAngel</Property>
+              <Property name="property">capAngel</Property>
+              <Property name="label">电极帽偏转角度</Property>
+              <Editor/>
+            </AutoFormElement>
+            <AutoFormElement id="flangeForm">
+              <Property name="name">flange</Property>
+              <Property name="property">flange</Property>
+              <Property name="label">法兰盘位置</Property>
+              <Editor/>
+            </AutoFormElement>
+          </AutoForm>
+        </Children>
+      </FieldSet>
+      <ToolBar>
+        <ToolBarButton id="buttonQuery">
+          <Property name="caption">查询</Property>
+          <Property name="icon"> url(>skin>common/icons.gif) -40px -100px</Property>
+        </ToolBarButton>
+        <DataPilot id="datapilotHello">
+          <Property name="dataSet">dsTurret</Property>
+          <Property name="itemCodes">pages,pageSize</Property>
+        </DataPilot>
+        <ToolBarButton id="buttonModify">
+          <Property name="caption">修改</Property>
+          <Property name="icon"> url(>skin>common/icons.gif) -200px -0px</Property>
+          <Property name="tip">点击编辑可以对表格内容进行编辑！</Property>
+          <Property name="tags">EditButton</Property>
+        </ToolBarButton>
+        <ToolBarButton id="buttonDelete">
+          <Property name="caption">删除并保存</Property>
+          <Property name="icon"> url(>skin>common/icons.gif) -140px -0px</Property>
+          <Property name="tags">EditButton</Property>
+        </ToolBarButton>
+        <ToolBarButton id="buttonAdd">
+          <Property name="caption">添加</Property>
+          <Property name="icon">url(>skin>common/icons.gif) -120px -0px</Property>
+          <Property name="tags">EditButton</Property>
+          <Property name="ignored">false</Property>
+        </ToolBarButton>
+      </ToolBar>
+      <DataGrid id="datagridTurret">
+        <Property name="dataSet">dsTurret</Property>
+        <Property name="readOnly">true</Property>
+        <Property name="showFilterBar">true</Property>
+        <Property name="tip">鼠标右键可以获取快捷操作....</Property>
+        <Property name="sortMode">clientSide</Property>
+        <Property name="filterMode">serverSide</Property>
+        <Property name="headerRowHeight">50</Property>
+        <Property name="height">40%</Property>
+        <DataColumn id="operation">
+          <Property name="align">center</Property>
+          <Property name="caption">二维图预览</Property>
+          <Property name="name">operation</Property>
+          <Property name="readOnly">true</Property>
+          <Editor/>
+        </DataColumn>
+        <DataColumn id="openComp">
+          <Property name="align">center</Property>
+          <Property name="caption">二维图</Property>
+          <Property name="name">openComp</Property>
+          <Property name="readOnly">true</Property>
+          <Editor/>
+        </DataColumn>
+        <DataColumn name="gunType">
+          <Property name="property">gunType</Property>
+          <Property name="align">center</Property>
+        </DataColumn>
+        <DataColumn name="gunDrawingno">
+          <Property name="property">gunDrawingno</Property>
+          <Property name="align">center</Property>
+        </DataColumn>
+        <DataColumn name="stroke">
+          <Property name="property">stroke</Property>
+          <Property name="align">center</Property>
+        </DataColumn>
+        <DataColumn name="armassemblyLength">
+          <Property name="property">armassemblyLength</Property>
+          <Property name="align">center</Property>
+        </DataColumn>
+        <DataColumn name="armassemblyWidth">
+          <Property name="property">armassemblyWidth</Property>
+          <Property name="align">center</Property>
+        </DataColumn>
+        <DataColumn name="armassemblyWidth2">
+          <Property name="property">armassemblyWidth2</Property>
+          <Property name="align">center</Property>
+        </DataColumn>
+        <DataColumn name="force">
+          <Property name="property">force</Property>
+          <Property name="align">center</Property>
+        </DataColumn>
+        <DataColumn name="capAngel">
+          <Property name="property">capAngel</Property>
+          <Property name="align">center</Property>
+        </DataColumn>
+        <DataColumn name="flange">
+          <Property name="property">flange</Property>
+          <Property name="align">center</Property>
+        </DataColumn>
+        <DataColumn name="gunTechchange">
+          <Property name="property">gunTechchange</Property>
+          <Property name="align">center</Property>
+        </DataColumn>
+        <DataColumn name="id">
+          <Property name="property">id</Property>
+          <Property name="visible">false</Property>
+          <Property name="align">center</Property>
+        </DataColumn>
+        <DataColumn name="armAssemblynoF">
+          <Property name="property">armAssemblynoF</Property>
+          <Property name="visible">false</Property>
+        </DataColumn>
+        <DataColumn name="armAssemblynoM">
+          <Property name="property">armAssemblynoM</Property>
+          <Property name="visible">false</Property>
+        </DataColumn>
+      </DataGrid>
+      <Container>
+        <ToolBar>
+          <Property name="className">toolbardown</Property>
+          <DataPilot id="datapilotHello1">
+            <Property name="dataSet">dsTurret</Property>
+            <Property name="itemCodes">|&lt;,&lt;,>,>|,,x,|</Property>
+          </DataPilot>
+          <SimpleIconButton id="simpleButtonFirstRecord">
+            <Property name="icon"> url(>skin>common/icons.gif) -0px -220px</Property>
+            <Property name="tip">首条记录</Property>
+            <Property name="tags">SimpleButtonRecord</Property>
+            <Property name="ignored">true</Property>
+          </SimpleIconButton>
+          <SimpleIconButton id="simpleButtonPreviousRecord">
+            <Property name="icon"> url(>skin>common/icons.gif) -160px -280px</Property>
+            <Property name="tip">上一条</Property>
+            <Property name="tags">SimpleButtonRecord</Property>
+            <Property name="ignored">true</Property>
+          </SimpleIconButton>
+          <SimpleIconButton id="simpleButtonNextRecord">
+            <Property name="icon"> url(>skin>common/icons.gif) -180px -280px</Property>
+            <Property name="tip">下一条</Property>
+            <Property name="tags">SimpleButtonRecord</Property>
+            <Property name="ignored">true</Property>
+          </SimpleIconButton>
+          <SimpleIconButton id="simpleButtonLastRecord">
+            <Property name="icon"> url(>skin>common/icons.gif) -100px -220px</Property>
+            <Property name="tip">最后一条记录</Property>
+            <Property name="tags">SimpleButtonRecord</Property>
+            <Property name="ignored">true</Property>
+          </SimpleIconButton>
+          <Button id="buttonEditInToolbar">
+            <Property name="caption">启用/禁用编辑</Property>
+            <Property name="icon"> url(>skin>common/icons.gif) -200px -0px</Property>
+          </Button>
+          <Button id="buttonAddInToolbar">
+            <Property name="caption">新增</Property>
+            <Property name="icon">url(>skin>common/icons.gif) -120px -0px</Property>
+          </Button>
+        </ToolBar>
+        <FieldSet>
+          <Property name="caption">基本属性信息</Property>
+          <Buttons>
+            <Button id="saveAllAttrInfo">
+              <Property name="caption">全部属性信息...</Property>
+              <Property name="width">150</Property>
+              <Property name="icon"> url(>skin>common/icons.gif) -220px -80px</Property>
+            </Button>
+            <Button id="buttonSaveAll">
+              <Property name="caption">保存所有</Property>
+              <Property name="width">150</Property>
+              <Property name="icon"> url(>skin>common/icons.gif) -140px -20px</Property>
+              <Property name="disabled">true</Property>
+            </Button>
+          </Buttons>
+          <Children>
+            <AutoForm id="autoFormBasicAttr">
+              <Property name="dataSet">dsTurret</Property>
+              <Property name="cols">*,*,*</Property>
+              <Property name="labelWidth">160</Property>
+              <Property name="labelAlign">left</Property>
+              <Property name="labelSeparator">:</Property>
+              <Property name="readOnly">true</Property>
+              <AutoFormElement>
+                <Property name="name">gunType</Property>
+                <Property name="property">gunType</Property>
+                <Editor/>
+              </AutoFormElement>
+              <AutoFormElement>
+                <Property name="name">gunDrawingno</Property>
+                <Property name="property">gunDrawingno</Property>
+                <Editor/>
+              </AutoFormElement>
+              <AutoFormElement>
+                <Property name="name">gunbodyDrawingno</Property>
+                <Property name="property">gunbodyDrawingno</Property>
+                <Editor/>
+              </AutoFormElement>
+              <AutoFormElement>
+                <Property name="name">armAssemblynoF</Property>
+                <Property name="property">armAssemblynoF</Property>
+                <Editor/>
+              </AutoFormElement>
+              <AutoFormElement>
+                <Property name="name">armAssemblynoM</Property>
+                <Property name="property">armAssemblynoM</Property>
+                <Editor/>
+              </AutoFormElement>
+              <AutoFormElement>
+                <Property name="name">capDrawingnoF</Property>
+                <Property name="property">capDrawingnoF</Property>
+                <Editor/>
+              </AutoFormElement>
+              <AutoFormElement>
+                <Property name="name">capDrawingnoM</Property>
+                <Property name="property">capDrawingnoM</Property>
+                <Editor/>
+              </AutoFormElement>
+              <AutoFormElement>
+                <Property name="name">stroke</Property>
+                <Property name="property">stroke</Property>
+                <Editor/>
+              </AutoFormElement>
+              <AutoFormElement>
+                <Property name="name">armassemblyLength</Property>
+                <Property name="property">armassemblyLength</Property>
+                <Editor/>
+              </AutoFormElement>
+              <AutoFormElement>
+                <Property name="name">armassemblyWidth</Property>
+                <Property name="property">armassemblyWidth</Property>
+                <Editor/>
+              </AutoFormElement>
+              <AutoFormElement>
+                <Property name="name">armassemblyWidth2</Property>
+                <Property name="property">armassemblyWidth2</Property>
+                <Editor/>
+              </AutoFormElement>
+              <AutoFormElement>
+                <Property name="name">force</Property>
+                <Property name="property">force</Property>
+                <Property name="ignored">true</Property>
+                <Editor/>
+              </AutoFormElement>
+              <AutoFormElement>
+                <Property name="name">capAngel</Property>
+                <Property name="property">capAngel</Property>
+                <Property name="ignored">true</Property>
+                <Editor/>
+              </AutoFormElement>
+              <AutoFormElement>
+                <Property name="name">flange</Property>
+                <Property name="property">flange</Property>
+                <Property name="ignored">true</Property>
+                <Editor/>
+              </AutoFormElement>
+              <AutoFormElement>
+                <Property name="name">gunTechchange</Property>
+                <Property name="property">gunTechchange</Property>
+                <Property name="ignored">true</Property>
+                <Editor/>
+              </AutoFormElement>
+              <AutoFormElement>
+                <Property name="name">id</Property>
+                <Property name="property">id</Property>
+                <Property name="visible">false</Property>
+                <Editor/>
+              </AutoFormElement>
+            </AutoForm>
+          </Children>
+        </FieldSet>
+      </Container>
+    </Container>
+    <Dialog id="dialog2DDrawing">
+      <Property name="height">70%</Property>
+      <Property name="width">70%</Property>
+      <Buttons>
+        <Button id="buttonCloseDrawing">
+          <Property name="caption">关闭</Property>
+          <Property name="width">150</Property>
+          <Property name="tags">closeButton</Property>
+        </Button>
+      </Buttons>
+      <Children>
+        <GroupBox>
+          <Property name="collapseable">false</Property>
+          <Buttons/>
+          <Children>
+            <Container layout="vbox">
+              <Image id="image" layoutConstraint="align:center">
+                <Property name="width">100%</Property>
+                <Property name="height">100%</Property>
+                <Property name="stretchMode">keepRatio</Property>
+                <Property name="image">web/TurretFiles/2D/1.jpg</Property>
+              </Image>
+              <Container layout="anchor"/>
+            </Container>
+          </Children>
+        </GroupBox>
+      </Children>
+      <Tools/>
+    </Dialog>
+    <Dialog id="dialogCompInfo">
+      <Property name="width">75%</Property>
+      <Property name="height">80%</Property>
+      <Buttons>
+        <Button id="buttonCancelComp">
+          <Property name="caption">关闭</Property>
+          <Property name="width">200</Property>
+          <Property name="icon"> url(>skin>common/icons.gif) -40px -0px</Property>
+        </Button>
+      </Buttons>
+      <Children>
+        <SplitPanel>
+          <Property name="position">20%</Property>
+          <MainControl>
+            <Container layout="vbox">
+              <TabControl id="tabControlInfo">
+                <Property name="height">100%</Property>
+                <ControlTab id="tabControlInfo1">
+                  <Property name="visible">true</Property>
+                  <Property name="ignored">false</Property>
+                  <Property name="caption">静臂部件</Property>
+                  <FieldSet>
+                    <Buttons>
+                      <Button id="buttonOpenDrawing1">
+                        <Property name="width">100</Property>
+                        <Property name="caption">二维图预览</Property>
+                      </Button>
+                      <Button id="buttonDownloadFile1">
+                        <Property name="width">100</Property>
+                        <Property name="caption">下载三维数模</Property>
+                      </Button>
+                    </Buttons>
+                    <Children>
+                      <AutoForm id="autoformTurretCompInfo">
+                        <Property name="dataSet">dsTurretComp</Property>
+                        <Property name="cols">*</Property>
+                        <Property name="labelWidth">250</Property>
+                        <Property name="labelAlign">right</Property>
+                        <Property name="labelSeparator">:</Property>
+                        <AutoFormElement>
+                          <Property name="name">gunType</Property>
+                          <Property name="property">gunType</Property>
+                          <Property name="style">
+                            <Property name="color">red</Property>
+                          </Property>
+                          <Editor/>
+                        </AutoFormElement>
+                        <AutoFormElement>
+                          <Property name="name">armAssemblyno</Property>
+                          <Property name="property">armAssemblyno</Property>
+                          <Property name="style">
+                            <Property name="color">red</Property>
+                          </Property>
+                          <Editor/>
+                        </AutoFormElement>
+                        <GroupBox>
+                          <Buttons/>
+                          <Children/>
+                        </GroupBox>
+                        <AutoFormElement>
+                          <Property name="name">armComponentno</Property>
+                          <Property name="property">armComponentno</Property>
+                          <Editor/>
+                        </AutoFormElement>
+                        <AutoFormElement>
+                          <Property name="name">shankComponentno</Property>
+                          <Property name="property">shankComponentno</Property>
+                          <Editor/>
+                        </AutoFormElement>
+                        <AutoFormElement>
+                          <Property name="name">armDrawingno</Property>
+                          <Property name="property">armDrawingno</Property>
+                          <Editor/>
+                        </AutoFormElement>
+                        <AutoFormElement>
+                          <Property name="name">shankDrawingno</Property>
+                          <Property name="property">shankDrawingno</Property>
+                          <Editor/>
+                        </AutoFormElement>
+                        <GroupBox>
+                          <Buttons/>
+                          <Children/>
+                        </GroupBox>
+                        <AutoFormElement>
+                          <Property name="name">armassemblyLength</Property>
+                          <Property name="property">armassemblyLength</Property>
+                          <Editor/>
+                        </AutoFormElement>
+                        <AutoFormElement>
+                          <Property name="name">armassemblyWidth</Property>
+                          <Property name="property">armassemblyWidth</Property>
+                          <Editor/>
+                        </AutoFormElement>
+                        <AutoFormElement>
+                          <Property name="name">armassemblyWidth2</Property>
+                          <Property name="property">armassemblyWidth2</Property>
+                          <Editor/>
+                        </AutoFormElement>
+                        <AutoFormElement>
+                          <Property name="name">force</Property>
+                          <Property name="property">force</Property>
+                          <Editor/>
+                        </AutoFormElement>
+                        <AutoFormElement>
+                          <Property name="name">capAngel</Property>
+                          <Property name="property">capAngel</Property>
+                          <Editor/>
+                        </AutoFormElement>
+                        <GroupBox>
+                          <Buttons/>
+                          <Children/>
+                        </GroupBox>
+                        <AutoFormElement>
+                          <Property name="name">armassemblyCode</Property>
+                          <Property name="property">armassemblyCode</Property>
+                          <Property name="style">
+                            <Property name="color">red</Property>
+                          </Property>
+                          <Property name="readOnly">true</Property>
+                          <Editor/>
+                        </AutoFormElement>
+                        <GroupBox>
+                          <Buttons/>
+                          <Children/>
+                        </GroupBox>
+                        <AutoFormElement>
+                          <Property name="name">armassemblyTechchange</Property>
+                          <Property name="property">armassemblyTechchange</Property>
+                          <Property name="editorType">TextArea</Property>
+                          <Editor/>
+                        </AutoFormElement>
+                        <AutoFormElement>
+                          <Property name="name">id</Property>
+                          <Property name="property">id</Property>
+                          <Property name="visible">false</Property>
+                          <Editor/>
+                        </AutoFormElement>
+                      </AutoForm>
+                    </Children>
+                  </FieldSet>
+                </ControlTab>
+                <ControlTab id="tabControlInfo2">
+                  <Property name="visible">false</Property>
+                  <Property name="caption">动臂部件</Property>
+                  <FieldSet>
+                    <Buttons>
+                      <Button id="buttonOpenDrawing2">
+                        <Property name="width">100</Property>
+                        <Property name="caption">二维图预览</Property>
+                      </Button>
+                      <Button id="buttonDownloadFile2">
+                        <Property name="width">100</Property>
+                        <Property name="caption">下载三维数模</Property>
+                      </Button>
+                    </Buttons>
+                    <Children>
+                      <AutoForm id="autoformTurretCompInfo2">
+                        <Property name="dataSet">dsTurretComp</Property>
+                        <Property name="cols">*</Property>
+                        <Property name="labelWidth">250</Property>
+                        <Property name="labelAlign">right</Property>
+                        <Property name="labelSeparator">:</Property>
+                        <AutoFormElement>
+                          <Property name="name">gunType</Property>
+                          <Property name="property">gunType</Property>
+                          <Property name="style">
+                            <Property name="color">red</Property>
+                          </Property>
+                          <Editor/>
+                        </AutoFormElement>
+                        <AutoFormElement>
+                          <Property name="name">armAssemblyno</Property>
+                          <Property name="property">armAssemblyno</Property>
+                          <Property name="style">
+                            <Property name="color">red</Property>
+                          </Property>
+                          <Editor/>
+                        </AutoFormElement>
+                        <GroupBox>
+                          <Buttons/>
+                          <Children/>
+                        </GroupBox>
+                        <AutoFormElement>
+                          <Property name="name">armComponentno</Property>
+                          <Property name="property">armComponentno</Property>
+                          <Editor/>
+                        </AutoFormElement>
+                        <AutoFormElement>
+                          <Property name="name">shankComponentno</Property>
+                          <Property name="property">shankComponentno</Property>
+                          <Editor/>
+                        </AutoFormElement>
+                        <AutoFormElement>
+                          <Property name="name">armDrawingno</Property>
+                          <Property name="property">armDrawingno</Property>
+                          <Editor/>
+                        </AutoFormElement>
+                        <AutoFormElement>
+                          <Property name="name">shankDrawingno</Property>
+                          <Property name="property">shankDrawingno</Property>
+                          <Editor/>
+                        </AutoFormElement>
+                        <GroupBox>
+                          <Buttons/>
+                          <Children/>
+                        </GroupBox>
+                        <AutoFormElement>
+                          <Property name="name">armassemblyLength</Property>
+                          <Property name="property">armassemblyLength</Property>
+                          <Editor/>
+                        </AutoFormElement>
+                        <AutoFormElement>
+                          <Property name="name">armassemblyWidth</Property>
+                          <Property name="property">armassemblyWidth</Property>
+                          <Editor/>
+                        </AutoFormElement>
+                        <AutoFormElement>
+                          <Property name="name">armassemblyWidth2</Property>
+                          <Property name="property">armassemblyWidth2</Property>
+                          <Editor/>
+                        </AutoFormElement>
+                        <AutoFormElement>
+                          <Property name="name">force</Property>
+                          <Property name="property">force</Property>
+                          <Editor/>
+                        </AutoFormElement>
+                        <AutoFormElement>
+                          <Property name="name">capAngel</Property>
+                          <Property name="property">capAngel</Property>
+                          <Editor/>
+                        </AutoFormElement>
+                        <GroupBox>
+                          <Buttons/>
+                          <Children/>
+                        </GroupBox>
+                        <AutoFormElement>
+                          <Property name="name">armassemblyCode</Property>
+                          <Property name="property">armassemblyCode</Property>
+                          <Property name="style">
+                            <Property name="color">red</Property>
+                          </Property>
+                          <Property name="readOnly">true</Property>
+                          <Editor/>
+                        </AutoFormElement>
+                        <GroupBox>
+                          <Buttons/>
+                          <Children/>
+                        </GroupBox>
+                        <AutoFormElement>
+                          <Property name="name">armassemblyTechchange</Property>
+                          <Property name="property">armassemblyTechchange</Property>
+                          <Property name="editorType">TextArea</Property>
+                          <Editor/>
+                        </AutoFormElement>
+                        <AutoFormElement>
+                          <Property name="name">id</Property>
+                          <Property name="property">id</Property>
+                          <Property name="visible">false</Property>
+                          <Editor/>
+                        </AutoFormElement>
+                      </AutoForm>
+                    </Children>
+                  </FieldSet>
+                </ControlTab>
+                <ControlTab id="tabControlInfo3">
+                  <Property name="visible">false</Property>
+                  <Property name="caption">电极帽零件</Property>
+                  <FieldSet>
+                    <Buttons>
+                      <Button id="buttonOpenDrawing3">
+                        <Property name="width">100</Property>
+                        <Property name="caption">二维图预览</Property>
+                      </Button>
+                      <Button id="buttonDownloadFile3">
+                        <Property name="width">100</Property>
+                        <Property name="caption">下载三维数模</Property>
+                      </Button>
+                    </Buttons>
+                    <Children>
+                      <AutoForm id="autoformTurretComOrPartInfo3">
+                        <Property name="dataSet">dsTurretCompOrPart</Property>
+                        <Property name="cols">*,*</Property>
+                        <Property name="labelWidth">150</Property>
+                        <Property name="labelAlign">center</Property>
+                        <AutoFormElement>
+                          <Property name="name">armDrawingno</Property>
+                          <Property name="property">armDrawingno</Property>
+                          <Editor/>
+                        </AutoFormElement>
+                        <AutoFormElement>
+                          <Property name="name">armCode</Property>
+                          <Property name="property">armCode</Property>
+                          <Property name="readOnly">true</Property>
+                          <Editor/>
+                        </AutoFormElement>
+                        <AutoFormElement>
+                          <Property name="name">armMaterial</Property>
+                          <Property name="property">armMaterial</Property>
+                          <Editor/>
+                        </AutoFormElement>
+                        <AutoFormElement>
+                          <Property name="name">armSpecialshapeandrib</Property>
+                          <Property name="property">armSpecialshapeandrib</Property>
+                          <Editor/>
+                        </AutoFormElement>
+                        <AutoFormElement>
+                          <Property name="name">armSerial</Property>
+                          <Property name="property">armSerial</Property>
+                          <Editor/>
+                        </AutoFormElement>
+                        <AutoFormElement>
+                          <Property name="name">armLength</Property>
+                          <Property name="property">armLength</Property>
+                          <Editor/>
+                        </AutoFormElement>
+                        <AutoFormElement>
+                          <Property name="name">armWidth1</Property>
+                          <Property name="property">armWidth1</Property>
+                          <Editor/>
+                        </AutoFormElement>
+                        <AutoFormElement>
+                          <Property name="name">armWidth2</Property>
+                          <Property name="property">armWidth2</Property>
+                          <Editor/>
+                        </AutoFormElement>
+                        <AutoFormElement>
+                          <Property name="name">assembleSize</Property>
+                          <Property name="property">assembleSize</Property>
+                          <Editor/>
+                        </AutoFormElement>
+                        <AutoFormElement>
+                          <Property name="name">assembleLength</Property>
+                          <Property name="property">assembleLength</Property>
+                          <Editor/>
+                        </AutoFormElement>
+                        <AutoFormElement>
+                          <Property name="name">armAngel1</Property>
+                          <Property name="property">armAngel1</Property>
+                          <Editor/>
+                        </AutoFormElement>
+                        <AutoFormElement>
+                          <Property name="name">armRadius1</Property>
+                          <Property name="property">armRadius1</Property>
+                          <Editor/>
+                        </AutoFormElement>
+                        <AutoFormElement>
+                          <Property name="name">armLengthS1</Property>
+                          <Property name="property">armLengthS1</Property>
+                          <Editor/>
+                        </AutoFormElement>
+                        <AutoFormElement>
+                          <Property name="name">armAngel2</Property>
+                          <Property name="property">armAngel2</Property>
+                          <Editor/>
+                        </AutoFormElement>
+                        <AutoFormElement>
+                          <Property name="name">armRadius2</Property>
+                          <Property name="property">armRadius2</Property>
+                          <Editor/>
+                        </AutoFormElement>
+                        <AutoFormElement>
+                          <Property name="name">armLengthS2</Property>
+                          <Property name="property">armLengthS2</Property>
+                          <Editor/>
+                        </AutoFormElement>
+                        <AutoFormElement>
+                          <Property name="name">armAngel3</Property>
+                          <Property name="property">armAngel3</Property>
+                          <Editor/>
+                        </AutoFormElement>
+                        <AutoFormElement>
+                          <Property name="name">armRadius3</Property>
+                          <Property name="property">armRadius3</Property>
+                          <Editor/>
+                        </AutoFormElement>
+                        <AutoFormElement>
+                          <Property name="name">armLengthS3</Property>
+                          <Property name="property">armLengthS3</Property>
+                          <Editor/>
+                        </AutoFormElement>
+                        <AutoFormElement>
+                          <Property name="name">armAngel4</Property>
+                          <Property name="property">armAngel4</Property>
+                          <Editor/>
+                        </AutoFormElement>
+                        <AutoFormElement>
+                          <Property name="name">armLengthS4</Property>
+                          <Property name="property">armLengthS4</Property>
+                          <Editor/>
+                        </AutoFormElement>
+                        <AutoFormElement>
+                          <Property name="name">shankType</Property>
+                          <Property name="property">shankType</Property>
+                          <Editor/>
+                        </AutoFormElement>
+                        <AutoFormElement>
+                          <Property name="name">shankDiameter</Property>
+                          <Property name="property">shankDiameter</Property>
+                          <Editor/>
+                        </AutoFormElement>
+                        <AutoFormElement>
+                          <Property name="name">shankHoledepth</Property>
+                          <Property name="property">shankHoledepth</Property>
+                          <Editor/>
+                        </AutoFormElement>
+                        <AutoFormElement>
+                          <Property name="name">linearGuide</Property>
+                          <Property name="property">linearGuide</Property>
+                          <Editor/>
+                        </AutoFormElement>
+                        <AutoFormElement>
+                          <Property name="name">armStandard</Property>
+                          <Property name="property">armStandard</Property>
+                          <Editor/>
+                        </AutoFormElement>
+                        <AutoFormElement>
+                          <Property name="name">armUsestate</Property>
+                          <Property name="property">armUsestate</Property>
+                          <Editor/>
+                        </AutoFormElement>
+                        <AutoFormElement>
+                          <Property name="name">attachedPage</Property>
+                          <Property name="property">attachedPage</Property>
+                          <Editor/>
+                        </AutoFormElement>
+                        <AutoFormElement>
+                          <Property name="name">armCustomer</Property>
+                          <Property name="property">armCustomer</Property>
+                          <Editor/>
+                        </AutoFormElement>
+                        <AutoFormElement>
+                          <Property name="name">armDesigner</Property>
+                          <Property name="property">armDesigner</Property>
+                          <Editor/>
+                        </AutoFormElement>
+                        <AutoFormElement>
+                          <Property name="name">armDesigndate</Property>
+                          <Property name="property">armDesigndate</Property>
+                          <Editor/>
+                        </AutoFormElement>
+                        <AutoFormElement>
+                          <Property name="name">armTechchange</Property>
+                          <Property name="property">armTechchange</Property>
+                          <Property name="editorType">TextArea</Property>
+                          <Editor/>
+                        </AutoFormElement>
+                        <AutoFormElement>
+                          <Property name="name">armRemark</Property>
+                          <Property name="property">armRemark</Property>
+                          <Property name="editorType">TextArea</Property>
+                          <Editor/>
+                        </AutoFormElement>
+                        <AutoFormElement>
+                          <Property name="name">id</Property>
+                          <Property name="property">id</Property>
+                          <Property name="ignored">true</Property>
+                          <Editor/>
+                        </AutoFormElement>
+                      </AutoForm>
+                    </Children>
+                  </FieldSet>
+                </ControlTab>
+                <ControlTab id="tabControlInfo4">
+                  <Property name="visible">false</Property>
+                  <Property name="caption">电极帽零件</Property>
+                  <FieldSet>
+                    <Buttons>
+                      <Button id="buttonOpenDrawing4">
+                        <Property name="width">100</Property>
+                        <Property name="caption">二维图预览</Property>
+                      </Button>
+                      <Button id="buttonDownloadFile4">
+                        <Property name="width">100</Property>
+                        <Property name="caption">下载三维数模</Property>
+                      </Button>
+                    </Buttons>
+                    <Children>
+                      <AutoForm id="autoformTurretComOrPartInfo4">
+                        <Property name="dataSet">dsHolder</Property>
+                        <Property name="cols">*,*</Property>
+                        <Property name="labelWidth">150</Property>
+                        <Property name="labelAlign">center</Property>
+                        <AutoFormElement>
+                          <Property name="name">shankDrawingno</Property>
+                          <Property name="property">shankDrawingno</Property>
+                          <Editor/>
+                        </AutoFormElement>
+                        <AutoFormElement>
+                          <Property name="name">shankCode</Property>
+                          <Property name="property">shankCode</Property>
+                          <Property name="readOnly">true</Property>
+                          <Editor/>
+                        </AutoFormElement>
+                        <AutoFormElement>
+                          <Property name="name">shankMaterial</Property>
+                          <Property name="property">shankMaterial</Property>
+                          <Editor/>
+                        </AutoFormElement>
+                        <AutoFormElement>
+                          <Property name="name">shankTaper</Property>
+                          <Property name="property">shankTaper</Property>
+                          <Editor/>
+                        </AutoFormElement>
+                        <AutoFormElement>
+                          <Property name="name">shankType</Property>
+                          <Property name="property">shankType</Property>
+                          <Editor/>
+                        </AutoFormElement>
+                        <AutoFormElement>
+                          <Property name="name">shankDiameter</Property>
+                          <Property name="property">shankDiameter</Property>
+                          <Editor/>
+                        </AutoFormElement>
+                        <AutoFormElement>
+                          <Property name="name">shankAngel1</Property>
+                          <Property name="property">shankAngel1</Property>
+                          <Property name="trigger">trigger1,trigger2</Property>
+                          <Editor/>
+                        </AutoFormElement>
+                        <AutoFormElement>
+                          <Property name="name">shankRadius1</Property>
+                          <Property name="property">shankRadius1</Property>
+                          <Editor/>
+                        </AutoFormElement>
+                        <AutoFormElement>
+                          <Property name="name">shankLengthS1</Property>
+                          <Property name="property">shankLengthS1</Property>
+                          <Editor/>
+                        </AutoFormElement>
+                        <AutoFormElement>
+                          <Property name="name">shankAngel2</Property>
+                          <Property name="property">shankAngel2</Property>
+                          <Property name="trigger">trigger1,trigger2</Property>
+                          <Editor/>
+                        </AutoFormElement>
+                        <AutoFormElement>
+                          <Property name="name">shankRadius2</Property>
+                          <Property name="property">shankRadius2</Property>
+                          <Editor/>
+                        </AutoFormElement>
+                        <AutoFormElement>
+                          <Property name="name">shankLengthS2</Property>
+                          <Property name="property">shankLengthS2</Property>
+                          <Editor/>
+                        </AutoFormElement>
+                        <AutoFormElement>
+                          <Property name="name">shankAngel3</Property>
+                          <Property name="property">shankAngel3</Property>
+                          <Property name="trigger">trigger1,trigger2</Property>
+                          <Editor/>
+                        </AutoFormElement>
+                        <AutoFormElement>
+                          <Property name="name">shankRadius3</Property>
+                          <Property name="property">shankRadius3</Property>
+                          <Editor/>
+                        </AutoFormElement>
+                        <AutoFormElement>
+                          <Property name="name">shankLengthS3</Property>
+                          <Property name="property">shankLengthS3</Property>
+                          <Editor/>
+                        </AutoFormElement>
+                        <AutoFormElement>
+                          <Property name="name">shankStandard</Property>
+                          <Property name="property">shankStandard</Property>
+                          <Editor/>
+                        </AutoFormElement>
+                        <AutoFormElement>
+                          <Property name="name">shankUsestate</Property>
+                          <Property name="property">shankUsestate</Property>
+                          <Editor/>
+                        </AutoFormElement>
+                        <AutoFormElement>
+                          <Property name="name">shankDesigner</Property>
+                          <Property name="property">shankDesigner</Property>
+                          <Editor/>
+                        </AutoFormElement>
+                        <AutoFormElement>
+                          <Property name="name">shankDesigndate</Property>
+                          <Property name="property">shankDesigndate</Property>
+                          <Editor/>
+                        </AutoFormElement>
+                        <AutoFormElement>
+                          <Property name="name">attachedPage</Property>
+                          <Property name="property">attachedPage</Property>
+                          <Editor/>
+                        </AutoFormElement>
+                        <AutoFormElement>
+                          <Property name="name">shankCustomer</Property>
+                          <Property name="property">shankCustomer</Property>
+                          <Editor/>
+                        </AutoFormElement>
+                        <AutoFormElement>
+                          <Property name="name">armTechchange</Property>
+                          <Property name="property">armTechchange</Property>
+                          <Property name="editorType">TextArea</Property>
+                          <Editor/>
+                        </AutoFormElement>
+                        <AutoFormElement>
+                          <Property name="name">shankRemark</Property>
+                          <Property name="property">shankRemark</Property>
+                          <Property name="editorType">TextArea</Property>
+                          <Editor/>
+                        </AutoFormElement>
+                        <AutoFormElement>
+                          <Property name="name">id</Property>
+                          <Property name="property">id</Property>
+                          <Property name="ignored">true</Property>
+                          <Editor/>
+                        </AutoFormElement>
+                      </AutoForm>
+                    </Children>
+                  </FieldSet>
+                </ControlTab>
+              </TabControl>
+            </Container>
+          </MainControl>
+          <SideControl>
+            <Tree id="treeCompInfo"/>
+          </SideControl>
+        </SplitPanel>
+      </Children>
+      <Tools/>
+    </Dialog>
+    <Menu id="menuContextDataGrid">
+      <MenuItem id="menuItemDetail">
+        <Property name="caption">更多信息...</Property>
+        <Property name="icon"> url(>skin>common/icons.gif) -220px -60px</Property>
+      </MenuItem>
+      <MenuItem id="menuItemOpen2DDrawing">
+        <Property name="caption">二维图预览</Property>
+        <Property name="icon"> url(>skin>common/icons.gif) -300px -20px</Property>
+      </MenuItem>
+      <MenuItem id="menuItemDownLoad3DFile">
+        <Property name="icon"> url(>skin>common/icons.gif) -140px -280px</Property>
+        <Property name="caption">下载三维数模</Property>
+      </MenuItem>
+      <MenuItem id="menuItemOpenComp">
+        <Property name="caption">部件信息</Property>
+        <Property name="icon"> url(>skin>common/icons.gif) -180px -40px</Property>
+      </MenuItem>
+      <MenuItem id="menuItemDownZip">
+        <Property name="icon"> url(>skin>common/icons.gif) -140px -280px</Property>
+        <Property name="caption">打包下载</Property>
+      </MenuItem>
+    </Menu>
+    <Dialog id="dialogEditTurret">
+      <Property name="caption">详情</Property>
+      <Property name="width">450</Property>
+      <Property name="height">90%</Property>
+      <Buttons>
+        <Button id="buttonSave1">
+          <Property name="caption">保存</Property>
+          <Property name="width">80</Property>
+        </Button>
+        <Button id="buttonCancel1">
+          <Property name="caption">取消</Property>
+          <Property name="width">80</Property>
+        </Button>
+      </Buttons>
+      <Children>
+        <AutoForm id="autoformAdd">
+          <Property name="labelAlign">center</Property>
+          <Property name="dataSet">dsTurret</Property>
+          <Property name="cols">*</Property>
+          <Property name="labelWidth">180</Property>
+          <AutoFormElement>
+            <Property name="name">gunType</Property>
+            <Property name="property">gunType</Property>
+            <Property name="style">
+              <Property name="color">red</Property>
+            </Property>
+            <Property name="trigger">listDropDownTurretType</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">gunDrawingno</Property>
+            <Property name="property">gunDrawingno</Property>
+            <Property name="style">
+              <Property name="color">red</Property>
+            </Property>
+            <Editor/>
+          </AutoFormElement>
+          <GroupBox>
+            <Buttons/>
+            <Children/>
+          </GroupBox>
+          <AutoFormElement>
+            <Property name="name">gunbodyDrawingno</Property>
+            <Property name="property">gunbodyDrawingno</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">armAssemblynoF</Property>
+            <Property name="property">armAssemblynoF</Property>
+            <Property name="trigger">listDropDownCompDrawing</Property>
+            <Property name="editable">true</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">armAssemblynoM</Property>
+            <Property name="property">armAssemblynoM</Property>
+            <Property name="trigger">listDropDownCompDrawing</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">capDrawingnoF</Property>
+            <Property name="property">capDrawingnoF</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">capDrawingnoM</Property>
+            <Property name="property">capDrawingnoM</Property>
+            <Editor/>
+          </AutoFormElement>
+          <GroupBox>
+            <Buttons/>
+            <Children/>
+          </GroupBox>
+          <AutoFormElement>
+            <Property name="name">stroke</Property>
+            <Property name="property">stroke</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">armassemblyLength</Property>
+            <Property name="property">armassemblyLength</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">armassemblyWidth</Property>
+            <Property name="property">armassemblyWidth</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">armassemblyWidth2</Property>
+            <Property name="property">armassemblyWidth2</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">force</Property>
+            <Property name="property">force</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">capAngel</Property>
+            <Property name="property">capAngel</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">flange</Property>
+            <Property name="property">flange</Property>
+            <Editor/>
+          </AutoFormElement>
+          <GroupBox>
+            <Buttons/>
+            <Children/>
+          </GroupBox>
+          <AutoFormElement>
+            <Property name="name">gunTechchange</Property>
+            <Property name="property">gunTechchange</Property>
+            <Property name="editorType">TextArea</Property>
+            <Editor/>
+          </AutoFormElement>
+          <GroupBox>
+            <Buttons>
+              <Button id="buttonUploadDrawing">
+                <Property name="caption">上传三维数模</Property>
+                <Property name="width">150</Property>
+                <Property name="style">
+                  <Property name="color">blue</Property>
+                </Property>
+                <Property name="action">uploadDrawing</Property>
+                <Property name="disabled">false</Property>
+              </Button>
+              <Button id="buttonUpload2DDrawing">
+                <Property name="width">150</Property>
+                <Property name="style">
+                  <Property name="color">blue</Property>
+                </Property>
+                <Property name="action">upload2DDrawing</Property>
+                <Property name="caption">上传二维图纸</Property>
+              </Button>
+            </Buttons>
+            <Children>
+              <Label id="uploadFileTipLabel">
+                <Property name="style">
+                  <Property name="color">red</Property>
+                  <Property name="font-size">20px</Property>
+                </Property>
+                <Property name="text">提示:修改模式下上传文件将覆盖原始相关文件!</Property>
+                <Property name="ignored">false</Property>
+                <Property name="visible">false</Property>
+              </Label>
+            </Children>
+          </GroupBox>
+        </AutoForm>
+      </Children>
+      <Tools/>
+    </Dialog>
+    <Dialog id="dialogInfo">
+      <Property name="caption">详情</Property>
+      <Property name="width">450</Property>
+      <Buttons>
+        <Button id="buttonCancel2">
+          <Property name="caption">关闭</Property>
+          <Property name="width">100</Property>
+          <Property name="icon"> url(>skin>common/icons.gif) -40px -0px</Property>
+        </Button>
+      </Buttons>
+      <Children>
+        <AutoForm id="autoTurretInfo">
+          <Property name="labelWidth">180</Property>
+          <Property name="labelAlign">center</Property>
+          <Property name="dataSet">dsTurret</Property>
+          <Property name="cols">*</Property>
+          <AutoFormElement>
+            <Property name="name">gunType</Property>
+            <Property name="property">gunType</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">gunDrawingno</Property>
+            <Property name="property">gunDrawingno</Property>
+            <Editor/>
+          </AutoFormElement>
+          <GroupBox>
+            <Buttons/>
+            <Children/>
+          </GroupBox>
+          <AutoFormElement>
+            <Property name="name">gunbodyDrawingno</Property>
+            <Property name="property">gunbodyDrawingno</Property>
+            <Property name="style">
+              <Property name="color">red</Property>
+            </Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">armAssemblynoF</Property>
+            <Property name="property">armAssemblynoF</Property>
+            <Property name="style">
+              <Property name="color">red</Property>
+            </Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">armAssemblynoM</Property>
+            <Property name="property">armAssemblynoM</Property>
+            <Property name="style">
+              <Property name="color">red</Property>
+            </Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">capDrawingnoF</Property>
+            <Property name="property">capDrawingnoF</Property>
+            <Property name="style">
+              <Property name="color">red</Property>
+            </Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">capDrawingnoM</Property>
+            <Property name="property">capDrawingnoM</Property>
+            <Property name="style">
+              <Property name="color">red</Property>
+            </Property>
+            <Editor/>
+          </AutoFormElement>
+          <GroupBox>
+            <Buttons/>
+            <Children/>
+          </GroupBox>
+          <AutoFormElement>
+            <Property name="name">stroke</Property>
+            <Property name="property">stroke</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">armassemblyLength</Property>
+            <Property name="property">armassemblyLength</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">armassemblyWidth</Property>
+            <Property name="property">armassemblyWidth</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">armassemblyWidth2</Property>
+            <Property name="property">armassemblyWidth2</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">force</Property>
+            <Property name="property">force</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">capAngel</Property>
+            <Property name="property">capAngel</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">flange</Property>
+            <Property name="property">flange</Property>
+            <Editor/>
+          </AutoFormElement>
+          <GroupBox>
+            <Buttons/>
+            <Children/>
+          </GroupBox>
+          <AutoFormElement>
+            <Property name="name">gunTechchange</Property>
+            <Property name="property">gunTechchange</Property>
+            <Editor/>
+          </AutoFormElement>
+        </AutoForm>
+      </Children>
+      <Tools/>
+    </Dialog>
+    <UpdateAction id="updateactionSave">
+      <Property name="executingMessage">正在保存</Property>
+      <Property name="successMessage">保存成功</Property>
+      <Property name="hotkey">ctrl+s</Property>
+      <Property name="dataResolver">turretServiceImp#saveAll</Property>
+      <UpdateItem>
+        <Property name="dataSet">dsTurret</Property>
+      </UpdateItem>
+    </UpdateAction>
+    <UpdateAction id="updateActionSaveComp">
+      <Property name="dataResolver">turretComponentServiceImp#saveAll</Property>
+      <Property name="successMessage">保存成功</Property>
+      <Property name="executingMessage">正在保存</Property>
+      <UpdateItem>
+        <Property name="dataSet">dsTurretComp</Property>
+      </UpdateItem>
+    </UpdateAction>
+    <AjaxAction id="ajaxActionJudgeStringIsSatisfied">
+      <Property name="service">turretServiceImp#isNewAddedTurretSatisfied</Property>
+    </AjaxAction>
+    <AjaxAction id="ajaxActionDeleteRelatedFiles">
+      <Property name="service">turretServiceImp#deleteRelatedFilesByID</Property>
+      <Property name="tags">删除焊钳相关图纸文件</Property>
+    </AjaxAction>
+    <AjaxAction id="ajaxActionLoadAllDrawingnos">
+      <Property name="service">turretComponentServiceImp#getAllTurretCompDrawingnos</Property>
+    </AjaxAction>
+    <DownloadAction id="downloadDrawing">
+      <Property name="fileProvider">nimakDownloadService#downloadFile</Property>
+      <Property name="tags">下载钳臂产品</Property>
+      <Property name="target">frame</Property>
+    </DownloadAction>
+    <UploadAction id="uploadDrawing">
+      <Property name="fileResolver">nimakUploadServiceImp#uploadTurretFile</Property>
+      <Filters>
+        <Filter>
+          <Property name="title">上传三维数模</Property>
+          <Property name="extensions">CATPart,CATProduct</Property>
+        </Filter>
+      </Filters>
+    </UploadAction>
+    <UploadAction id="upload2DDrawing">
+      <Property name="fileResolver">nimakUploadServiceImp#uploadTurretFile</Property>
+      <Filters>
+        <Filter>
+          <Property name="title">上传二维图纸</Property>
+          <Property name="extensions">jpg,png</Property>
+        </Filter>
+      </Filters>
+    </UploadAction>
+    <ListDropDown id="listDropDownTurretType">
+      <Property name="items">C,X</Property>
+    </ListDropDown>
+    <ListDropDown id="listDropDownGunDrawingno"/>
+    <ListDropDown id="listDropDownStroke"/>
+    <ListDropDown id="listDropDownArmassemblyLength"/>
+    <ListDropDown id="listDropDownArmassemblyWidth"/>
+    <ListDropDown id="listDropDownArmassemblyWidth2"/>
+    <ListDropDown id="listDropDownForce"/>
+    <ListDropDown id="listDropDownCapAngel"/>
+    <ListDropDown id="listDropDownFlange"/>
+    <ListDropDown id="listDropDownCompDrawing">
+      <Property name="dynaFilter">true</Property>
+    </ListDropDown>
+    <IFrame id="frame">
+      <Property name="name">frame</Property>
+    </IFrame>
+    <DownloadAction id="downloadDrawingZip">
+      <Property name="fileProvider">nimakDownloadService#downloadFileTurretZip</Property>
+      <Property name="tags">打包下载钳臂产品</Property>
+      <Property name="target">frame</Property>
+    </DownloadAction>
+  </View>
+</ViewConfig>

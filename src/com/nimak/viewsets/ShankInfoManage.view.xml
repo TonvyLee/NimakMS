@@ -1,0 +1,1164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ViewConfig>
+  <Arguments/>
+  <Context/>
+  <Model>
+    <DataType name="dataTypeHolder" parent="dataTypeElectrodeholder">
+      <PropertyDef name="shankDrawingno">
+        <Property></Property>
+        <Property name="label">握杆图号</Property>
+        <Validator name="validator1" type="required">
+          <Property name="runAt">client</Property>
+          <Property name="revalidateOldValue">true</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="shankMaterial">
+        <Property></Property>
+        <Property name="label">电极握杆材料</Property>
+        <Validator name="validator1" type="required"/>
+      </PropertyDef>
+      <PropertyDef name="shankTaper">
+        <Property></Property>
+        <Property name="label">电极帽座锥度</Property>
+        <Validator name="validator1" type="required"/>
+      </PropertyDef>
+      <PropertyDef name="shankType">
+        <Property></Property>
+        <Property name="label">握杆装配形式</Property>
+        <Validator name="validator1" type="required"/>
+      </PropertyDef>
+      <PropertyDef name="shankDiameter">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">电极握杆直径</Property>
+        <Validator name="validator1" type="required"/>
+      </PropertyDef>
+      <PropertyDef name="shankAngel1">
+        <Property name="label">第一偏转角度</Property>
+        <Validator name="validator1" type="regExp">
+          <Property name="whiteRegExp">/^[0-9]+([.]{1}[0-9]+){0,1}(\[[\u2E80-\u9FFF]+\]){1}$/</Property>
+          <Property name="resultMessage">输入格式有误！[0,无,输入角度后选择偏移生成方式]</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="shankRadius1">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">第一折弯半径</Property>
+        <Validator name="validator2" type="regExp">
+          <Property name="whiteRegExp">([1-9]\d*(\.\d*[1-9])?)|(0\.\d*[1-9])</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="shankLengthS1">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">第一直段长度</Property>
+        <Validator name="validator2" type="regExp">
+          <Property name="whiteRegExp">([1-9]\d*(\.\d*[1-9])?)|(0\.\d*[1-9])</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="shankAngel2">
+        <Property name="label">第二偏转角度</Property>
+        <Validator name="validator1" type="regExp">
+          <Property name="whiteRegExp">/^[0-9]+([.]{1}[0-9]+){0,1}(\[[\u2E80-\u9FFF]+\]){1}$/</Property>
+          <Property name="resultMessage">输入格式有误！[0,无,输入角度后选择偏移生成方式]</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="shankRadius2">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">第二折弯半径</Property>
+        <Validator name="validator2" type="regExp">
+          <Property name="whiteRegExp">([1-9]\d*(\.\d*[1-9])?)|(0\.\d*[1-9])</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="shankLengthS2">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">第二直段长度</Property>
+        <Validator name="validator2" type="regExp">
+          <Property name="whiteRegExp">([1-9]\d*(\.\d*[1-9])?)|(0\.\d*[1-9])</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="shankAngel3">
+        <Property name="label">第三偏转角度</Property>
+        <Validator name="validator1" type="regExp">
+          <Property name="whiteRegExp">/^[0-9]+([.]{1}[0-9]+){0,1}(\[[\u2E80-\u9FFF]+\]){1}$/</Property>
+          <Property name="resultMessage">输入格式有误！[0,无,输入角度后选择偏移生成方式]</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="shankRadius3">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">第三折弯半径</Property>
+        <Validator name="validator2" type="regExp">
+          <Property name="whiteRegExp">([1-9]\d*(\.\d*[1-9])?)|(0\.\d*[1-9])</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="shankLengthS3">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">第三直段长度</Property>
+        <Validator name="validator2" type="regExp">
+          <Property name="whiteRegExp">([1-9]\d*(\.\d*[1-9])?)|(0\.\d*[1-9])</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="shankStandard">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">是否为标准零件</Property>
+        <Validator name="validator1" type="required"/>
+        <Validator name="validator2" type="regExp">
+          <Property name="whiteRegExp">([1-9]\d*(\.\d*[1-9])?)|(0\.\d*[1-9])</Property>
+        </Validator>
+        <Validator name="validator3" type="length">
+          <Property name="minLength">0</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="shankUsestate">
+        <Property></Property>
+        <Property name="label">使用状态</Property>
+        <Validator name="validator1" type="required"/>
+      </PropertyDef>
+      <PropertyDef name="shankDesigner">
+        <Property></Property>
+        <Property name="label">设计者</Property>
+        <Validator name="validator1" type="required"/>
+      </PropertyDef>
+      <PropertyDef name="shankDesigndate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">设计日期</Property>
+        <Validator name="validator1" type="required"/>
+      </PropertyDef>
+      <PropertyDef name="armTechchange">
+        <Property></Property>
+        <Property name="label">技术更改</Property>
+      </PropertyDef>
+      <PropertyDef name="attachedPage">
+        <Property></Property>
+        <Property name="label">工艺附属页</Property>
+      </PropertyDef>
+      <PropertyDef name="shankCustomer">
+        <Property></Property>
+        <Property name="label">客户/标准</Property>
+        <Validator name="validator1" type="required"/>
+      </PropertyDef>
+      <PropertyDef name="shankRemark">
+        <Property></Property>
+        <Property name="label">备注</Property>
+      </PropertyDef>
+      <PropertyDef name="shankCode">
+        <Property></Property>
+        <Property name="label">分类编码</Property>
+        <Property name="readOnly">false</Property>
+      </PropertyDef>
+      <PropertyDef name="id">
+        <Property></Property>
+        <Property name="label">ID</Property>
+      </PropertyDef>
+    </DataType>
+    <DataType name="dataTypeHolderQuery" parent="dataTypeElectrodeholder">
+      <PropertyDef name="shankDrawingno">
+        <Property></Property>
+        <Property name="label">握杆图号</Property>
+      </PropertyDef>
+      <PropertyDef name="shankMaterial">
+        <Property></Property>
+        <Property name="label">电极握杆材料</Property>
+      </PropertyDef>
+      <PropertyDef name="shankTaper">
+        <Property></Property>
+        <Property name="label">电极帽座锥度</Property>
+      </PropertyDef>
+      <PropertyDef name="shankType">
+        <Property></Property>
+        <Property name="label">握杆装配形式</Property>
+      </PropertyDef>
+      <PropertyDef name="shankDiameter">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">电极握杆直径</Property>
+      </PropertyDef>
+      <PropertyDef name="shankAngel1">
+        <Property name="label">第一偏转角度</Property>
+      </PropertyDef>
+      <PropertyDef name="shankRadius1">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">第一折弯半径</Property>
+      </PropertyDef>
+      <PropertyDef name="shankLengthS1">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">第一直段长度</Property>
+      </PropertyDef>
+      <PropertyDef name="shankAngel2">
+        <Property name="label">第二偏转角度</Property>
+      </PropertyDef>
+      <PropertyDef name="shankRadius2">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">第二折弯半径</Property>
+      </PropertyDef>
+      <PropertyDef name="shankLengthS2">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">第二直段长度</Property>
+      </PropertyDef>
+      <PropertyDef name="shankAngel3">
+        <Property name="label">第三偏转角度</Property>
+      </PropertyDef>
+      <PropertyDef name="shankRadius3">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">第三折弯半径</Property>
+      </PropertyDef>
+      <PropertyDef name="shankLengthS3">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">第三直段长度</Property>
+      </PropertyDef>
+      <PropertyDef name="shankStandard">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">是否为标准零件</Property>
+      </PropertyDef>
+      <PropertyDef name="shankUsestate">
+        <Property></Property>
+        <Property name="label">使用状态</Property>
+      </PropertyDef>
+      <PropertyDef name="shankDesigner">
+        <Property></Property>
+        <Property name="label">设计者</Property>
+      </PropertyDef>
+      <PropertyDef name="shankDesigndate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">设计日期</Property>
+      </PropertyDef>
+      <PropertyDef name="armTechchange">
+        <Property></Property>
+        <Property name="label">技术更改</Property>
+      </PropertyDef>
+      <PropertyDef name="attachedPage">
+        <Property></Property>
+        <Property name="label">工艺附属页</Property>
+      </PropertyDef>
+      <PropertyDef name="shankCustomer">
+        <Property></Property>
+        <Property name="label">客户/标准</Property>
+      </PropertyDef>
+      <PropertyDef name="shankRemark">
+        <Property></Property>
+        <Property name="label">备注</Property>
+      </PropertyDef>
+      <PropertyDef name="shankCode">
+        <Property></Property>
+        <Property name="label">分类编码</Property>
+      </PropertyDef>
+      <PropertyDef name="id">
+        <Property></Property>
+        <Property name="label">ID</Property>
+      </PropertyDef>
+    </DataType>
+  </Model>
+  <View id="view" layout="vbox">
+    <ClientEvent name="onCreate">dorado.useObjectShim = true;</ClientEvent>
+    <Property name="styleSheetFile">/css/shankInfoManageCommon.css</Property>
+    <DataSet id="dsHolder">
+      <Property name="dataType">[dataTypeHolder]</Property>
+      <Property name="dataProvider">electrodeHolderServiceImp#queryForCondition</Property>
+      <Property name="pageSize">7</Property>
+    </DataSet>
+    <DataSet id="dataSet1">
+      <Property name="dataType">[dataTypeHolderQuery]</Property>
+    </DataSet>
+    <Container layout="form">
+      <Property name="style">
+        <Property name="background-color">#AB82FF</Property>
+        <Property name="key1"></Property>
+        <Property name="key2"></Property>
+      </Property>
+      <Property name="height">5%</Property>
+      <Property name="ignored">true</Property>
+      <Label layoutConstraint="type:center;align:center;vAlign:center;colSpan:2">
+        <Property name="style">
+          <Property name="font-size">26px</Property>
+          <Property name="font-style"></Property>
+          <Property name="font-weight">bold</Property>
+        </Property>
+        <Property name="text">电极握杆组件/零件信息录入及选型</Property>
+      </Label>
+    </Container>
+    <Container layout="vbox">
+      <Property name="height">100%</Property>
+      <FieldSet layoutConstraint="padding:5">
+        <Property name="caption">查询信息输入</Property>
+        <Property name="className">FieldsetQuery</Property>
+        <Property name="style">
+          <Property name="font-size">16px</Property>
+          <Property name="key1"></Property>
+        </Property>
+        <Buttons>
+          <Button id="ButtonQuery" layoutConstraint="bottom padding:50">
+            <Property name="caption">查询</Property>
+            <Property name="tip">点击或回车进行查询</Property>
+            <Property name="width">100</Property>
+          </Button>
+          <Button id="buttonReset">
+            <Property name="caption">重置</Property>
+            <Property name="width">100</Property>
+          </Button>
+        </Buttons>
+        <Children>
+          <AutoForm id="autoformCondition">
+            <Property name="createPrivateDataSet">true</Property>
+            <Property name="cols">*,*,*</Property>
+            <Property name="labelSeparator">:</Property>
+            <Property name="labelWidth">160</Property>
+            <Property name="labelAlign">left</Property>
+            <Property name="readOnly">false</Property>
+            <Property name="dataSet">dataSet1</Property>
+            <AutoFormElement id="shankDrawingnoForm">
+              <Property name="name">shankDrawingno</Property>
+              <Property name="property">shankDrawingno</Property>
+              <Property name="label">电极握杆图号</Property>
+              <Editor/>
+            </AutoFormElement>
+            <AutoFormElement id="shankCodeForm">
+              <Property name="name">shankCode</Property>
+              <Property name="property">shankCode</Property>
+              <Property name="label">分类编码</Property>
+              <Editor/>
+            </AutoFormElement>
+            <AutoFormElement id="shankMaterialForm">
+              <Property name="name">shankMaterial</Property>
+              <Property name="property">shankMaterial</Property>
+              <Property name="label">电极握杆材料</Property>
+              <Editor/>
+            </AutoFormElement>
+            <AutoFormElement id="shankTaperForm">
+              <Property name="name">shankTaper</Property>
+              <Property name="property">shankTaper</Property>
+              <Property name="label">电极握杆锥度</Property>
+              <Property name="trigger">listDropDownShankTaperValue</Property>
+              <Editor/>
+            </AutoFormElement>
+            <AutoFormElement id="shankTypeForm">
+              <Property name="name">shankType</Property>
+              <Property name="property">shankType</Property>
+              <Property name="label">握杆装配形式</Property>
+              <Property name="trigger">listDropDownShankTypeValue</Property>
+              <Editor/>
+            </AutoFormElement>
+            <AutoFormElement id="shankDesignerForm">
+              <Property name="name">shankDesigner</Property>
+              <Property name="property">shankDesigner</Property>
+              <Property name="label">设计者</Property>
+              <Editor/>
+            </AutoFormElement>
+            <AutoFormElement id="shankAngel1Form">
+              <Property name="name">shankAngel1</Property>
+              <Property name="property">shankAngel1</Property>
+              <Property name="label">第一偏转角度</Property>
+              <Property name="trigger">trigger1,trigger2</Property>
+              <Editor/>
+            </AutoFormElement>
+            <AutoFormElement id="shankAngel2Form">
+              <Property name="name">shankAngel2</Property>
+              <Property name="property">shankAngel2</Property>
+              <Property name="label">第二偏转角度</Property>
+              <Property name="trigger">trigger1,trigger2</Property>
+              <Editor/>
+            </AutoFormElement>
+            <AutoFormElement id="shankAngel3Form">
+              <Property name="name">shankAngel3</Property>
+              <Property name="property">shankAngel3</Property>
+              <Property name="label">第三偏转角度</Property>
+              <Property name="trigger">trigger1,trigger2,</Property>
+              <Editor/>
+            </AutoFormElement>
+            <AutoFormElement id="shankDesigndateForm">
+              <Property name="name">shankDesigndate</Property>
+              <Property name="property">shankDesigndate</Property>
+              <Property name="label">设计日期</Property>
+              <Editor/>
+            </AutoFormElement>
+            <AutoFormElement>
+              <Property name="name">id</Property>
+              <Property name="property">id</Property>
+              <Property name="visible">false</Property>
+              <Property name="ignored">true</Property>
+              <Editor/>
+            </AutoFormElement>
+          </AutoForm>
+        </Children>
+      </FieldSet>
+      <ToolBar>
+        <ToolBarButton id="buttonQuery">
+          <Property name="caption">查询</Property>
+          <Property name="icon"> url(>skin>common/icons.gif) -40px -100px</Property>
+        </ToolBarButton>
+        <DataPilot id="datapilotHello">
+          <Property name="dataSet">dsHolder</Property>
+          <Property name="itemCodes">pages,pageSize</Property>
+        </DataPilot>
+        <ToolBarButton id="buttonModify">
+          <Property name="caption">修改</Property>
+          <Property name="icon"> url(>skin>common/icons.gif) -200px -0px</Property>
+          <Property name="tip">点击编辑可以对表格内容进行编辑！</Property>
+          <Property name="tags">EditButton</Property>
+        </ToolBarButton>
+        <ToolBarButton id="buttonDelete">
+          <Property name="caption">删除并保存</Property>
+          <Property name="icon"> url(>skin>common/icons.gif) -140px -0px</Property>
+          <Property name="tags">EditButton</Property>
+        </ToolBarButton>
+        <ToolBarButton id="buttonAdd">
+          <Property name="caption">添加</Property>
+          <Property name="icon">url(>skin>common/icons.gif) -120px -0px</Property>
+          <Property name="tags">EditButton</Property>
+          <Property name="ignored">false</Property>
+        </ToolBarButton>
+      </ToolBar>
+      <DataGrid id="datagridShank">
+        <Property name="dataSet">dsHolder</Property>
+        <Property name="readOnly">true</Property>
+        <Property name="showFilterBar">true</Property>
+        <Property name="tip">鼠标右键可以获取快捷操作....</Property>
+        <Property name="sortMode">clientSide</Property>
+        <Property name="filterMode">serverSide</Property>
+        <Property name="headerRowHeight">50</Property>
+        <Property name="height">40%</Property>
+        <DataColumn id="operation">
+          <Property name="align">center</Property>
+          <Property name="caption">二维图预览</Property>
+          <Property name="name">operation</Property>
+          <Property name="readOnly">true</Property>
+          <Editor/>
+        </DataColumn>
+        <DataColumn id="shankDrawinno" name="shankDrawingno">
+          <Property name="property">shankDrawingno</Property>
+          <Property name="align">center</Property>
+        </DataColumn>
+        <DataColumn name="shankMaterial">
+          <Property name="property">shankMaterial</Property>
+          <Property name="align">center</Property>
+        </DataColumn>
+        <DataColumn name="shankTaper">
+          <Property name="property">shankTaper</Property>
+          <Property name="align">center</Property>
+        </DataColumn>
+        <DataColumn name="shankType">
+          <Property name="property">shankType</Property>
+          <Property name="align">center</Property>
+        </DataColumn>
+        <DataColumn name="shankDiameter">
+          <Property name="property">shankDiameter</Property>
+          <Property name="align">center</Property>
+        </DataColumn>
+        <DataColumn name="shankStandard">
+          <Property name="property">shankStandard</Property>
+          <Property name="align">center</Property>
+        </DataColumn>
+        <DataColumn name="shankUsestate">
+          <Property name="property">shankUsestate</Property>
+          <Property name="align">center</Property>
+        </DataColumn>
+        <DataColumn name="shankDesigner">
+          <Property name="property">shankDesigner</Property>
+          <Property name="align">center</Property>
+        </DataColumn>
+        <DataColumn name="shankCustomer">
+          <Property name="property">shankCustomer</Property>
+          <Property name="align">center</Property>
+        </DataColumn>
+        <DataColumn name="shankDesigndate">
+          <Property name="property">shankDesigndate</Property>
+          <Property name="align">center</Property>
+        </DataColumn>
+        <DataColumn name="armTechchange">
+          <Property name="property">armTechchange</Property>
+          <Property name="align">center</Property>
+        </DataColumn>
+        <DataColumn name="shankRemark">
+          <Property name="property">shankRemark</Property>
+          <Property name="align">center</Property>
+        </DataColumn>
+        <DataColumn name="shankCode">
+          <Property name="property">shankCode</Property>
+          <Property name="align">center</Property>
+        </DataColumn>
+        <DataColumn name="id">
+          <Property name="property">id</Property>
+          <Property name="visible">false</Property>
+        </DataColumn>
+      </DataGrid>
+      <Container>
+        <ToolBar>
+          <Property name="className">toolbardown</Property>
+          <DataPilot id="datapilotHello1">
+            <Property name="dataSet">dsHolder</Property>
+            <Property name="itemCodes">|&lt;,&lt;,>,>|,,x,|</Property>
+          </DataPilot>
+          <SimpleIconButton id="simpleButtonFirstRecord">
+            <Property name="icon"> url(>skin>common/icons.gif) -0px -220px</Property>
+            <Property name="tip">首条记录</Property>
+            <Property name="tags">SimpleButtonRecord</Property>
+            <Property name="ignored">true</Property>
+          </SimpleIconButton>
+          <SimpleIconButton id="simpleButtonPreviousRecord">
+            <Property name="icon"> url(>skin>common/icons.gif) -160px -280px</Property>
+            <Property name="tip">上一条</Property>
+            <Property name="tags">SimpleButtonRecord</Property>
+            <Property name="ignored">true</Property>
+          </SimpleIconButton>
+          <SimpleIconButton id="simpleButtonNextRecord">
+            <Property name="icon"> url(>skin>common/icons.gif) -180px -280px</Property>
+            <Property name="tip">下一条</Property>
+            <Property name="tags">SimpleButtonRecord</Property>
+            <Property name="ignored">true</Property>
+          </SimpleIconButton>
+          <SimpleIconButton id="simpleButtonLastRecord">
+            <Property name="icon"> url(>skin>common/icons.gif) -100px -220px</Property>
+            <Property name="tip">最后一条记录</Property>
+            <Property name="tags">SimpleButtonRecord</Property>
+            <Property name="ignored">true</Property>
+          </SimpleIconButton>
+          <Button id="buttonEditInToolbar">
+            <Property name="caption">启用/禁用编辑</Property>
+            <Property name="icon"> url(>skin>common/icons.gif) -200px -0px</Property>
+          </Button>
+          <Button id="buttonAddInToolbar">
+            <Property name="caption">新增</Property>
+            <Property name="icon">url(>skin>common/icons.gif) -120px -0px</Property>
+          </Button>
+        </ToolBar>
+        <FieldSet>
+          <Property name="caption">基本属性信息</Property>
+          <Buttons>
+            <Button id="saveAllAttrInfo">
+              <Property name="caption">全部属性信息...</Property>
+              <Property name="width">150</Property>
+              <Property name="icon"> url(>skin>common/icons.gif) -220px -80px</Property>
+            </Button>
+            <Button id="buttonSaveAll">
+              <Property name="caption">保存所有</Property>
+              <Property name="width">150</Property>
+              <Property name="icon"> url(>skin>common/icons.gif) -140px -20px</Property>
+              <Property name="disabled">true</Property>
+            </Button>
+          </Buttons>
+          <Children>
+            <AutoForm id="autoFormBasicAttr">
+              <Property name="dataSet">dsHolder</Property>
+              <Property name="cols">*,*,*</Property>
+              <Property name="labelWidth">160</Property>
+              <Property name="labelAlign">left</Property>
+              <Property name="labelSeparator">:</Property>
+              <Property name="readOnly">true</Property>
+              <AutoFormElement>
+                <Property name="name">shankDrawingno</Property>
+                <Property name="property">shankDrawingno</Property>
+                <Editor/>
+              </AutoFormElement>
+              <AutoFormElement>
+                <Property name="name">shankCode</Property>
+                <Property name="property">shankCode</Property>
+                <Editor/>
+              </AutoFormElement>
+              <AutoFormElement>
+                <Property name="name">shankMaterial</Property>
+                <Property name="property">shankMaterial</Property>
+                <Editor/>
+              </AutoFormElement>
+              <AutoFormElement>
+                <Property name="name">shankTaper</Property>
+                <Property name="property">shankTaper</Property>
+                <Editor/>
+              </AutoFormElement>
+              <AutoFormElement>
+                <Property name="name">shankType</Property>
+                <Property name="property">shankType</Property>
+                <Editor/>
+              </AutoFormElement>
+              <AutoFormElement>
+                <Property name="name">shankDiameter</Property>
+                <Property name="property">shankDiameter</Property>
+                <Editor/>
+              </AutoFormElement>
+              <AutoFormElement>
+                <Property name="name">shankAngel1</Property>
+                <Property name="property">shankAngel1</Property>
+                <Property name="trigger">trigger1,trigger2</Property>
+                <Editor/>
+              </AutoFormElement>
+              <AutoFormElement>
+                <Property name="name">shankRadius1</Property>
+                <Property name="property">shankRadius1</Property>
+                <Editor/>
+              </AutoFormElement>
+              <AutoFormElement>
+                <Property name="name">shankLengthS1</Property>
+                <Property name="property">shankLengthS1</Property>
+                <Editor/>
+              </AutoFormElement>
+              <AutoFormElement>
+                <Property name="name">shankAngel2</Property>
+                <Property name="property">shankAngel2</Property>
+                <Property name="trigger">trigger1,trigger2</Property>
+                <Editor/>
+              </AutoFormElement>
+              <AutoFormElement>
+                <Property name="name">shankRadius2</Property>
+                <Property name="property">shankRadius2</Property>
+                <Editor/>
+              </AutoFormElement>
+              <AutoFormElement>
+                <Property name="name">shankLengthS2</Property>
+                <Property name="property">shankLengthS2</Property>
+                <Editor/>
+              </AutoFormElement>
+              <AutoFormElement>
+                <Property name="name">shankAngel3</Property>
+                <Property name="property">shankAngel3</Property>
+                <Property name="trigger">trigger1,trigger2</Property>
+                <Editor/>
+              </AutoFormElement>
+              <AutoFormElement>
+                <Property name="name">shankRadius3</Property>
+                <Property name="property">shankRadius3</Property>
+                <Editor/>
+              </AutoFormElement>
+              <AutoFormElement>
+                <Property name="name">shankLengthS3</Property>
+                <Property name="property">shankLengthS3</Property>
+                <Editor/>
+              </AutoFormElement>
+              <AutoFormElement>
+                <Property name="name">shankStandard</Property>
+                <Property name="property">shankStandard</Property>
+                <Property name="ignored">true</Property>
+                <Editor/>
+              </AutoFormElement>
+              <AutoFormElement>
+                <Property name="name">shankUsestate</Property>
+                <Property name="property">shankUsestate</Property>
+                <Property name="ignored">true</Property>
+                <Editor/>
+              </AutoFormElement>
+              <AutoFormElement>
+                <Property name="name">shankDesigner</Property>
+                <Property name="property">shankDesigner</Property>
+                <Editor/>
+              </AutoFormElement>
+              <AutoFormElement>
+                <Property name="name">shankDesigndate</Property>
+                <Property name="property">shankDesigndate</Property>
+                <Editor/>
+              </AutoFormElement>
+              <AutoFormElement>
+                <Property name="name">armTechchange</Property>
+                <Property name="property">armTechchange</Property>
+                <Property name="ignored">true</Property>
+                <Editor/>
+              </AutoFormElement>
+              <AutoFormElement>
+                <Property name="name">attachedPage</Property>
+                <Property name="property">attachedPage</Property>
+                <Property name="ignored">true</Property>
+                <Editor/>
+              </AutoFormElement>
+              <AutoFormElement>
+                <Property name="name">shankCustomer</Property>
+                <Property name="property">shankCustomer</Property>
+                <Property name="ignored">true</Property>
+                <Editor/>
+              </AutoFormElement>
+              <AutoFormElement>
+                <Property name="name">shankRemark</Property>
+                <Property name="property">shankRemark</Property>
+                <Property name="ignored">true</Property>
+                <Editor/>
+              </AutoFormElement>
+              <AutoFormElement>
+                <Property name="name">id</Property>
+                <Property name="property">id</Property>
+                <Property name="visible">false</Property>
+                <Editor/>
+              </AutoFormElement>
+            </AutoForm>
+          </Children>
+        </FieldSet>
+      </Container>
+    </Container>
+    <Dialog id="dialog2DDrawing">
+      <Property name="height">70%</Property>
+      <Property name="width">70%</Property>
+      <Buttons>
+        <Button id="buttonCloseDrawing">
+          <Property name="caption">关闭</Property>
+          <Property name="width">150</Property>
+          <Property name="tags">closeButton</Property>
+        </Button>
+      </Buttons>
+      <Children>
+        <GroupBox>
+          <Property name="collapseable">false</Property>
+          <Buttons/>
+          <Children>
+            <Container layout="vbox">
+              <Image id="image" layoutConstraint="align:center">
+                <Property name="width">100%</Property>
+                <Property name="height">100%</Property>
+                <Property name="stretchMode">keepRatio</Property>
+                <Property name="image">web/TurretFiles/2D/1.jpg</Property>
+              </Image>
+              <Container layout="anchor"/>
+            </Container>
+          </Children>
+        </GroupBox>
+      </Children>
+      <Tools/>
+    </Dialog>
+    <Menu id="menuContextDataGrid">
+      <MenuItem id="menuItemDetail">
+        <Property name="caption">更多信息...</Property>
+        <Property name="icon"> url(>skin>common/icons.gif) -220px -60px</Property>
+      </MenuItem>
+      <MenuItem id="menuItemDownLoad3DFile">
+        <Property name="icon"> url(>skin>common/icons.gif) -140px -280px</Property>
+        <Property name="caption">下载三维数模</Property>
+      </MenuItem>
+      <MenuItem id="menuItemOpen2DDrawing">
+        <Property name="icon"> url(>skin>common/icons.gif) -300px -20px</Property>
+        <Property name="caption">预览二维图</Property>
+      </MenuItem>
+    </Menu>
+    <Dialog id="dialogEditShank">
+      <Property name="caption">详情</Property>
+      <Property name="width">450</Property>
+      <Property name="height">90%</Property>
+      <Property name="modal">true</Property>
+      <Buttons>
+        <Button id="buttonSave1">
+          <Property name="caption">保存</Property>
+          <Property name="width">80</Property>
+        </Button>
+        <Button id="buttonCancel1">
+          <Property name="caption">取消</Property>
+          <Property name="width">80</Property>
+        </Button>
+      </Buttons>
+      <Children>
+        <AutoForm id="autoformAdd">
+          <Property name="labelAlign">center</Property>
+          <Property name="dataSet">dsHolder</Property>
+          <Property name="labelWidth">180</Property>
+          <Property name="cols">*</Property>
+          <GroupBox>
+            <Buttons/>
+            <Children/>
+          </GroupBox>
+          <AutoFormElement>
+            <Property name="name">shankDrawingno</Property>
+            <Property name="property">shankDrawingno</Property>
+            <Property name="style">
+              <Property name="color">red</Property>
+            </Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">shankCode</Property>
+            <Property name="property">shankCode</Property>
+            <Property name="style">
+              <Property name="color">red</Property>
+            </Property>
+            <Property name="readOnly">true</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">shankMaterial</Property>
+            <Property name="property">shankMaterial</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">shankTaper</Property>
+            <Property name="property">shankTaper</Property>
+            <Property name="trigger">listDropDownShankTaperValue</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">shankType</Property>
+            <Property name="property">shankType</Property>
+            <Property name="trigger">listDropDownShankTypeValue</Property>
+            <Property name="editable">false</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">shankDiameter</Property>
+            <Property name="property">shankDiameter</Property>
+            <Editor/>
+          </AutoFormElement>
+          <GroupBox>
+            <Buttons/>
+            <Children/>
+          </GroupBox>
+          <AutoFormElement>
+            <Property name="name">shankAngel1</Property>
+            <Property name="property">shankAngel1</Property>
+            <Property name="trigger">trigger1,trigger2</Property>
+            <Editor>
+              <TextEditor>
+                <Property name="blankText">无</Property>
+              </TextEditor>
+            </Editor>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">shankRadius1</Property>
+            <Property name="property">shankRadius1</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">shankLengthS1</Property>
+            <Property name="property">shankLengthS1</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">shankAngel2</Property>
+            <Property name="property">shankAngel2</Property>
+            <Property name="trigger">trigger1,trigger2</Property>
+            <Editor>
+              <TextEditor>
+                <Property name="blankText">无</Property>
+              </TextEditor>
+            </Editor>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">shankRadius2</Property>
+            <Property name="property">shankRadius2</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">shankLengthS2</Property>
+            <Property name="property">shankLengthS2</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">shankAngel3</Property>
+            <Property name="property">shankAngel3</Property>
+            <Property name="trigger">trigger1,trigger2</Property>
+            <Editor>
+              <TextEditor>
+                <Property name="blankText">无</Property>
+              </TextEditor>
+            </Editor>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">shankRadius3</Property>
+            <Property name="property">shankRadius3</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">shankLengthS3</Property>
+            <Property name="property">shankLengthS3</Property>
+            <Editor/>
+          </AutoFormElement>
+          <GroupBox>
+            <Buttons/>
+            <Children/>
+          </GroupBox>
+          <AutoFormElement>
+            <Property name="name">shankStandard</Property>
+            <Property name="property">shankStandard</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">shankUsestate</Property>
+            <Property name="property">shankUsestate</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">shankDesigner</Property>
+            <Property name="property">shankDesigner</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">shankDesigndate</Property>
+            <Property name="property">shankDesigndate</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">attachedPage</Property>
+            <Property name="property">attachedPage</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">shankCustomer</Property>
+            <Property name="property">shankCustomer</Property>
+            <Editor/>
+          </AutoFormElement>
+          <GroupBox>
+            <Buttons>
+              <Button id="buttonUploadDrawing">
+                <Property name="caption">上传三维数模</Property>
+                <Property name="width">150</Property>
+                <Property name="style">
+                  <Property name="color">blue</Property>
+                </Property>
+                <Property name="action">uploadDrawing</Property>
+              </Button>
+              <Button id="buttonUpload2DDrawing">
+                <Property name="width">150</Property>
+                <Property name="style">
+                  <Property name="color">blue</Property>
+                </Property>
+                <Property name="action">upload2DDrawing</Property>
+                <Property name="caption">上传二维图纸</Property>
+              </Button>
+            </Buttons>
+            <Children>
+              <Label id="uploadFileTipLabel">
+                <Property name="style">
+                  <Property name="color">red</Property>
+                  <Property name="font-size">20px</Property>
+                </Property>
+                <Property name="text">提示:修改模式下上传文件将覆盖原始相关文件!</Property>
+                <Property name="ignored">false</Property>
+                <Property name="visible">false</Property>
+              </Label>
+            </Children>
+          </GroupBox>
+          <GroupBox>
+            <Buttons/>
+            <Children/>
+          </GroupBox>
+          <AutoFormElement>
+            <Property name="name">armTechchange</Property>
+            <Property name="property">armTechchange</Property>
+            <Property name="editorType">TextArea</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">shankRemark</Property>
+            <Property name="property">shankRemark</Property>
+            <Property name="editorType">TextArea</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">id</Property>
+            <Property name="property">id</Property>
+            <Property name="visible">false</Property>
+            <Property name="ignored">true</Property>
+            <Editor/>
+          </AutoFormElement>
+        </AutoForm>
+      </Children>
+      <Tools/>
+    </Dialog>
+    <Dialog id="dialogInfo">
+      <Property name="caption">详情</Property>
+      <Property name="width">800</Property>
+      <Buttons>
+        <Button id="buttonCancel2">
+          <Property name="caption">关闭</Property>
+          <Property name="width">100</Property>
+          <Property name="icon"> url(>skin>common/icons.gif) -40px -0px</Property>
+        </Button>
+      </Buttons>
+      <Children>
+        <AutoForm id="autoShankInfo">
+          <Property name="labelWidth">180</Property>
+          <Property name="labelAlign">center</Property>
+          <Property name="dataSet">dsHolder</Property>
+          <Property name="cols">*,*</Property>
+          <AutoFormElement>
+            <Property name="name">shankDrawingno</Property>
+            <Property name="property">shankDrawingno</Property>
+            <Property name="style">
+              <Property name="color">red</Property>
+            </Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">shankCode</Property>
+            <Property name="property">shankCode</Property>
+            <Property name="style">
+              <Property name="color">red</Property>
+            </Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">shankMaterial</Property>
+            <Property name="property">shankMaterial</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">shankTaper</Property>
+            <Property name="property">shankTaper</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">shankType</Property>
+            <Property name="property">shankType</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">shankDiameter</Property>
+            <Property name="property">shankDiameter</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">shankAngel1</Property>
+            <Property name="property">shankAngel1</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">shankRadius1</Property>
+            <Property name="property">shankRadius1</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">shankLengthS1</Property>
+            <Property name="property">shankLengthS1</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">shankAngel2</Property>
+            <Property name="property">shankAngel2</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">shankRadius2</Property>
+            <Property name="property">shankRadius2</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">shankLengthS2</Property>
+            <Property name="property">shankLengthS2</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">shankAngel3</Property>
+            <Property name="property">shankAngel3</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">shankRadius3</Property>
+            <Property name="property">shankRadius3</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">shankLengthS3</Property>
+            <Property name="property">shankLengthS3</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">shankStandard</Property>
+            <Property name="property">shankStandard</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">shankUsestate</Property>
+            <Property name="property">shankUsestate</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">shankDesigner</Property>
+            <Property name="property">shankDesigner</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">shankDesigndate</Property>
+            <Property name="property">shankDesigndate</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">attachedPage</Property>
+            <Property name="property">attachedPage</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">shankCustomer</Property>
+            <Property name="property">shankCustomer</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">id</Property>
+            <Property name="property">id</Property>
+            <Property name="ignored">false</Property>
+            <Property name="visible">false</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">armTechchange</Property>
+            <Property name="property">armTechchange</Property>
+            <Property name="editorType">TextArea</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">shankRemark</Property>
+            <Property name="property">shankRemark</Property>
+            <Property name="editorType">TextArea</Property>
+            <Editor/>
+          </AutoFormElement>
+        </AutoForm>
+      </Children>
+      <Tools/>
+    </Dialog>
+    <UpdateAction id="updateactionSave">
+      <Property name="executingMessage">正在保存</Property>
+      <Property name="successMessage">保存成功</Property>
+      <Property name="hotkey">ctrl+s</Property>
+      <Property name="dataResolver">electrodeHolderServiceImp#saveAll</Property>
+      <UpdateItem>
+        <Property name="dataSet">dsHolder</Property>
+      </UpdateItem>
+    </UpdateAction>
+    <AjaxAction id="ajaxActionJudgeStringIsSatisfied">
+      <Property name="service">electrodeHolderServiceImp#isNewAddedShankSatisfied</Property>
+    </AjaxAction>
+    <AjaxAction id="ajaxActionDeleteRelatedFiles">
+      <Property name="service">electrodeHolderServiceImp#deleteRelatedFilesByID</Property>
+      <Property name="tags">删除焊钳相关图纸文件</Property>
+    </AjaxAction>
+    <AjaxAction id="ajaxActionCode">
+      <Property name="service">electrodeHolderServiceImp#codeShankByParameter</Property>
+    </AjaxAction>
+    <DownloadAction id="downloadDrawing">
+      <Property name="fileProvider">nimakDownloadService#downloadTurretArmCompFiles</Property>
+      <Property name="target">frame</Property>
+    </DownloadAction>
+    <UploadAction id="uploadDrawing">
+      <Property name="fileResolver">nimakUploadServiceImp#uploadShankFile</Property>
+      <Filters>
+        <Filter>
+          <Property name="title">上传三维数模</Property>
+          <Property name="extensions">CATPart,CATProduct</Property>
+        </Filter>
+      </Filters>
+    </UploadAction>
+    <UploadAction id="upload2DDrawing">
+      <Property name="fileResolver">nimakUploadServiceImp#uploadShankFile</Property>
+      <Filters>
+        <Filter>
+          <Property name="title">上传二维图纸</Property>
+          <Property name="extensions">jpg,png</Property>
+        </Filter>
+      </Filters>
+    </UploadAction>
+    <ListDropDown id="listDropDownTurretType">
+      <Property name="items">C,X</Property>
+    </ListDropDown>
+    <Trigger id="trigger1">
+      <ClientEvent name="onExecute">view.$onMathTriggerExecute(self, arg);</ClientEvent>
+      <Property name="userData">[折弯获得]</Property>
+      <Property name="icon"> url(>skin>common/icons.gif) -300px -20px</Property>
+    </Trigger>
+    <Trigger id="trigger2">
+      <ClientEvent name="onExecute">view.$onMathTriggerExecute(self, arg);</ClientEvent>
+      <Property name="userData">[机加获得]</Property>
+      <Property name="icon"> url(>skin>common/icons.gif) -280px -40px</Property>
+    </Trigger>
+    <ListDropDown id="listDropDownShankDrawingno"/>
+    <ListDropDown id="listDropDownShankCode"/>
+    <ListDropDown id="listDropDownShankMaterial"/>
+    <ListDropDown id="listDropDownShankTaper"/>
+    <ListDropDown id="listDropDownShankType"/>
+    <ListDropDown id="listDropDownShankAngel1"/>
+    <ListDropDown id="listDropDownShankAngel2"/>
+    <ListDropDown id="listDropDownShankAngel3"/>
+    <ListDropDown id="listDropDownShankDesigner"/>
+    <IFrame id="frame">
+      <Property name="name">frame</Property>
+    </IFrame>
+    <ListDropDown id="listDropDownShankTypeValue">
+      <Property name="items">螺纹式,抱紧式,其他</Property>
+    </ListDropDown>
+    <ListDropDown id="listDropDownShankTaperValue">
+      <Property name="items">1:10,1:9.6,其他</Property>
+    </ListDropDown>
+  </View>
+</ViewConfig>

@@ -1,0 +1,113 @@
+/* 
+钳臂部件界面
+*/
+
+
+.d-grid {
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	background-color: #c0c0c0;
+	//color: #000000;
+}
+
+.d-grid .header-table .header {
+	height: 55px;
+	color: white;
+	font-size: 20px;
+	background-color: blue;
+	border-left: 0px transparent solid;
+	border-right: 0px #fcfcfc solid;
+	border-bottom: 0px #fcfcfc solid;
+}
+
+
+.d-grid .data-table .row {
+	
+	/*background: #000000;*/
+	/* color: white; */
+	height: 35px;
+	font-size: 15px;
+	background: antiquewhite;
+}
+
+.d-grid .data-table .odd-row {
+	background: #F0F8FF;
+}
+
+
+.d-grid .data-table .current-row {
+	background-color: #51BBFB;
+    color: blanchedalmond;
+}
+
+.d-form-element .form-label {
+  float: left;
+ line-height: 20px;
+  padding-right: 12px;
+  font-size: 20px;
+}
+
+.d-form-element {
+  position: relative;
+  overflow: hidden;
+  background: #F0F8FF;
+}
+
+.d-field-set{
+	background: #F0F8FF;
+}
+
+.d-toolbar {
+    position: relative;
+    height: 32px;
+    font-size: 20px;
+    background-color: gainsboro;
+}
+
+.field-set-legend .caption{
+	font-weight: bold;
+    color: darkred;
+}
+
+
+
+.d-dialog .d-dialog-caption-bar .caption {
+    padding-left: 8px;
+    line-height: 39px;
+    text-align: left;
+    vertical-align: middle;
+    color: red;
+    font-size: 20px;
+}
+
+.toolbardown {
+    background-color: palegoldenrod;
+}
+
+.datagridButton{
+	background-color: #CFCFCF;
+}
+/* .d-grid .data-table .row {
+ //.d-field-set FieldsetQuery FieldsetQuery-default
+	
+	//background: #000000;
+	//color: white;
+	height: 25px;
+	font-size: 20px;
+}
+
+.d-grid .data-table .row td {
+	border-left: 1px transparent solid;
+	border-right: 1px transparent solid;
+	border-bottom: 1px transparent solid;
+}
+
+.d-grid .data-table .current-row {
+	background-color: #000000;
+}
+
+.d-grid .data-table .odd-row {
+	background: #666666;
+	color: white;
+} */
