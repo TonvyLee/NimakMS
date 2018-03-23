@@ -353,7 +353,7 @@ public class NimakDownloadService {
 		return new DownloadFile(fileName, inputStream);
 	}
 
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Expose
 	public Map downloadt(String path) {
 		System.out.println(path);
