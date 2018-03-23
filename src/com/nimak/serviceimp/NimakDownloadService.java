@@ -34,6 +34,7 @@ public class NimakDownloadService {
 	
 	
 	//自定义控制台输出
+	// log4j
 	private static Logger logger= Logger.getLogger(NimakDownloadService.class);
 
 	/**
