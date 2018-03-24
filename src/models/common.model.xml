@@ -129,19 +129,19 @@
   <DataType name="dataTypeTurretArm">
     <Property name="matchType">com.nimak.entity.Turretarm</Property>
     <PropertyDef name="armDrawingno">
-      <Property></Property>
+      <Property/>
       <Property name="label">钳臂零件图号</Property>
     </PropertyDef>
     <PropertyDef name="armMaterial">
-      <Property></Property>
+      <Property/>
       <Property name="label">钳臂截面_材料</Property>
     </PropertyDef>
     <PropertyDef name="armSpecialshapeandrib">
-      <Property></Property>
+      <Property/>
       <Property name="label">异性和加强筋</Property>
     </PropertyDef>
     <PropertyDef name="armSerial">
-      <Property></Property>
+      <Property/>
       <Property name="label">钳臂所属系列</Property>
     </PropertyDef>
     <PropertyDef name="armLength">
@@ -209,7 +209,7 @@
       <Property name="label">第四直段长度</Property>
     </PropertyDef>
     <PropertyDef name="shankType">
-      <Property></Property>
+      <Property/>
       <Property name="label">握杆装配形式</Property>
     </PropertyDef>
     <PropertyDef name="shankDiameter">
@@ -229,11 +229,11 @@
       <Property name="label">是否为标准零件</Property>
     </PropertyDef>
     <PropertyDef name="armUsestate">
-      <Property></Property>
+      <Property/>
       <Property name="label">使用状态</Property>
     </PropertyDef>
     <PropertyDef name="armDesigner">
-      <Property></Property>
+      <Property/>
       <Property name="label">设计者</Property>
     </PropertyDef>
     <PropertyDef name="armDesigndate">
@@ -241,28 +241,28 @@
       <Property name="label">设计日期</Property>
     </PropertyDef>
     <PropertyDef name="armTechchange">
-      <Property></Property>
+      <Property/>
       <Property name="label">技术更改</Property>
     </PropertyDef>
     <PropertyDef name="attachedPage">
-      <Property></Property>
+      <Property/>
       <Property name="label">工艺附属页</Property>
     </PropertyDef>
     <PropertyDef name="armCustomer">
-      <Property></Property>
+      <Property/>
       <Property name="label">客户/标准</Property>
     </PropertyDef>
     <PropertyDef name="armRemark">
-      <Property></Property>
+      <Property/>
       <Property name="label">备注</Property>
     </PropertyDef>
     <PropertyDef name="armCode">
-      <Property></Property>
+      <Property/>
       <Property name="label">分类编码</Property>
     </PropertyDef>
-    <PropertyDef name="id">
-      <Property></Property>
-      <Property name="label">ID</Property>
+    <PropertyDef name="armType">
+      <Property/>
+      <Property name="label">钳臂系列</Property>
     </PropertyDef>
   </DataType>
   <DataType name="dataTypeElectrodeholder">
@@ -364,11 +364,11 @@
   <DataType name="dataTypeBdf2User">
     <Property name="matchType">com.nimak.entity.Bdf2User</Property>
     <PropertyDef name="username">
-      <Property/>
+      <Property></Property>
       <Property name="label">用户名</Property>
     </PropertyDef>
     <PropertyDef name="address">
-      <Property/>
+      <Property></Property>
       <Property name="label">地址</Property>
     </PropertyDef>
     <PropertyDef name="administrator">
@@ -380,11 +380,11 @@
       <Property name="label">出生日期</Property>
     </PropertyDef>
     <PropertyDef name="cname">
-      <Property/>
+      <Property></Property>
       <Property name="label">中文名</Property>
     </PropertyDef>
     <PropertyDef name="companyId">
-      <Property/>
+      <Property></Property>
       <Property name="label">公司id</Property>
       <Property name="defaultValue">nimak</Property>
     </PropertyDef>
@@ -393,7 +393,7 @@
       <Property name="label">创建日期</Property>
     </PropertyDef>
     <PropertyDef name="email">
-      <Property/>
+      <Property></Property>
       <Property name="label">电子邮箱</Property>
     </PropertyDef>
     <PropertyDef name="enabled">
@@ -401,7 +401,7 @@
       <Property name="label">是否启用</Property>
     </PropertyDef>
     <PropertyDef name="ename">
-      <Property/>
+      <Property></Property>
       <Property name="label">英文名</Property>
     </PropertyDef>
     <PropertyDef name="male">
@@ -409,15 +409,15 @@
       <Property name="label">性别</Property>
     </PropertyDef>
     <PropertyDef name="mobile">
-      <Property/>
+      <Property></Property>
       <Property name="label">手机号</Property>
     </PropertyDef>
     <PropertyDef name="password">
-      <Property/>
+      <Property></Property>
       <Property name="label">密码</Property>
     </PropertyDef>
     <PropertyDef name="salt">
-      <Property/>
+      <Property></Property>
       <Property name="label">薪水</Property>
     </PropertyDef>
   </DataType>

@@ -18,6 +18,7 @@ public class Turretarm implements Serializable {
 	/**
 	 * 钳臂零件图号:钳臂零件图号
 	 */
+	@Id
 	@PropertyDef(label = "钳臂零件图号", description = "钳臂零件图号:钳臂零件图号")
 	private String armDrawingno;
 
@@ -215,9 +216,15 @@ public class Turretarm implements Serializable {
 
 	/**
 	 * ID:ID
-	 */
+	 *//*
 	@PropertyDef(label = "ID", description = "ID:ID")
 	private String id;
+	*/
+	/**
+	 * 钳臂系列:钳臂系列
+	 */
+	@PropertyDef(label = "钳臂系列", description = "钳臂系列:钳臂系列")
+	private String armType;
 
 	public Turretarm() {
 		super();
@@ -236,7 +243,7 @@ public class Turretarm implements Serializable {
 			BigDecimal shankHoledepth, BigDecimal linearGuide,
 			BigDecimal armStandard, String armUsestate, String armDesigner,
 			Date armDesigndate, String armTechchange, String attachedPage,
-			String armCustomer, String armRemark, String armCode, String id) {
+			String armCustomer, String armRemark, String armCode, String armType) {
 		super();
 		this.armDrawingno = armDrawingno;
 		this.armMaterial = armMaterial;
@@ -271,7 +278,7 @@ public class Turretarm implements Serializable {
 		this.armCustomer = armCustomer;
 		this.armRemark = armRemark;
 		this.armCode = armCode;
-		this.id = id;
+		this.armType = armType;
 	}
 
 	public void setArmDrawingno(String armDrawingno) {
@@ -572,14 +579,14 @@ public class Turretarm implements Serializable {
 		return armCode;
 	}
 
-	public void setId(String id) {
-		this.id = id;
+	public void setArmType(String armType) {
+		this.armType = armType;
 	}
 
 	@Id
-	@Column(name = "ID", length = 50, nullable = false)
-	public String getId() {
-		return id;
+	@Column(name = "ARM_TYPE", length = 50, nullable = false)
+	public String getArmType() {
+		return armType;
 	}
 
 	public String toString() {
@@ -601,7 +608,7 @@ public class Turretarm implements Serializable {
 				+ ",armDesigndate=" + armDesigndate + ",armTechchange="
 				+ armTechchange + ",attachedPage=" + attachedPage
 				+ ",armCustomer=" + armCustomer + ",armRemark=" + armRemark
-				+ ",armCode=" + armCode + ",id=" + id + "]";
+				+ ",armCode=" + armCode + ",armType=" + armType + "]";
 	}
 
 }

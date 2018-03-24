@@ -340,6 +340,14 @@ public class NimakUploadServiceImp {
 		destFile = new File(folder, fileName);
 		FileUtils.createDirectory(destFile.getParent());
 		//FileUtil.makeDirectories(destFile.getParent());
+		
 		return destFile;
 	}
+	
+	
+	// 钳臂零件三位数莫文件位置：NimakConstantSet.TURRETARM3D_PATH
+	// 钳臂零件莫文件位置：NimakConstantSet.TURRETARM2D_PATH
+	
+	
+	
 }

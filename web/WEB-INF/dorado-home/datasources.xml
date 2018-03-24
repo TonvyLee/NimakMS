@@ -40,7 +40,8 @@
 		<property name="name" value="hsql" />
 		<property name="asDefault" value="true" />
 	</bean>
-	<bean id="sessionFactory" parent="bdf2.sessionFactory">
+	<bean id="sessionFactory" parent="bdf2.sessionFactory" >
+	<!-- <bean id="sessionFactory" parent="bdf2.sessionFactory"> -->
 		<property name="dataSourceName" value="hsql" />
 		<property name="entityInterceptor" ref="bdf2.unByteCodeProxyInterceptor" />
 		<property name="useTransactionAwareDataSource" value="true" />
@@ -77,6 +78,8 @@
 	<bdf:anonymous-url urlPattern="/TurretShankFiles/3D/*.*"/>
 	<bdf:anonymous-url urlPattern="/images/backgrounds/*.*"/>
 	<bdf:anonymous-url urlPattern="/images/*.*"/>
+	<bdf:anonymous-url urlPattern="/images/2D/Al/*.*"/>
+	<bdf:anonymous-url urlPattern="/images/2D/Cu/*.*"/>
 	<bdf:anonymous-url urlPattern="/JsLib/*.*"/>
 	<bdf:anonymous-url urlPattern="/JsLib/CanvasBg/css/*.*"/>
 	<bdf:anonymous-url urlPattern="/JsLib/CanvasBg/canvas/*.*"/>
