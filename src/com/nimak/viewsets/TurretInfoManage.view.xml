@@ -342,7 +342,7 @@
     </DataSet>
     <DataSet id="dsTurret">
       <Property name="dataType">[dataTypeTurret]</Property>
-      <Property name="pageSize">7</Property>
+      <Property name="pageSize">10</Property>
       <Property name="readOnly">false</Property>
       <Property name="dataProvider">turretServiceImp#queryForCondition</Property>
       <Property name="parameter"></Property>
@@ -487,17 +487,17 @@
         <Property name="sortMode">clientSide</Property>
         <Property name="filterMode">serverSide</Property>
         <Property name="headerRowHeight">50</Property>
-        <Property name="height">40%</Property>
+        <Property name="height">45%</Property>
         <DataColumn id="operation">
           <Property name="align">center</Property>
-          <Property name="caption">二维图预览</Property>
+          <Property name="caption">二维图</Property>
           <Property name="name">operation</Property>
           <Property name="readOnly">true</Property>
           <Editor/>
         </DataColumn>
         <DataColumn id="openComp">
           <Property name="align">center</Property>
-          <Property name="caption">二维图</Property>
+          <Property name="caption">部件信息</Property>
           <Property name="name">openComp</Property>
           <Property name="readOnly">true</Property>
           <Editor/>

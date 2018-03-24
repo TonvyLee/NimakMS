@@ -210,7 +210,7 @@ alert(1);&#xD;
                                 &lt;/p>&#xD;
                                 &lt;p class=&quot;keeplogin&quot;> &#xD;
                                     &lt;input type=&quot;checkbox&quot; name=&quot;remember_me_&quot; id=&quot;loginkeeping&quot; value=&quot;loginkeeping&quot; /> &#xD;
-                                    &lt;label for=&quot;loginkeeping&quot;>Keep me logged in&lt;/label>&#xD;
+                                    &lt;label for=&quot;loginkeeping&quot;>Remember me&lt;/label>&#xD;
                                 &lt;/p>&#xD;
                                 &lt;p id=&quot;loginbutton&quot; class=&quot;login button&quot;> &#xD;
                                     &lt;input type=&quot;submit&quot; value=&quot;Login&quot; /> &#xD;

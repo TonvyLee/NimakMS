@@ -47,12 +47,13 @@ public class TurretArmServiceImp implements TurretArmServiceI {
 
 	@Override
 	@Expose
+	@Transactional
 	public List<String> getAllTurretArmDrawingnos() {
 		List<String> compDrawingStrings = new ArrayList<>();
 
 		String hql = "select armDrawingno from " + Turretarm.class.getName();
 		
-		Query query = turretArmDaoImp.createQuery(hql);
+		Query query = turretArmDaoImp.getSession().createQuery(hql);
 		compDrawingStrings = query.list(); 
 		/*
 		 * for (String string : compDrawingStrings) {

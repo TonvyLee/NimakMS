@@ -14,6 +14,7 @@ import com.nimak.entity.Turretarm;
 
 @SuppressWarnings("rawtypes")
 @Repository
+@Transactional
 public class TurretArmDaoImp extends HibernateDao implements TurretArmDaoI{
 	
 	@Override

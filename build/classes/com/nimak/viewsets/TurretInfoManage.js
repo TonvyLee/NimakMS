@@ -363,7 +363,7 @@ function downloadFile() {
 !function(dialog2DDrawing, image) {
 	dorado.widget.NotifyTipManager
 			.notify("正在为您打开二维图......!");
-	var msg = "${servletContext.getAttribute('configprop').get('TURRET2D_Path')}";
+	var msg = "${servletContext.getAttribute('configprop').get('TURRET2D_PATH')}";
 	image.set("image", msg
 			+ view.id("datagridTurret").getCurrentItem().get(
 					"gunDrawingno") + ".jpg");
@@ -384,7 +384,7 @@ function downloadFile() {
 								onClick : function(dialog2DDrawing, image) {
 									dorado.widget.NotifyTipManager
 											.notify("正在为您打开二维图......!");
-									var msg = "${servletContext.getAttribute('configprop').get('TURRET2D_Path')}";
+									var msg = "${servletContext.getAttribute('configprop').get('TURRET2D_PATH')}";
 									image.set("image", msg
 											+ self.getCurrentItem().get(
 													"gunDrawingno") + ".jpg");
