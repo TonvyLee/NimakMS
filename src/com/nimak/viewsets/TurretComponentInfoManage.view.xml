@@ -489,7 +489,7 @@
     </DataSet>
     <DataSet id="dsTurretComponent">
       <Property name="dataType">[dataTypeTurretComponent]</Property>
-      <Property name="pageSize">7</Property>
+      <Property name="pageSize">10</Property>
       <Property name="readOnly">false</Property>
       <Property name="dataProvider">turretComponentServiceImp#queryForCondition</Property>
       <Property name="parameter"></Property>
@@ -1898,12 +1898,12 @@
     <Trigger id="trigger1">
       <ClientEvent name="onExecute">view.$onMathTriggerExecute(self, arg);</ClientEvent>
       <Property name="userData">[折弯获得]</Property>
-      <Property name="icon"> url(>skin>common/icons.gif) -300px -20px</Property>
+      <Property name="icon"> url(images/折弯获取.png)</Property>
     </Trigger>
     <Trigger id="trigger2">
       <ClientEvent name="onExecute">view.$onMathTriggerExecute(self, arg);</ClientEvent>
       <Property name="userData">[机加获得]</Property>
-      <Property name="icon"> url(>skin>common/icons.gif) -280px -40px</Property>
+      <Property name="icon"> url(images/机加获取.png)</Property>
     </Trigger>
     <UpdateAction id="updateactionSave">
       <Property name="executingMessage">正在保存</Property>

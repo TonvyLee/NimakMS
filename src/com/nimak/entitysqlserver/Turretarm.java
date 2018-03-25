@@ -1,4 +1,4 @@
-package com.nimak.entity;
+package com.nimak.entitysqlserver;
 
 import java.io.Serializable;
 import javax.persistence.*;
@@ -16,214 +16,207 @@ public class Turretarm implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * 钳臂零件图号:钳臂零件图号
+	 * arm_drawingno:
 	 */
-	@Id
-	@PropertyDef(label = "钳臂零件图号", description = "钳臂零件图号:钳臂零件图号")
+	@PropertyDef(label = "arm_drawingno", description = "arm_drawingno:")
 	private String armDrawingno;
 
 	/**
-	 * 钳臂截面_材料:钳臂截面_材料
+	 * arm_material:
 	 */
-	@PropertyDef(label = "钳臂截面_材料", description = "钳臂截面_材料:钳臂截面_材料")
+	@PropertyDef(label = "arm_material", description = "arm_material:")
 	private String armMaterial;
 
 	/**
-	 * 异性和加强筋:异性和加强筋
+	 * arm_specialshapeandrib:
 	 */
-	@PropertyDef(label = "异性和加强筋", description = "异性和加强筋:异性和加强筋")
+	@PropertyDef(label = "arm_specialshapeandrib", description = "arm_specialshapeandrib:")
 	private String armSpecialshapeandrib;
 
 	/**
-	 * 钳臂所属系列:钳臂所属系列
+	 * arm_serial:
 	 */
-	@PropertyDef(label = "钳臂所属系列", description = "钳臂所属系列:钳臂所属系列")
+	@PropertyDef(label = "arm_serial", description = "arm_serial:")
 	private String armSerial;
 
 	/**
-	 * 钳臂水平长度:钳臂水平长度
+	 * arm_length:
 	 */
-	@PropertyDef(label = "钳臂水平长度", description = "钳臂水平长度:钳臂水平长度")
+	@PropertyDef(label = "arm_length", description = "arm_length:")
 	private BigDecimal armLength;
 
 	/**
-	 * 钳臂最高点距安装轴线高度:钳臂最高点距安装轴线高度
+	 * arm_width1:
 	 */
-	@PropertyDef(label = "钳臂最高点距安装轴线高度", description = "钳臂最高点距安装轴线高度:钳臂最高点距安装轴线高度")
+	@PropertyDef(label = "arm_width1", description = "arm_width1:")
 	private BigDecimal armWidth1;
 
 	/**
-	 * 钳臂竖直高度:钳臂竖直高度
+	 * arm_width2:
 	 */
-	@PropertyDef(label = "钳臂竖直高度", description = "钳臂竖直高度:钳臂竖直高度")
+	@PropertyDef(label = "arm_width2", description = "arm_width2:")
 	private BigDecimal armWidth2;
 
 	/**
-	 * 装配截面尺寸:装配截面尺寸
+	 * assemble_size:
 	 */
-	@PropertyDef(label = "装配截面尺寸", description = "装配截面尺寸:装配截面尺寸")
+	@PropertyDef(label = "assemble_size", description = "assemble_size:")
 	private BigDecimal assembleSize;
 
 	/**
-	 * 装配长度:装配长度
+	 * assemble_length:
 	 */
-	@PropertyDef(label = "装配长度", description = "装配长度:装配长度")
+	@PropertyDef(label = "assemble_length", description = "assemble_length:")
 	private BigDecimal assembleLength;
 
 	/**
-	 * 第一偏转角度:第一偏转角度
+	 * arm_angel_1:
 	 */
-	@PropertyDef(label = "第一偏转角度", description = "第一偏转角度:第一偏转角度")
+	@PropertyDef(label = "arm_angel_1", description = "arm_angel_1:")
 	private BigDecimal armAngel1;
 
 	/**
-	 * 第一折弯半径:第一折弯半径
+	 * arm_radius_1:
 	 */
-	@PropertyDef(label = "第一折弯半径", description = "第一折弯半径:第一折弯半径")
+	@PropertyDef(label = "arm_radius_1", description = "arm_radius_1:")
 	private BigDecimal armRadius1;
 
 	/**
-	 * 第一直段长度:第一直段长度
+	 * arm_length_s1:
 	 */
-	@PropertyDef(label = "第一直段长度", description = "第一直段长度:第一直段长度")
+	@PropertyDef(label = "arm_length_s1", description = "arm_length_s1:")
 	private BigDecimal armLengthS1;
 
 	/**
-	 * 第二偏转角度:第二偏转角度
+	 * arm_angel_2:
 	 */
-	@PropertyDef(label = "第二偏转角度", description = "第二偏转角度:第二偏转角度")
+	@PropertyDef(label = "arm_angel_2", description = "arm_angel_2:")
 	private BigDecimal armAngel2;
 
 	/**
-	 * 第二折弯半径:第二折弯半径
+	 * arm_radius_2:
 	 */
-	@PropertyDef(label = "第二折弯半径", description = "第二折弯半径:第二折弯半径")
+	@PropertyDef(label = "arm_radius_2", description = "arm_radius_2:")
 	private BigDecimal armRadius2;
 
 	/**
-	 * 第二直段长度:第二直段长度
+	 * arm_length_s2:
 	 */
-	@PropertyDef(label = "第二直段长度", description = "第二直段长度:第二直段长度")
+	@PropertyDef(label = "arm_length_s2", description = "arm_length_s2:")
 	private BigDecimal armLengthS2;
 
 	/**
-	 * 第三偏转角度:第三偏转角度
+	 * arm_angel_3:
 	 */
-	@PropertyDef(label = "第三偏转角度", description = "第三偏转角度:第三偏转角度")
+	@PropertyDef(label = "arm_angel_3", description = "arm_angel_3:")
 	private BigDecimal armAngel3;
 
 	/**
-	 * 第三折弯半径:第三折弯半径
+	 * arm_radius_3:
 	 */
-	@PropertyDef(label = "第三折弯半径", description = "第三折弯半径:第三折弯半径")
+	@PropertyDef(label = "arm_radius_3", description = "arm_radius_3:")
 	private BigDecimal armRadius3;
 
 	/**
-	 * 第三直段长度:第三直段长度
+	 * arm_length_s3:
 	 */
-	@PropertyDef(label = "第三直段长度", description = "第三直段长度:第三直段长度")
+	@PropertyDef(label = "arm_length_s3", description = "arm_length_s3:")
 	private BigDecimal armLengthS3;
 
 	/**
-	 * 第四偏转角度:第四偏转角度
+	 * arm_angel_4:
 	 */
-	@PropertyDef(label = "第四偏转角度", description = "第四偏转角度:第四偏转角度")
+	@PropertyDef(label = "arm_angel_4", description = "arm_angel_4:")
 	private BigDecimal armAngel4;
 
 	/**
-	 * 第四直段长度:第四直段长度
+	 * arm_length_s4:
 	 */
-	@PropertyDef(label = "第四直段长度", description = "第四直段长度:第四直段长度")
+	@PropertyDef(label = "arm_length_s4", description = "arm_length_s4:")
 	private BigDecimal armLengthS4;
 
 	/**
-	 * 握杆装配形式:握杆装配形式
+	 * shank_type:
 	 */
-	@PropertyDef(label = "握杆装配形式", description = "握杆装配形式:握杆装配形式")
+	@PropertyDef(label = "shank_type", description = "shank_type:")
 	private String shankType;
 
 	/**
-	 * 电极握杆直径:电极握杆直径
+	 * shank_diameter:
 	 */
-	@PropertyDef(label = "电极握杆直径", description = "电极握杆直径:电极握杆直径")
+	@PropertyDef(label = "shank_diameter", description = "shank_diameter:")
 	private BigDecimal shankDiameter;
 
 	/**
-	 * 握杆装配孔深:握杆装配孔深
+	 * shank_holedepth:
 	 */
-	@PropertyDef(label = "握杆装配孔深", description = "握杆装配孔深:握杆装配孔深")
+	@PropertyDef(label = "shank_holedepth", description = "shank_holedepth:")
 	private BigDecimal shankHoledepth;
 
 	/**
-	 * 是否有直线导轨:是否有直线导轨
+	 * linear_guide:
 	 */
-	@PropertyDef(label = "是否有直线导轨", description = "是否有直线导轨:是否有直线导轨")
+	@PropertyDef(label = "linear_guide", description = "linear_guide:")
 	private BigDecimal linearGuide;
 
 	/**
-	 * 是否为标准零件:是否为标准零件
+	 * arm_standard:
 	 */
-	@PropertyDef(label = "是否为标准零件", description = "是否为标准零件:是否为标准零件")
+	@PropertyDef(label = "arm_standard", description = "arm_standard:")
 	private BigDecimal armStandard;
 
 	/**
-	 * 使用状态:使用状态
+	 * arm_usestate:
 	 */
-	@PropertyDef(label = "使用状态", description = "使用状态:使用状态")
+	@PropertyDef(label = "arm_usestate", description = "arm_usestate:")
 	private String armUsestate;
 
 	/**
-	 * 设计者:设计者
+	 * arm_designer:
 	 */
-	@PropertyDef(label = "设计者", description = "设计者:设计者")
+	@PropertyDef(label = "arm_designer", description = "arm_designer:")
 	private String armDesigner;
 
 	/**
-	 * 设计日期:设计日期
+	 * arm_designdate:
 	 */
-	@PropertyDef(label = "设计日期", description = "设计日期:设计日期")
+	@PropertyDef(label = "arm_designdate", description = "arm_designdate:")
 	private Date armDesigndate;
 
 	/**
-	 * 技术更改:技术更改
+	 * arm_techchange:
 	 */
-	@PropertyDef(label = "技术更改", description = "技术更改:技术更改")
+	@PropertyDef(label = "arm_techchange", description = "arm_techchange:")
 	private String armTechchange;
 
 	/**
-	 * 工艺附属页:工艺附属页
+	 * attached_page:
 	 */
-	@PropertyDef(label = "工艺附属页", description = "工艺附属页:工艺附属页")
+	@PropertyDef(label = "attached_page", description = "attached_page:")
 	private String attachedPage;
 
 	/**
-	 * 客户/标准:客户/标准
+	 * arm_customer:
 	 */
-	@PropertyDef(label = "客户/标准", description = "客户/标准:客户/标准")
+	@PropertyDef(label = "arm_customer", description = "arm_customer:")
 	private String armCustomer;
 
 	/**
-	 * 备注:备注
+	 * arm_remark:
 	 */
-	@PropertyDef(label = "备注", description = "备注:备注")
+	@PropertyDef(label = "arm_remark", description = "arm_remark:")
 	private String armRemark;
 
 	/**
-	 * 分类编码:分类编码
+	 * arm_code:
 	 */
-	@PropertyDef(label = "分类编码", description = "分类编码:分类编码")
+	@PropertyDef(label = "arm_code", description = "arm_code:")
 	private String armCode;
 
 	/**
-	 * ID:ID
+	 * arm_type:
 	 */
-	@PropertyDef(label = "ID", description = "ID:ID")
-	private String id;
-	
-	/**
-	 * 钳臂系列:钳臂系列
-	 */
-	@PropertyDef(label = "钳臂系列", description = "钳臂系列:钳臂系列")
+	@PropertyDef(label = "arm_type", description = "arm_type:")
 	private String armType;
 
 	public Turretarm() {
@@ -612,223 +605,3 @@ public class Turretarm implements Serializable {
 	}
 
 }
-
-
-	/**
-	 * 钳臂零件图号:钳臂零件图号
-	 *//*
-	@Id
-	@PropertyDef(label = "钳臂零件图号", description = "钳臂零件图号:钳臂零件图号")
-	private String armDrawingno;
-
-	*//**
-	 * 钳臂截面_材料:钳臂截面_材料
-	 *//*
-	@PropertyDef(label = "钳臂截面_材料", description = "钳臂截面_材料:钳臂截面_材料")
-	private String armMaterial;
-
-	*//**
-	 * 异性和加强筋:异性和加强筋
-	 *//*
-	@PropertyDef(label = "异性和加强筋", description = "异性和加强筋:异性和加强筋")
-	private String armSpecialshapeandrib;
-
-	*//**
-	 * 钳臂所属系列:钳臂所属系列
-	 *//*
-	@PropertyDef(label = "钳臂所属系列", description = "钳臂所属系列:钳臂所属系列")
-	private String armSerial;
-
-	*//**
-	 * 钳臂水平长度:钳臂水平长度
-	 *//*
-	@PropertyDef(label = "钳臂水平长度", description = "钳臂水平长度:钳臂水平长度")
-	private BigDecimal armLength;
-
-	*//**
-	 * 钳臂最高点距安装轴线高度:钳臂最高点距安装轴线高度
-	 *//*
-	@PropertyDef(label = "钳臂最高点距安装轴线高度", description = "钳臂最高点距安装轴线高度:钳臂最高点距安装轴线高度")
-	private BigDecimal armWidth1;
-
-	*//**
-	 * 钳臂竖直高度:钳臂竖直高度
-	 *//*
-	@PropertyDef(label = "钳臂竖直高度", description = "钳臂竖直高度:钳臂竖直高度")
-	private BigDecimal armWidth2;
-
-	*//**
-	 * 装配截面尺寸:装配截面尺寸
-	 *//*
-	@PropertyDef(label = "装配截面尺寸", description = "装配截面尺寸:装配截面尺寸")
-	private BigDecimal assembleSize;
-
-	*//**
-	 * 装配长度:装配长度
-	 *//*
-	@PropertyDef(label = "装配长度", description = "装配长度:装配长度")
-	private BigDecimal assembleLength;
-
-	*//**
-	 * 第一偏转角度:第一偏转角度
-	 *//*
-	@PropertyDef(label = "第一偏转角度", description = "第一偏转角度:第一偏转角度")
-	private BigDecimal armAngel1;
-
-	*//**
-	 * 第一折弯半径:第一折弯半径
-	 *//*
-	@PropertyDef(label = "第一折弯半径", description = "第一折弯半径:第一折弯半径")
-	private BigDecimal armRadius1;
-
-	*//**
-	 * 第一直段长度:第一直段长度
-	 *//*
-	@PropertyDef(label = "第一直段长度", description = "第一直段长度:第一直段长度")
-	private BigDecimal armLengthS1;
-
-	*//**
-	 * 第二偏转角度:第二偏转角度
-	 *//*
-	@PropertyDef(label = "第二偏转角度", description = "第二偏转角度:第二偏转角度")
-	private BigDecimal armAngel2;
-
-	*//**
-	 * 第二折弯半径:第二折弯半径
-	 *//*
-	@PropertyDef(label = "第二折弯半径", description = "第二折弯半径:第二折弯半径")
-	private BigDecimal armRadius2;
-
-	*//**
-	 * 第二直段长度:第二直段长度
-	 *//*
-	@PropertyDef(label = "第二直段长度", description = "第二直段长度:第二直段长度")
-	private BigDecimal armLengthS2;
-
-	*//**
-	 * 第三偏转角度:第三偏转角度
-	 *//*
-	@PropertyDef(label = "第三偏转角度", description = "第三偏转角度:第三偏转角度")
-	private BigDecimal armAngel3;
-
-	*//**
-	 * 第三折弯半径:第三折弯半径
-	 *//*
-	@PropertyDef(label = "第三折弯半径", description = "第三折弯半径:第三折弯半径")
-	private BigDecimal armRadius3;
-
-	*//**
-	 * 第三直段长度:第三直段长度
-	 *//*
-	@PropertyDef(label = "第三直段长度", description = "第三直段长度:第三直段长度")
-	private BigDecimal armLengthS3;
-
-	*//**
-	 * 第四偏转角度:第四偏转角度
-	 *//*
-	@PropertyDef(label = "第四偏转角度", description = "第四偏转角度:第四偏转角度")
-	private BigDecimal armAngel4;
-
-	*//**
-	 * 第四直段长度:第四直段长度
-	 *//*
-	@PropertyDef(label = "第四直段长度", description = "第四直段长度:第四直段长度")
-	private BigDecimal armLengthS4;
-
-	*//**
-	 * 握杆装配形式:握杆装配形式
-	 *//*
-	@PropertyDef(label = "握杆装配形式", description = "握杆装配形式:握杆装配形式")
-	private String shankType;
-
-	*//**
-	 * 电极握杆直径:电极握杆直径
-	 *//*
-	@PropertyDef(label = "电极握杆直径", description = "电极握杆直径:电极握杆直径")
-	private BigDecimal shankDiameter;
-
-	*//**
-	 * 握杆装配孔深:握杆装配孔深
-	 *//*
-	@PropertyDef(label = "握杆装配孔深", description = "握杆装配孔深:握杆装配孔深")
-	private BigDecimal shankHoledepth;
-
-	*//**
-	 * 是否有直线导轨:是否有直线导轨
-	 *//*
-	@PropertyDef(label = "是否有直线导轨", description = "是否有直线导轨:是否有直线导轨")
-	private BigDecimal linearGuide;
-
-	*//**
-	 * 是否为标准零件:是否为标准零件
-	 *//*
-	@PropertyDef(label = "是否为标准零件", description = "是否为标准零件:是否为标准零件")
-	private BigDecimal armStandard;
-
-	*//**
-	 * 使用状态:使用状态
-	 *//*
-	@PropertyDef(label = "使用状态", description = "使用状态:使用状态")
-	private String armUsestate;
-
-	*//**
-	 * 设计者:设计者
-	 *//*
-	@PropertyDef(label = "设计者", description = "设计者:设计者")
-	private String armDesigner;
-
-	*//**
-	 * 设计日期:设计日期
-	 *//*
-	@PropertyDef(label = "设计日期", description = "设计日期:设计日期")
-	private Date armDesigndate;
-
-	*//**
-	 * 技术更改:技术更改
-	 *//*
-	@PropertyDef(label = "技术更改", description = "技术更改:技术更改")
-	private String armTechchange;
-
-	*//**
-	 * 工艺附属页:工艺附属页
-	 *//*
-	@PropertyDef(label = "工艺附属页", description = "工艺附属页:工艺附属页")
-	private String attachedPage;
-
-	*//**
-	 * 客户/标准:客户/标准
-	 *//*
-	@PropertyDef(label = "客户/标准", description = "客户/标准:客户/标准")
-	private String armCustomer;
-
-	*//**
-	 * 备注:备注
-	 *//*
-	@PropertyDef(label = "备注", description = "备注:备注")
-	private String armRemark;
-
-	*//**
-	 * 分类编码:分类编码
-	 *//*
-	@PropertyDef(label = "分类编码", description = "分类编码:分类编码")
-	private String armCode;
-
-	*//**
-	 * ID:ID
-	 *//*
-	@PropertyDef(label = "ID", description = "ID:ID")
-	private String id;
-	
-	*//**
-	 * 钳臂系列:钳臂系列
-	 *//*
-	@PropertyDef(label = "钳臂系列", description = "钳臂系列:钳臂系列")
-	private String armType;
-
-	public Turretarm() {
-		super();
-	}*/
-	
-	
-	
-	

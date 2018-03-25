@@ -250,7 +250,7 @@
     <DataSet id="dsHolder">
       <Property name="dataType">[dataTypeHolder]</Property>
       <Property name="dataProvider">electrodeHolderServiceImp#queryForCondition</Property>
-      <Property name="pageSize">7</Property>
+      <Property name="pageSize">10</Property>
     </DataSet>
     <DataSet id="dataSet1">
       <Property name="dataType">[dataTypeHolderQuery]</Property>
@@ -1135,12 +1135,12 @@
     <Trigger id="trigger1">
       <ClientEvent name="onExecute">view.$onMathTriggerExecute(self, arg);</ClientEvent>
       <Property name="userData">[折弯获得]</Property>
-      <Property name="icon"> url(>skin>common/icons.gif) -300px -20px</Property>
+      <Property name="icon"> url(images/折弯获取.png)</Property>
     </Trigger>
     <Trigger id="trigger2">
       <ClientEvent name="onExecute">view.$onMathTriggerExecute(self, arg);</ClientEvent>
       <Property name="userData">[机加获得]</Property>
-      <Property name="icon"> url(>skin>common/icons.gif) -280px -40px</Property>
+      <Property name="icon"> url(images/机加获取.png)</Property>
     </Trigger>
     <ListDropDown id="listDropDownShankDrawingno"/>
     <ListDropDown id="listDropDownShankCode"/>

@@ -193,10 +193,15 @@ public class TurretArmServiceImp implements TurretArmServiceI {
 			page.setEntities(turretArmDaoImp.getSession().createQuery(" from Turretarm where 1=1 " + whereCase).list());
 	}
 
+	@SuppressWarnings("unchecked")
 	@DataResolver
 	@Transactional
 	public void saveAll(Collection<Turretarm> turretarms) {
-		turretArmDaoImp.persistEntities(turretarms);
+		logger.info(turretarms.size());
+		logger.info(turretarms);
+		//turretArmDaoImp.persistEntities(turretarms);
+		turretArmDaoImp.saveAll(turretarms);
+		
 	}
 
 	/*--------------------------------------------------------------------------------------------------------------------*/

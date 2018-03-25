@@ -9,7 +9,7 @@
         <Validator name="validator1" type="required"/>
       </PropertyDef>
       <PropertyDef name="armType">
-        <Property name="label">钳臂系列</Property>
+        <Property name="label">钳臂材料</Property>
         <Validator name="validator1" type="required"/>
       </PropertyDef>
       <PropertyDef name="armMaterial">
@@ -25,7 +25,7 @@
         <Validator name="validator1" type="required"/>
       </PropertyDef>
       <PropertyDef name="armLength">
-        <Property name="label">钳臂长(1)</Property>
+        <Property name="label">钳臂长</Property>
         <Validator name="validator1" type="required"/>
       </PropertyDef>
       <PropertyDef name="assembleSize">
@@ -87,7 +87,7 @@
         <Validator name="validator1" type="required"/>
       </PropertyDef>
     </DataType>
-    <DataType name="dataTypeImage" parent="dataTypeTurretArm">
+    <DataType name="dataTypeImage" parent="dataTypeTurretarm">
       <PropertyDef name="armSerial">
         <Property name="label">钳臂所属系列</Property>
       </PropertyDef>
@@ -95,48 +95,9 @@
         <Property name="label">2D图纸</Property>
       </PropertyDef>
     </DataType>
-    <DataType name="dataTypeImage1-x" parent="dataTypeTurretArm">
-      <PropertyDef name="armSerial">
-        <Property name="label">钳臂所属系列</Property>
-      </PropertyDef>
-      <PropertyDef name="image">
-        <Property name="label">1-x</Property>
-      </PropertyDef>
-    </DataType>
-    <DataType name="dataTypeImage2-x" parent="dataTypeTurretArm">
-      <PropertyDef name="armSerial">
-        <Property name="label">钳臂所属系列</Property>
-      </PropertyDef>
-      <PropertyDef name="image">
-        <Property name="label">2-x</Property>
-      </PropertyDef>
-    </DataType>
-    <DataType name="dataTypeImage3-x" parent="dataTypeTurretArm">
-      <PropertyDef name="armSerial">
-        <Property name="label">钳臂所属系列</Property>
-      </PropertyDef>
-      <PropertyDef name="image">
-        <Property name="label">3-x</Property>
-      </PropertyDef>
-    </DataType>
-    <DataType name="dataTypeImage4-x" parent="dataTypeTurretArm">
-      <PropertyDef name="armSerial">
-        <Property name="label">钳臂所属系列</Property>
-      </PropertyDef>
-      <PropertyDef name="image">
-        <Property name="label">4-x</Property>
-      </PropertyDef>
-    </DataType>
-    <DataType name="dataTypeImage5-x" parent="dataTypeTurretarm">
-      <PropertyDef name="armSerial">
-        <Property name="label">钳臂所属系列</Property>
-      </PropertyDef>
-      <PropertyDef name="image">
-        <Property name="label">5-x</Property>
-      </PropertyDef>
-    </DataType>
   </Model>
   <View>
+    <Property name="styleSheetFile">/css/TurretarmInfoManage.css</Property>
     <DataSet id="dataSetTurretarm">
       <Property name="dataType">[dataTypeTurretarm]</Property>
       <Property name="readOnly">false</Property>
@@ -155,7 +116,8 @@
         <Property name="caption">钳臂零件查询信息</Property>
         <Buttons>
           <Button id="buttonQuery" layoutConstraint="center padding:50">
-            <ClientEvent name="onClick" signature="self,arg,dataSetTurretarm,autoformTurretarm">view.get(&quot;#autoformTurretarm&quot;).get(&quot;entity&quot;).set(&quot;armSerial&quot;,&quot;&quot;);&#xD;
+            <ClientEvent name="onClick" signature="self,arg,dataSetTurretarm,autoformTurretarm">autoformTurretarm.get(&quot;entity&quot;).set(&quot;armType&quot;,&quot;&quot;);&#xD;
+autoformTurretarm.get(&quot;entity&quot;).set(&quot;armSerial&quot;,&quot;&quot;);&#xD;
 var entity = autoformTurretarm.get(&quot;entity&quot;);&#xD;
 dataSetTurretarm.set(&quot;parameter&quot;,entity).flushAsync();&#xD;
 &#xD;
@@ -165,30 +127,9 @@ dataSetTurretarm.set(&quot;parameter&quot;,entity).flushAsync();&#xD;
             <Property name="width">75</Property>
           </Button>
           <Button id="buttonReset" layoutConstraint="center padding:50">
-            <ClientEvent name="onClick">function resetAll(){&#xD;
-	view.get(&quot;#autoformTurretarm&quot;).get(&quot;entity&quot;).set(&quot;armDrawingno&quot;,null);&#xD;
-	view.get(&quot;#autoformTurretarm&quot;).get(&quot;entity&quot;).set(&quot;armType&quot;,null);&#xD;
-	view.get(&quot;#autoformTurretarm&quot;).get(&quot;entity&quot;).set(&quot;armMaterial&quot;,null);&#xD;
-	view.get(&quot;#autoformTurretarm&quot;).get(&quot;entity&quot;).set(&quot;armSpecialshapeandrib&quot;,null);&#xD;
-	view.get(&quot;#autoformTurretarm&quot;).get(&quot;entity&quot;).set(&quot;armLength1&quot;,null);&#xD;
-	view.get(&quot;#autoformTurretarm&quot;).get(&quot;entity&quot;).set(&quot;armLength2&quot;,null);&#xD;
-	view.get(&quot;#autoformTurretarm&quot;).get(&quot;entity&quot;).set(&quot;armAngel1&quot;,null);&#xD;
-	view.get(&quot;#autoformTurretarm&quot;).get(&quot;entity&quot;).set(&quot;armAngel1to&quot;,null);&#xD;
-	view.get(&quot;#autoformTurretarm&quot;).get(&quot;entity&quot;).set(&quot;armAngel2&quot;,null);&#xD;
-	view.get(&quot;#autoformTurretarm&quot;).get(&quot;entity&quot;).set(&quot;armAngel2to&quot;,null);&#xD;
-	view.get(&quot;#autoformTurretarm&quot;).get(&quot;entity&quot;).set(&quot;armAngel3&quot;,null);&#xD;
-	view.get(&quot;#autoformTurretarm&quot;).get(&quot;entity&quot;).set(&quot;armAngel3to&quot;,null);&#xD;
-	view.get(&quot;#autoformTurretarm&quot;).get(&quot;entity&quot;).set(&quot;armAngel4&quot;,null);&#xD;
-	view.get(&quot;#autoformTurretarm&quot;).get(&quot;entity&quot;).set(&quot;armAngel4to&quot;,null);&#xD;
-	view.get(&quot;#autoformTurretarm&quot;).get(&quot;entity&quot;).set(&quot;armWidth1&quot;,null);&#xD;
-	view.get(&quot;#autoformTurretarm&quot;).get(&quot;entity&quot;).set(&quot;armWidth1to&quot;,null);&#xD;
-	view.get(&quot;#autoformTurretarm&quot;).get(&quot;entity&quot;).set(&quot;armWidth2&quot;,null);&#xD;
-	view.get(&quot;#autoformTurretarm&quot;).get(&quot;entity&quot;).set(&quot;armWidth2to&quot;,null);&#xD;
-	view.get(&quot;#autoformTurretarm&quot;).get(&quot;entity&quot;).set(&quot;shankType&quot;,null);&#xD;
-	view.get(&quot;#autoformQueryForCondition&quot;).get(&quot;entity&quot;).set(&quot;armStandard&quot;,null);&#xD;
-}&#xD;
+            <ClientEvent name="onClick">view.get(&quot;#autoformTurretarm&quot;).set(&quot;entity&quot;,{});&#xD;
+view.get(&quot;#autoformQueryForCondition&quot;).get(&quot;entity&quot;).set(&quot;armStandard&quot;,null);&#xD;
 &#xD;
-resetAll();&#xD;
 &#xD;
 &#xD;
 &#xD;
@@ -205,151 +146,148 @@ resetAll();&#xD;
             <Property name="icon"> url(>skin>common/icons.gif) -160px -0px</Property>
           </Button>
           <Button>
-            <ClientEvent name="onClick" signature="self,arg,autoformTurretarm,dataSetTurretarm">function resetAll(){&#xD;
-	view.get(&quot;#autoformTurretarm&quot;).get(&quot;entity&quot;).set(&quot;armDrawingno&quot;,null);&#xD;
-	view.get(&quot;#autoformTurretarm&quot;).get(&quot;entity&quot;).set(&quot;armType&quot;,null);&#xD;
-	view.get(&quot;#autoformTurretarm&quot;).get(&quot;entity&quot;).set(&quot;armMaterial&quot;,null);&#xD;
-	view.get(&quot;#autoformTurretarm&quot;).get(&quot;entity&quot;).set(&quot;armSpecialshapeandrib&quot;,null);&#xD;
-	view.get(&quot;#autoformTurretarm&quot;).get(&quot;entity&quot;).set(&quot;armLength1&quot;,null);&#xD;
-	view.get(&quot;#autoformTurretarm&quot;).get(&quot;entity&quot;).set(&quot;armLength2&quot;,null);&#xD;
-	view.get(&quot;#autoformTurretarm&quot;).get(&quot;entity&quot;).set(&quot;armAngel1&quot;,null);&#xD;
-	view.get(&quot;#autoformTurretarm&quot;).get(&quot;entity&quot;).set(&quot;armAngel1to&quot;,null);&#xD;
-	view.get(&quot;#autoformTurretarm&quot;).get(&quot;entity&quot;).set(&quot;armAngel2&quot;,null);&#xD;
-	view.get(&quot;#autoformTurretarm&quot;).get(&quot;entity&quot;).set(&quot;armAngel2to&quot;,null);&#xD;
-	view.get(&quot;#autoformTurretarm&quot;).get(&quot;entity&quot;).set(&quot;armAngel3&quot;,null);&#xD;
-	view.get(&quot;#autoformTurretarm&quot;).get(&quot;entity&quot;).set(&quot;armAngel3to&quot;,null);&#xD;
-	view.get(&quot;#autoformTurretarm&quot;).get(&quot;entity&quot;).set(&quot;armAngel4&quot;,null);&#xD;
-	view.get(&quot;#autoformTurretarm&quot;).get(&quot;entity&quot;).set(&quot;armAngel4to&quot;,null);&#xD;
-	view.get(&quot;#autoformTurretarm&quot;).get(&quot;entity&quot;).set(&quot;armWidth1&quot;,null);&#xD;
-	view.get(&quot;#autoformTurretarm&quot;).get(&quot;entity&quot;).set(&quot;armWidth1to&quot;,null);&#xD;
-	view.get(&quot;#autoformTurretarm&quot;).get(&quot;entity&quot;).set(&quot;armWidth2&quot;,null);&#xD;
-	view.get(&quot;#autoformTurretarm&quot;).get(&quot;entity&quot;).set(&quot;armWidth2to&quot;,null);&#xD;
-	view.get(&quot;#autoformTurretarm&quot;).get(&quot;entity&quot;).set(&quot;shankType&quot;,null);&#xD;
-	view.get(&quot;#autoformQueryForCondition&quot;).get(&quot;entity&quot;).set(&quot;armStandard&quot;,null);&#xD;
-&#xD;
-}&#xD;
-&#xD;
-resetAll();&#xD;
+            <ClientEvent name="onClick" signature="self,arg,autoformTurretarm,dataSetTurretarm">view.get(&quot;#autoformTurretarm&quot;).set(&quot;entity&quot;,{});&#xD;
+view.get(&quot;#autoformQueryForCondition&quot;).get(&quot;entity&quot;).set(&quot;armStandard&quot;,null);&#xD;
 &#xD;
 var entity = autoformTurretarm.get(&quot;entity&quot;);&#xD;
 dataSetTurretarm.set(&quot;parameter&quot;,entity).flushAsync();&#xD;
-&#xD;
-//var entity2=view.get(&quot;#autoformTurretarm&quot;).get(&quot;entity&quot;);&#xD;
-//view.get(&quot;#dataSetImage&quot;).set(&quot;parameter&quot;,entity2).flushAsync();</ClientEvent>
+</ClientEvent>
             <Property name="caption">刷新</Property>
             <Property name="width">75</Property>
             <Property name="icon"> url(>skin>common/icons.gif) -280px -220px</Property>
           </Button>
         </Buttons>
         <Children>
+          <AutoForm id="autoformTurretarmImageType">
+            <Property name="createPrivateDataSet">true</Property>
+            <Property name="labelWidth">200</Property>
+            <AutoFormElement id="autoformTurretarmImageTypeElement">
+              <Property name="label">钳臂系列：</Property>
+              <Property name="name">autoformTurretarmImageTypeElement</Property>
+              <Property name="labelWidth">120</Property>
+              <Editor>
+                <RadioGroup id="RadioGroupImageType">
+                  <ClientEvent name="onReady" signature="self,arg,autoformTurretarmImageType">autoformTurretarmImageType.get(&quot;entity&quot;).set(&quot;autoformTurretarmImageTypeElement&quot;,&quot;Cu&quot;);</ClientEvent>
+                  <RadioButton>
+                    <Property name="text">Cu</Property>
+                    <Property name="value">Cu</Property>
+                  </RadioButton>
+                  <RadioButton>
+                    <Property name="text">Al</Property>
+                    <Property name="value">Al</Property>
+                  </RadioButton>
+                  <RadioButton>
+                    <Property name="text">其他</Property>
+                    <Property name="value">其他</Property>
+                  </RadioButton>
+                </RadioGroup>
+              </Editor>
+            </AutoFormElement>
+          </AutoForm>
           <Container layout="hbox">
+            <Property name="width">100%</Property>
             <Property name="height">300</Property>
-            <Property name="width">1500</Property>
             <Container layout="vbox">
               <Property name="height">100%</Property>
-              <Property name="width">300</Property>
+              <Property name="width">19%</Property>
               <Image id="image11">
                 <Property name="image">images/2D/Cu/1-1.jpg</Property>
-                <Property name="width">300</Property>
-                <Property name="height">100</Property>
-                <Property name="tip">1-1</Property>
+                <Property name="stretchMode">stretch</Property>
+                <Property name="height">49%</Property>
+                <Property name="width">100%</Property>
               </Image>
               <Image id="image12">
                 <Property name="image">images/2D/Cu/1-2.jpg</Property>
-                <Property name="height">100</Property>
-                <Property name="width">300</Property>
-                <Property name="tip">1-2</Property>
+                <Property name="stretchMode">stretch</Property>
+                <Property name="height">50%</Property>
+                <Property name="width">100%</Property>
               </Image>
             </Container>
             <Container layout="vbox">
               <Property name="height">100%</Property>
-              <Property name="width">300</Property>
+              <Property name="width">20%</Property>
               <Image id="image21">
                 <Property name="image">images/2D/Cu/2-1.jpg</Property>
-                <Property name="width">300</Property>
-                <Property name="height">100</Property>
-                <Property name="tip">2-1</Property>
+                <Property name="stretchMode">stretch</Property>
+                <Property name="height">49%</Property>
+                <Property name="width">100%</Property>
               </Image>
               <Image id="image22">
                 <Property name="image">images/2D/Cu/2-2.jpg</Property>
-                <Property name="height">100</Property>
-                <Property name="width">300</Property>
-                <Property name="tip">2-2</Property>
+                <Property name="stretchMode">stretch</Property>
+                <Property name="height">50%</Property>
+                <Property name="width">100%</Property>
               </Image>
             </Container>
             <Container layout="vbox">
               <Property name="height">100%</Property>
-              <Property name="width">300</Property>
+              <Property name="width">20%</Property>
               <Image id="image31">
                 <Property name="image">images/2D/Cu/3-1.jpg</Property>
-                <Property name="width">300</Property>
-                <Property name="height">100</Property>
-                <Property name="tip">3-1</Property>
+                <Property name="stretchMode">stretch</Property>
+                <Property name="height">49%</Property>
+                <Property name="width">100%</Property>
               </Image>
               <Image id="image32">
                 <Property name="image">images/2D/Cu/3-2.jpg</Property>
-                <Property name="height">100</Property>
-                <Property name="width">300</Property>
-                <Property name="tip">3-2</Property>
-              </Image>
-              <Image id="image33">
-                <Property name="width">300</Property>
-                <Property name="height">100</Property>
-                <Property name="visible">false</Property>
-                <Property name="image">images/2D/Al/3-3.jpg</Property>
-                <Property name="tip">3-3</Property>
+                <Property name="stretchMode">stretch</Property>
+                <Property name="height">50%</Property>
+                <Property name="width">100%</Property>
               </Image>
             </Container>
             <Container layout="vbox">
               <Property name="height">100%</Property>
-              <Property name="width">300</Property>
+              <Property name="width">20%</Property>
               <Image id="image41">
                 <Property name="image">images/2D/Cu/4-1.jpg</Property>
-                <Property name="width">300</Property>
-                <Property name="height">100</Property>
-                <Property name="tip">4-1</Property>
+                <Property name="stretchMode">stretch</Property>
+                <Property name="height">49%</Property>
+                <Property name="width">100%</Property>
               </Image>
               <Image id="image42">
                 <Property name="image">images/2D/Cu/4-2.jpg</Property>
-                <Property name="height">100</Property>
-                <Property name="width">300</Property>
-                <Property name="tip">4-2</Property>
+                <Property name="stretchMode">stretch</Property>
+                <Property name="height">50%</Property>
+                <Property name="width">100%</Property>
               </Image>
             </Container>
             <Container layout="vbox">
               <Property name="height">100%</Property>
-              <Property name="width">300</Property>
+              <Property name="width">20%</Property>
               <Image id="image51">
                 <Property name="image">images/2D/Cu/5-1.jpg</Property>
-                <Property name="width">300</Property>
-                <Property name="height">100</Property>
-                <Property name="tip">5-1</Property>
+                <Property name="stretchMode">stretch</Property>
+                <Property name="height">49%</Property>
+                <Property name="width">100%</Property>
               </Image>
               <Image id="image52">
                 <Property name="image">images/2D/Cu/5-2.jpg</Property>
-                <Property name="height">100</Property>
-                <Property name="width">300</Property>
-                <Property name="tip">5-2</Property>
+                <Property name="stretchMode">stretch</Property>
+                <Property name="height">50%</Property>
+                <Property name="width">100%</Property>
               </Image>
             </Container>
           </Container>
           <AutoForm id="autoformTurretarm">
             <Property name="labelSeparator">:</Property>
-            <Property name="cols">*,*,*,*</Property>
+            <Property name="cols">400,*,400,*</Property>
             <Property name="createPrivateDataSet">true</Property>
             <Property name="labelAlign">left</Property>
-            <Property name="labelWidth">130</Property>
+            <Property name="labelWidth">200</Property>
             <AutoFormElement>
               <Property name="name">armDrawingno</Property>
               <Property name="property">armDrawingno</Property>
               <Property name="label">钳臂零件图号</Property>
               <Property name="visible">false</Property>
+              <Property name="ignored">true</Property>
               <Editor/>
             </AutoFormElement>
             <AutoFormElement id="armType" layoutConstraint="colSpan:4">
               <Property name="name">armType</Property>
               <Property name="property">armType</Property>
               <Property name="label">钳臂系列</Property>
+              <Property name="visible">false</Property>
+              <Property name="ignored">true</Property>
               <Editor>
                 <RadioGroup id="RadioGroupType">
                   <RadioButton>
@@ -372,6 +310,13 @@ dataSetTurretarm.set(&quot;parameter&quot;,entity).flushAsync();&#xD;
               <Property name="property">armMaterial</Property>
               <Property name="label">钳臂截面</Property>
               <Property name="trigger">listdropdownArmMaterial</Property>
+              <Editor/>
+            </AutoFormElement>
+            <AutoFormElement id="shankType" layoutConstraint="colSpan:2">
+              <Property name="name">shankType</Property>
+              <Property name="property">shankType</Property>
+              <Property name="label">握杆连接形式</Property>
+              <Property name="trigger">listdropdownShankType</Property>
               <Editor/>
             </AutoFormElement>
             <AutoFormElement id="armAngel1">
@@ -469,13 +414,6 @@ dataSetTurretarm.set(&quot;parameter&quot;,entity).flushAsync();&#xD;
               <Property name="labelWidth">50</Property>
               <Editor/>
             </AutoFormElement>
-            <AutoFormElement id="shankType" layoutConstraint="colSpan:2">
-              <Property name="name">shankType</Property>
-              <Property name="property">shankType</Property>
-              <Property name="label">握杆连接形式</Property>
-              <Property name="trigger">listdropdownShankType</Property>
-              <Editor/>
-            </AutoFormElement>
           </AutoForm>
         </Children>
       </FieldSet>
@@ -485,10 +423,10 @@ dataSetTurretarm.set(&quot;parameter&quot;,entity).flushAsync();&#xD;
         <Property name="caption">钳臂零件信息</Property>
         <Buttons>
           <Button>
-            <ClientEvent name="onClick" signature="self,arg,dataSetTurretarm,image2d,dialog2Dimage">var armSerial = dataSetTurretarm.get(&quot;data:#&quot;).get(&quot;armSerial&quot;);&#xD;
+            <ClientEvent name="onClick" signature="self,arg,dataSetTurretarm,image2d,dialog2Dimage">var armDrawingno = dataSetTurretarm.get(&quot;data:#&quot;).get(&quot;armDrawingno&quot;);&#xD;
 &#xD;
-if(armSerial){&#xD;
-	image2d.set(&quot;image&quot;,$url(&quot;>images/2D/&quot;+armSerial+&quot;.jpg&quot;));&#xD;
+if(armDrawingno){&#xD;
+	image2d.set(&quot;image&quot;,$url(&quot;>images/2D/&quot;+armDrawingno+&quot;.jpg&quot;));&#xD;
 }else{&#xD;
 	image2d.set(&quot;image&quot;,null);&#xD;
 }&#xD;
@@ -504,11 +442,12 @@ dialog2Dimage.show();&#xD;
           <Container>
             <AutoForm id="autoformQueryForCondition">
               <Property name="createPrivateDataSet">true</Property>
-              <Property name="labelWidth">120</Property>
+              <Property name="labelWidth">150</Property>
               <AutoFormElement id="armStandard">
                 <Property name="name">armStandard</Property>
                 <Property name="label">请选择零件库：</Property>
                 <Property name="property">armStandard</Property>
+                <Property name="labelWidth">160</Property>
                 <Editor>
                   <RadioGroup id="RadioGroupTypeCondition" layoutConstraint="right ">
                     <RadioButton>
@@ -530,13 +469,16 @@ dialog2Dimage.show();&#xD;
           </Container>
           <Container>
             <ToolBar>
+              <Property name="width">100%</Property>
               <DataPilot id="datapilotTurretarm">
                 <Property name="dataSet">dataSetTurretarm</Property>
                 <Property name="itemCodes">pages,pageSize</Property>
               </DataPilot>
               <ToolBarButton id="buttonAdd">
                 <ClientEvent name="onClick" signature="self,arg,dataSetTurretarm,dialogEdit">dataSetTurretarm.insert();&#xD;
-dialogEdit.show();</ClientEvent>
+dialogEdit.show();&#xD;
+&#xD;
+</ClientEvent>
                 <Property name="caption">添加</Property>
                 <Property name="icon"> url(>skin>common/icons.gif) -120px -0px</Property>
                 <Property name="width">100</Property>
@@ -558,7 +500,7 @@ updateactionSave.execute();&#xD;
 }</ClientEvent>
                 <Property name="caption">删除并保存</Property>
                 <Property name="icon"> url(>skin>common/icons.gif) -40px -0px</Property>
-                <Property name="width">100</Property>
+                <Property name="width">150</Property>
               </ToolBarButton>
             </ToolBar>
             <DataGrid id="datagridTurretarm">
@@ -572,6 +514,7 @@ updateactionSave.execute();&#xD;
               <Property name="readOnly">true</Property>
               <Property name="headerRowHeight">50</Property>
               <Property name="showFilterBar">true</Property>
+              <Property name="tip">点击右键以查看更多信息</Property>
               <DataColumn name="armDrawingno">
                 <Property name="property">armDrawingno</Property>
                 <Property name="caption">钳臂零件图号</Property>
@@ -650,9 +593,11 @@ updateactionSave.execute();&#xD;
               </DataColumn>
               <DataColumn name="linearGuide">
                 <Property name="property">linearGuide</Property>
+                <Property name="visible">false</Property>
               </DataColumn>
               <DataColumn name="armStandard">
                 <Property name="property">armStandard</Property>
+                <Property name="visible">false</Property>
               </DataColumn>
               <DataColumn name="armUsestate">
                 <Property name="property">armUsestate</Property>
@@ -726,6 +671,7 @@ updateactionSave.execute();&#xD;
     <AutoForm id="autoformSelectMode">
       <Property name="createPrivateDataSet">true</Property>
       <Property name="visible">false</Property>
+      <Property name="ignored">true</Property>
       <AutoFormElement id="autoformelementSelectMode">
         <Property name="trigger">listdropdownSelectMode</Property>
         <Property name="label">请选择2D图纸型号</Property>
@@ -735,31 +681,51 @@ updateactionSave.execute();&#xD;
       </AutoFormElement>
     </AutoForm>
     <Dialog id="dialogEdit">
-      <Property name="caption">钳臂零件信息</Property>
+      <Property name="caption">钳臂零件信息编辑</Property>
       <Property name="width">900</Property>
-      <Property name="height">500</Property>
+      <Property name="height">80%</Property>
       <Buttons>
         <Button id="buttonSaveInfo">
-          <ClientEvent name="onClick" signature="self,arg,dialogEdit,updateactionSave,autoformTurretarmInfo">//保存钳臂零件信息时之前自动编码&#xD;
+          <ClientEvent name="onClick" signature="self,arg,dialogEdit,updateactionSave,autoformTurretarmInfo">/**&#xD;
+ * 保存前校验钳臂所属系列输入格式是否规范&#xD;
+ */&#xD;
+var armSerial=String(autoformTurretarmInfo.get(&quot;entity&quot;).get(&quot;armSerial&quot;));&#xD;
+if(armSerial.length>3||armSerial.substr(1,1)!=&quot;-&quot;){&#xD;
+	dorado.MessageBox.alert(&quot;钳臂所属系列格式应该符合'x-x'格式！&quot;);&#xD;
+}else if(parseInt(armSerial.substr(0,1))&lt;1||parseInt(armSerial.substr(2,1))&lt;1||isNaN(armSerial.substr(0,1))||isNaN(armSerial.substr(2,1))){&#xD;
+	dorado.MessageBox.alert(&quot;'x-x'格式中'x'必须是大于0的整数！&quot;);&#xD;
+}else if(parseInt(armSerial.substr(0,1))>5||parseInt(armSerial.substr(2,1))>3){&#xD;
+	dorado.MessageBox.alert(&quot;超出图号范围！&quot;);&#xD;
+}else{&#xD;
+	/**&#xD;
+ * 保存钳臂零件信息时之前自动编码&#xD;
+ */&#xD;
 var armCode=&quot;&quot;;&#xD;
 /*armMaterial----------------------------------------------------------------------------*/&#xD;
 var armMaterial=autoformTurretarmInfo.get(&quot;entity&quot;).get(&quot;armMaterial&quot;);&#xD;
 var armMaterialCode=&quot;&quot;;&#xD;
+var armType=&quot;&quot;;&#xD;
 &#xD;
 switch(armMaterial){&#xD;
 	case 'Φ54/CuCr1Zr':&#xD;
 		armMaterialCode=&quot;0&quot;;&#xD;
+		armType=&quot;Cu&quot;;&#xD;
 	break;&#xD;
 	case '100×40/7075(T6)':&#xD;
 		armMaterialCode=&quot;1&quot;;&#xD;
+		armType=&quot;Al&quot;;&#xD;
 	break;&#xD;
 	case '125×40/7075(T6)':&#xD;
 		armMaterialCode=&quot;2&quot;;&#xD;
+		armType=&quot;Al&quot;;&#xD;
 	break;&#xD;
 	default:&#xD;
 		armMaterialCode=&quot;4&quot;;&#xD;
+		armType=&quot;其他&quot;;&#xD;
 	break;&#xD;
 }&#xD;
+&#xD;
+&#xD;
  /*armSpecialshapeandrib--------------------------------------------------------------------*/&#xD;
 var armSpecialshapeandrib=autoformTurretarmInfo.get(&quot;entity&quot;).get(&quot;armSpecialshapeandrib&quot;);&#xD;
 var armSpecialshapeandribCode=&quot;&quot;;&#xD;
@@ -865,10 +831,18 @@ switch(shankType){&#xD;
 &#xD;
 armCode=armCode.concat(armMaterialCode,armSpecialshapeandribCode,armAngel1Code,armAngel2Code,armAngel3Code,armAngel4Code,shankTypeCode);&#xD;
 autoformTurretarmInfo.get(&quot;entity&quot;).set(&quot;armCode&quot;,armCode);&#xD;
+autoformTurretarmInfo.get(&quot;entity&quot;).set(&quot;armType&quot;,armType);&#xD;
 &#xD;
-updateactionSave.execute(function(){&#xD;
+	updateactionSave.execute();&#xD;
+	console.log(&quot;save&quot;);&#xD;
 	dialogEdit.hide();&#xD;
-});&#xD;
+&#xD;
+}&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
 </ClientEvent>
           <Property name="caption">保存</Property>
           <Property name="icon"> url(>skin>common/icons.gif) -140px -20px</Property>
@@ -886,7 +860,7 @@ dialogEdit.hide();</ClientEvent>
           <Property name="dataSet">dataSetTurretarm</Property>
           <Property name="labelAlign">center</Property>
           <Property name="labelSeparator">:</Property>
-          <Property name="labelWidth">150</Property>
+          <Property name="labelWidth">200</Property>
           <AutoFormElement>
             <Property name="name">armDrawingno</Property>
             <Property name="property">armDrawingno</Property>
@@ -896,8 +870,8 @@ dialogEdit.hide();</ClientEvent>
           <AutoFormElement>
             <Property name="name">armType</Property>
             <Property name="property">armType</Property>
-            <Property name="label">钳臂系列</Property>
-            <Property name="trigger">listdropdownelementType</Property>
+            <Property name="label">钳臂材料</Property>
+            <Property name="readOnly">true</Property>
             <Editor/>
           </AutoFormElement>
           <AutoFormElement>
@@ -921,21 +895,39 @@ dialogEdit.hide();</ClientEvent>
             <Editor/>
           </AutoFormElement>
           <AutoFormElement>
+            <Property name="name">armStandard</Property>
+            <Property name="property">armStandard</Property>
+            <Property name="label">是否为标准零件</Property>
+            <Property name="trigger">listdropdownArmStandard</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">shankType</Property>
+            <Property name="property">shankType</Property>
+            <Property name="label">握杆连接形式</Property>
+            <Property name="trigger">listdropdownShankType</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">armCode</Property>
+            <Property name="property">armCode</Property>
+            <Property name="label">分类编码</Property>
+            <Property name="readOnly">true</Property>
+            <Editor/>
+          </AutoFormElement>
+          <GroupBox>
+            <Buttons/>
+            <Children/>
+          </GroupBox>
+          <GroupBox>
+            <Buttons/>
+            <Children/>
+          </GroupBox>
+          <AutoFormElement layoutConstraint="colSpan:2">
             <Property name="name">armLength</Property>
             <Property name="property">armLength</Property>
             <Property name="label">钳臂长(1)</Property>
-            <Editor/>
-          </AutoFormElement>
-          <AutoFormElement>
-            <Property name="name">assembleSize</Property>
-            <Property name="property">assembleSize</Property>
-            <Property name="label">装配截面尺寸</Property>
-            <Editor/>
-          </AutoFormElement>
-          <AutoFormElement>
-            <Property name="name">assembleLength</Property>
-            <Property name="property">assembleLength</Property>
-            <Property name="label">装配长度</Property>
+            <Property name="width">435</Property>
             <Editor/>
           </AutoFormElement>
           <AutoFormElement>
@@ -972,55 +964,6 @@ dialogEdit.hide();</ClientEvent>
             <Property name="name">armWidth2</Property>
             <Property name="property">armWidth2</Property>
             <Property name="label">竖直距离2(w2)</Property>
-            <Editor/>
-          </AutoFormElement>
-          <AutoFormElement>
-            <Property name="name">shankType</Property>
-            <Property name="property">shankType</Property>
-            <Property name="label">握杆连接形式</Property>
-            <Property name="trigger">listdropdownShankType</Property>
-            <Editor/>
-          </AutoFormElement>
-          <AutoFormElement>
-            <Property name="name">shankDiameter</Property>
-            <Property name="property">shankDiameter</Property>
-            <Property name="label">电极握杆直径</Property>
-            <Editor/>
-          </AutoFormElement>
-          <AutoFormElement>
-            <Property name="name">linearGuide</Property>
-            <Property name="property">linearGuide</Property>
-            <Property name="label">是否有直线导轨</Property>
-            <Editor/>
-          </AutoFormElement>
-          <AutoFormElement>
-            <Property name="name">armStandard</Property>
-            <Property name="property">armStandard</Property>
-            <Property name="label">是否为标准零件</Property>
-            <Editor/>
-          </AutoFormElement>
-          <AutoFormElement>
-            <Property name="name">armUsestate</Property>
-            <Property name="property">armUsestate</Property>
-            <Property name="label">使用状态</Property>
-            <Editor/>
-          </AutoFormElement>
-          <AutoFormElement>
-            <Property name="name">armDesigner</Property>
-            <Property name="property">armDesigner</Property>
-            <Property name="label">设计者</Property>
-            <Editor/>
-          </AutoFormElement>
-          <AutoFormElement>
-            <Property name="name">armDesigndate</Property>
-            <Property name="property">armDesigndate</Property>
-            <Property name="label">设计日期</Property>
-            <Editor/>
-          </AutoFormElement>
-          <AutoFormElement>
-            <Property name="name">armCustomer</Property>
-            <Property name="property">armCustomer</Property>
-            <Property name="label">客户/标准</Property>
             <Editor/>
           </AutoFormElement>
           <AutoFormElement>
@@ -1066,34 +1009,94 @@ dialogEdit.hide();</ClientEvent>
             <Editor/>
           </AutoFormElement>
           <AutoFormElement>
+            <Property name="name">assembleSize</Property>
+            <Property name="property">assembleSize</Property>
+            <Property name="label">装配截面尺寸</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">assembleLength</Property>
+            <Property name="property">assembleLength</Property>
+            <Property name="label">装配长度</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">shankDiameter</Property>
+            <Property name="property">shankDiameter</Property>
+            <Property name="label">电极握杆直径</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">linearGuide</Property>
+            <Property name="property">linearGuide</Property>
+            <Property name="label">是否有直线导轨</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
             <Property name="name">shankHoledepth</Property>
             <Property name="property">shankHoledepth</Property>
             <Property name="label">握杆装配孔深</Property>
             <Editor/>
           </AutoFormElement>
+          <GroupBox>
+            <Buttons/>
+            <Children/>
+          </GroupBox>
+          <GroupBox>
+            <Buttons/>
+            <Children/>
+          </GroupBox>
           <AutoFormElement>
+            <Property name="name">armUsestate</Property>
+            <Property name="property">armUsestate</Property>
+            <Property name="label">使用状态</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">armDesigner</Property>
+            <Property name="property">armDesigner</Property>
+            <Property name="label">设计者</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">armDesigndate</Property>
+            <Property name="property">armDesigndate</Property>
+            <Property name="label">设计日期</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">armCustomer</Property>
+            <Property name="property">armCustomer</Property>
+            <Property name="label">客户/标准</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement layoutConstraint="colSpan:2">
             <Property name="name">armTechchange</Property>
             <Property name="property">armTechchange</Property>
             <Property name="label">技术更改</Property>
+            <Property name="width">435</Property>
             <Editor/>
           </AutoFormElement>
+          <GroupBox>
+            <Buttons/>
+            <Children/>
+          </GroupBox>
+          <GroupBox>
+            <Buttons/>
+            <Children/>
+          </GroupBox>
           <AutoFormElement>
             <Property name="name">attachedPage</Property>
             <Property name="property">attachedPage</Property>
             <Property name="label">工艺附属页</Property>
+            <Property name="editorType">TextArea</Property>
             <Editor/>
           </AutoFormElement>
           <AutoFormElement>
             <Property name="name">armRemark</Property>
             <Property name="property">armRemark</Property>
             <Property name="label">备注</Property>
-            <Editor/>
-          </AutoFormElement>
-          <AutoFormElement>
-            <Property name="name">armCode</Property>
-            <Property name="property">armCode</Property>
-            <Property name="label">分类编码</Property>
-            <Property name="readOnly">true</Property>
+            <Property name="editorType">TextArea</Property>
             <Editor/>
           </AutoFormElement>
         </AutoForm>
@@ -1103,7 +1106,7 @@ dialogEdit.hide();</ClientEvent>
     <Dialog id="dialogQuery">
       <Property name="caption">钳臂零件信息详细查询</Property>
       <Property name="height">500</Property>
-      <Property name="width">1100</Property>
+      <Property name="width">1350</Property>
       <Buttons>
         <Button id="buttonQueryForDetials">
           <ClientEvent name="onClick" signature="self,arg,autoformTurretarmInfoForQuery,dataSetTurretarm,dialogQuery">view.get(&quot;#autoformTurretarm&quot;).get(&quot;entity&quot;).set(&quot;armSerial&quot;,&quot;&quot;);&#xD;
@@ -1126,18 +1129,20 @@ dialogQuery.hide();</ClientEvent>
           <Property name="labelWidth">150</Property>
           <Property name="createPrivateDataSet">true</Property>
           <Property name="cols">*,*,*,*</Property>
-          <AutoFormElement>
+          <AutoFormElement layoutConstraint="colSpan:4">
             <Property name="name">armDrawingno</Property>
             <Property name="property">armDrawingno</Property>
             <Property name="label">钳臂零件图号</Property>
             <Property name="visible">true</Property>
-            <Property name="width">300</Property>
+            <Property name="width">660</Property>
             <Editor/>
           </AutoFormElement>
           <AutoFormElement id="armType2" layoutConstraint="colSpan:4">
             <Property name="name">armType</Property>
             <Property name="property">armType</Property>
-            <Property name="label">钳臂系列</Property>
+            <Property name="label">钳臂材料</Property>
+            <Property name="ignored">true</Property>
+            <Property name="visible">false</Property>
             <Editor>
               <RadioGroup id="RadioGroupType2">
                 <RadioButton>
@@ -1166,14 +1171,14 @@ dialogQuery.hide();</ClientEvent>
             <Property name="name">armAngel1</Property>
             <Property name="label">第一偏转角度α1(°)</Property>
             <Property name="trigger">listdropdownArmAngel1</Property>
-            <Property name="width">250</Property>
+            <Property name="width">350</Property>
             <Editor/>
           </AutoFormElement>
           <AutoFormElement id="armAngel1to2">
             <Property name="name">armAngel1to</Property>
             <Property name="label">至</Property>
             <Property name="trigger">listdropdownArmAngel1to</Property>
-            <Property name="width">250</Property>
+            <Property name="width">350</Property>
             <Editor/>
           </AutoFormElement>
           <AutoFormElement id="armSpecialshapeandrib2" layoutConstraint="colSpan:2">
@@ -1187,81 +1192,82 @@ dialogQuery.hide();</ClientEvent>
             <Property name="name">armAngel2</Property>
             <Property name="label">第二偏转角度α2(°)</Property>
             <Property name="trigger">listdropdownArmAngel2</Property>
-            <Property name="width">250</Property>
+            <Property name="width">350</Property>
             <Editor/>
           </AutoFormElement>
           <AutoFormElement id="armAngel2to2">
             <Property name="name">armAngel2to</Property>
             <Property name="trigger">listdropdownArmAngel2to</Property>
             <Property name="label">至</Property>
-            <Property name="width">250</Property>
+            <Property name="width">350</Property>
             <Editor/>
           </AutoFormElement>
           <AutoFormElement id="armLength12" layoutConstraint="colSpan:0.5">
             <Property name="name">armLength1</Property>
             <Property name="label">钳臂长(1)</Property>
-            <Property name="width">250</Property>
+            <Property name="width">350</Property>
             <Editor/>
           </AutoFormElement>
           <AutoFormElement id="armLength22" layoutConstraint="colSpan:0.5">
             <Property name="label">至</Property>
             <Property name="name">armLength2</Property>
-            <Property name="width">250</Property>
+            <Property name="width">350</Property>
             <Editor/>
           </AutoFormElement>
           <AutoFormElement id="armAngel32">
             <Property name="name">armAngel3</Property>
             <Property name="label">第三偏转角度α3(°)</Property>
             <Property name="trigger">listdropdownArmAngel3</Property>
-            <Property name="width">250</Property>
+            <Property name="width">350</Property>
             <Editor/>
           </AutoFormElement>
           <AutoFormElement id="armAngel3to2">
             <Property name="name">armAngel3to</Property>
             <Property name="label">至</Property>
             <Property name="trigger">listdropdownArmAngel3to</Property>
-            <Property name="width">250</Property>
+            <Property name="width">350</Property>
             <Editor/>
           </AutoFormElement>
           <AutoFormElement id="armWidth12">
             <Property name="name">armWidth1</Property>
             <Property name="label">竖直距离1(w1)</Property>
             <Property name="trigger">listdropdownArmWidth1</Property>
-            <Property name="width">250</Property>
+            <Property name="width">350</Property>
             <Editor/>
           </AutoFormElement>
           <AutoFormElement id="armWidth1to2">
             <Property name="name">armWidth1to</Property>
             <Property name="label">至</Property>
             <Property name="trigger">listdropdownArmWidth1to</Property>
-            <Property name="width">250</Property>
+            <Property name="width">350</Property>
             <Editor/>
           </AutoFormElement>
           <AutoFormElement id="armAngel42">
             <Property name="name">armAngel4</Property>
             <Property name="label">第四偏转角度α4(°)</Property>
             <Property name="trigger">listdropdownArmAngel4</Property>
-            <Property name="width">250</Property>
+            <Property name="width">350</Property>
             <Editor/>
           </AutoFormElement>
           <AutoFormElement id="armAngel4to2">
             <Property name="name">armAngel4to</Property>
             <Property name="label">至</Property>
-            <Property name="width">250</Property>
+            <Property name="width">350</Property>
+            <Property name="trigger">listdropdownArmAngel4to</Property>
             <Editor/>
           </AutoFormElement>
           <AutoFormElement id="armWidth22">
             <Property name="name">armWidth2</Property>
             <Property name="label">竖直距离2(w2)</Property>
             <Property name="trigger">listdropdownArmWidth2</Property>
-            <Property name="width">250</Property>
+            <Property name="width">350</Property>
             <Editor/>
           </AutoFormElement>
           <AutoFormElement id="armWidth2to2">
             <Property name="name">armWidth2to</Property>
             <Property name="label">至</Property>
             <Property name="trigger">listdropdownArmWidth2to</Property>
-            <Property name="width">250</Property>
+            <Property name="width">350</Property>
             <Editor/>
           </AutoFormElement>
           <AutoFormElement id="shankType2" layoutConstraint="colSpan:2">
@@ -1395,6 +1401,266 @@ dialogQuery.hide();</ClientEvent>
       </Children>
       <Tools/>
     </Dialog>
+    <Dialog id="dialogInfo">
+      <Property name="caption">钳臂零件完整信息</Property>
+      <Property name="height">85%</Property>
+      <Property name="width">900</Property>
+      <Buttons>
+        <Button id="buttonCancelDialogInfo">
+          <ClientEvent name="onClick" signature="self,arg,dialogInfo">dialogInfo.hide();</ClientEvent>
+          <Property name="caption">关闭</Property>
+          <Property name="icon"> url(>skin>common/icons.gif) -280px -220px</Property>
+        </Button>
+      </Buttons>
+      <Children>
+        <AutoForm id="autoformTurretarmDialogInfo">
+          <Property name="dataSet">dataSetTurretarm</Property>
+          <Property name="labelAlign">center</Property>
+          <Property name="labelSeparator">:</Property>
+          <Property name="labelWidth">200</Property>
+          <Property name="readOnly">true</Property>
+          <AutoFormElement>
+            <Property name="name">armDrawingno</Property>
+            <Property name="property">armDrawingno</Property>
+            <Property name="label">钳臂零件图号</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">armType</Property>
+            <Property name="property">armType</Property>
+            <Property name="label">钳臂材料</Property>
+            <Property name="readOnly">true</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">armMaterial</Property>
+            <Property name="property">armMaterial</Property>
+            <Property name="label">钳臂截面</Property>
+            <Property name="trigger">listdropdownelementArmMaterial</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">armSpecialshapeandrib</Property>
+            <Property name="property">armSpecialshapeandrib</Property>
+            <Property name="label">是否有加强筋</Property>
+            <Property name="trigger">listdropdownelementSpecialshapeandrib</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">armSerial</Property>
+            <Property name="property">armSerial</Property>
+            <Property name="label">钳臂所属系列</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">armStandard</Property>
+            <Property name="property">armStandard</Property>
+            <Property name="label">是否为标准零件</Property>
+            <Property name="trigger">listdropdownArmStandard</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">shankType</Property>
+            <Property name="property">shankType</Property>
+            <Property name="label">握杆连接形式</Property>
+            <Property name="trigger">listdropdownShankType</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">armCode</Property>
+            <Property name="property">armCode</Property>
+            <Property name="label">分类编码</Property>
+            <Property name="readOnly">true</Property>
+            <Editor/>
+          </AutoFormElement>
+          <GroupBox>
+            <Buttons/>
+            <Children/>
+          </GroupBox>
+          <GroupBox>
+            <Buttons/>
+            <Children/>
+          </GroupBox>
+          <AutoFormElement layoutConstraint="colSpan:2">
+            <Property name="name">armLength</Property>
+            <Property name="property">armLength</Property>
+            <Property name="label">钳臂长(1)</Property>
+            <Property name="width">435</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">armAngel1</Property>
+            <Property name="property">armAngel1</Property>
+            <Property name="label">第一偏转角度α1(°)</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">armAngel2</Property>
+            <Property name="property">armAngel2</Property>
+            <Property name="label">第二偏转角度α2(°)</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">armAngel3</Property>
+            <Property name="property">armAngel3</Property>
+            <Property name="label">第三偏转角度α3(°)</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">armAngel4</Property>
+            <Property name="property">armAngel4</Property>
+            <Property name="label">第四偏转角度α4(°)</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">armWidth1</Property>
+            <Property name="property">armWidth1</Property>
+            <Property name="label">竖直距离1(w1)</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">armWidth2</Property>
+            <Property name="property">armWidth2</Property>
+            <Property name="label">竖直距离2(w2)</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">armRadius1</Property>
+            <Property name="property">armRadius1</Property>
+            <Property name="label">第一折弯半径</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">armLengthS1</Property>
+            <Property name="property">armLengthS1</Property>
+            <Property name="label">第一直段长度</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">armRadius2</Property>
+            <Property name="property">armRadius2</Property>
+            <Property name="label">第二折弯半径</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">armLengthS2</Property>
+            <Property name="property">armLengthS2</Property>
+            <Property name="label">第二直段长度</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">armRadius3</Property>
+            <Property name="property">armRadius3</Property>
+            <Property name="label">第三折弯半径</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">armLengthS3</Property>
+            <Property name="property">armLengthS3</Property>
+            <Property name="label">第三直段长度</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">armLengthS4</Property>
+            <Property name="property">armLengthS4</Property>
+            <Property name="label">第四直段长度</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">assembleSize</Property>
+            <Property name="property">assembleSize</Property>
+            <Property name="label">装配截面尺寸</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">assembleLength</Property>
+            <Property name="property">assembleLength</Property>
+            <Property name="label">装配长度</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">shankDiameter</Property>
+            <Property name="property">shankDiameter</Property>
+            <Property name="label">电极握杆直径</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">linearGuide</Property>
+            <Property name="property">linearGuide</Property>
+            <Property name="label">是否有直线导轨</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">shankHoledepth</Property>
+            <Property name="property">shankHoledepth</Property>
+            <Property name="label">握杆装配孔深</Property>
+            <Editor/>
+          </AutoFormElement>
+          <GroupBox>
+            <Buttons/>
+            <Children/>
+          </GroupBox>
+          <GroupBox>
+            <Buttons/>
+            <Children/>
+          </GroupBox>
+          <AutoFormElement>
+            <Property name="name">armUsestate</Property>
+            <Property name="property">armUsestate</Property>
+            <Property name="label">使用状态</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">armDesigner</Property>
+            <Property name="property">armDesigner</Property>
+            <Property name="label">设计者</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">armDesigndate</Property>
+            <Property name="property">armDesigndate</Property>
+            <Property name="label">设计日期</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">armCustomer</Property>
+            <Property name="property">armCustomer</Property>
+            <Property name="label">客户/标准</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement layoutConstraint="colSpan:2">
+            <Property name="name">armTechchange</Property>
+            <Property name="property">armTechchange</Property>
+            <Property name="label">技术更改</Property>
+            <Property name="width">435</Property>
+            <Editor/>
+          </AutoFormElement>
+          <GroupBox>
+            <Buttons/>
+            <Children/>
+          </GroupBox>
+          <GroupBox>
+            <Buttons/>
+            <Children/>
+          </GroupBox>
+          <AutoFormElement>
+            <Property name="name">attachedPage</Property>
+            <Property name="property">attachedPage</Property>
+            <Property name="label">工艺附属页</Property>
+            <Property name="editorType">TextArea</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">armRemark</Property>
+            <Property name="property">armRemark</Property>
+            <Property name="label">备注</Property>
+            <Property name="editorType">TextArea</Property>
+            <Editor/>
+          </AutoFormElement>
+        </AutoForm>
+      </Children>
+      <Tools/>
+    </Dialog>
     <Dialog id="dialog2Dimage">
       <ClientEvent name="onShow">/*var armDrawingno = dataSetTurretarm.get(&quot;data:#&quot;).get(&quot;armDrawingno&quot;);&#xD;
 &#xD;
@@ -1405,7 +1671,7 @@ if(armDrawingno){&#xD;
 }*/&#xD;
 &#xD;
 </ClientEvent>
-      <Property name="width">700</Property>
+      <Property name="width">1400</Property>
       <Property name="height">700</Property>
       <Buttons>
         <Button id="buttonClose">
@@ -1419,15 +1685,36 @@ if(armDrawingno){&#xD;
       <Children>
         <Container layout="vbox" layoutConstraint="center">
           <Image id="image2d" layoutConstraint="align:center">
-            <Property name="height">650</Property>
-            <Property name="width">650</Property>
-            <Property name="stretchMode">fitWidth</Property>
+            <Property name="height">100%</Property>
+            <Property name="width">100%</Property>
+            <Property name="stretchMode">stretch</Property>
           </Image>
         </Container>
       </Children>
       <Tools/>
     </Dialog>
     <ListDropDown id="listdropdownArmMaterial">
+      <ClientEvent name="onValueSelect">view.get(&quot;#autoformTurretarm&quot;).get(&quot;entity&quot;).set(&quot;armLength1&quot;,null);&#xD;
+view.get(&quot;#autoformTurretarm&quot;).get(&quot;entity&quot;).set(&quot;armLength2&quot;,null);&#xD;
+	&#xD;
+	switch(arg.selectedValue){&#xD;
+		case 'Φ54/CuCr1Zr':&#xD;
+			view.get(&quot;#armLength1&quot;).set(&quot;trigger&quot;,&quot;listdropdownArmLength1Cu&quot;);&#xD;
+			view.get(&quot;#armLength2&quot;).set(&quot;trigger&quot;,&quot;listdropdownArmLength2Cu&quot;);&#xD;
+		break;&#xD;
+		case '100×40/7075(T6)':&#xD;
+			view.get(&quot;#armLength1&quot;).set(&quot;trigger&quot;,&quot;listdropdownArmLength1Al&quot;);&#xD;
+			view.get(&quot;#armLength2&quot;).set(&quot;trigger&quot;,&quot;listdropdownArmLength2Al&quot;);&#xD;
+		break;&#xD;
+		case '125×40/7075(T6)':&#xD;
+			view.get(&quot;#armLength1&quot;).set(&quot;trigger&quot;,&quot;listdropdownArmLength1Al&quot;);&#xD;
+			view.get(&quot;#armLength2&quot;).set(&quot;trigger&quot;,&quot;listdropdownArmLength2Al&quot;);&#xD;
+		break;&#xD;
+		default:&#xD;
+			view.get(&quot;#armLength1&quot;).set(&quot;trigger&quot;,&quot;listdropdownArmLengthOthers&quot;);&#xD;
+			view.get(&quot;#armLength2&quot;).set(&quot;trigger&quot;,&quot;listdropdownArmLengthOthers&quot;);&#xD;
+		break;&#xD;
+	}</ClientEvent>
       <Property name="items">Φ54/CuCr1Zr,100×40/7075(T6),125×40/7075(T6),其他</Property>
       <Property name="editable">false</Property>
       <Property name="filterOnOpen">false</Property>
@@ -1516,29 +1803,35 @@ if(armDrawingno){&#xD;
     </ListDropDown>
     <ListDropDown id="listdropdownShankType">
       <Property name="items">螺纹式,抱紧式,其他</Property>
-    </ListDropDown>
-    <ListDropDown id="listdropdownelementType">
-      <Property name="items">Cu,Al,其他</Property>
+      <Property name="editable">false</Property>
+      <Property name="autoOpen">true</Property>
     </ListDropDown>
     <ListDropDown id="listdropdownelementArmMaterial">
       <Property name="items">Φ54/CuCr1Zr,100×40/7075(T6),125×40/7075(T6),其他</Property>
+      <Property name="editable">false</Property>
+      <Property name="autoOpen">true</Property>
     </ListDropDown>
     <ListDropDown id="listdropdownelementSpecialshapeandrib">
       <Property name="items">非异形&amp;无加强筋,非异形&amp;有加强筋,异形&amp;无加强筋,异形&amp;有加强筋</Property>
-    </ListDropDown>
-    <ListDropDown id="listdropdownSelectMode">
-      <Property name="items">1-,2-,3-,4-,5-</Property>
+      <Property name="editable">false</Property>
       <Property name="autoOpen">true</Property>
     </ListDropDown>
+    <ListDropDown id="listdropdownArmStandard">
+      <Property name="editable">false</Property>
+      <Property name="autoOpen">true</Property>
+      <Property name="items">1,2,3</Property>
+    </ListDropDown>
     <Container>
+      <Menu id="menuCheckTurretArmInfo">
+        <MenuItem id="menuitemTurretInfo">
+          <Property name="icon"> url(>skin>common/icons.gif) -20px -40px</Property>
+          <Property name="caption">查看钳臂零件完整信息</Property>
+        </MenuItem>
+      </Menu>
       <Menu id="menuContext11">
         <MenuItem id="menuitemQuery11">
           <Property name="caption">快速查找</Property>
           <Property name="icon"> url(>skin>common/icons.gif) -20px -40px</Property>
-        </MenuItem>
-        <MenuItem id="menuitemDownload11">
-          <Property name="caption">下载数模</Property>
-          <Property name="icon"> url(>skin>common/icons.gif) -160px -120px</Property>
         </MenuItem>
       </Menu>
       <Menu id="menuContext12">
@@ -1546,19 +1839,11 @@ if(armDrawingno){&#xD;
           <Property name="caption">快速查找</Property>
           <Property name="icon"> url(>skin>common/icons.gif) -20px -40px</Property>
         </MenuItem>
-        <MenuItem id="menuitemDownload12">
-          <Property name="caption">下载数模</Property>
-          <Property name="icon"> url(>skin>common/icons.gif) -160px -120px</Property>
-        </MenuItem>
       </Menu>
       <Menu id="menuContext21">
         <MenuItem id="menuitemQuery21">
           <Property name="caption">快速查找</Property>
           <Property name="icon"> url(>skin>common/icons.gif) -20px -40px</Property>
-        </MenuItem>
-        <MenuItem id="menuitemDownload21">
-          <Property name="caption">下载数模</Property>
-          <Property name="icon"> url(>skin>common/icons.gif) -160px -120px</Property>
         </MenuItem>
       </Menu>
       <Menu id="menuContext22">
@@ -1566,19 +1851,11 @@ if(armDrawingno){&#xD;
           <Property name="caption">快速查找</Property>
           <Property name="icon"> url(>skin>common/icons.gif) -20px -40px</Property>
         </MenuItem>
-        <MenuItem id="menuitemDownload22">
-          <Property name="caption">下载数模</Property>
-          <Property name="icon"> url(>skin>common/icons.gif) -160px -120px</Property>
-        </MenuItem>
       </Menu>
       <Menu id="menuContext31">
         <MenuItem id="menuitemQuery31">
           <Property name="caption">快速查找</Property>
           <Property name="icon"> url(>skin>common/icons.gif) -20px -40px</Property>
-        </MenuItem>
-        <MenuItem id="menuitemDownload31">
-          <Property name="caption">下载数模</Property>
-          <Property name="icon"> url(>skin>common/icons.gif) -160px -120px</Property>
         </MenuItem>
       </Menu>
       <Menu id="menuContext32">
@@ -1586,29 +1863,11 @@ if(armDrawingno){&#xD;
           <Property name="caption">快速查找</Property>
           <Property name="icon"> url(>skin>common/icons.gif) -20px -40px</Property>
         </MenuItem>
-        <MenuItem id="menuitemDownload32">
-          <Property name="caption">下载数模</Property>
-          <Property name="icon"> url(>skin>common/icons.gif) -160px -120px</Property>
-        </MenuItem>
-      </Menu>
-      <Menu id="menuContext33">
-        <MenuItem id="menuitemQuery33">
-          <Property name="caption">快速查找</Property>
-          <Property name="icon"> url(>skin>common/icons.gif) -20px -40px</Property>
-        </MenuItem>
-        <MenuItem id="menuitemDownload33">
-          <Property name="caption">下载数模</Property>
-          <Property name="icon"> url(>skin>common/icons.gif) -160px -120px</Property>
-        </MenuItem>
       </Menu>
       <Menu id="menuContext41">
         <MenuItem id="menuitemQuery41">
           <Property name="caption">快速查找</Property>
           <Property name="icon"> url(>skin>common/icons.gif) -20px -40px</Property>
-        </MenuItem>
-        <MenuItem id="menuitemDownload41">
-          <Property name="caption">下载数模</Property>
-          <Property name="icon"> url(>skin>common/icons.gif) -160px -120px</Property>
         </MenuItem>
       </Menu>
       <Menu id="menuContext42">
@@ -1616,29 +1875,17 @@ if(armDrawingno){&#xD;
           <Property name="caption">快速查找</Property>
           <Property name="icon"> url(>skin>common/icons.gif) -20px -40px</Property>
         </MenuItem>
-        <MenuItem id="menuitemDownload42">
-          <Property name="caption">下载数模</Property>
-          <Property name="icon"> url(>skin>common/icons.gif) -160px -120px</Property>
-        </MenuItem>
       </Menu>
       <Menu id="menuContext51">
         <MenuItem id="menuitemQuery51">
           <Property name="caption">快速查找</Property>
           <Property name="icon"> url(>skin>common/icons.gif) -20px -40px</Property>
         </MenuItem>
-        <MenuItem id="menuitemDownload51">
-          <Property name="caption">下载数模</Property>
-          <Property name="icon"> url(>skin>common/icons.gif) -160px -120px</Property>
-        </MenuItem>
       </Menu>
       <Menu id="menuContext52">
         <MenuItem id="menuitemQuery52">
           <Property name="caption">快速查找</Property>
           <Property name="icon"> url(>skin>common/icons.gif) -20px -40px</Property>
-        </MenuItem>
-        <MenuItem id="menuitemDownload52">
-          <Property name="caption">下载数模</Property>
-          <Property name="icon"> url(>skin>common/icons.gif) -160px -120px</Property>
         </MenuItem>
       </Menu>
     </Container>
@@ -1649,6 +1896,7 @@ if(armDrawingno){&#xD;
       <Property name="hotkey">ctrl+s</Property>
       <UpdateItem>
         <Property name="dataSet">dataSetTurretarm</Property>
+        <Property name="dataPath">[#all]</Property>
       </UpdateItem>
     </UpdateAction>
   </View>
