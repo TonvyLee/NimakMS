@@ -1,9 +1,11 @@
 package com.nimak.serviceinterface;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.log4j.Logger;
 
+import com.bstek.dorado.annotation.Expose;
 import com.nimak.entity.Turretarm;
 import com.nimak.entity.Turretpart;
 
@@ -28,4 +30,23 @@ public interface TurretArmServiceI {
 	 * @return
 	 */
 	public List<String> getAllTurretArmDrawingnos();
+	
+	
+	/**
+	 * 新增钳臂零件实例时判断输入的钳臂属性信息是否符合要求，并判断相应文件是否已经上传
+	 * @param params
+	 * @return
+	 */
+	public Map<String, String> isNewAddedTurretArmSatisfied(Map<String, Object> params);
+	
+	
+	
+	/**
+	 * 根据钳臂图号找到对应的相关文件路径，然后删除之
+	 * @param ID
+	 * @return
+	 */
+	@Expose
+	public String deleteRelatedFilesByArmDrawingno(String armDrawingno);
+	
 }

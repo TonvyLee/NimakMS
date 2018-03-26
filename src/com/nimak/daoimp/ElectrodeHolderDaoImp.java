@@ -91,15 +91,15 @@ public class ElectrodeHolderDaoImp extends HibernateDao implements ElectrodeHold
 		pathStrings.add(turret.getCapDrawingnoF());
 		pathStrings.add(turret.getCapDrawingnoM());
 		pathStrings.add(turret.getGunbodyDrawingno());*/
-		String TURRETSHANKCOM3D_PATH = NimakConstantSet.TURRETSHANKCOM3D_PATH;
-		String TURRETSHANKCOM2D_PATH = NimakConstantSet.TURRETSHANKCOM2D_PATH;
+		String TURRETSHANK3D_PATH = NimakConstantSet.TURRETSHANK3D_PATH;
+		String TURRETSHANKCOM2D_PATH = NimakConstantSet.TURRETSHANK2D_PATH;
 		NimakFileUtils nfu = new NimakFileUtils();
 		for (String string : pathStrings) {
 			// 删除文件
-			logger.info("即将删除文件：" + TURRETSHANKCOM3D_PATH + string + ".CATPart");
-			nfu.DeleteFileByPath(TURRETSHANKCOM3D_PATH + string + ".CATPart");
-			logger.info("即将删除文件：" + TURRETSHANKCOM2D_PATH + string + ".jpg");
-			nfu.DeleteFileByPath(TURRETSHANKCOM2D_PATH + string + ".jpg");
+			logger.info("即将删除文件：" + TURRETSHANK3D_PATH + string + NimakConstantSet.COMPONENT_EXT);
+			nfu.DeleteFileByPath(TURRETSHANK3D_PATH + string + NimakConstantSet.COMPONENT_EXT);
+			logger.info("即将删除文件：" + TURRETSHANKCOM2D_PATH + string + NimakConstantSet.COMPONENT_2D_EXT);
+			nfu.DeleteFileByPath(TURRETSHANKCOM2D_PATH + string + NimakConstantSet.COMPONENT_2D_EXT);
 		}
 		return "Successfully deleted";
 	}

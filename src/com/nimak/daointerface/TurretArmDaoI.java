@@ -3,6 +3,7 @@ package com.nimak.daointerface;
 import java.util.List;
 
 import com.nimak.entity.Turretarm;
+import com.nimak.exception.FileException;
 
 public interface TurretArmDaoI {
 	
@@ -14,4 +15,13 @@ public interface TurretArmDaoI {
 	 */
 	public List<Turretarm> getTurretArmByDrawingNo(String sArmComponentno);
 
+	
+	
+	/**
+	 * 根据钳臂图号找到钳臂图号对应的钳臂图号信息，然后根据图号将相关文件进行删除
+	 * @param armDrawingno
+	 * @return
+	 */
+	public String deleteRelatedFilesByArmDrawingno(String armDrawingno) throws FileException; 
+	
 }

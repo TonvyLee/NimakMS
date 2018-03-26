@@ -270,10 +270,15 @@ function downloadFile() {
 	 */
 	// console.log(num);
 	dsTurret.insert();
+	view.id("updateactionSave").set("userData",null);
 	// autoformAdd.get("entity").set("id",num);
 	dialogEditTurret.show();
 	dialogEditTurret.set("tags", "Add");
 	uploadFileTipLabel.set("visible",false);
+	
+	view.id("buttonSave1").set("disabled",true);
+	view.id("buttonUpload2DDrawing").set("disabled",true);
+	view.id("buttonUploadDrawing").set("disabled",true);
 };
 
 // @Bind #buttonCancel1.onClick
@@ -283,7 +288,8 @@ function downloadFile() {
 };
 
 // @Bind #buttonSave1.onClick
-!function(self, autoformAdd, ajaxActionJudgeStringIsSatisfied) {
+!function(self, autoformAdd, ajaxActionJudgeStringIsSatisfied) {	
+	
 	ajaxActionJudgeStringIsSatisfied.set("parameter",
 			autoformAdd.get("entity").toJSON()).execute();
 };
@@ -335,8 +341,14 @@ function downloadFile() {
 // @Bind #buttonModify.onClick
 !function(self, arg, dialogEditTurret,uploadFileTipLabel) {
 	dialogEditTurret.show();
+	view.id("updateactionSave").set("userData",null);
+	dorado.MessageBox.alert("注意：修改模式下上传文件将覆盖原始相关文件!");
 	dialogEditTurret.set("tags", "Modify");
 	uploadFileTipLabel.set("visible",true);
+	
+	view.id("buttonSave1").set("disabled",false);
+	view.id("buttonUpload2DDrawing").set("disabled",false);
+	view.id("buttonUploadDrawing").set("disabled",false);
 };
 
 // @Bind #buttonDelete.onClick
@@ -441,7 +453,7 @@ function downloadFile() {
 									view.id("tabControlInfo2").set("visible",false);
 									view.id("tabControlInfo3").set("visible",false);
 									view.id("tabControlInfo4").set("visible",false);
-									view.id("dialogCompInfo").set("caption","焊钳图号为"+view.id("datagridTurret").getCurrentItem().get("gunDrawingno")+"部件信息");
+									view.id("dialogCompInfo").set("caption","焊钳图号为["+view.id("datagridTurret").getCurrentItem().get("gunDrawingno")+"]的钳臂部件信息");
 									view.id("dialogCompInfo").show();
 								}
 							});
@@ -488,7 +500,7 @@ function downloadFile() {
 
 
 
-// @Bind #uploadDrawing.beforeFileUpload 
+// @Bind #buttonUploadDrawing.onClick 
 !function(self) {
 	if (view.id("dialogEditTurret").get("tags") == "Modify") {
 		dorado.widget.NotifyTipManager.notify("确认修改重新上传数模文件？原始数模文件将被覆盖！");
@@ -520,7 +532,7 @@ function downloadFile() {
 	dorado.widget.NotifyTipManager.notify(self.get("returnValue"));
 };
 
-//@Bind #upload2DDrawing.beforeFileUpload
+//@Bind #buttonUpload2DDrawing.onClick
 !function(self,arg) {
 	if (view.id("dialogEditTurret").get("tags") == "Modify") {
 		dorado.widget.NotifyTipManager.notify("确认修改重新上传二维图纸文件？原始二维图纸文件将被覆盖！");
@@ -749,3 +761,20 @@ function downloadFile() {
 	flag = 0;
 };
 
+
+
+//只有当图号不为空时才能进行上传或者保存等操作
+//@Bind #autoformAdd.#gunDrawingno.onBlur
+!function(buttonSave1,self,arg,buttonUploadDrawing,buttonUpload2DDrawing) {
+	
+	var eleValue = self.get("value");
+	if(!view.isEmpty(eleValue)) {
+		buttonSave1.set("disabled",false);
+		buttonUpload2DDrawing.set("disabled",false);
+		buttonUploadDrawing.set("disabled",false);
+	}else {
+		buttonSave1.set("disabled",true);
+		buttonUpload2DDrawing.set("disabled",true);
+		buttonUploadDrawing.set("disabled",true);
+	}
+};

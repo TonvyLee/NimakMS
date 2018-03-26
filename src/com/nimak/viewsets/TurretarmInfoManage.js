@@ -1,61 +1,86 @@
+var flag = 0;
+/** @View */
+function downloadFile() {
+	alert(1);
+	dorado.MessageBox.confirm("即将开始下载钳臂零件三维数模！确认继续？", function() {
+		var armDrawingno = view.id("datagridTurretarm").getCurrentItem().get(
+				"armDrawingno");
+		var armDrawingnoMap = new dorado.util.Map();
+		armDrawingnoMap.put("armDrawingno", armDrawingno);
+		view.id("downloadDrawing").set("parameter", armDrawingnoMap).execute();
+	});
+};
+
+
+
+/** @View */
+//判断字符是否为空的方法
+function isEmpty(obj){
+  if(typeof obj == "undefined" || obj == null || obj == ""){
+      return true;
+  }else{
+      return false;
+  }
+}
+
 
 /**
  * RadioGroupImageType
  */
-//@Bind #RadioGroupImageType.onClick
-!function(self,arg){
-	var selectType = view.get("#autoformTurretarmImageType").get("entity").get("autoformTurretarmImageTypeElement");
-	
-	switch(selectType){
-		case 'Cu':
-			view.get("#image11").set("image","images/2D/Cu/1-1.jpg");
-			view.get("#image12").set("image","images/2D/Cu/1-2.jpg");
-			view.get("#image21").set("image","images/2D/Cu/2-1.jpg");
-			view.get("#image22").set("image","images/2D/Cu/2-2.jpg");
-			view.get("#image31").set("image","images/2D/Cu/3-1.jpg");
-			view.get("#image32").set("image","images/2D/Cu/3-2.jpg");
-			view.get("#image41").set("image","images/2D/Cu/4-1.jpg");
-			view.get("#image42").set("visible",true);
-			view.get("#image42").set("image","images/2D/Cu/4-2.jpg");
-			view.get("#image51").set("visible",true);
-			view.get("#image52").set("visible",true);
-			view.get("#image51").set("image","images/2D/Cu/5-1.jpg");
-			view.get("#image52").set("image","images/2D/Cu/5-2.jpg");
+// @Bind #RadioGroupImageType.onClick
+!function(self, arg) {
+	var selectType = view.get("#autoformTurretarmImageType").get("entity").get(
+			"autoformTurretarmImageTypeElement");
+
+	switch (selectType) {
+	case 'Cu':
+		view.get("#image11").set("image", "images/2D/Cu/1-1.jpg");
+		view.get("#image12").set("image", "images/2D/Cu/1-2.jpg");
+		view.get("#image21").set("image", "images/2D/Cu/2-1.jpg");
+		view.get("#image22").set("image", "images/2D/Cu/2-2.jpg");
+		view.get("#image31").set("image", "images/2D/Cu/3-1.jpg");
+		view.get("#image32").set("image", "images/2D/Cu/3-2.jpg");
+		view.get("#image41").set("image", "images/2D/Cu/4-1.jpg");
+		view.get("#image42").set("visible", true);
+		view.get("#image42").set("image", "images/2D/Cu/4-2.jpg");
+		view.get("#image51").set("visible", true);
+		view.get("#image52").set("visible", true);
+		view.get("#image51").set("image", "images/2D/Cu/5-1.jpg");
+		view.get("#image52").set("image", "images/2D/Cu/5-2.jpg");
 		break;
-		case 'Al':
-			view.get("#image11").set("image","images/2D/Al/1-1.jpg");
-			view.get("#image12").set("image","images/2D/Al/1-2.jpg");
-			view.get("#image21").set("image","images/2D/Al/2-1.jpg");
-			view.get("#image22").set("image","images/2D/Al/2-2.jpg");
-			view.get("#image31").set("image","images/2D/Al/3-1.jpg");
-			view.get("#image32").set("image","images/2D/Al/3-2.jpg");
-			view.get("#image41").set("image","images/2D/Al/3-3.jpg");
-			view.get("#image42").set("visible",false);
-			view.get("#image51").set("image","images/2D/Al/4-1.jpg");
-		    view.get("#image52").set("image","images/2D/Al/4-2.jpg");
+	case 'Al':
+		view.get("#image11").set("image", "images/2D/Al/1-1.jpg");
+		view.get("#image12").set("image", "images/2D/Al/1-2.jpg");
+		view.get("#image21").set("image", "images/2D/Al/2-1.jpg");
+		view.get("#image22").set("image", "images/2D/Al/2-2.jpg");
+		view.get("#image31").set("image", "images/2D/Al/3-1.jpg");
+		view.get("#image32").set("image", "images/2D/Al/3-2.jpg");
+		view.get("#image41").set("image", "images/2D/Al/3-3.jpg");
+		view.get("#image42").set("visible", false);
+		view.get("#image51").set("image", "images/2D/Al/4-1.jpg");
+		view.get("#image52").set("image", "images/2D/Al/4-2.jpg");
 		break;
-		default:
+	default:
 		break;
 	}
 };
 
-
 /**
  * RadioGroupTypeCondition
  */
-//@Bind #RadioGroupTypeCondition.onClick
-!function(self,arg){
-	var armStandard = view.get("#autoformQueryForCondition").get("entity").get("armStandard");
-	var entity = view.get("#autoformTurretarm").get("entity").set("armStandard",armStandard);
-	view.get("#dataSetTurretarm").set("parameter",entity).flushAsync();
-	
+// @Bind #RadioGroupTypeCondition.onClick
+!function(self, arg) {
+	var armStandard = view.get("#autoformQueryForCondition").get("entity").get(
+			"armStandard");
+	var entity = view.get("#autoformTurretarm").get("entity").set(
+			"armStandard", armStandard);
+	view.get("#dataSetTurretarm").set("parameter", entity).flushAsync();
+
 };
 
-
-
-//右键点击2D视图弹出选项
+// 右键点击2D视图弹出选项
 /*------------------------------------------------------------------------------------------------------*/
-//@Bind #image11.onContextMenu
+// @Bind #image11.onContextMenu
 !function(self, arg, menuContext11) {
 	menuContext11.show({
 		position : {
@@ -64,7 +89,7 @@
 		}
 	});
 };
-//@Bind #image12.onContextMenu
+// @Bind #image12.onContextMenu
 !function(self, arg, menuContext12) {
 	menuContext12.show({
 		position : {
@@ -73,7 +98,7 @@
 		}
 	});
 };
-//@Bind #image21.onContextMenu
+// @Bind #image21.onContextMenu
 !function(self, arg, menuContext21) {
 	menuContext21.show({
 		position : {
@@ -82,7 +107,7 @@
 		}
 	});
 };
-//@Bind #image22.onContextMenu
+// @Bind #image22.onContextMenu
 !function(self, arg, menuContext22) {
 	menuContext22.show({
 		position : {
@@ -91,7 +116,7 @@
 		}
 	});
 };
-//@Bind #image31.onContextMenu
+// @Bind #image31.onContextMenu
 !function(self, arg, menuContext31) {
 	menuContext31.show({
 		position : {
@@ -100,7 +125,7 @@
 		}
 	});
 };
-//@Bind #image32.onContextMenu
+// @Bind #image32.onContextMenu
 !function(self, arg, menuContext32) {
 	menuContext32.show({
 		position : {
@@ -109,7 +134,7 @@
 		}
 	});
 };
-//@Bind #image41.onContextMenu
+// @Bind #image41.onContextMenu
 !function(self, arg, menuContext41) {
 	menuContext41.show({
 		position : {
@@ -118,7 +143,7 @@
 		}
 	});
 };
-//@Bind #image42.onContextMenu
+// @Bind #image42.onContextMenu
 !function(self, arg, menuContext42) {
 	menuContext42.show({
 		position : {
@@ -127,7 +152,7 @@
 		}
 	});
 };
-//@Bind #image51.onContextMenu
+// @Bind #image51.onContextMenu
 !function(self, arg, menuContext51) {
 	menuContext51.show({
 		position : {
@@ -136,7 +161,7 @@
 		}
 	});
 };
-//@Bind #image52.onContextMenu
+// @Bind #image52.onContextMenu
 !function(self, arg, menuContext52) {
 	menuContext52.show({
 		position : {
@@ -145,7 +170,7 @@
 		}
 	});
 };
-//@Bind #datagridTurretarm.onContextMenu
+// @Bind #datagridTurretarm.onContextMenu
 !function(self, arg, menuCheckTurretArmInfo) {
 	menuCheckTurretArmInfo.show({
 		position : {
@@ -155,155 +180,370 @@
 	});
 };
 /*------------------------------------------------------------------------------------------------------*/
-//@Bind #menuCheckTurretArmInfo.onClick
+// @Bind #menuitemTurretInfo.onClick
 !function(self, arg, dialogInfo) {
 	dialogInfo.show();
 };
 /*-------------------------------------------------------------------------------------------------------*/
-//根据2D视图进行快速查找
-//@Bind #image11.onClick
-//@Bind #menuitemQuery11.onClick
+// 根据2D视图进行快速查找
+// @Bind #image11.onClick
+// @Bind #menuitemQuery11.onClick
 !function(self, arg) {
-	var armType=view.get("#autoformTurretarmImageType").get("entity").get("autoformTurretarmImageTypeElement");
-	var entity=view.get("#autoformTurretarm").get("entity").set("armSerial","1-1");
-	var entity2 = view.get("#autoformTurretarm").get("entity").set("armType",armType);
+	var armType = view.get("#autoformTurretarmImageType").get("entity").get(
+			"autoformTurretarmImageTypeElement");
+	var entity = view.get("#autoformTurretarm").get("entity").set("armSerial",
+			"1-1");
+	var entity2 = view.get("#autoformTurretarm").get("entity").set("armType",
+			armType);
 	var entity3 = $.extend(entity, entity2);
-	view.get("#dataSetTurretarm").set("parameter",entity3).flushAsync();
+	view.get("#dataSetTurretarm").set("parameter", entity3).flushAsync();
 };
-//@Bind #image12.onClick
-//@Bind #menuitemQuery12.onClick
+// @Bind #image12.onClick
+// @Bind #menuitemQuery12.onClick
 !function(self, arg) {
-	var armType=view.get("#autoformTurretarmImageType").get("entity").get("autoformTurretarmImageTypeElement");
-	var entity=view.get("#autoformTurretarm").get("entity").set("armSerial","1-2");
-	var entity2 = view.get("#autoformTurretarm").get("entity").set("armType",armType);
+	var armType = view.get("#autoformTurretarmImageType").get("entity").get(
+			"autoformTurretarmImageTypeElement");
+	var entity = view.get("#autoformTurretarm").get("entity").set("armSerial",
+			"1-2");
+	var entity2 = view.get("#autoformTurretarm").get("entity").set("armType",
+			armType);
 	var entity3 = $.extend(entity, entity2);
-	view.get("#dataSetTurretarm").set("parameter",entity3).flushAsync();
+	view.get("#dataSetTurretarm").set("parameter", entity3).flushAsync();
 };
-//@Bind #image21.onClick
-//@Bind #menuitemQuery21.onClick
+// @Bind #image21.onClick
+// @Bind #menuitemQuery21.onClick
 !function(self, arg) {
-	var armType=view.get("#autoformTurretarmImageType").get("entity").get("autoformTurretarmImageTypeElement");
-	var entity=view.get("#autoformTurretarm").get("entity").set("armSerial","2-1");
-	var entity2 = view.get("#autoformTurretarm").get("entity").set("armType",armType);
+	var armType = view.get("#autoformTurretarmImageType").get("entity").get(
+			"autoformTurretarmImageTypeElement");
+	var entity = view.get("#autoformTurretarm").get("entity").set("armSerial",
+			"2-1");
+	var entity2 = view.get("#autoformTurretarm").get("entity").set("armType",
+			armType);
 	entity3 = $.extend(entity, entity2);
-	view.get("#dataSetTurretarm").set("parameter",entity3).flushAsync();
+	view.get("#dataSetTurretarm").set("parameter", entity3).flushAsync();
 };
-//@Bind #image22.onClick
-//@Bind #menuitemQuery22.onClick
+// @Bind #image22.onClick
+// @Bind #menuitemQuery22.onClick
 !function(self, arg) {
-	var armType=view.get("#autoformTurretarmImageType").get("entity").get("autoformTurretarmImageTypeElement");
-	var entity=view.get("#autoformTurretarm").get("entity").set("armSerial","2-2");
-	var entity2 = view.get("#autoformTurretarm").get("entity").set("armType",armType);
+	var armType = view.get("#autoformTurretarmImageType").get("entity").get(
+			"autoformTurretarmImageTypeElement");
+	var entity = view.get("#autoformTurretarm").get("entity").set("armSerial",
+			"2-2");
+	var entity2 = view.get("#autoformTurretarm").get("entity").set("armType",
+			armType);
 	entity3 = $.extend(entity, entity2);
-	view.get("#dataSetTurretarm").set("parameter",entity3).flushAsync();
+	view.get("#dataSetTurretarm").set("parameter", entity3).flushAsync();
 };
-//@Bind #image31.onClick
-//@Bind #menuitemQuery31.onClick
+// @Bind #image31.onClick
+// @Bind #menuitemQuery31.onClick
 !function(self, arg) {
-	var armType=view.get("#autoformTurretarmImageType").get("entity").get("autoformTurretarmImageTypeElement");
-	var entity=view.get("#autoformTurretarm").get("entity").set("armSerial","3-1");
-	var entity2 = view.get("#autoformTurretarm").get("entity").set("armType",armType);
+	var armType = view.get("#autoformTurretarmImageType").get("entity").get(
+			"autoformTurretarmImageTypeElement");
+	var entity = view.get("#autoformTurretarm").get("entity").set("armSerial",
+			"3-1");
+	var entity2 = view.get("#autoformTurretarm").get("entity").set("armType",
+			armType);
 	entity3 = $.extend(entity, entity2);
-	view.get("#dataSetTurretarm").set("parameter",entity3).flushAsync();
+	view.get("#dataSetTurretarm").set("parameter", entity3).flushAsync();
 };
-//@Bind #image32.onClick
-//@Bind #menuitemQuery32.onClick
+// @Bind #image32.onClick
+// @Bind #menuitemQuery32.onClick
 !function(self, arg) {
-	var armType=view.get("#autoformTurretarmImageType").get("entity").get("autoformTurretarmImageTypeElement");
-	var entity=view.get("#autoformTurretarm").get("entity").set("armSerial","3-2");
-	var entity2 = view.get("#autoformTurretarm").get("entity").set("armType",armType);
+	var armType = view.get("#autoformTurretarmImageType").get("entity").get(
+			"autoformTurretarmImageTypeElement");
+	var entity = view.get("#autoformTurretarm").get("entity").set("armSerial",
+			"3-2");
+	var entity2 = view.get("#autoformTurretarm").get("entity").set("armType",
+			armType);
 	entity3 = $.extend(entity, entity2);
-	view.get("#dataSetTurretarm").set("parameter",entity3).flushAsync();
+	view.get("#dataSetTurretarm").set("parameter", entity3).flushAsync();
 };
-//@Bind #image41.onClick
-//@Bind #menuitemQuery41.onClick
+// @Bind #image41.onClick
+// @Bind #menuitemQuery41.onClick
 !function(self, arg) {
-	var armType=view.get("#autoformTurretarmImageType").get("entity").get("autoformTurretarmImageTypeElement");
-	var entity=view.get("#autoformTurretarm").get("entity").set("armSerial","4-1");
-	var entity2 = view.get("#autoformTurretarm").get("entity").set("armType",armType);
+	var armType = view.get("#autoformTurretarmImageType").get("entity").get(
+			"autoformTurretarmImageTypeElement");
+	var entity = view.get("#autoformTurretarm").get("entity").set("armSerial",
+			"4-1");
+	var entity2 = view.get("#autoformTurretarm").get("entity").set("armType",
+			armType);
 
-	switch(armType){
+	switch (armType) {
 	case 'Cu':
 		entity3 = $.extend(entity, entity2);
-		view.get("#dataSetTurretarm").set("parameter",entity3).flushAsync();
-	break;
+		view.get("#dataSetTurretarm").set("parameter", entity3).flushAsync();
+		break;
 	case 'Al':
-		var entity=view.get("#autoformTurretarm").get("entity").set("armSerial","3-3");
+		var entity = view.get("#autoformTurretarm").get("entity").set(
+				"armSerial", "3-3");
 		entity3 = $.extend(entity, entity2);
-		view.get("#dataSetTurretarm").set("parameter",entity3).flushAsync();
-	break;
-	/*default:
-		var entity=view.get("#autoformTurretarm").get("entity").set("armType","Cu");
-		view.get("#dataSetTurretarm").set("parameter",entity).flushAsync();
-	break;*/
-}
-	
+		view.get("#dataSetTurretarm").set("parameter", entity3).flushAsync();
+		break;
+	/*
+	 * default: var
+	 * entity=view.get("#autoformTurretarm").get("entity").set("armType","Cu");
+	 * view.get("#dataSetTurretarm").set("parameter",entity).flushAsync();
+	 * break;
+	 */
+	}
+
 };
-//@Bind #image42.onClick
-//@Bind #menuitemQuery42.onClick
+// @Bind #image42.onClick
+// @Bind #menuitemQuery42.onClick
 !function(self, arg) {
-	var armType=view.get("#autoformTurretarmImageType").get("entity").get("autoformTurretarmImageTypeElement");
-	var entity=view.get("#autoformTurretarm").get("entity").set("armSerial","4-2");
-	var entity2 = view.get("#autoformTurretarm").get("entity").set("armType",armType);
-	
-	switch(armType){
+	var armType = view.get("#autoformTurretarmImageType").get("entity").get(
+			"autoformTurretarmImageTypeElement");
+	var entity = view.get("#autoformTurretarm").get("entity").set("armSerial",
+			"4-2");
+	var entity2 = view.get("#autoformTurretarm").get("entity").set("armType",
+			armType);
+
+	switch (armType) {
 	case 'Cu':
 		entity3 = $.extend(entity, entity2);
-		view.get("#dataSetTurretarm").set("parameter",entity3).flushAsync();
-	break;
+		view.get("#dataSetTurretarm").set("parameter", entity3).flushAsync();
+		break;
 	case 'Al':
-		
-	break;
-	/*default:
-		var entity=view.get("#autoformTurretarm").get("entity").set("armType","Cu");
-		view.get("#dataSetTurretarm").set("parameter",entity).flushAsync();
-	break;*/
+
+		break;
+	/*
+	 * default: var
+	 * entity=view.get("#autoformTurretarm").get("entity").set("armType","Cu");
+	 * view.get("#dataSetTurretarm").set("parameter",entity).flushAsync();
+	 * break;
+	 */
+	}
+	;
 };
-};
-//@Bind #image51.onClick
-//@Bind #menuitemQuery51.onClick
+// @Bind #image51.onClick
+// @Bind #menuitemQuery51.onClick
 !function(self, arg) {
-	var armType=view.get("#autoformTurretarmImageType").get("entity").get("autoformTurretarmImageTypeElement");
-	var entity=view.get("#autoformTurretarm").get("entity").set("armSerial","5-1");
-	var entity2 = view.get("#autoformTurretarm").get("entity").set("armType",armType);
-	
-	switch(armType){
+	var armType = view.get("#autoformTurretarmImageType").get("entity").get(
+			"autoformTurretarmImageTypeElement");
+	var entity = view.get("#autoformTurretarm").get("entity").set("armSerial",
+			"5-1");
+	var entity2 = view.get("#autoformTurretarm").get("entity").set("armType",
+			armType);
+
+	switch (armType) {
 	case 'Cu':
 		entity3 = $.extend(entity, entity2);
-		view.get("#dataSetTurretarm").set("parameter",entity3).flushAsync();
-	break;
+		view.get("#dataSetTurretarm").set("parameter", entity3).flushAsync();
+		break;
 	case 'Al':
-		var entity=view.get("#autoformTurretarm").get("entity").set("armSerial","4-1");
+		var entity = view.get("#autoformTurretarm").get("entity").set(
+				"armSerial", "4-1");
 		entity3 = $.extend(entity, entity2);
-		view.get("#dataSetTurretarm").set("parameter",entity3).flushAsync();
-	break;
-	/*default:
-		var entity=view.get("#autoformTurretarm").get("entity").set("armType","Cu");
-		view.get("#dataSetTurretarm").set("parameter",entity).flushAsync();
-	break;*/
+		view.get("#dataSetTurretarm").set("parameter", entity3).flushAsync();
+		break;
+	/*
+	 * default: var
+	 * entity=view.get("#autoformTurretarm").get("entity").set("armType","Cu");
+	 * view.get("#dataSetTurretarm").set("parameter",entity).flushAsync();
+	 * break;
+	 */
+	}
+	;
 };
-};
-//@Bind #image52.onClick
-//@Bind #menuitemQuery52.onClick
+// @Bind #image52.onClick
+// @Bind #menuitemQuery52.onClick
 !function(self, arg) {
-	var armType=view.get("#autoformTurretarmImageType").get("entity").get("autoformTurretarmImageTypeElement");
-	var entity=view.get("#autoformTurretarm").get("entity").set("armSerial","5-2");
-	var entity2 = view.get("#autoformTurretarm").get("entity").set("armType",armType);
-	
-	switch(armType){
+	var armType = view.get("#autoformTurretarmImageType").get("entity").get(
+			"autoformTurretarmImageTypeElement");
+	var entity = view.get("#autoformTurretarm").get("entity").set("armSerial",
+			"5-2");
+	var entity2 = view.get("#autoformTurretarm").get("entity").set("armType",
+			armType);
+
+	switch (armType) {
 	case 'Cu':
 		entity3 = $.extend(entity, entity2);
-		view.get("#dataSetTurretarm").set("parameter",entity3).flushAsync();
-	break;
+		view.get("#dataSetTurretarm").set("parameter", entity3).flushAsync();
+		break;
 	case 'Al':
-		var entity=view.get("#autoformTurretarm").get("entity").set("armSerial","4-2");
+		var entity = view.get("#autoformTurretarm").get("entity").set(
+				"armSerial", "4-2");
 		entity3 = $.extend(entity, entity2);
-		view.get("#dataSetTurretarm").set("parameter",entity3).flushAsync();
-	break;
-	/*default:
-		var entity=view.get("#autoformTurretarm").get("entity").set("armType","Cu");
-		view.get("#dataSetTurretarm").set("parameter",entity).flushAsync();
-	break;*/
-};
+		view.get("#dataSetTurretarm").set("parameter", entity3).flushAsync();
+		break;
+	/*
+	 * default: var
+	 * entity=view.get("#autoformTurretarm").get("entity").set("armType","Cu");
+	 * view.get("#dataSetTurretarm").set("parameter",entity).flushAsync();
+	 * break;
+	 */
+	}
+	;
 };
 /*--------------------------------------------------------------------------------------------------------*/
+
+/**
+ * 514
+ */
+//@Bind #buttonUploadDrawing.onClick
+!function() {
+	if (view.id("dialogEdit").get("tags") == "Modify") {
+		dorado.widget.NotifyTipManager.notify("确认修改重新上传数模文件？原始数模文件将被覆盖！");
+	}
+	var json = view.id("autoformTurretarmInfo").get("entity").toJSON();
+	json["tag"] = "uploadDrawing";
+	view.id("uploadDrawing").set("parameter", json).execute().execute();
+};
+
+// 文件上传完成之后
+// 未解决问题：文件上传失败之后，临时文件为处理
+// @Bind #uploadDrawing.onFileUploaded
+!function(self, arg) {
+	var Value = arg.returnValue;
+	var returnValue = Value.returnValue;
+	if (returnValue == "E_Fail") {
+		dorado.MessageBox.alert("上传失败，确保相关参数填写完整！");
+		return;
+	}
+	var fileName = Value.fileName;
+	dorado.MessageBox.alert("文件" + fileName + "成功上传");
+};
+
+// @Bind #buttonUpload2DDrawing.onClick
+!function() {/*
+
+	alert(view.id("dialogEdit").get("tags"));
+	
+		dorado.widget.NotifyTipManager.notify("确认修改重新上传二维图纸文件？原始二维图纸文件将被覆盖！");
+	}
+	var json = view.id("autoformTurretarmInfo").get("entity").toJSON();
+	json["tag"] = "upload2DDrawing";
+	view.id("upload2DDrawing").set("parameter", json);
+*/
+	if (view.id("dialogEdit").get("tags") == "Modify") {
+		dorado.widget.NotifyTipManager.notify("确认修改重新上传二维图纸文件？原始二维图纸文件将被覆盖！");
+	}
+	var json = view.id("autoformTurretarmInfo").get("entity").toJSON();
+	json["tag"] = "upload2DDrawing";
+	view.id("upload2DDrawing").set("parameter", json).execute();
+	
+};
+
+// 文件上传完成之后
+// 未解决问题：文件上传失败之后，临时文件为处理
+// @Bind #upload2DDrawing.onFileUploaded
+!function(self, arg) {
+	var Value = arg.returnValue;
+	var returnValue = Value.returnValue;
+	if (returnValue == "E_Fail") {
+		dorado.MessageBox.alert("上传失败，确保相关参数填写完整！");
+		return;
+	}
+	var fileName = Value.fileName;
+	dorado.MessageBox.alert("文件" + fileName + "成功上传");
+};
+
+// @Bind #menuItemDownLoad3DFile.onClick
+!function(self, downloadDrawing, datagridTurretarm) {
+	dorado.MessageBox.confirm("确认下载三维数模？", function() {
+		var armDrawingno = datagridTurretarm.getCurrentItem().get(
+				"armDrawingno");
+		var armDrawingnoMap = new dorado.util.Map();
+		armDrawingnoMap.put("armDrawingno", armDrawingno);
+		view.id("downloadDrawing").set("parameter", armDrawingnoMap).execute();
+	});
+};
+
+// @Bind #menuItemOpen2DDrawing.onClick
+!function(dialog2Dimage, image2d) {
+	dorado.widget.NotifyTipManager.notify("正在为您打开二维图......!");
+	var armDrawingno = view.id("dataSetTurretarm").get("data:#").get(
+			"armDrawingno");
+	var DrawingPath = "${servletContext.getAttribute('configprop').get('TURRETARM2D_PATH')}";
+	if (armDrawingno) {
+		// image2d.set("image",$url(">images/2D/"+armDrawingno+".jpg"));
+		image2d.set("image", DrawingPath + armDrawingno + ".jpg");
+	} else {
+		image2d.set("image", null);
+	}
+
+	dialog2Dimage.show();
+};
+
+
+
+//@Bind #frame.onLoad
+!function(self, arg) {
+	if (flag > 0) {
+		dorado.widget.NotifyTipManager.notify("File not Exist！文件不存在");
+	}
+	flag++;
+};
+
+// @Bind #frame.onCreate
+!function(self, arg) {
+	flag = 0;
+};
+
+// 只有当图号不为空时才能进行上传或者保存等操作
+// @Bind #autoformTurretarmInfo.#armDrawingno.onBlur
+!function(buttonSaveInfo,self,arg,buttonUploadDrawing,buttonUpload2DDrawing) {
+	
+	var eleValue = self.get("value");
+	if(!view.isEmpty(eleValue)) {
+		buttonSaveInfo.set("disabled",false);
+		buttonUpload2DDrawing.set("disabled",false);
+		buttonUploadDrawing.set("disabled",false);
+	}else {
+		buttonSaveInfo.set("disabled",true);
+		buttonUpload2DDrawing.set("disabled",true);
+		buttonUploadDrawing.set("disabled",true);
+	}
+};
+
+
+//@Bind #updateactionSave.onSuccess
+!function(self, arg, ajaxActionJudgeStringIsSatisfied) {
+	var flag = view.id("updateactionSave").get("userData");
+	if (isEmpty(flag)) {
+		ajaxActionJudgeStringIsSatisfied.set("parameter",
+			view.id("autoformTurretarmInfo").get("entity").toJSON()).execute();
+	}
+};
+
+// @Bind #ajaxActionJudgeStringIsSatisfied.onSuccess
+!function(self, updateactionSave) {
+	var returnValue = self.get("returnValue");
+	if (returnValue.flag == "S_OK") {
+		dorado.widget.NotifyTipManager.notify("添加完成......!");
+		view.id("dialogEdit").hide();
+	} else {
+		dorado.MessageBox.alert(returnValue.flag);
+	}
+};
+
+//@Bind #ajaxActionDeleteRelatedFiles.onSuccess
+!function(self, arg) {
+	dorado.widget.NotifyTipManager.notify(self.get("returnValue"));
+};
+
+//@Bind #datagridTurretarm.#armDrawingno.onRenderCell
+!function(arg) {
+	var armDrawingno = arg.data.get("armDrawingno");
+	arg.dom.innerHTML = "<a href='javascript:view.downloadFile()'>"+armDrawingno+"</a>";
+};
+
+
+//@Bind #datagridTurretarm.#armCode.onRenderCell
+!function(arg) {
+	// arg.dom.style.background = (arg.data.get("armassemblyCode") > 3000) ?
+	// "#fcc5c5" : "";
+	arg.dom.style.background = "#FFD39B";
+	arg.dom.style.color = "red";
+	var armCode = arg.data.get("armCode");
+	// arg.dom.innerHTML = "<a
+	// href='com.nimak.viewsets.TurretInfoManage.d'>"+armassemblyCode+"</a>";
+	arg.processDefault = true;
+};
+
+
+
+
+
+
+

@@ -72,12 +72,15 @@ public class TurretDaoImp extends HibernateDao implements TurretDaoI {
 		pathStrings.add(turret.getCapDrawingnoM());
 		pathStrings.add(turret.getGunbodyDrawingno());*/
 		String TURRET3D_PATH = NimakConstantSet.TURRET3D_PATH;
+		String TURRET2D_PATH = NimakConstantSet.TURRET2D_PATH;
 		System.out.println(TURRET3D_PATH);
 		NimakFileUtils nfu = new NimakFileUtils();
 		for (String string : pathStrings) {
 			// 删除文件
-			System.out.println(TURRET3D_PATH + string + ".CATPart");
-			nfu.DeleteFileByPath(TURRET3D_PATH + string + ".CATPart");			
+			System.out.println("即将删除文件：" + TURRET3D_PATH + string + NimakConstantSet.PRODUCT_EXT);
+			nfu.DeleteFileByPath(TURRET3D_PATH + string + NimakConstantSet.PRODUCT_EXT);
+			System.out.println("即将删除文件：" + TURRET2D_PATH + string + NimakConstantSet.PRODUCT_2D_EXT);
+			nfu.DeleteFileByPath(TURRET2D_PATH + string + NimakConstantSet.PRODUCT_2D_EXT);	
 		}
 		return "Successfully deleted";
 	}

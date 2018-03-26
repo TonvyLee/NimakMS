@@ -286,6 +286,77 @@ public class NimakUploadServiceImp {
 		return data;
 	}
 	
+	/**
+	 * 上传钳臂组件或者零件的二维图或者三维数模
+	 * @param file
+	 * @param parameter
+	 * @return
+	 * @throws Exception
+	 */
+	@FileResolver
+	public Map<String, String> uploadTurretArmFile(UploadFile file,
+			Map<String, Object> parameter) throws Exception {
+		logger.info("开始上传钳臂组件或者零件文件！\n");
+		
+		// 上传文件原始名称		
+		String fileOldName = new String(file.getFileName()
+				.getBytes("iso8859-1"), "UTF-8");
+		
+		// 判断上传文件类型标志，三维数模或者二维图纸
+		String fileTag = (String)parameter.get("tag");
+		
+		// 上传文件应有的名称，将文件名称设置为零件图号
+		String fileNameCustomString = (String) parameter.get("armDrawingno");
+
+		Map<String, String> data = new HashMap<String, String>();
+
+		if (!"null".equals(fileNameCustomString)
+				&& StringUtils.isNotEmpty(fileNameCustomString)) {
+			// 设置文件名称
+			String str = new String(
+					(fileNameCustomString + fileOldName.substring(fileOldName
+							.lastIndexOf("."))).getBytes("iso8859-1"), "UTF-8");
+
+			// 上传后文件表达
+			File destFile = null;
+			if ("upload2DDrawing".equals(fileTag)) {
+				System.out.println("upload2dDrawing");
+				destFile = getDestFile(str, new File(
+						setDestPath(NimakConstantSet.TURRETARM2D_PATH)));
+			}
+			if ("uploadDrawing".equals(fileTag)){
+				destFile = getDestFile(str, new File(
+						setDestPath(NimakConstantSet.TURRETARM3D_PATH)));
+			}
+					
+			if (destFile != null) {
+				try {
+					file.transferTo(destFile);
+				} catch (IllegalStateException e) {
+					e.printStackTrace();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+				data.put("fileName",
+						URLEncoder.encode(destFile.getName(), "UTF-8"));
+				data.put("absolutePath",
+						URLEncoder.encode(destFile.getAbsolutePath(), "UTF-8"));
+				data.put("relatedPath",
+						URLEncoder.encode(destFile.getPath(), "UTF-8"));
+			}else {
+				data.put("returnValue", "E_Fail");
+			}
+		} else {
+			data.put("returnValue", "E_Fail");
+		}
+		
+		logger.info("完成上传钳臂组件或者零件文件！\n");
+		return data;
+	}
+	
+	
+	
+	
 	
 	
 
@@ -347,6 +418,9 @@ public class NimakUploadServiceImp {
 	
 	// 钳臂零件三位数莫文件位置：NimakConstantSet.TURRETARM3D_PATH
 	// 钳臂零件莫文件位置：NimakConstantSet.TURRETARM2D_PATH
+	
+	
+	
 	
 	
 	

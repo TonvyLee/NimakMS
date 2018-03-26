@@ -1,8 +1,10 @@
 package com.nimak.serviceimp;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -22,7 +24,9 @@ import com.bstek.dorado.annotation.Expose;
 import com.bstek.dorado.data.provider.Page;
 import com.nimak.daoimp.TurretArmDaoImp;
 import com.nimak.entity.Turretarm;
+import com.nimak.exception.FileException;
 import com.nimak.serviceinterface.TurretArmServiceI;
+import com.nimak.utils.NimakConstantSet;
 
 @Component
 public class TurretArmServiceImp implements TurretArmServiceI {
@@ -301,4 +305,57 @@ public class TurretArmServiceImp implements TurretArmServiceI {
 
 	/*--------------------------------------------------------------------------------------------------------------------*/
 
+	@Override
+	@Expose
+	public Map<String, String> isNewAddedTurretArmSatisfied(
+			Map<String, Object> params) {
+		logger.info("Start verify new added TurretArm object conditions");
+		System.out.println(params);
+		Map<String, String> returnMap = new HashMap<>();
+		if (params != null) {
+			String armDrawingno = (String) params.get("armDrawingno");
+			// String stroke = (String.valueOf(params.get("stroke")));
+			if (armDrawingno == null || (armDrawingno != null)
+					&& armDrawingno.equals("")) {
+				returnMap.put("flag", "请填写钳臂零件图号！");
+				return returnMap;
+			}
+
+
+			// 判断文件是否上传成功,注意文件类型
+			if (!new File(NimakConstantSet.TURRETARM3D_PATH + armDrawingno
+					+ ".CATPart").exists()) {
+				returnMap.put("flag", "三维数模文件未上传成功！");
+				return returnMap;
+			}
+			// 判断2d文件是否上传成功,注意文件类型
+			if (!new File(NimakConstantSet.TURRETARM2D_PATH + armDrawingno
+					+ ".jpg").exists()) {
+				returnMap.put("flag", "二维图纸文件未上传成功！");
+				return returnMap;
+			}
+			// 如果上述条件都满足，map返回flag = S_OK键值
+			returnMap.put("flag", "S_OK");
+			return returnMap;
+		} else {
+			returnMap.put("flag", "请输入握杆零件相关参数！");			
+			return returnMap;
+		}
+	}
+	
+	
+	
+	@Override
+	@Expose
+	public String deleteRelatedFilesByArmDrawingno(String armDrawingno) {
+		logger.info("即将根据前台传入的电极握杆的id删除相关的文件======,id:" + armDrawingno);
+		try {
+			return turretArmDaoImp.deleteRelatedFilesByArmDrawingno(armDrawingno);
+		} catch (FileException e) {
+			System.out.println(e.getFileErrorMsg());
+			e.printStackTrace();
+			return e.getFileErrorMsg();
+		}
+	}
+	
 }

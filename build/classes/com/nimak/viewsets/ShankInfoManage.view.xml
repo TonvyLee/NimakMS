@@ -34,10 +34,6 @@
       </PropertyDef>
       <PropertyDef name="shankAngel1">
         <Property name="label">第一偏转角度</Property>
-        <Validator name="validator1" type="regExp">
-          <Property name="whiteRegExp">/^[0-9]+([.]{1}[0-9]+){0,1}(\[[\u2E80-\u9FFF]+\]){1}$/</Property>
-          <Property name="resultMessage">输入格式有误！[0,无,输入角度后选择偏移生成方式]</Property>
-        </Validator>
       </PropertyDef>
       <PropertyDef name="shankRadius1">
         <Property name="dataType">BigDecimal</Property>
@@ -55,10 +51,6 @@
       </PropertyDef>
       <PropertyDef name="shankAngel2">
         <Property name="label">第二偏转角度</Property>
-        <Validator name="validator1" type="regExp">
-          <Property name="whiteRegExp">/^[0-9]+([.]{1}[0-9]+){0,1}(\[[\u2E80-\u9FFF]+\]){1}$/</Property>
-          <Property name="resultMessage">输入格式有误！[0,无,输入角度后选择偏移生成方式]</Property>
-        </Validator>
       </PropertyDef>
       <PropertyDef name="shankRadius2">
         <Property name="dataType">BigDecimal</Property>
@@ -76,10 +68,6 @@
       </PropertyDef>
       <PropertyDef name="shankAngel3">
         <Property name="label">第三偏转角度</Property>
-        <Validator name="validator1" type="regExp">
-          <Property name="whiteRegExp">/^[0-9]+([.]{1}[0-9]+){0,1}(\[[\u2E80-\u9FFF]+\]){1}$/</Property>
-          <Property name="resultMessage">输入格式有误！[0,无,输入角度后选择偏移生成方式]</Property>
-        </Validator>
       </PropertyDef>
       <PropertyDef name="shankRadius3">
         <Property name="dataType">BigDecimal</Property>
@@ -98,7 +86,9 @@
       <PropertyDef name="shankStandard">
         <Property name="dataType">BigDecimal</Property>
         <Property name="label">是否为标准零件</Property>
-        <Validator name="validator1" type="required"/>
+        <Validator name="validator1" type="required">
+          <Property name="acceptZeroOrFalse">true</Property>
+        </Validator>
         <Validator name="validator2" type="regExp">
           <Property name="whiteRegExp">([1-9]\d*(\.\d*[1-9])?)|(0\.\d*[1-9])</Property>
         </Validator>
@@ -247,6 +237,7 @@
   <View id="view" layout="vbox">
     <ClientEvent name="onCreate">dorado.useObjectShim = true;</ClientEvent>
     <Property name="styleSheetFile">/css/shankInfoManageCommon.css</Property>
+    <Property name="javaScriptFile">/javascript/commonFunction.js</Property>
     <DataSet id="dsHolder">
       <Property name="dataType">[dataTypeHolder]</Property>
       <Property name="dataProvider">electrodeHolderServiceImp#queryForCondition</Property>
@@ -726,6 +717,7 @@
         <Button id="buttonSave1">
           <Property name="caption">保存</Property>
           <Property name="width">80</Property>
+          <Property name="disabled">true</Property>
         </Button>
         <Button id="buttonCancel1">
           <Property name="caption">取消</Property>
@@ -853,6 +845,8 @@
           <AutoFormElement>
             <Property name="name">shankStandard</Property>
             <Property name="property">shankStandard</Property>
+            <Property name="trigger">listDropIsNot</Property>
+            <Property name="editable">false</Property>
             <Editor/>
           </AutoFormElement>
           <AutoFormElement>
@@ -889,6 +883,7 @@
                   <Property name="color">blue</Property>
                 </Property>
                 <Property name="action">uploadDrawing</Property>
+                <Property name="disabled">true</Property>
               </Button>
               <Button id="buttonUpload2DDrawing">
                 <Property name="width">150</Property>
@@ -897,6 +892,7 @@
                 </Property>
                 <Property name="action">upload2DDrawing</Property>
                 <Property name="caption">上传二维图纸</Property>
+                <Property name="disabled">true</Property>
               </Button>
             </Buttons>
             <Children>
@@ -1142,23 +1138,47 @@
       <Property name="userData">[机加获得]</Property>
       <Property name="icon"> url(images/机加获取.png)</Property>
     </Trigger>
-    <ListDropDown id="listDropDownShankDrawingno"/>
-    <ListDropDown id="listDropDownShankCode"/>
-    <ListDropDown id="listDropDownShankMaterial"/>
-    <ListDropDown id="listDropDownShankTaper"/>
-    <ListDropDown id="listDropDownShankType"/>
-    <ListDropDown id="listDropDownShankAngel1"/>
-    <ListDropDown id="listDropDownShankAngel2"/>
-    <ListDropDown id="listDropDownShankAngel3"/>
-    <ListDropDown id="listDropDownShankDesigner"/>
+    <ListDropDown id="listDropDownShankDrawingno">
+      <Property name="autoOpen">true</Property>
+    </ListDropDown>
+    <ListDropDown id="listDropDownShankCode">
+      <Property name="autoOpen">true</Property>
+    </ListDropDown>
+    <ListDropDown id="listDropDownShankMaterial">
+      <Property name="autoOpen">true</Property>
+    </ListDropDown>
+    <ListDropDown id="listDropDownShankTaper">
+      <Property name="autoOpen">true</Property>
+    </ListDropDown>
+    <ListDropDown id="listDropDownShankType">
+      <Property name="autoOpen">true</Property>
+    </ListDropDown>
+    <ListDropDown id="listDropDownShankAngel1">
+      <Property name="autoOpen">true</Property>
+    </ListDropDown>
+    <ListDropDown id="listDropDownShankAngel2">
+      <Property name="autoOpen">true</Property>
+    </ListDropDown>
+    <ListDropDown id="listDropDownShankAngel3">
+      <Property name="autoOpen">true</Property>
+    </ListDropDown>
+    <ListDropDown id="listDropDownShankDesigner">
+      <Property name="autoOpen">true</Property>
+    </ListDropDown>
     <IFrame id="frame">
       <Property name="name">frame</Property>
     </IFrame>
     <ListDropDown id="listDropDownShankTypeValue">
       <Property name="items">螺纹式,抱紧式,其他</Property>
+      <Property name="autoOpen">true</Property>
     </ListDropDown>
     <ListDropDown id="listDropDownShankTaperValue">
       <Property name="items">1:10,1:9.6,其他</Property>
+      <Property name="autoOpen">true</Property>
+    </ListDropDown>
+    <ListDropDown id="listDropIsNot">
+      <Property name="autoOpen">true</Property>
+      <Property name="items">1,0</Property>
     </ListDropDown>
   </View>
 </ViewConfig>

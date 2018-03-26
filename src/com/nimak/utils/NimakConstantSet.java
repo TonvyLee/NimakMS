@@ -101,10 +101,19 @@ public class NimakConstantSet {
 	//文件后缀名设置，便于文件下载
 	// 产品文件后缀名
 	public static String PRODUCT_EXT = configMap.get("PRODUCT_EXT");
+	// 产品文件后缀名-2D
+	public static String PRODUCT_2D_EXT = configMap.get("PRODUCT_2D_EXT");
 	// 部件文件后缀名
-	public static String WIDGET_EXT = configMap.get("WIDGET_EXT");
+	public static String WIDGET_EXT = configMap.get("WIDGET_EXT");	
+	// 部件文件后缀名-2D
+	public static String WIDGET_2D_EXT = configMap.get("WIDGET_2D_EXT");
 	// 组件文件后缀名
 	public static String COMPONENT_EXT = configMap.get("COMPONENT_EXT");
+	// 组件文件后缀名-2D
+	public static String COMPONENT_2D_EXT = configMap.get("COMPONENT_2D_EXT");
+	
 	// 压缩文件后缀名
 	public static String ZIPFILE_SUFFIX = configMap.get("ZIPFILE_SUFFIX");
+	
+	
 }

@@ -79,10 +79,10 @@ public class TurretComponentDaoImp extends HibernateDao implements TurretCompone
 		NimakFileUtils nfu = new NimakFileUtils();
 		for (String string : pathStrings) {
 			// 删除文件
-			System.out.println("即将删除文件：" + TURRETCOMPONENT3D_PATH + string + ".CATPart");
-			nfu.DeleteFileByPath(TURRETCOMPONENT3D_PATH + string + ".CATPart");
-			System.out.println("即将删除文件：" + TURRETCOMPONENT2D_PATH + string + ".jpg");
-			nfu.DeleteFileByPath(TURRETCOMPONENT2D_PATH + string + ".jpg");	
+			System.out.println("即将删除文件：" + TURRETCOMPONENT3D_PATH + string + NimakConstantSet.WIDGET_EXT);
+			nfu.DeleteFileByPath(TURRETCOMPONENT3D_PATH + string + NimakConstantSet.WIDGET_EXT);
+			System.out.println("即将删除文件：" + TURRETCOMPONENT2D_PATH + string + NimakConstantSet.WIDGET_2D_EXT);
+			nfu.DeleteFileByPath(TURRETCOMPONENT2D_PATH + string + NimakConstantSet.WIDGET_2D_EXT);	
 		}
 		return "Successfully deleted";
 	}

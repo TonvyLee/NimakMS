@@ -81,7 +81,7 @@
       </PropertyDef>
       <PropertyDef name="capAngel">
         <Property name="dataType">BigDecimal</Property>
-        <Property name="label">电极帽偏转角度</Property>
+        <Property name="label">电极帽偏转角度(°)</Property>
         <Validator name="validator1" type="required"/>
         <Validator name="validator2" type="regExp">
           <Property name="whiteRegExp">([1-9]\d*(\.\d*[1-9])?)|(0\.\d*[1-9])</Property>
@@ -326,9 +326,10 @@
       </PropertyDef>
     </DataType>
   </Model>
-  <View id="view" layout="vbox">
+  <View id="view">
     <ClientEvent name="onCreate">dorado.useObjectShim = true;</ClientEvent>
     <Property name="styleSheetFile">/css/turretInfoManageCommon.css</Property>
+    <Property name="javaScriptFile">/javascript/commonFunction.js</Property>
     <DataSet id="dsTurretComp">
       <Property name="dataType">[dataTypeComponent]</Property>
       <Property name="dataProvider">turretComponentServiceImp#getTurretComponentByDrawingno</Property>
@@ -752,7 +753,8 @@
         <SplitPanel>
           <Property name="position">20%</Property>
           <MainControl>
-            <Container layout="vbox">
+            <Container>
+              <Property name="height">100%</Property>
               <TabControl id="tabControlInfo">
                 <Property name="height">100%</Property>
                 <ControlTab id="tabControlInfo1">
@@ -1410,6 +1412,8 @@
               <Property name="color">red</Property>
             </Property>
             <Property name="trigger">listDropDownTurretType</Property>
+            <Property name="readOnly">false</Property>
+            <Property name="editable">false</Property>
             <Editor/>
           </AutoFormElement>
           <AutoFormElement>

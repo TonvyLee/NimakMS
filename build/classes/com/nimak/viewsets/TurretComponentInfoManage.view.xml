@@ -68,10 +68,12 @@
       </PropertyDef>
       <PropertyDef name="capAngel">
         <Property name="dataType">BigDecimal</Property>
-        <Property name="label">电极帽偏转角度</Property>
-        <Validator name="validator1" type="required"/>
+        <Property name="label">电极帽偏转角度(°)</Property>
         <Validator name="validator2" type="regExp">
-          <Property name="whiteRegExp">([1-9]\d*(\.\d*[1-9])?)|(0\.\d*[1-9])</Property>
+          <Property name="whiteRegExp">([0-9]\d*(\.\d*[0-9])?)|(0\.\d*[0-9])</Property>
+        </Validator>
+        <Validator name="validator1" type="required">
+          <Property name="acceptZeroOrFalse">true</Property>
         </Validator>
       </PropertyDef>
       <PropertyDef name="armassemblyTechchange">
@@ -465,9 +467,9 @@
       </PropertyDef>
     </DataType>
   </Model>
-  <View id="view" layout="vbox">
+  <View id="view">
     <Property name="styleSheetFile">/css/turretComponentInfoManageCommon.css</Property>
-    <Property name="javaScriptFile">/javascript/TurretComponentInfoManage.js</Property>
+    <Property name="javaScriptFile">/javascript/commonFunction.js</Property>
     <DataSet id="dataSetArmDrawingno">
       <Property name="dataType">[dataTypeTurretCompOrPartListDropDown]</Property>
       <Property name="dataProvider">turretArmServiceImp#getTurretArmByDrawingNo</Property>
@@ -485,7 +487,7 @@
       <Property name="dataProvider">turretArmServiceImp#getTurretArmByDrawingNo</Property>
     </DataSet>
     <DataSet id="dataSet1">
-      <Property name="dataType">[dataTypeTurretComponent]</Property>
+      <Property name="dataType">[dataTypeTurretComponentQuery]</Property>
     </DataSet>
     <DataSet id="dsTurretComponent">
       <Property name="dataType">[dataTypeTurretComponent]</Property>
@@ -893,6 +895,7 @@
       </MenuItem>
       <MenuItem id="menuItemDownloadZip">
         <Property name="caption">打包下载部件及其组件</Property>
+        <Property name="icon"> url(>skin>common/icons.gif) -160px -20px</Property>
       </MenuItem>
     </Menu>
     <Dialog id="dialogEditTurretComponent">
@@ -926,6 +929,7 @@
               <Property name="color">red</Property>
             </Property>
             <Property name="trigger">listDropDownTurretType</Property>
+            <Property name="editable">false</Property>
             <Editor/>
           </AutoFormElement>
           <AutoFormElement>
@@ -952,11 +956,13 @@
           <AutoFormElement>
             <Property name="name">armDrawingno</Property>
             <Property name="property">armDrawingno</Property>
+            <Property name="trigger">listDropDownTurretArmDrawingnos</Property>
             <Editor/>
           </AutoFormElement>
           <AutoFormElement>
             <Property name="name">shankDrawingno</Property>
             <Property name="property">shankDrawingno</Property>
+            <Property name="trigger">listDropDownTurretShankDrawingnos</Property>
             <Editor/>
           </AutoFormElement>
           <GroupBox>
@@ -1175,7 +1181,7 @@
         <SplitPanel>
           <Property name="position">20%</Property>
           <MainControl>
-            <Container layout="vbox">
+            <Container>
               <TabControl id="tabControlInfo">
                 <Property name="height">100%</Property>
                 <ControlTab id="tabControlInfo1">
@@ -1199,7 +1205,7 @@
                       <AutoForm id="autoformTurretComOrPartInfo">
                         <Property name="dataSet">dsTurretCompOrPart</Property>
                         <Property name="cols">*,*</Property>
-                        <Property name="labelWidth">150</Property>
+                        <Property name="labelWidth">160</Property>
                         <Property name="labelAlign">center</Property>
                         <AutoFormElement>
                           <Property name="name">armDrawingno</Property>
@@ -1399,7 +1405,7 @@
                       <AutoForm id="autoformTurretComOrPartInfo2">
                         <Property name="dataSet">dsHolder</Property>
                         <Property name="cols">*,*</Property>
-                        <Property name="labelWidth">150</Property>
+                        <Property name="labelWidth">160</Property>
                         <Property name="labelAlign">center</Property>
                         <AutoFormElement>
                           <Property name="name">shankDrawingno</Property>
@@ -1552,7 +1558,7 @@
                       <AutoForm id="autoformTurretComOrPartInfo3">
                         <Property name="dataSet">dsTurretCompOrPart</Property>
                         <Property name="cols">*,*</Property>
-                        <Property name="labelWidth">150</Property>
+                        <Property name="labelWidth">160</Property>
                         <Property name="labelAlign">center</Property>
                         <AutoFormElement>
                           <Property name="name">armDrawingno</Property>
@@ -1752,7 +1758,7 @@
                       <AutoForm id="autoformTurretComOrPartInfo4">
                         <Property name="dataSet">dsHolder</Property>
                         <Property name="cols">*,*</Property>
-                        <Property name="labelWidth">150</Property>
+                        <Property name="labelWidth">160</Property>
                         <Property name="labelAlign">center</Property>
                         <AutoFormElement>
                           <Property name="name">shankDrawingno</Property>
@@ -1958,14 +1964,29 @@
     </DownloadAction>
     <ListDropDown id="listDropDownTurretType">
       <Property name="items">C,X</Property>
+      <Property name="autoOpen">true</Property>
     </ListDropDown>
-    <ListDropDown id="listDropDownArmAssemblyWidth2"/>
-    <ListDropDown id="listDropDownArmAssemblyWidth"/>
-    <ListDropDown id="listDropDownArmAssemblyLength"/>
-    <ListDropDown id="listDropDownArmAssemblyForce"/>
-    <ListDropDown id="listDropDownArmAssemblyCapAngel"/>
-    <ListDropDown id="listDropDownArmAssemblyCode"/>
-    <ListDropDown id="listDropDownArmAssemblyno"/>
+    <ListDropDown id="listDropDownArmAssemblyWidth2">
+      <Property name="autoOpen">true</Property>
+    </ListDropDown>
+    <ListDropDown id="listDropDownArmAssemblyWidth">
+      <Property name="autoOpen">true</Property>
+    </ListDropDown>
+    <ListDropDown id="listDropDownArmAssemblyLength">
+      <Property name="autoOpen">true</Property>
+    </ListDropDown>
+    <ListDropDown id="listDropDownArmAssemblyForce">
+      <Property name="autoOpen">true</Property>
+    </ListDropDown>
+    <ListDropDown id="listDropDownArmAssemblyCapAngel">
+      <Property name="autoOpen">true</Property>
+    </ListDropDown>
+    <ListDropDown id="listDropDownArmAssemblyCode">
+      <Property name="autoOpen">true</Property>
+    </ListDropDown>
+    <ListDropDown id="listDropDownArmAssemblyno">
+      <Property name="autoOpen">true</Property>
+    </ListDropDown>
     <DataSetDropDown id="dataSetDropDownArmDrawingno">
       <Property name="dataSet">dataSetArmDrawingno</Property>
       <Property name="displayProperty">armDrawingno</Property>
@@ -1984,9 +2005,11 @@
     </DataSetDropDown>
     <ListDropDown id="listDropDownTurretArmDrawingnos">
       <Property name="dynaFilter">true</Property>
+      <Property name="autoOpen">true</Property>
     </ListDropDown>
     <ListDropDown id="listDropDownTurretShankDrawingnos">
       <Property name="dynaFilter">true</Property>
+      <Property name="autoOpen">true</Property>
     </ListDropDown>
     <IFrame id="frame">
       <Property name="name">frame</Property>

@@ -274,10 +274,15 @@ function showCompOrPartInfo(label) {
 	 */
 	// console.log(num);
 	dsTurretComponent.insert();
+	view.id("updateactionSave").set("userData",null);
 	// autoformAdd.get("entity").set("id",num);
 	dialogEditTurretComponent.show();
 	dialogEditTurretComponent.set("tags", "Add");
 	view.id("uploadFileTipLabel").set("visible",false);
+	
+	view.id("buttonSave1").set("disabled",true);
+	view.id("buttonUpload2DDrawing").set("disabled",true);
+	view.id("buttonUploadDrawing").set("disabled",true);
 };
 
 // @Bind #buttonCancel1.onClick
@@ -380,8 +385,14 @@ function showCompOrPartInfo(label) {
 // @Bind #buttonModify.onClick
 !function(self, arg, dialogEditTurretComponent,uploadFileTipLabel) {
 	dialogEditTurretComponent.show();
+	view.id("updateactionSave").set("userData",null);
+	dorado.MessageBox.alert("注意：修改模式下上传文件将覆盖原始相关文件!");
 	dialogEditTurretComponent.set("tags", "Modify");
 	uploadFileTipLabel.set("visible",true);
+	
+	view.id("buttonSave1").set("disabled",false);
+	view.id("buttonUpload2DDrawing").set("disabled",false);
+	view.id("buttonUploadDrawing").set("disabled",false);
 };
 
 // @Bind #buttonDelete.onClick
@@ -568,7 +579,7 @@ function showCompOrPartInfo(label) {
 	});
 };
 
-// @Bind #uploadDrawing.beforeFileUpload
+// @Bind #buttonUploadDrawing.onClick
 !function() {
 	if (view.id("dialogEditTurretComponent").get("tags") == "Modify") {
 		dorado.widget.NotifyTipManager.notify("确认修改重新上传数模文件？原始数模文件将被覆盖！");
@@ -598,7 +609,7 @@ function showCompOrPartInfo(label) {
 	dorado.widget.NotifyTipManager.notify(self.get("returnValue"));
 };
 
-//@Bind #upload2DDrawing.beforeFileUpload
+//@Bind #buttonUpload2DDrawing.onClick
 !function() {
 	if (view.id("dialogEditTurretComponent").get("tags") == "Modify") {
 		dorado.widget.NotifyTipManager.notify("确认修改重新上传二维图纸文件？原始二维图纸文件将被覆盖！");
@@ -909,4 +920,23 @@ function showCompOrPartInfo(label) {
 //@Bind #frame.onCreate
 !function(self,arg) {
 	flag = 0;
+};
+
+
+
+
+//只有当图号不为空时才能进行上传或者保存等操作
+//@Bind #autoformAdd.#armAssemblyno.onBlur
+!function(buttonSave1,self,arg,buttonUploadDrawing,buttonUpload2DDrawing) {
+	
+	var eleValue = self.get("value");
+	if(!view.isEmpty(eleValue)) {
+		buttonSave1.set("disabled",false);
+		buttonUpload2DDrawing.set("disabled",false);
+		buttonUploadDrawing.set("disabled",false);
+	}else {
+		buttonSave1.set("disabled",true);
+		buttonUpload2DDrawing.set("disabled",true);
+		buttonUploadDrawing.set("disabled",true);
+	}
 };
