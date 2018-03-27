@@ -315,6 +315,10 @@ function downloadFile() {
 	dsHolder.insert();
 	// autoformAdd.get("entity").set("id",num);
 	dialogEditShank.show();
+	
+	var loginUsername = "${loginUsername}";
+	view.id("autoformAdd").get("entity").set("shankDesigner",loginUsername);	
+	
 	dialogEditShank.set("tags", "Add");
 	uploadFileTipLabel.set("visible", false);
 	

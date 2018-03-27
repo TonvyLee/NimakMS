@@ -1,7 +1,6 @@
 var flag = 0;
 /** @View */
 function downloadFile() {
-	alert(1);
 	dorado.MessageBox.confirm("即将开始下载钳臂零件三维数模！确认继续？", function() {
 		var armDrawingno = view.id("datagridTurretarm").getCurrentItem().get(
 				"armDrawingno");
@@ -9,7 +8,7 @@ function downloadFile() {
 		armDrawingnoMap.put("armDrawingno", armDrawingno);
 		view.id("downloadDrawing").set("parameter", armDrawingnoMap).execute();
 	});
-};
+}
 
 
 

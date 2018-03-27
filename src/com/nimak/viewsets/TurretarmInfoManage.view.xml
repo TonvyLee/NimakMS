@@ -96,7 +96,7 @@
       </PropertyDef>
     </DataType>
   </Model>
-  <View>
+  <View id="view">
     <Property name="styleSheetFile">/css/TurretarmInfoManage.css</Property>
     <DataSet id="dataSetTurretarm">
       <Property name="dataType">[dataTypeTurretarm]</Property>
@@ -109,7 +109,7 @@
       <Property name="dataType">[dataTypeImage]</Property>
       <Property name="pageSize">15</Property>
       <Property name="readOnly">true</Property>
-      <Property name="loadMode">onReady</Property>
+      <Property name="loadMode">lazy</Property>
     </DataSet>
     <Container layout="vbox">
       <FieldSet>
@@ -477,9 +477,20 @@ view.id(&quot;dialog2Dimage&quot;).show();</ClientEvent>
                 <ClientEvent name="onClick" signature="self,arg,dataSetTurretarm,dialogEdit">dataSetTurretarm.insert();&#xD;
 dialogEdit.show();&#xD;
 dialogEdit.set(&quot;tags&quot;, &quot;Add&quot;);&#xD;
+&#xD;
+&#xD;
+var loginUsername = &quot;${loginUsername}&quot;;&#xD;
+view.id(&quot;autoformTurretarmInfo&quot;).get(&quot;entity&quot;).set(&quot;armDesigner&quot;,loginUsername);&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
+&#xD;
 view.id(&quot;buttonSaveInfo&quot;).set(&quot;disabled&quot;,true);&#xD;
 view.id(&quot;buttonUpload2DDrawing&quot;).set(&quot;disabled&quot;,true);&#xD;
 view.id(&quot;buttonUploadDrawing&quot;).set(&quot;disabled&quot;,true);&#xD;
+&#xD;
 &#xD;
 view.id(&quot;updateactionSave&quot;).set(&quot;userData&quot;,null);&#xD;
 &#xD;
@@ -695,6 +706,7 @@ if (entity) {&#xD;
               <DataColumn name="armCode">
                 <Property name="property">armCode</Property>
                 <Property name="visible">true</Property>
+                <Property name="align">center</Property>
               </DataColumn>
             </DataGrid>
           </Container>
@@ -1973,8 +1985,6 @@ view.get(&quot;#autoformTurretarm&quot;).get(&quot;entity&quot;).set(&quot;armLe
     <UpdateAction id="updateactionSave">
       <Property name="dataResolver">turretArmServiceImp#saveAll</Property>
       <Property name="executingMessage">正在保存...</Property>
-      <Property name="successMessage">保存成功！</Property>
-      <Property name="hotkey">ctrl+s</Property>
       <UpdateItem>
         <Property name="dataSet">dataSetTurretarm</Property>
         <Property name="dataPath">[#all]</Property>
