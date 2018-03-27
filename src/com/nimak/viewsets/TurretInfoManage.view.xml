@@ -82,7 +82,9 @@
       <PropertyDef name="capAngel">
         <Property name="dataType">BigDecimal</Property>
         <Property name="label">电极帽偏转角度(°)</Property>
-        <Validator name="validator1" type="required"/>
+        <Validator name="validator1" type="required">
+          <Property name="acceptZeroOrFalse">true</Property>
+        </Validator>
         <Validator name="validator2" type="regExp">
           <Property name="whiteRegExp">([1-9]\d*(\.\d*[1-9])?)|(0\.\d*[1-9])</Property>
           <Property name="runAt">client</Property>
@@ -215,13 +217,11 @@
       <PropertyDef name="armComponentno">
         <Property></Property>
         <Property name="label">钳臂组件图号</Property>
-        <Property name="dataType">dataTypeTurretCompOrPartListDropDown</Property>
         <Validator name="validator1" type="required"/>
       </PropertyDef>
       <PropertyDef name="shankComponentno">
         <Property></Property>
         <Property name="label">电极握杆组件图号</Property>
-        <Property name="dataType">dataTypeHolderListDropDown</Property>
         <Validator name="validator1" type="required"/>
       </PropertyDef>
       <PropertyDef name="armDrawingno">
