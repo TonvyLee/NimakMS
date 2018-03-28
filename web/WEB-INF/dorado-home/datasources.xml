@@ -6,6 +6,15 @@
 	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
 	http://www.bstek.com/bdf/schema http://www.bstek.com/dorado/schema/bdf2.0.xsd ">
 
+	<!-- <bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">  
+	    定义需要特殊处理的异常，用类名或完全路径名作为key，异常也页名作为值  
+	    <property name="exceptionMappings">  
+	        <props>  
+	            <prop key="com.bstek.bdf2.core.exception.NoneLoginException">index</prop>  
+	        </props>  
+	    </property>  
+	</bean>   -->
+
 	<bean id="bdf2.jdbcTransactionManager" class="com.bstek.bdf2.core.orm.transaction.JdbcTransactionManager">
 		<property name="dataSource" ref="dataSource" />
 	</bean>
