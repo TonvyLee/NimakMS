@@ -33,8 +33,9 @@ public class NimakConstantSet {
 
 	// 文件上传后的路径，暂用相对路径---》turret 3D
 	public static String TURRET3D_PATH = (FILEPATHCONFIG
-			.equals("relative") == true ? (CONTEXTPATH + "/" + configMap.get("TURRET3D_PATH")) : (configMap.get("TURRET3D_PATH")));
-
+			.equals("relative") == true ? (CONTEXTPATH + "/" + configMap.get("TURRET3D_PATH")) 
+			: (configMap.get("TURRET3D_PATH")));
+	
 	// ContextPath
 	public static String CONTEXT_PATH = ContextLoader
 			.getCurrentWebApplicationContext().getServletContext()
@@ -59,6 +60,11 @@ public class NimakConstantSet {
 	public static String TURRETARM3D_PATH = (FILEPATHCONFIG
 			.equals("relative") == true ? (CONTEXTPATH + "/" + configMap.get("TURRETARM3D_PATH"))
 			: (configMap.get("TURRETARM3D_PATH")));
+	
+	// 文件上传后的路径，暂用相对路径---》turretarmsPARTATTACHEDPAGE
+	public static String TURRETARMATTACHEDPAGE_PATH= (FILEPATHCONFIG
+			.equals("relative") == true ? (CONTEXTPATH + "/" + configMap.get("TURRETARMATTACHEDPAGE_PATH")) 
+			: (configMap.get("TURRETARMATTACHEDPAGE_PATH")));
 
 	// 文件上传后的路径，暂用相对路径---》turretarmsCOMP 2D
 	public static String TURRETARMCOM2D_PATH = (FILEPATHCONFIG
@@ -109,6 +115,8 @@ public class NimakConstantSet {
 	public static String WIDGET_2D_EXT = configMap.get("WIDGET_2D_EXT");
 	// 组件文件后缀名
 	public static String COMPONENT_EXT = configMap.get("COMPONENT_EXT");
+	// 组件文件后缀名-工艺附属页
+	public static String COMPONENT_PAGE_EXT = configMap.get("COMPONENT_PAGE_EXT");
 	// 组件文件后缀名-2D
 	public static String COMPONENT_2D_EXT = configMap.get("COMPONENT_2D_EXT");
 	

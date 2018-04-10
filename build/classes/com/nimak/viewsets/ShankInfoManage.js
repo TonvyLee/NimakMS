@@ -784,4 +784,15 @@ function downloadFile() {
 	}
 };
 
+// 提示信息移动
+//@Bind #datagridShank.onReady 
+!function(self) {
+	dorado.TipManager.initTip(self.getDom(), {
+		text : self.get("tip"),
+		icon: "QUESTION",
+		trackMouse: true
+	});
+};
+
+
 

@@ -177,12 +177,50 @@ function isEmpty(obj){
 			top : arg.event.pageY
 		}
 	});
+	
 };
 /*------------------------------------------------------------------------------------------------------*/
 // @Bind #menuitemTurretInfo.onClick
-!function(self, arg, dialogInfo) {
+!function(self, arg, dialogInfo, dialog2Dimage) {
+	var armDrawingno = view.id("dataSetTurretarm").get("data:#").get("armDrawingno");
+	var DrawingPath = "${servletContext.getAttribute('configprop').get('TURRETARM2D_PATH')}";
+	if(armDrawingno){
+		view.id("image2d").set("image",DrawingPath + armDrawingno+".jpg");
+	}else{
+		view.id("image2d").set("image",null);
+	}
+	
+	dialogInfo.set("offsetLeft",-200);
+	dialog2Dimage.set("offsetLeft",600);
+	
 	dialogInfo.show();
+	dialog2Dimage.show();
 };
+
+
+
+
+/*-------------------------------------------------------------------------------------------------------*/
+//表格中右键复制按钮
+//@Bind #menuItemCopy.onClick
+!function(self, arg, updateactionSave) {
+	dorado.MessageBox.confirm("确认要复制该条记录吗？", function(){
+		
+		
+		var entity = view.id("datagridTurretarm").getCurrentItem();
+		var addedEntity = entity.createBrother(entity,false);
+		var oldarmDrawingno = entity.get("armDrawingno");
+		var newarmDrawingno = oldarmDrawingno.concat("_副本");
+		
+		addedEntity.set("armDrawingno",newarmDrawingno);
+		var json = addedEntity.toJSON();
+		
+		view.id("updateactionSave").set("userData","flag");
+		updateactionSave.execute();
+	});
+};
+
+
 /*-------------------------------------------------------------------------------------------------------*/
 // 根据2D视图进行快速查找
 // @Bind #image11.onClick
@@ -278,12 +316,6 @@ function isEmpty(obj){
 		entity3 = $.extend(entity, entity2);
 		view.get("#dataSetTurretarm").set("parameter", entity3).flushAsync();
 		break;
-	/*
-	 * default: var
-	 * entity=view.get("#autoformTurretarm").get("entity").set("armType","Cu");
-	 * view.get("#dataSetTurretarm").set("parameter",entity).flushAsync();
-	 * break;
-	 */
 	}
 
 };
@@ -305,12 +337,6 @@ function isEmpty(obj){
 	case 'Al':
 
 		break;
-	/*
-	 * default: var
-	 * entity=view.get("#autoformTurretarm").get("entity").set("armType","Cu");
-	 * view.get("#dataSetTurretarm").set("parameter",entity).flushAsync();
-	 * break;
-	 */
 	}
 	;
 };
@@ -365,20 +391,25 @@ function isEmpty(obj){
 		entity3 = $.extend(entity, entity2);
 		view.get("#dataSetTurretarm").set("parameter", entity3).flushAsync();
 		break;
-	/*
-	 * default: var
-	 * entity=view.get("#autoformTurretarm").get("entity").set("armType","Cu");
-	 * view.get("#dataSetTurretarm").set("parameter",entity).flushAsync();
-	 * break;
-	 */
 	}
 	;
 };
-/*--------------------------------------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------------------------------------------*/
 
 /**
  * 514
  */
+//@Bind #buttonUploadAttachedPage.onClick
+!function() {
+	if (view.id("dialogEdit").get("tags") == "Modify") {
+		dorado.widget.NotifyTipManager.notify("确认修改重新上传工艺附属页？原始工艺附属页将被覆盖！");
+	}
+	var json = view.id("autoformTurretarmInfo").get("entity").toJSON();
+	json["tag"] = "uploadAttachedPage";
+	view.id("uploadAttachedPage").set("parameter", json).execute();
+};
+
+
 //@Bind #buttonUploadDrawing.onClick
 !function() {
 	if (view.id("dialogEdit").get("tags") == "Modify") {
@@ -386,34 +417,54 @@ function isEmpty(obj){
 	}
 	var json = view.id("autoformTurretarmInfo").get("entity").toJSON();
 	json["tag"] = "uploadDrawing";
-	view.id("uploadDrawing").set("parameter", json).execute().execute();
+	view.id("uploadDrawing").set("parameter", json).execute();
 };
 
 // 文件上传完成之后
 // 未解决问题：文件上传失败之后，临时文件为处理
-// @Bind #uploadDrawing.onFileUploaded
+//@Bind #uploadAttachedPage.onFileUploaded
 !function(self, arg) {
+	
 	var Value = arg.returnValue;
+	
+	var fileName = Value.fileName;
 	var returnValue = Value.returnValue;
+	var result = Value.result;
+
 	if (returnValue == "E_Fail") {
 		dorado.MessageBox.alert("上传失败，确保相关参数填写完整！");
 		return;
 	}
+		dorado.MessageBox.alert("文件" + fileName + "成功上传");
+		
+	}
+
+
+// @Bind #uploadDrawing.onFileUploaded
+!function(self, arg) {
+	
+	var Value = arg.returnValue;
+	
 	var fileName = Value.fileName;
-	dorado.MessageBox.alert("文件" + fileName + "成功上传");
-};
+	var returnValue = Value.returnValue;
+	var result = Value.result;
+	
+	if(result=="failed"){
+		dorado.MessageBox.alert("上传文件名称与录入图号不符！",{title:"警告",icon:"WARNING"});
+	}
+	else{
+		if (returnValue == "E_Fail") {
+			dorado.MessageBox.alert("上传失败，确保相关参数填写完整！");
+			return;
+		}
+		dorado.MessageBox.alert("文件" + fileName + "成功上传");
+		};
+	}
+	
+	
 
 // @Bind #buttonUpload2DDrawing.onClick
-!function() {/*
-
-	alert(view.id("dialogEdit").get("tags"));
-	
-		dorado.widget.NotifyTipManager.notify("确认修改重新上传二维图纸文件？原始二维图纸文件将被覆盖！");
-	}
-	var json = view.id("autoformTurretarmInfo").get("entity").toJSON();
-	json["tag"] = "upload2DDrawing";
-	view.id("upload2DDrawing").set("parameter", json);
-*/
+!function() {
 	if (view.id("dialogEdit").get("tags") == "Modify") {
 		dorado.widget.NotifyTipManager.notify("确认修改重新上传二维图纸文件？原始二维图纸文件将被覆盖！");
 	}
@@ -444,9 +495,23 @@ function isEmpty(obj){
 				"armDrawingno");
 		var armDrawingnoMap = new dorado.util.Map();
 		armDrawingnoMap.put("armDrawingno", armDrawingno);
+		armDrawingnoMap.put("AttachedPageOrNot", "no");
 		view.id("downloadDrawing").set("parameter", armDrawingnoMap).execute();
 	});
 };
+
+//@Bind #menuItemDownLoadAttachedPage.onClick
+!function(self, downloadDrawing, datagridTurretarm) {
+	dorado.MessageBox.confirm("确认下载工艺附属页？", function() {
+		var armDrawingno = datagridTurretarm.getCurrentItem().get(
+				"armDrawingno");
+		var armDrawingnoMap = new dorado.util.Map();
+		armDrawingnoMap.put("armDrawingno", armDrawingno);
+		armDrawingnoMap.put("AttachedPageOrNot", "yes");
+		view.id("downloadDrawing").set("parameter", armDrawingnoMap).execute();
+	});
+};
+
 
 // @Bind #menuItemOpen2DDrawing.onClick
 !function(dialog2Dimage, image2d) {
@@ -460,7 +525,7 @@ function isEmpty(obj){
 	} else {
 		image2d.set("image", null);
 	}
-
+	view.id("dialog2Dimage").set("offsetLeft",null);
 	dialog2Dimage.show();
 };
 
@@ -540,9 +605,92 @@ function isEmpty(obj){
 	arg.processDefault = true;
 };
 
+/*----------------------------------------------------------------------------------------------------------------*/
+// @Bind #textEditorLinearGuide.onReady
+!function(self) {
+	// 例如对于一个以数值型表示性别的属性，我们可能希望在显示属性值时将1显示为"男"、将0显示为"女"。
+	self.set("mapping", [
+	    {
+	        key : 1,
+	        value : "是"
+	    },
+	    {
+	        key : 0,
+	        value : "否"
+	    }
+	]);
+};
+
+//@Bind #textEditorarmStandard.onReady
+!function(self) {
+	// 例如对于一个以数值型表示性别的属性，我们可能希望在显示属性值时将1显示为"男"、将0显示为"女"。
+	self.set("mapping", [
+	    {
+	        key : 1,
+	        value : "标准零件"
+	    },
+	    {
+	        key : 2,
+	        value : "实例零件"
+	    },
+	    {
+	        key : 3,
+	        value : "典型零件"
+	    }
+	]);
+};
+
+	
+/*----------------------------------------------------------------------------------------------------------------*/
+
+
+// @Bind #autoformTurretarmInfo.#armMaterial.onBlur
+!function(self) {
+	var eleValue = self.get("value");
+	if(!view.isEmpty(eleValue)) {
+		if(eleValue === "Φ54/CuCr1Zr") {
+			view.id("autoformTurretarmInfoarmSerial").set("trigger","listdropdownCuSerial");
+		}else {
+			view.id("autoformTurretarmInfoarmSerial").set("trigger","listdropdownAlSerial");
+		}
+	}	
+};
+
+//@Bind #autoformTurretarmInfo.#armDrawingno.onBlur
+!function(self,ajaxActionVarifyDrawingno,dialogEdit) {
+	var eleValue = self.get("value");
+	if(dialogEdit.get("tags")=="Modify"){
+		}
+	if(dialogEdit.get("tags")=="Add"){
+		ajaxActionVarifyDrawingno.set("parameter",eleValue).execute();
+	}
+	//dialogEdit.set("tags", "Modify");
+	
+	
+	/*var armType=String(view.id("autoformTurretarmInfo").get("entity").get("armType"));
+
+	switch(armType){
+		case 'Cu':
+		break;
+		case 'Al':
+		break;
+		case '其他':
+		break;
+		default:
+			var eleValue = self.get("value");
+			ajaxActionVarifyDrawingno.set("parameter",eleValue).execute();
+		break;
+	}*/
+};
 
 
 
 
-
-
+//@Bind #datagridTurretarm.onReady 
+!function(self,tipDataGrid) {
+	dorado.TipManager.initTip(self.getDom(), {
+		text : self.get("tip"),
+		icon: "QUESTION",
+		trackMouse: true
+	});
+};

@@ -778,3 +778,14 @@ function downloadFile() {
 		buttonUploadDrawing.set("disabled",true);
 	}
 };
+
+
+//提示信息移动
+//@Bind #datagridTurret.onReady 
+!function(self) {
+	dorado.TipManager.initTip(self.getDom(), {
+		text : self.get("tip"),
+		icon: "QUESTION",
+		trackMouse: true
+	});
+};

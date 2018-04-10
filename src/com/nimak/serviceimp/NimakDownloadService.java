@@ -249,7 +249,11 @@ public class NimakDownloadService {
 	@FileProvider
 	public DownloadFile downloadTurretArmCompFiles(Map<String, String> parameterMap)
 			throws IOException {
+		
 		String COMPONENT_EXT = NimakConstantSet.COMPONENT_EXT;
+		
+		String COMPONENT_PAGE_EXT=NimakConstantSet.COMPONENT_PAGE_EXT;
+		
 		// 钳臂组件
 		String armComponentno 	= parameterMap.get("armComponentno");
 		// 电极握杆组件
@@ -258,6 +262,10 @@ public class NimakDownloadService {
 		String armDrawingno 	= parameterMap.get("armDrawingno");
 		// 电极握杆零件
 		String shankDrawingno 	= parameterMap.get("shankDrawingno");
+		
+		String AttachedPageOrNot = parameterMap.get("AttachedPageOrNot");
+		
+		System.out.println(AttachedPageOrNot);
 		
 		// 下载钳臂组件
 		if (null != armComponentno) {
@@ -294,13 +302,17 @@ public class NimakDownloadService {
 			InputStream inputStream = new FileInputStream(filePath);
 			// 返回一个供下载文件的文件名
 			return new DownloadFile(shankComponentno+COMPONENT_EXT, inputStream);
-		}else if(null != armDrawingno) {
+		}else if(null != armDrawingno&&AttachedPageOrNot.equals("no")) {
 			// 钳臂零件三维数模文件路径
 			String TURRETARM3D_PATH = NimakConstantSet.TURRETARM3D_PATH;
+			
 			System.out.println(TURRETARM3D_PATH);
+			
+			
 			String filePath = TURRETARM3D_PATH + armDrawingno + COMPONENT_EXT;
+			
 			// 获取到对应的InputStream
-			System.out.println("即将下载钳臂部件三维数模文件" + filePath);
+			
 			logger.info("即将下载钳臂部件三维数模文件===" + filePath);
 			
 			File file = new File(filePath);
@@ -308,9 +320,32 @@ public class NimakDownloadService {
 				logger.info("文件不存在===" + filePath);
 				return null;
 			}
+			
 			InputStream inputStream = new FileInputStream(filePath);
+			
 			// 返回一个供下载文件的文件名
 			return new DownloadFile(armDrawingno+COMPONENT_EXT, inputStream);
+		}else if(null != armDrawingno&&AttachedPageOrNot.equals("yes")){
+			
+			String TURRETARMATTACHEDPAGE_PATH=NimakConstantSet.TURRETARMATTACHEDPAGE_PATH;
+			
+			System.out.println(TURRETARMATTACHEDPAGE_PATH);
+			
+			String filePath = TURRETARMATTACHEDPAGE_PATH + armDrawingno + COMPONENT_PAGE_EXT;
+			
+			logger.info("即将下载钳臂工艺附属页文件===" + filePath);
+			
+			File file = new File(filePath);
+			if (!file.exists()) {
+				logger.info("文件不存在===" + filePath);
+				return null;
+			}
+			
+			InputStream inputStream = new FileInputStream(filePath);
+			
+			// 返回一个供下载文件的文件名
+			return new DownloadFile(armDrawingno+COMPONENT_PAGE_EXT, inputStream);
+			
 		}else if(null != shankDrawingno) {
 			// 电极握杆零件三维数模文件路径
 			String TURRETSHANK3D_PATH = NimakConstantSet.TURRETSHANK3D_PATH;

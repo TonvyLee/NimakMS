@@ -80,8 +80,7 @@ public class TurretArmServiceImp implements TurretArmServiceI {
 			String armType = (String) params.get("armType");
 			String armSerial = (String) params.get("armSerial");
 			String armMaterial = (String) params.get("armMaterial");
-			String armSpecialshapeandrib = (String) params
-					.get("armSpecialshapeandrib");
+			String armSpecialshapeandrib = (String) params.get("armSpecialshapeandrib");
 
 			/*
 			 * 这里可以如果将String转化为int，数据查询的时候auroform不能留白，即不能输入null，较为麻烦，因此不转化为int
@@ -109,7 +108,30 @@ public class TurretArmServiceImp implements TurretArmServiceI {
 
 			String shankType = (String) params.get("shankType");
 			String armStandard = (String) params.get("armStandard");
-
+			
+			String armRadius1 = (String) params.get("armRadius1");
+			String armLengthS1 = (String) params.get("armLengthS1");
+			String armRadius2 = (String) params.get("armRadius2");
+			String armLengthS2 = (String) params.get("armLengthS2");
+			String armRadius3 = (String) params.get("armRadius3");
+			String armLengthS3 = (String) params.get("armLengthS3");
+			String armLengthS4 = (String) params.get("armLengthS4");
+			String assembleSize = (String) params.get("assembleSize");
+			String assembleLength = (String) params.get("assembleLength");
+			String shankDiameter = (String) params.get("shankDiameter");
+			String linearGuide = (String) params.get("linearGuide");
+			String shankHoledepth = (String) params.get("shankHoledepth");
+			String armUsestate = (String) params.get("armUsestate");
+			String armDesigner = (String) params.get("armDesigner");
+			String armMaker = (String) params.get("armMaker");
+			String armDesigndate = (String) params.get("armDesigndate");
+			String armTechchange = (String) params.get("armTechchange");
+			String attachedPage = (String) params.get("attachedPage");
+			String armCustomer = (String) params.get("armCustomer");
+			String armRemark = (String) params.get("armRemark");
+			String armCode = (String) params.get("armCode");
+			
+			
 			/*
 			 * 按名称查找--------------------------------------------------------------
 			 * -
@@ -187,15 +209,137 @@ public class TurretArmServiceImp implements TurretArmServiceI {
 			if (StringHelper.isNotEmpty(shankType)) {
 				whereCase += " AND shankType like '%" + shankType + "%' ";
 			}
-
+			
 			if (StringHelper.isNotEmpty(armStandard)) {
-				whereCase += " AND armStandard =" + armStandard;
+				whereCase += " AND armStandard like '%" + armStandard + "%' ";
 			}
-
+			
+			if (StringHelper.isNotEmpty(armRadius1)) {
+				whereCase += " AND armRadius1 like '%" + armRadius1 + "%' ";
+			}
+			
+			if (StringHelper.isNotEmpty(armLengthS1)) {
+				whereCase += " AND armLengthS1 like '%" + armLengthS1 + "%' ";
+			}
+			
+			if (StringHelper.isNotEmpty(armRadius2)) {
+				whereCase += " AND armRadius2 like '%" + armRadius2 + "%' ";
+			}
+			
+			if (StringHelper.isNotEmpty(armLengthS2)) {
+				whereCase += " AND armLengthS2 like '%" + armLengthS2 + "%' ";
+			}
+			
+			if (StringHelper.isNotEmpty(armRadius3)) {
+				whereCase += " AND armRadius3 like '%" + armRadius3 + "%' ";
+			}
+			
+			if (StringHelper.isNotEmpty(armLengthS3)) {
+				whereCase += " AND armLengthS3 like '%" + armLengthS3 + "%' ";
+			}
+			
+			if (StringHelper.isNotEmpty(armLengthS4)) {
+				whereCase += " AND armLengthS4 like '%" + armLengthS4 + "%' ";
+			}
+			
+			if (StringHelper.isNotEmpty(assembleSize)) {
+				whereCase += " AND assembleSize like '%" + assembleSize + "%' ";
+			}
+			
+			if (StringHelper.isNotEmpty(assembleLength)) {
+				whereCase += " AND assembleLength like '%" + assembleLength + "%' ";
+			}
+			
+			if (StringHelper.isNotEmpty(shankDiameter)) {
+				whereCase += " AND shankDiameter like '%" + shankDiameter + "%' ";
+			}
+			
+			if (StringHelper.isNotEmpty(linearGuide)) {
+				whereCase += " AND linearGuide like '%" + linearGuide + "%' ";
+			}
+			
+			if (StringHelper.isNotEmpty(shankHoledepth)) {
+				whereCase += " AND shankHoledepth like '%" + shankHoledepth + "%' ";
+			}
+			
+			if (StringHelper.isNotEmpty(armUsestate)) {
+				whereCase += " AND armUsestate like '%" + armUsestate + "%' ";
+			}
+			
+			if (StringHelper.isNotEmpty(armDesigner)) {
+				whereCase += " AND armDesigner like '%" + armDesigner + "%' ";
+			}
+			
+			if (StringHelper.isNotEmpty(armMaker)) {
+				whereCase += " AND armMaker like '%" + armMaker + "%' ";
+			}
+			
+			if (StringHelper.isNotEmpty(armDesigndate)) {
+				whereCase += " AND armDesigndate like '%" + armDesigndate + "%' ";
+			}
+			
+			if (StringHelper.isNotEmpty(armTechchange)) {
+				whereCase += " AND armTechchange like '%" + armTechchange + "%' ";
+			}
+			
+			if (StringHelper.isNotEmpty(attachedPage)) {
+				whereCase += " AND attachedPage like '%" + attachedPage + "%' ";
+			}
+			
+			if (StringHelper.isNotEmpty(armCustomer)) {
+				whereCase += " AND armCustomer like '%" + armCustomer + "%' ";
+			}
+			
+			if (StringHelper.isNotEmpty(armRemark)) {
+				whereCase += " AND armRemark like '%" + armRemark + "%' ";
+			}
+			
+			if (StringHelper.isNotEmpty(armCode)) {
+				whereCase += " AND armCode like '%" + armCode + "%' ";
+			}
+		
 			turretArmDaoImp.find(page, " from Turretarm where 1=1 " + whereCase);
 		} else
 			page.setEntities(turretArmDaoImp.getSession().createQuery(" from Turretarm where 1=1 " + whereCase).list());
 	}
+
+	
+/**
+ * 验证输入图号是否已经存在
+ * @param params
+ * @return
+ */
+	@Expose
+	@Transactional
+	public String doVarifyDrawingno(String params){
+		Page<Turretarm> page = new Page<>(15, 1);
+		List<String> turrets = new ArrayList<>();
+		String result="";
+		if (null != params) {
+			String armDrawingno = (String) params;
+			
+			String hql = "select armDrawingno from Turretarm";
+			Query query = turretArmDaoImp.getSession().createQuery(hql);
+			turrets=query.list();
+			
+			if (StringHelper.isNotEmpty(armDrawingno)){
+				for (String temp : turrets) {
+					if (temp.equals(armDrawingno)) {
+						result="已存在";
+						break;
+					}else{
+						result="不存在";
+					}
+				}
+			}else{
+				result="参数为空";
+			}
+		
+		}
+		
+		return result;
+	}
+	
 
 	@SuppressWarnings("unchecked")
 	@DataResolver
@@ -203,8 +347,8 @@ public class TurretArmServiceImp implements TurretArmServiceI {
 	public void saveAll(Collection<Turretarm> turretarms) {
 		logger.info(turretarms.size());
 		logger.info(turretarms);
-		//turretArmDaoImp.persistEntities(turretarms);
-		turretArmDaoImp.saveAll(turretarms);
+		turretArmDaoImp.persistEntities(turretarms);
+		//turretArmDaoImp.saveAll(turretarms);
 		
 	}
 

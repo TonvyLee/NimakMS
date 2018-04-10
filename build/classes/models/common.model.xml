@@ -129,19 +129,19 @@
   <DataType name="dataTypeTurretArm">
     <Property name="matchType">com.nimak.entity.Turretarm</Property>
     <PropertyDef name="armDrawingno">
-      <Property/>
+      <Property></Property>
       <Property name="label">钳臂零件图号</Property>
     </PropertyDef>
     <PropertyDef name="armMaterial">
-      <Property/>
+      <Property></Property>
       <Property name="label">钳臂截面_材料</Property>
     </PropertyDef>
     <PropertyDef name="armSpecialshapeandrib">
-      <Property/>
+      <Property></Property>
       <Property name="label">异性和加强筋</Property>
     </PropertyDef>
     <PropertyDef name="armSerial">
-      <Property/>
+      <Property></Property>
       <Property name="label">钳臂所属系列</Property>
     </PropertyDef>
     <PropertyDef name="armLength">
@@ -209,7 +209,7 @@
       <Property name="label">第四直段长度</Property>
     </PropertyDef>
     <PropertyDef name="shankType">
-      <Property/>
+      <Property></Property>
       <Property name="label">握杆装配形式</Property>
     </PropertyDef>
     <PropertyDef name="shankDiameter">
@@ -229,40 +229,48 @@
       <Property name="label">是否为标准零件</Property>
     </PropertyDef>
     <PropertyDef name="armUsestate">
-      <Property/>
+      <Property></Property>
       <Property name="label">使用状态</Property>
     </PropertyDef>
     <PropertyDef name="armDesigner">
-      <Property/>
-      <Property name="label">设计者</Property>
+      <Property></Property>
+      <Property name="label">录入者</Property>
     </PropertyDef>
     <PropertyDef name="armDesigndate">
       <Property name="dataType">Date</Property>
       <Property name="label">设计日期</Property>
     </PropertyDef>
     <PropertyDef name="armTechchange">
-      <Property/>
+      <Property></Property>
       <Property name="label">技术更改</Property>
     </PropertyDef>
     <PropertyDef name="attachedPage">
-      <Property/>
+      <Property></Property>
       <Property name="label">工艺附属页</Property>
     </PropertyDef>
     <PropertyDef name="armCustomer">
-      <Property/>
+      <Property></Property>
       <Property name="label">客户/标准</Property>
     </PropertyDef>
     <PropertyDef name="armRemark">
-      <Property/>
+      <Property></Property>
       <Property name="label">备注</Property>
     </PropertyDef>
     <PropertyDef name="armCode">
-      <Property/>
+      <Property></Property>
       <Property name="label">分类编码</Property>
     </PropertyDef>
     <PropertyDef name="armType">
-      <Property/>
+      <Property></Property>
       <Property name="label">钳臂系列</Property>
+    </PropertyDef>
+    <PropertyDef name="armMaker">
+      <Property/>
+      <Property name="label">设计者</Property>
+    </PropertyDef>
+    <PropertyDef name="id">
+      <Property/>
+      <Property name="label">ID</Property>
     </PropertyDef>
   </DataType>
   <DataType name="dataTypeElectrodeholder">

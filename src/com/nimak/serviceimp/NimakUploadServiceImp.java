@@ -144,6 +144,7 @@ public class NimakUploadServiceImp {
 						URLEncoder.encode(destFile.getAbsolutePath(), "UTF-8"));
 				data.put("relatedPath",
 						URLEncoder.encode(destFile.getPath(), "UTF-8"));
+				
 			}else {
 				data.put("returnValue", "E_Fail");
 			}
@@ -287,6 +288,35 @@ public class NimakUploadServiceImp {
 	}
 	
 	/**
+	 * 上传三维数模之前先判断三维数模名称是否与手动输入的图号一致
+	 */
+	/*@FileResolver
+	public Map<String, String> varifyArmDrawingno(UploadFile file,Map<String, Object> parameter) throws Exception {
+		logger.info("判断三维数模名称是否与录入图号一致！\n");
+		
+		String fileOldName = new String(file.getFileName().getBytes("iso8859-1"), "UTF-8");
+		
+		String fileNameCustomString = new String((parameter.get("armDrawingno")+
+				fileOldName.substring(fileOldName.lastIndexOf("."))).getBytes("iso8859-1"), "UTF-8");
+		
+		String str = new String((fileNameCustomString + fileOldName.substring(fileOldName
+						.lastIndexOf("."))).getBytes("iso8859-1"), "UTF-8");
+		Map<String, String> data = new HashMap<String, String>();
+		System.out.println(fileOldName);
+		System.out.println(fileNameCustomString);
+		if(fileOldName==fileNameCustomString){
+			data.put("result", "yes");
+			logger.info("判断三维数模名称是否与录入图号一致！\n");
+		}else{
+			data.put("result", "no");
+			logger.info("判断三维数模名称是否与录入图号一致！\n");
+		}
+		return data;
+	}*/
+	
+	
+	
+	/**
 	 * 上传钳臂组件或者零件的二维图或者三维数模
 	 * @param file
 	 * @param parameter
@@ -294,64 +324,84 @@ public class NimakUploadServiceImp {
 	 * @throws Exception
 	 */
 	@FileResolver
-	public Map<String, String> uploadTurretArmFile(UploadFile file,
-			Map<String, Object> parameter) throws Exception {
+	public Map<String, String> uploadTurretArmFile(UploadFile file,Map<String, Object> parameter) throws Exception {
 		logger.info("开始上传钳臂组件或者零件文件！\n");
 		
 		// 上传文件原始名称		
-		String fileOldName = new String(file.getFileName()
-				.getBytes("iso8859-1"), "UTF-8");
+		String fileOldName = new String(file.getFileName().getBytes("iso8859-1"), "UTF-8");
 		
-		// 判断上传文件类型标志，三维数模或者二维图纸
+		// 判断上传文件类型标志，三维数模或者二维图纸或者工艺附属页
 		String fileTag = (String)parameter.get("tag");
 		
 		// 上传文件应有的名称，将文件名称设置为零件图号
 		String fileNameCustomString = (String) parameter.get("armDrawingno");
+		
+		
 
 		Map<String, String> data = new HashMap<String, String>();
 
 		if (!"null".equals(fileNameCustomString)
 				&& StringUtils.isNotEmpty(fileNameCustomString)) {
-			// 设置文件名称
+			
+			// 设置文件名称，覆盖源文件名称
 			String str = new String(
 					(fileNameCustomString + fileOldName.substring(fileOldName
 							.lastIndexOf("."))).getBytes("iso8859-1"), "UTF-8");
-
-			// 上传后文件表达
-			File destFile = null;
-			if ("upload2DDrawing".equals(fileTag)) {
-				System.out.println("upload2dDrawing");
-				destFile = getDestFile(str, new File(
-						setDestPath(NimakConstantSet.TURRETARM2D_PATH)));
-			}
-			if ("uploadDrawing".equals(fileTag)){
-				destFile = getDestFile(str, new File(
-						setDestPath(NimakConstantSet.TURRETARM3D_PATH)));
-			}
-					
-			if (destFile != null) {
-				try {
-					file.transferTo(destFile);
-				} catch (IllegalStateException e) {
-					e.printStackTrace();
-				} catch (IOException e) {
-					e.printStackTrace();
+			System.out.println(str);
+			System.out.println(fileOldName);
+			
+			if(str.equals(fileOldName)||"upload2DDrawing".equals(fileTag)||"uploadAttachedPage".equals(fileTag)){
+				// 上传后文件表达
+				File destFile = null;
+				if ("upload2DDrawing".equals(fileTag)) {
+					destFile = getDestFile(str, new File(
+							setDestPath(NimakConstantSet.TURRETARM2D_PATH)));
 				}
-				data.put("fileName",
-						URLEncoder.encode(destFile.getName(), "UTF-8"));
-				data.put("absolutePath",
-						URLEncoder.encode(destFile.getAbsolutePath(), "UTF-8"));
-				data.put("relatedPath",
-						URLEncoder.encode(destFile.getPath(), "UTF-8"));
+				if ("uploadDrawing".equals(fileTag)){
+					destFile = getDestFile(str, new File(
+							setDestPath(NimakConstantSet.TURRETARM3D_PATH)));
+				}
+				if ("uploadAttachedPage".equals(fileTag)){
+					destFile = getDestFile(str, new File(
+							setDestPath(NimakConstantSet.TURRETARMATTACHEDPAGE_PATH)));
+				}
+						
+				if (destFile != null) {
+					try {
+						file.transferTo(destFile);
+					} catch (IllegalStateException e) {
+						e.printStackTrace();
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+					data.put("fileName",
+							URLEncoder.encode(destFile.getName(), "UTF-8"));
+					data.put("absolutePath",
+							URLEncoder.encode(destFile.getAbsolutePath(), "UTF-8"));
+					data.put("relatedPath",
+							URLEncoder.encode(destFile.getPath(), "UTF-8"));
+					data.put("result","successful");
+					
+					logger.info("上传钳臂组件或者零件成功！\n");
+					
+					return data;
+					
+				}else {
+					data.put("returnValue", "E_Fail");
+					logger.info("缺少零件信息，上传失败！\n");
+					
+					return data;
+				}
 			}else {
-				data.put("returnValue", "E_Fail");
+				logger.info("上传钳臂组件或者零件失败！\n");
+				data.put("result","failed");
+				return data;
 			}
-		} else {
+		}else{
 			data.put("returnValue", "E_Fail");
-		}
-		
-		logger.info("完成上传钳臂组件或者零件文件！\n");
-		return data;
+			logger.info("缺少零件信息，上传失败！\n");
+			return data;
+			}
 	}
 	
 	
@@ -416,8 +466,10 @@ public class NimakUploadServiceImp {
 	}
 	
 	
-	// 钳臂零件三位数莫文件位置：NimakConstantSet.TURRETARM3D_PATH
-	// 钳臂零件莫文件位置：NimakConstantSet.TURRETARM2D_PATH
+	// 钳臂零件三维数模文件位置：NimakConstantSet.TURRETARM3D_PATH
+	// 钳臂零件二维文件位置：NimakConstantSet.TURRETARM2D_PATH
+	// 钳臂零件工艺附属页位置：NimakConstantSet.TURRETARMATTACHEDPAGE_PATH
+	
 	
 	
 	

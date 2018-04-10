@@ -2,6 +2,7 @@ package com.nimak.entity;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
 import java.math.BigDecimal;
 import java.util.Date;
 import com.bstek.dorado.annotation.PropertyDef;
@@ -14,7 +15,7 @@ import com.bstek.dorado.annotation.PropertyDef;
 public class Turretarm implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-
+	
 	/**
 	 * 钳臂零件图号:钳臂零件图号
 	 */
@@ -173,10 +174,16 @@ public class Turretarm implements Serializable {
 	private String armUsestate;
 
 	/**
+	 * 录入者:录入者
+	 */
+	@PropertyDef(label = "录入者", description = "录入者:录入者")
+	private String armDesigner;
+	
+	/**
 	 * 设计者:设计者
 	 */
 	@PropertyDef(label = "设计者", description = "设计者:设计者")
-	private String armDesigner;
+	private String armMaker;
 
 	/**
 	 * 设计日期:设计日期
@@ -241,7 +248,7 @@ public class Turretarm implements Serializable {
 			BigDecimal armLengthS3, BigDecimal armAngel4,
 			BigDecimal armLengthS4, String shankType, BigDecimal shankDiameter,
 			BigDecimal shankHoledepth, BigDecimal linearGuide,
-			BigDecimal armStandard, String armUsestate, String armDesigner,
+			BigDecimal armStandard, String armUsestate, String armDesigner,String armMaker,
 			Date armDesigndate, String armTechchange, String attachedPage,
 			String armCustomer, String armRemark, String armCode, String armType) {
 		super();
@@ -272,6 +279,7 @@ public class Turretarm implements Serializable {
 		this.armStandard = armStandard;
 		this.armUsestate = armUsestate;
 		this.armDesigner = armDesigner;
+		this.armMaker = armMaker;
 		this.armDesigndate = armDesigndate;
 		this.armTechchange = armTechchange;
 		this.attachedPage = attachedPage;
@@ -286,6 +294,7 @@ public class Turretarm implements Serializable {
 	}
 
 	@Id
+	//@GeneratedValue(strategy = GenerationType.AUTO) 
 	@Column(name = "arm_drawingno", length = 20, nullable = false)
 	public String getArmDrawingno() {
 		return armDrawingno;
@@ -524,6 +533,15 @@ public class Turretarm implements Serializable {
 	public String getArmDesigner() {
 		return armDesigner;
 	}
+	
+	public void setArmMaker(String armMaker) {
+		this.armMaker = armMaker;
+	}
+
+	@Column(name = "arm_maker")
+	public String getArmMaker() {
+		return armMaker;
+	}
 
 	public void setArmDesigndate(Date armDesigndate) {
 		this.armDesigndate = armDesigndate;
@@ -605,7 +623,7 @@ public class Turretarm implements Serializable {
 				+ shankDiameter + ",shankHoledepth=" + shankHoledepth
 				+ ",linearGuide=" + linearGuide + ",armStandard=" + armStandard
 				+ ",armUsestate=" + armUsestate + ",armDesigner=" + armDesigner
-				+ ",armDesigndate=" + armDesigndate + ",armTechchange="
+				+ ",armMaker=" + armMaker + ",armDesigndate=" + armDesigndate + ",armTechchange="
 				+ armTechchange + ",attachedPage=" + attachedPage
 				+ ",armCustomer=" + armCustomer + ",armRemark=" + armRemark
 				+ ",armCode=" + armCode + ",armType=" + armType + "]";
@@ -772,10 +790,16 @@ public class Turretarm implements Serializable {
 	private String armUsestate;
 
 	*//**
+	 * 录入者:录入者
+	 *//*
+	@PropertyDef(label = "录入者", description = "录入者:录入者")
+	private String armDesigner;
+	
+	*//**
 	 * 设计者:设计者
 	 *//*
 	@PropertyDef(label = "设计者", description = "设计者:设计者")
-	private String armDesigner;
+	private String armMaker;
 
 	*//**
 	 * 设计日期:设计日期

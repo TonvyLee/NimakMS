@@ -219,6 +219,12 @@ public class Turretarm implements Serializable {
 	@PropertyDef(label = "arm_type", description = "arm_type:")
 	private String armType;
 
+	/**
+	 * arm_maker:
+	 */
+	@PropertyDef(label = "arm_maker", description = "arm_maker:")
+	private String armMaker;
+
 	public Turretarm() {
 		super();
 	}
@@ -236,7 +242,8 @@ public class Turretarm implements Serializable {
 			BigDecimal shankHoledepth, BigDecimal linearGuide,
 			BigDecimal armStandard, String armUsestate, String armDesigner,
 			Date armDesigndate, String armTechchange, String attachedPage,
-			String armCustomer, String armRemark, String armCode, String armType) {
+			String armCustomer, String armRemark, String armCode,
+			String armType, String armMaker) {
 		super();
 		this.armDrawingno = armDrawingno;
 		this.armMaterial = armMaterial;
@@ -272,6 +279,7 @@ public class Turretarm implements Serializable {
 		this.armRemark = armRemark;
 		this.armCode = armCode;
 		this.armType = armType;
+		this.armMaker = armMaker;
 	}
 
 	public void setArmDrawingno(String armDrawingno) {
@@ -582,6 +590,15 @@ public class Turretarm implements Serializable {
 		return armType;
 	}
 
+	public void setArmMaker(String armMaker) {
+		this.armMaker = armMaker;
+	}
+
+	@Column(name = "arm_maker", length = 20)
+	public String getArmMaker() {
+		return armMaker;
+	}
+
 	public String toString() {
 		return "Turretarm [armDrawingno=" + armDrawingno + ",armMaterial="
 				+ armMaterial + ",armSpecialshapeandrib="
@@ -601,7 +618,8 @@ public class Turretarm implements Serializable {
 				+ ",armDesigndate=" + armDesigndate + ",armTechchange="
 				+ armTechchange + ",attachedPage=" + attachedPage
 				+ ",armCustomer=" + armCustomer + ",armRemark=" + armRemark
-				+ ",armCode=" + armCode + ",armType=" + armType + "]";
+				+ ",armCode=" + armCode + ",armType=" + armType + ",armMaker="
+				+ armMaker + "]";
 	}
 
 }
