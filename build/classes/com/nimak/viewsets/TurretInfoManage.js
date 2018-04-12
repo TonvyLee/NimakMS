@@ -509,6 +509,9 @@ function downloadFile() {
 	console.log("zenmehuishi");
 	var json = view.id("autoformAdd").get("entity").toJSON();
 	json["tag"] = "uploadDrawing";
+	var filter=  new Object();
+	filter = {title : "Image files", extensions : "CATPart"};
+	view.id("uploadDrawing").set("filters", filter);
 	view.id("uploadDrawing").set("parameter",json);
 };
 
@@ -780,7 +783,6 @@ function downloadFile() {
 };
 
 
-//提示信息移动
 //@Bind #datagridTurret.onReady 
 !function(self) {
 	dorado.TipManager.initTip(self.getDom(), {

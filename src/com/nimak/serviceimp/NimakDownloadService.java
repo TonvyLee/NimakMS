@@ -249,6 +249,7 @@ public class NimakDownloadService {
 	@FileProvider
 	public DownloadFile downloadTurretArmCompFiles(Map<String, String> parameterMap)
 			throws IOException {
+		logger.info("即将下载TurretArmFiles");
 		
 		String COMPONENT_EXT = NimakConstantSet.COMPONENT_EXT;
 		
@@ -302,7 +303,7 @@ public class NimakDownloadService {
 			InputStream inputStream = new FileInputStream(filePath);
 			// 返回一个供下载文件的文件名
 			return new DownloadFile(shankComponentno+COMPONENT_EXT, inputStream);
-		}else if(null != armDrawingno&&AttachedPageOrNot.equals("no")) {
+		}else if(null != armDrawingno && AttachedPageOrNot.equals("no")) {
 			// 钳臂零件三维数模文件路径
 			String TURRETARM3D_PATH = NimakConstantSet.TURRETARM3D_PATH;
 			
@@ -325,7 +326,7 @@ public class NimakDownloadService {
 			
 			// 返回一个供下载文件的文件名
 			return new DownloadFile(armDrawingno+COMPONENT_EXT, inputStream);
-		}else if(null != armDrawingno&&AttachedPageOrNot.equals("yes")){
+		}else if(null != armDrawingno && AttachedPageOrNot.equals("yes")){
 			
 			String TURRETARMATTACHEDPAGE_PATH=NimakConstantSet.TURRETARMATTACHEDPAGE_PATH;
 			

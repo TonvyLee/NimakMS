@@ -2,9 +2,13 @@ package com.nimak.utils;
 
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.log4j.Logger;
 import org.springframework.web.context.ContextLoader;
 
 import com.bstek.dorado.core.Context;
+import com.nimak.serviceimp.NimakUploadServiceImp;
 
 /**
  * 封装常数类主要 所有路径采用"/"
@@ -13,24 +17,26 @@ import com.bstek.dorado.core.Context;
  * 
  */
 public class NimakConstantSet {
-
+	
+	private Logger logger = Logger.getLogger(NimakUploadServiceImp.class);
+	
 	@SuppressWarnings("unchecked")
 	private static String FILEPATHCONFIG = ((Map<String, String>) Context
 			.getCurrent().getAttribute("configprop")).get("FILEPATHCONFIG");
 	private static String CONTEXTPATH = ContextLoader
 			.getCurrentWebApplicationContext().getServletContext()
 			.getRealPath("/").replaceAll("\\\\", "/");
-	
+
 	@SuppressWarnings("unchecked")
 	private static Map<String, String> configMap = (Map<String, String>) (Context.getCurrent().getAttribute("configprop"));
 	
 
 	// 文件上传后的路径，暂用相对路径---》turret 2D
 	@SuppressWarnings("unchecked")
-	public static final String TURRET2D_PATH = (FILEPATHCONFIG
+	public static String TURRET2D_PATH = (FILEPATHCONFIG
 			.equals("relative") == true ? (CONTEXTPATH + "/" + configMap.get("TURRET2D_PATH"))
 			: (configMap.get("TURRET2D_PATH")));
-
+	
 	// 文件上传后的路径，暂用相对路径---》turret 3D
 	public static String TURRET3D_PATH = (FILEPATHCONFIG
 			.equals("relative") == true ? (CONTEXTPATH + "/" + configMap.get("TURRET3D_PATH")) 
@@ -125,3 +131,5 @@ public class NimakConstantSet {
 	
 	
 }
+
+

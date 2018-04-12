@@ -942,7 +942,6 @@ function showCompOrPartInfo(label) {
 };
 
 
-//提示信息移动
 //@Bind #datagridTurretComponent.onReady 
 !function(self) {
 	dorado.TipManager.initTip(self.getDom(), {

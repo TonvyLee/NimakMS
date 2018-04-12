@@ -125,6 +125,7 @@ public class TurretArmServiceImp implements TurretArmServiceI {
 			String armDesigner = (String) params.get("armDesigner");
 			String armMaker = (String) params.get("armMaker");
 			String armDesigndate = (String) params.get("armDesigndate");
+			String armManageDate = (String) params.get("armManageDate");
 			String armTechchange = (String) params.get("armTechchange");
 			String attachedPage = (String) params.get("attachedPage");
 			String armCustomer = (String) params.get("armCustomer");
@@ -278,6 +279,10 @@ public class TurretArmServiceImp implements TurretArmServiceI {
 				whereCase += " AND armDesigndate like '%" + armDesigndate + "%' ";
 			}
 			
+			if (StringHelper.isNotEmpty(armManageDate)) {
+				whereCase += " AND armManageDate like '%" + armManageDate + "%' ";
+			}
+			
 			if (StringHelper.isNotEmpty(armTechchange)) {
 				whereCase += " AND armTechchange like '%" + armTechchange + "%' ";
 			}
@@ -352,7 +357,7 @@ public class TurretArmServiceImp implements TurretArmServiceI {
 		
 	}
 
-	/*--------------------------------------------------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------------------------------------------------*/
 	@DataProvider
 	public void queryForCondition1(Page<Turretarm> page,
 			Map<String, Object> params) throws Exception {

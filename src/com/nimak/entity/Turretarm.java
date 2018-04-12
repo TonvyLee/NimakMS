@@ -190,7 +190,13 @@ public class Turretarm implements Serializable {
 	 */
 	@PropertyDef(label = "设计日期", description = "设计日期:设计日期")
 	private Date armDesigndate;
-
+	
+	/**
+	 * 信息管理时间:信息管理时间
+	 */
+	@PropertyDef(label = "信息管理时间", description = "信息管理时间:信息管理时间")
+	private Date armManageDate;
+	
 	/**
 	 * 技术更改:技术更改
 	 */
@@ -249,7 +255,7 @@ public class Turretarm implements Serializable {
 			BigDecimal armLengthS4, String shankType, BigDecimal shankDiameter,
 			BigDecimal shankHoledepth, BigDecimal linearGuide,
 			BigDecimal armStandard, String armUsestate, String armDesigner,String armMaker,
-			Date armDesigndate, String armTechchange, String attachedPage,
+			Date armDesigndate, Date armManageDate,String armTechchange, String attachedPage,
 			String armCustomer, String armRemark, String armCode, String armType) {
 		super();
 		this.armDrawingno = armDrawingno;
@@ -281,6 +287,7 @@ public class Turretarm implements Serializable {
 		this.armDesigner = armDesigner;
 		this.armMaker = armMaker;
 		this.armDesigndate = armDesigndate;
+		this.armManageDate = armManageDate;
 		this.armTechchange = armTechchange;
 		this.attachedPage = attachedPage;
 		this.armCustomer = armCustomer;
@@ -552,6 +559,17 @@ public class Turretarm implements Serializable {
 	public Date getArmDesigndate() {
 		return armDesigndate;
 	}
+	
+	public void setArmManageDate(Date armManageDate) {
+		this.armManageDate = armManageDate;
+	}
+
+	@Temporal(TemporalType.DATE)
+	@Column(name = "arm_manageDate")
+	public Date getArmManageDate() {
+		return armManageDate;
+	}
+	
 
 	public void setArmTechchange(String armTechchange) {
 		this.armTechchange = armTechchange;
@@ -623,7 +641,7 @@ public class Turretarm implements Serializable {
 				+ shankDiameter + ",shankHoledepth=" + shankHoledepth
 				+ ",linearGuide=" + linearGuide + ",armStandard=" + armStandard
 				+ ",armUsestate=" + armUsestate + ",armDesigner=" + armDesigner
-				+ ",armMaker=" + armMaker + ",armDesigndate=" + armDesigndate + ",armTechchange="
+				+ ",armMaker=" + armMaker + ",armDesigndate=" + armDesigndate +",armManageDate=" + armManageDate + ",armTechchange="
 				+ armTechchange + ",attachedPage=" + attachedPage
 				+ ",armCustomer=" + armCustomer + ",armRemark=" + armRemark
 				+ ",armCode=" + armCode + ",armType=" + armType + "]";
@@ -806,6 +824,12 @@ public class Turretarm implements Serializable {
 	 *//*
 	@PropertyDef(label = "设计日期", description = "设计日期:设计日期")
 	private Date armDesigndate;
+	
+	*//**
+	 * 信息管理时间:信息管理时间
+	 *//*
+	@PropertyDef(label = "信息管理时间", description = "信息管理时间:信息管理时间")
+	private Date armManageDate;
 
 	*//**
 	 * 技术更改:技术更改

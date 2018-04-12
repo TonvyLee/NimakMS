@@ -240,6 +240,10 @@
       <Property name="dataType">Date</Property>
       <Property name="label">设计日期</Property>
     </PropertyDef>
+    <PropertyDef name="armManageDate">
+      <Property name="dataType">Date</Property>
+      <Property name="label">信息管理时间</Property>
+    </PropertyDef>
     <PropertyDef name="armTechchange">
       <Property></Property>
       <Property name="label">技术更改</Property>
@@ -265,11 +269,11 @@
       <Property name="label">钳臂系列</Property>
     </PropertyDef>
     <PropertyDef name="armMaker">
-      <Property/>
+      <Property></Property>
       <Property name="label">设计者</Property>
     </PropertyDef>
     <PropertyDef name="id">
-      <Property/>
+      <Property></Property>
       <Property name="label">ID</Property>
     </PropertyDef>
   </DataType>

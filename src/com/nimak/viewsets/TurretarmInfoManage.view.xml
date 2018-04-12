@@ -83,6 +83,12 @@
       </PropertyDef>
       <PropertyDef name="armDesigndate">
         <Property name="label">设计日期</Property>
+        <Property name="dataType">Date</Property>
+        <Validator name="validator1" type="required"/>
+      </PropertyDef>
+      <PropertyDef name="armManageDate">
+        <Property name="label">信息管理时间</Property>
+        <Property name="dataType">Date</Property>
         <Validator name="validator1" type="required"/>
       </PropertyDef>
       <PropertyDef name="armCustomer">
@@ -556,6 +562,10 @@ dialogEdit.set(&quot;tags&quot;, &quot;Add&quot;);&#xD;
 var loginUsername = &quot;${loginUsername}&quot;;&#xD;
 view.id(&quot;autoformTurretarmInfo&quot;).get(&quot;entity&quot;).set(&quot;armDesigner&quot;,loginUsername);&#xD;
 &#xD;
+// 管理时间自动填充&#xD;
+var date = new Date();&#xD;
+date.formatDate(&quot;Y-m-d&quot;); &#xD;
+view.id(&quot;autoformTurretarmInfo&quot;).get(&quot;entity&quot;).set(&quot;armManageDate&quot;,date);&#xD;
 &#xD;
 &#xD;
 &#xD;
@@ -809,33 +819,28 @@ if (entity) {&#xD;
       </AutoFormElement>
     </AutoForm>
     <Dialog id="dialogEdit">
-      <ClientEvent name="onShow">/*view.id(&quot;armDrawingnoElement&quot;).set(&quot;editable&quot;,true);&#xD;
-var armType=String(view.id(&quot;autoformTurretarmInfo&quot;).get(&quot;entity&quot;).get(&quot;armType&quot;));&#xD;
-var armDrawingno=String(view.id(&quot;autoformTurretarmInfo&quot;).get(&quot;entity&quot;).get(&quot;armDrawingno&quot;));&#xD;
+      <ClientEvent name="onShow">function getNowFormatDate() {&#xD;
+    var date = new Date();&#xD;
+    var seperator1 = &quot;-&quot;;&#xD;
+    var seperator2 = &quot;:&quot;;&#xD;
+    var month = date.getMonth() + 1;&#xD;
+    var strDate = date.getDate();&#xD;
+    if (month >= 1 &amp;&amp; month &lt;= 9) {&#xD;
+        month = &quot;0&quot; + month;&#xD;
+    }&#xD;
+    if (strDate >= 0 &amp;&amp; strDate &lt;= 9) {&#xD;
+        strDate = &quot;0&quot; + strDate;&#xD;
+    }&#xD;
+    var currentdate = date.getFullYear() + seperator1 + month + seperator1 + strDate&#xD;
+            + &quot; &quot; + date.getHours() + seperator2 + date.getMinutes()&#xD;
+            + seperator2 + date.getSeconds();&#xD;
+    return currentdate;&#xD;
+}&#xD;
 &#xD;
-switch(armType){&#xD;
-	case 'Cu':&#xD;
-		if(armDrawingno.indexOf(&quot;副本&quot;)>-1){&#xD;
-		}else{&#xD;
-			view.id(&quot;armDrawingnoElement&quot;).set(&quot;editable&quot;,false);&#xD;
-		}&#xD;
-	break;&#xD;
-	case 'Al':&#xD;
-		if(armDrawingno.indexOf(&quot;副本&quot;)>-1){&#xD;
-		}else{&#xD;
-			view.id(&quot;armDrawingnoElement&quot;).set(&quot;editable&quot;,false);&#xD;
-		}&#xD;
-	break;&#xD;
-	case '其他':&#xD;
-		if(armDrawingno.indexOf(&quot;副本&quot;)>-1){&#xD;
-		}else{&#xD;
-			view.id(&quot;armDrawingnoElement&quot;).set(&quot;editable&quot;,false);&#xD;
-		}&#xD;
-	break;&#xD;
-	default:&#xD;
-		view.id(&quot;armDrawingnoElement&quot;).set(&quot;editable&quot;,true);&#xD;
-	break;&#xD;
-}*/&#xD;
+//var armManageDate=getNowFormatDate();&#xD;
+//alert(armManageDate)&#xD;
+//view.id(&quot;autoformTurretarmInfo&quot;).get(&quot;entity&quot;).set(&quot;armManageDate&quot;,&quot;&quot;);&#xD;
+//view.id(&quot;autoformTurretarmInfo&quot;).get(&quot;entity&quot;).set(&quot;armManageDate&quot;,armManageDate);&#xD;
 &#xD;
 &#xD;
 </ClientEvent>
@@ -1002,6 +1007,12 @@ switch(shankType){&#xD;
 armCode=armCode.concat(armMaterialCode,armSpecialshapeandribCode,armAngel1Code,armAngel2Code,armAngel3Code,armAngel4Code,shankTypeCode);&#xD;
 autoformTurretarmInfo.get(&quot;entity&quot;).set(&quot;armCode&quot;,armCode);&#xD;
 autoformTurretarmInfo.get(&quot;entity&quot;).set(&quot;armType&quot;,armType);&#xD;
+&#xD;
+// 管理时间自动填充&#xD;
+var date = new Date();&#xD;
+date.formatDate(&quot;Y-m-d&quot;); &#xD;
+view.id(&quot;autoformTurretarmInfo&quot;).get(&quot;entity&quot;).set(&quot;armManageDate&quot;,date);&#xD;
+&#xD;
 &#xD;
 updateactionSave.execute();&#xD;
 &#xD;
@@ -1313,6 +1324,14 @@ autoformTurretarmInfo.get(&quot;entity&quot;).set(&quot;armType&quot;,armType);<
                 <Property name="editable">false</Property>
                 <Editor/>
               </AutoFormElement>
+              <AutoFormElement id="armManageDate">
+                <Property name="editable">false</Property>
+                <Property name="name">armManageDate</Property>
+                <Property name="property">armManageDate</Property>
+                <Property name="label">信息管理时间</Property>
+                <Property name="readOnly">true</Property>
+                <Editor/>
+              </AutoFormElement>
               <AutoFormElement>
                 <Property name="name">armCustomer</Property>
                 <Property name="property">armCustomer</Property>
@@ -1321,10 +1340,11 @@ autoformTurretarmInfo.get(&quot;entity&quot;).set(&quot;armType&quot;,armType);<
                 <Property name="trigger">listdropdownIsNot</Property>
                 <Editor/>
               </AutoFormElement>
-              <AutoFormElement>
+              <AutoFormElement layoutConstraint="colSpan:2">
                 <Property name="name">armTechchange</Property>
                 <Property name="property">armTechchange</Property>
                 <Property name="label">技术更改</Property>
+                <Property name="width">425</Property>
                 <Editor/>
               </AutoFormElement>
               <GroupBox>
@@ -1382,7 +1402,9 @@ dialogQuery.hide();</ClientEvent>
           <Property name="icon"> url(>skin>common/icons.gif) -40px -100px</Property>
         </Button>
         <Button id="buttonCancelQuery">
-          <ClientEvent name="onClick" signature="self,arg,dialogQuery">dialogQuery.hide();</ClientEvent>
+          <ClientEvent name="onClick" signature="self,arg,dialogQuery">view.get(&quot;#autoformTurretarmInfoForQuery&quot;).set(&quot;entity&quot;,{});&#xD;
+//view.get(&quot;#autoformTurretarm&quot;).set(&quot;entity&quot;,{});&#xD;
+dialogQuery.hide();</ClientEvent>
           <Property name="caption">取消</Property>
           <Property name="icon"> url(>skin>common/icons.gif) -40px -0px</Property>
         </Button>
@@ -1658,15 +1680,22 @@ dialogQuery.hide();</ClientEvent>
             <Editor/>
           </AutoFormElement>
           <AutoFormElement>
+            <Property name="name">armManageDate</Property>
+            <Property name="property">armManageDate</Property>
+            <Property name="label">信息管理时间</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
             <Property name="name">armCustomer</Property>
             <Property name="property">armCustomer</Property>
             <Property name="label">客户/标准</Property>
             <Editor/>
           </AutoFormElement>
-          <AutoFormElement>
+          <AutoFormElement layoutConstraint="colSpan:2">
             <Property name="name">armTechchange</Property>
             <Property name="property">armTechchange</Property>
             <Property name="label">技术更改</Property>
+            <Property name="width">435</Property>
             <Editor/>
           </AutoFormElement>
           <GroupBox>
@@ -1920,6 +1949,12 @@ dialogQuery.hide();</ClientEvent>
             <Property name="name">armDesigndate</Property>
             <Property name="property">armDesigndate</Property>
             <Property name="label">设计日期</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">armManageDate</Property>
+            <Property name="property">armManageDate</Property>
+            <Property name="label">信息管理时间</Property>
             <Editor/>
           </AutoFormElement>
           <AutoFormElement>
@@ -2251,7 +2286,7 @@ view.get(&quot;#autoformTurretarm&quot;).get(&quot;entity&quot;).set(&quot;armLe
       <Property name="fileResolver">nimakUploadServiceImp#uploadTurretArmFile</Property>
       <Filters>
         <Filter>
-          <Property name="extensions">xlsx</Property>
+          <Property name="extensions">xls,xlsx</Property>
           <Property name="title">上传工艺附属页</Property>
         </Filter>
       </Filters>

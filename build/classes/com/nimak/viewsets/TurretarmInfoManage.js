@@ -6,6 +6,7 @@ function downloadFile() {
 				"armDrawingno");
 		var armDrawingnoMap = new dorado.util.Map();
 		armDrawingnoMap.put("armDrawingno", armDrawingno);
+		armDrawingnoMap.put("AttachedPageOrNot", "no");
 		view.id("downloadDrawing").set("parameter", armDrawingnoMap).execute();
 	});
 }
@@ -181,6 +182,7 @@ function isEmpty(obj){
 };
 /*------------------------------------------------------------------------------------------------------*/
 // @Bind #menuitemTurretInfo.onClick
+// @Bind #datagridTurretarm.onDataRowDoubleClick
 !function(self, arg, dialogInfo, dialog2Dimage) {
 	var armDrawingno = view.id("dataSetTurretarm").get("data:#").get("armDrawingno");
 	var DrawingPath = "${servletContext.getAttribute('configprop').get('TURRETARM2D_PATH')}";
@@ -417,6 +419,7 @@ function isEmpty(obj){
 	}
 	var json = view.id("autoformTurretarmInfo").get("entity").toJSON();
 	json["tag"] = "uploadDrawing";
+	
 	view.id("uploadDrawing").set("parameter", json).execute();
 };
 
@@ -658,29 +661,19 @@ function isEmpty(obj){
 
 //@Bind #autoformTurretarmInfo.#armDrawingno.onBlur
 !function(self,ajaxActionVarifyDrawingno,dialogEdit) {
-	var eleValue = self.get("value");
-	if(dialogEdit.get("tags")=="Modify"){
-		}
-	if(dialogEdit.get("tags")=="Add"){
-		ajaxActionVarifyDrawingno.set("parameter",eleValue).execute();
-	}
-	//dialogEdit.set("tags", "Modify");
 	
+	var eleValue2=String(view.id("autoformTurretarmInfo").get("entity").get("armDrawingno"));
 	
-	/*var armType=String(view.id("autoformTurretarmInfo").get("entity").get("armType"));
+	if(eleValue2.indexOf(",")!=-1){
+		dorado.MessageBox.alert("图号只能包含'.'和数字！");
+		view.id("autoformTurretarmInfo").get("entity").set("armDrawingno","");
+	}else{
+		var eleValue = self.get("value");
 
-	switch(armType){
-		case 'Cu':
-		break;
-		case 'Al':
-		break;
-		case '其他':
-		break;
-		default:
-			var eleValue = self.get("value");
+		if(dialogEdit.get("tags")=="Add"){
 			ajaxActionVarifyDrawingno.set("parameter",eleValue).execute();
-		break;
-	}*/
+		}
+	}
 };
 
 

@@ -79,6 +79,7 @@
 	<bdf:anonymous-url urlPattern="/**/*.d"/>
 	<bdf:anonymous-url urlPattern="/TurretFiles/2D/*.*"/>
 	<bdf:anonymous-url urlPattern="/TurretFiles/3D/*.*"/>
+	<bdf:anonymous-url urlPattern="/TurretFiles/excel/*.*"/>
 	<bdf:anonymous-url urlPattern="/TurretComponentFiles/2D/*.*"/>
 	<bdf:anonymous-url urlPattern="/TurretComponentFiles/3D/*.*"/>
 	<bdf:anonymous-url urlPattern="/TurretArmFiles/2D/*.*"/>

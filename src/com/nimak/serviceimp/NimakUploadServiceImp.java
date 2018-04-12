@@ -122,6 +122,7 @@ public class NimakUploadServiceImp {
 				logger.info("判断上传文件时三维数模还是二位图纸，flag=" + fileTag);
 				destFile = getDestFile(str, new File(
 						setDestPath(NimakConstantSet.TURRET2D_PATH)));
+				
 			}
 			if ("uploadDrawing".equals(fileTag)){
 				System.out.println("upload2dDrawing");
@@ -354,8 +355,19 @@ public class NimakUploadServiceImp {
 				// 上传后文件表达
 				File destFile = null;
 				if ("upload2DDrawing".equals(fileTag)) {
-					destFile = getDestFile(str, new File(
-							setDestPath(NimakConstantSet.TURRETARM2D_PATH)));
+					//int firstPoint=NimakConstantSet.TURRETARM2D_PATH.indexOf(".");
+					//int firstNimak=NimakConstantSet.TURRETARM2D_PATH.indexOf("NimakMS");
+					/*if(firstPoint==-1){
+						destFile = getDestFile(str, new File(setDestPath(NimakConstantSet.TURRETARM2D_PATH)));
+						System.out.println(NimakConstantSet.TURRETARM2D_PATH);
+					}else{
+						NimakConstantSet.TURRETARM2D_PATH.substring(firstPoint, firstNimak);
+						destFile = getDestFile(str, new File(setDestPath(NimakConstantSet.TURRETARM2D_PATH)));
+						System.out.println(NimakConstantSet.TURRETARM2D_PATH);
+					}*/
+					
+					destFile = getDestFile(str, new File(setDestPath(NimakConstantSet.TURRETARM2D_PATH)));
+					
 				}
 				if ("uploadDrawing".equals(fileTag)){
 					destFile = getDestFile(str, new File(
